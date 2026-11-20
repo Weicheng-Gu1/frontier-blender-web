@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 dist-pages/
 preview_server.py
+
+.pages-publish/

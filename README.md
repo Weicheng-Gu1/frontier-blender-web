@@ -17,6 +17,6 @@ Node 24+, `npm ci`, then `npm run dev`. `npm run build` checks and builds static
 
 ## GitHub Pages
 
-Enable Pages → GitHub Actions. The included workflow derives `site` and `base` from Pages, checks the source, then builds/deploys `dist/`. All links use Astro's base path. For a custom domain, configure it in Pages and add the DNS records supplied by GitHub.
+The live site is published from the `gh-pages` branch (Pages → Deploy from a branch → gh-pages → root). Run `npm run deploy` to build and push the generated static site. All links use Astro's base path. The existing GitHub OAuth authorization lacks workflow scope, so the optional Actions workflow is stored at `deploy/github-pages-workflow.yml`; enabling it later requires workflow permission and moving it to `.github/workflows/astro.yml`. For a custom domain, set `PAGES_BASE=/` when deploying and configure the domain and DNS in Pages.
 
 The source and deployment must remain below GitHub Pages size limits. Run `python scripts/check_site.py` after building. Preserve original task images outside the website; web image copies are display-only.

@@ -1,7 +1,7 @@
 from pathlib import Path
-import json,re
+import json,re,sys
 from urllib.parse import unquote,urlsplit
-p=Path('dist');tasks=json.loads(Path('public/tasks.json').read_text(encoding='utf-8'))
+p=Path(sys.argv[1] if len(sys.argv)>1 else 'dist');tasks=json.loads(Path('public/tasks.json').read_text(encoding='utf-8'))
 assert len(tasks)==80
 for t in tasks:assert (p/'task'/t['slug']/'index.html').is_file(),t['slug']
 assert (p/'leaderboard/index.html').is_file()

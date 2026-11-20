@@ -13,7 +13,8 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier .",
     "format:fix": "prettier --write .",
-    "all:fix": "astro check && eslint --fix . && prettier --write ."
+    "all:fix": "astro check && eslint --fix . && prettier --write .",
+    "deploy": "node scripts/deploy-pages.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",

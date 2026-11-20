@@ -1,5 +1,5 @@
 import {execFileSync} from 'node:child_process';
-import {cpSync,existsSync,readFileSync,readdirSync,writeFileSync} from 'node:fs';
+import {cpSync,existsSync,writeFileSync} from 'node:fs';
 import path from 'node:path';
 
 const root=process.cwd();
@@ -17,4 +17,4 @@ cpSync(path.join(root,'dist-pages'),target,{recursive:true});
 writeFileSync(path.join(target,'.nojekyll'),'');
 run('git',['add','-A'],target);
 try {execFileSync('git',['diff','--cached','--quiet'],{cwd:target});console.log('No deployment changes.');}
-catch {run('git',['commit','-m','Publish updated FrontierBlender website'],target);run('git',['push','origin','gh-pages'],target);}
+catch {run('git',['-c','user.name=FrontierBlender publisher','-c','user.email=publisher@users.noreply.github.com','commit','-m','Publish updated FrontierBlender website'],target);run('git',['push','origin','gh-pages'],target);}
