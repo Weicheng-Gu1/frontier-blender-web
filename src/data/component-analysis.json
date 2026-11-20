@@ -1,0 +1,72 @@
+[
+  {
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "overall": 44.65115267199393,
+    "component": 14.119767947318437,
+    "below1_pct": 24.736464721321365,
+    "no_surface_pct": 7.28548351914365,
+    "overall_higher_tasks": 24,
+    "paired_tasks": 27
+  },
+  {
+    "model": "gpt-6-astra",
+    "effort": "low",
+    "overall": 41.46904176976783,
+    "component": 13.09186248861178,
+    "below1_pct": 28.3938307776831,
+    "no_surface_pct": 9.821315568262593,
+    "overall_higher_tasks": 25,
+    "paired_tasks": 27
+  },
+  {
+    "model": "claude-opus-5-5",
+    "effort": "default",
+    "overall": 31.384437077716836,
+    "component": 9.708197450515764,
+    "below1_pct": 41.821664535828994,
+    "no_surface_pct": 14.078232932381837,
+    "overall_higher_tasks": 23,
+    "paired_tasks": 27
+  },
+  {
+    "model": "kimi-k3.1-pro",
+    "effort": "default",
+    "overall": 25.735192656992563,
+    "component": 8.565991114141001,
+    "below1_pct": 40.11185468369028,
+    "no_surface_pct": 15.290570131686405,
+    "overall_higher_tasks": 26,
+    "paired_tasks": 27
+  },
+  {
+    "model": "qwen4-max-preview",
+    "effort": "default",
+    "overall": 25.86969110525899,
+    "component": 8.436983477537611,
+    "below1_pct": 50.73153134998979,
+    "no_surface_pct": 17.696207351206155,
+    "overall_higher_tasks": 26,
+    "paired_tasks": 27
+  },
+  {
+    "model": "deepseek-flash",
+    "effort": "default",
+    "overall": 25.278655447827987,
+    "component": 8.110077259679791,
+    "below1_pct": 48.05161514306233,
+    "no_surface_pct": 14.138957525047696,
+    "overall_higher_tasks": 24,
+    "paired_tasks": 27
+  },
+  {
+    "model": "glm-5.3-flash",
+    "effort": "default",
+    "overall": 12.164862959116286,
+    "component": 3.6068924698360103,
+    "below1_pct": 71.71411444129096,
+    "no_surface_pct": 24.360402602612186,
+    "overall_higher_tasks": 23,
+    "paired_tasks": 27
+  }
+]

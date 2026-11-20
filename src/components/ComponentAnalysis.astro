@@ -1,0 +1,9 @@
+---
+import stats from '../data/component-analysis.json';
+import {modelName} from '../lib/site';
+---
+<figure class="component-analysis not-prose">
+ <div class="bar-legend"><span><i class="room-key"></i>Room-level surface score</span><span><i class="component-key"></i>Component-level surface score</span></div>
+ {stats.map(m=><div class="paired-bar-row"><span>{modelName(m)}</span><div><div class="paired-bar room-bar" style={`width:${m.overall/50*100}%`}><b>{m.overall.toFixed(2)}</b></div><div class="paired-bar component-bar" style={`width:${m.component/50*100}%`}><b>{m.component.toFixed(2)}</b></div></div></div>)}
+ <figcaption>27 matched tasks · 551 components. Bars share a 0–50 display axis; both normalized metrics range from 0 to 100. Task-level means give each matched task equal weight.</figcaption>
+</figure>

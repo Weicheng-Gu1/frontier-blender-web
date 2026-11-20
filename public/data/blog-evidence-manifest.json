@@ -1,0 +1,352 @@
+{
+  "release": "2026-11-20-blog",
+  "results_snapshot": "2026-11-17",
+  "score_normalization": "psnr-sigmoid-c30-slope025-v2-20261117",
+  "assets": [
+    {
+      "file": "reconstruction/florence-historic-city/claude-opus-5-5--default.png",
+      "bytes": 625684,
+      "sha256": "ff9b001b083a4f3755cc0ffe3bd6e91129d416420e4fa7f8a2e89e585d5c195c"
+    },
+    {
+      "file": "reconstruction/florence-historic-city/deepseek-flash--default.png",
+      "bytes": 676070,
+      "sha256": "27b7dcde37ddba6b177c7fae9d9e6466d3b5cf85bf95afb3d225a57311b22d1e"
+    },
+    {
+      "file": "reconstruction/florence-historic-city/glm-5.3-flash--default.png",
+      "bytes": 564569,
+      "sha256": "4b85a8d4cbfb30ee3d4386a924c2d05e737cf409854dad00ca834d1eb6e591ab"
+    },
+    {
+      "file": "reconstruction/florence-historic-city/gpt-6-astra--high.png",
+      "bytes": 730823,
+      "sha256": "c174d1621a0b3dc18670ac3372ef587eac4bd583432b6cde2d3bfc75f8e06c03"
+    },
+    {
+      "file": "reconstruction/florence-historic-city/gpt-6-astra--low.png",
+      "bytes": 658407,
+      "sha256": "682213e2710f3f7ff4d7c03aa951e37b684622ae8c41a508a66e4cb74ef2dd70"
+    },
+    {
+      "file": "reconstruction/florence-historic-city/gt.png",
+      "bytes": 820270,
+      "sha256": "d2fb423952351f609c50d353e6bd108011fb16c64463ad2768cd51c09ad75121"
+    },
+    {
+      "file": "reconstruction/florence-historic-city/kimi-k3.1-pro--default.png",
+      "bytes": 715684,
+      "sha256": "778bc2f9347eb0797a40dd63300d40865bf8d2a2a1fc5b07ed0c0fa99a3dfdbc"
+    },
+    {
+      "file": "reconstruction/florence-historic-city/qwen4-max-preview--default.png",
+      "bytes": 697904,
+      "sha256": "665d4f2eef2b6a29cca87f091e168da0c3f151ba81e469cca1197cdd6c7a1971"
+    },
+    {
+      "file": "reconstruction/grand-hall/claude-opus-5-5--default.png",
+      "bytes": 600195,
+      "sha256": "8b32da19b1e5f3a3eaf985d7a3fb9a936fd462839be7ff4609c77312b086adda"
+    },
+    {
+      "file": "reconstruction/grand-hall/deepseek-flash--default.png",
+      "bytes": 674523,
+      "sha256": "1f3967b64c05403b9fd4042e701641c22eab835429700ee8e7134530fe16dff4"
+    },
+    {
+      "file": "reconstruction/grand-hall/glm-5.3-flash--default.png",
+      "bytes": 399762,
+      "sha256": "2f71843566d01574599ec29151fbd05848fb24a1d90d0e24b6281a6486a54b41"
+    },
+    {
+      "file": "reconstruction/grand-hall/gpt-6-astra--high.png",
+      "bytes": 731323,
+      "sha256": "8cb641516c74b75afb7314cdc2489fdc342f74ad444839fc6e8a4eeaba15fdd3"
+    },
+    {
+      "file": "reconstruction/grand-hall/gpt-6-astra--low.png",
+      "bytes": 744335,
+      "sha256": "bc150588074c47d7e9dc72e8872a7afa7c708bfd0ab4bae644228c4e99dd233a"
+    },
+    {
+      "file": "reconstruction/grand-hall/gt.png",
+      "bytes": 732853,
+      "sha256": "e5cdedbaa43e9f666ae10a0d434c1f4ce4645557f113c97fb9ca082d513c5960"
+    },
+    {
+      "file": "reconstruction/grand-hall/kimi-k3.1-pro--default.png",
+      "bytes": 661037,
+      "sha256": "2c60f15e9ecfa5f575005d8438040df5fe67b80f5e02403bc4516fc1f1db19c2"
+    },
+    {
+      "file": "reconstruction/grand-hall/qwen4-max-preview--default.png",
+      "bytes": 555929,
+      "sha256": "142edaed87e45ac71238d97948da4e583713948edd387621fccbf98b5e0428a9"
+    },
+    {
+      "file": "reconstruction/handheld-console/claude-opus-5-5--default.png",
+      "bytes": 355705,
+      "sha256": "873ab4d10bce65d6869fd121c0e62c18e0af3ffadd3c9533f28910a1dc3c0120"
+    },
+    {
+      "file": "reconstruction/handheld-console/deepseek-flash--default.png",
+      "bytes": 398258,
+      "sha256": "719c91e27b242c92929a43e780cf772d4e664924857383276f7177aa367767a7"
+    },
+    {
+      "file": "reconstruction/handheld-console/glm-5.3-flash--default.png",
+      "bytes": 390668,
+      "sha256": "8b902c52e60400e64cdd9812b8f6698f31122cc2aa8b356b32bb39ea207f00f1"
+    },
+    {
+      "file": "reconstruction/handheld-console/gpt-6-astra--high.png",
+      "bytes": 348814,
+      "sha256": "46f4fd68a6a83290f5bb5fbddd68bac3462b54f6da5c1b02de5810b5231b8572"
+    },
+    {
+      "file": "reconstruction/handheld-console/gpt-6-astra--low.png",
+      "bytes": 403960,
+      "sha256": "0f30c63b77458c5bae70adb83457b894031b6741dd2ccb0d3fb4470d2a4a2c72"
+    },
+    {
+      "file": "reconstruction/handheld-console/gt.png",
+      "bytes": 361882,
+      "sha256": "498c435b87f5f6d3874168d778829d899a68546fb32648f0099a6923aa46b6b1"
+    },
+    {
+      "file": "reconstruction/handheld-console/kimi-k3.1-pro--default.png",
+      "bytes": 380077,
+      "sha256": "ef6442be76321019a7a9d10123ec7189e9f78bcf4b4fdfd600e6f5f1d583beec"
+    },
+    {
+      "file": "reconstruction/handheld-console/qwen4-max-preview--default.png",
+      "bytes": 381682,
+      "sha256": "9db0c029ca6f822d494d3e146be95c8c19f5c9ef32799e9a576855bbafc99652"
+    },
+    {
+      "file": "reconstruction/modern-villa/claude-opus-5-5--default.png",
+      "bytes": 448721,
+      "sha256": "9950096a88109d5a9088d241dd465e799a22007c2665be8a7ac68095171bd90f"
+    },
+    {
+      "file": "reconstruction/modern-villa/deepseek-flash--default.png",
+      "bytes": 355799,
+      "sha256": "9e1f4471031048cf0f58792586c320acf707faaa808b1aaf8571291ad6527597"
+    },
+    {
+      "file": "reconstruction/modern-villa/glm-5.3-flash--default.png",
+      "bytes": 403320,
+      "sha256": "edd2b5c56e7b5419d0608940271ee4b1e74d7d23998d3b6d4baf4c4e8a92aaa7"
+    },
+    {
+      "file": "reconstruction/modern-villa/gpt-6-astra--high.png",
+      "bytes": 537045,
+      "sha256": "08f6b7f6f52647b9fe3e1174119463f770aeb60260cd3ad49cf443c729e48baf"
+    },
+    {
+      "file": "reconstruction/modern-villa/gpt-6-astra--low.png",
+      "bytes": 545048,
+      "sha256": "22723557f19276023a0edfb6f488e3a73d9108cda3f56314d943c23ff0ef089c"
+    },
+    {
+      "file": "reconstruction/modern-villa/gt--opus-paper.png",
+      "bytes": 498455,
+      "sha256": "68e28a8f7f15e0bad3f784c4d6e67f44b94aac46a447b2f8dda7888bfc7b6236"
+    },
+    {
+      "file": "reconstruction/modern-villa/gt.png",
+      "bytes": 498221,
+      "sha256": "f4c68d09fc542e8704b41a2f23b7acf10af515aca760b0722e8ae9e1d1703ed8"
+    },
+    {
+      "file": "reconstruction/modern-villa/kimi-k3.1-pro--default.png",
+      "bytes": 517424,
+      "sha256": "dfe01098b920fc1e1a1673c3c4214ad4c598f9c7f4c9ead67f94ecdc8d13c15b"
+    },
+    {
+      "file": "reconstruction/modern-villa/qwen4-max-preview--default.png",
+      "bytes": 457081,
+      "sha256": "046448e08d4e5d6fad8a1132e3298377379a58bfe921ed854c80f512dbcfb934"
+    },
+    {
+      "file": "reconstruction/san-marco-precinct/claude-opus-5-5--default.png",
+      "bytes": 627830,
+      "sha256": "8100bfc6be399950b806984ca451d21aa0e523c9ea52bf8f64777969d73e79e4"
+    },
+    {
+      "file": "reconstruction/san-marco-precinct/deepseek-flash--default.png",
+      "bytes": 588398,
+      "sha256": "8f721193f84ff18341dd0ce08f41b32abefeb3ed04828cfacc4732867134502b"
+    },
+    {
+      "file": "reconstruction/san-marco-precinct/glm-5.3-flash--default.png",
+      "bytes": 485040,
+      "sha256": "a78df9245028cb5090c33a520be7894af2aa41d7be1201c4c6e36c6a6485335c"
+    },
+    {
+      "file": "reconstruction/san-marco-precinct/gpt-6-astra--high.png",
+      "bytes": 714479,
+      "sha256": "5b80d8767d757427f227f2f510779234928c3f8a9e150d06886bae3e568d7421"
+    },
+    {
+      "file": "reconstruction/san-marco-precinct/gpt-6-astra--low.png",
+      "bytes": 713733,
+      "sha256": "c5a7eed5d015c0ea3589e80a34cca73ffd03c2cb8436b306b6dfaa50b23defdf"
+    },
+    {
+      "file": "reconstruction/san-marco-precinct/gt.png",
+      "bytes": 816800,
+      "sha256": "0a20932d137ed968500ee6cc945a4649b7a4350a13e449c646daa99707b64267"
+    },
+    {
+      "file": "reconstruction/san-marco-precinct/kimi-k3.1-pro--default.png",
+      "bytes": 607245,
+      "sha256": "40c9af350795e3e072e1c4ea28060b7ce8e415f297846d88fbc83772156ff020"
+    },
+    {
+      "file": "reconstruction/san-marco-precinct/qwen4-max-preview--default.png",
+      "bytes": 515752,
+      "sha256": "74feb1f76af24d05c3830a821ac677e7c7d06cb0a98ed840d005067ee47bf372"
+    },
+    {
+      "file": "reconstruction/vintage-tea-table/claude-opus-5-5--default.png",
+      "bytes": 361085,
+      "sha256": "87753f931627ba55d011ed91561be1de8d2707971f8c8d77f079245f27849984"
+    },
+    {
+      "file": "reconstruction/vintage-tea-table/deepseek-flash--default.png",
+      "bytes": 371322,
+      "sha256": "34b18011113c6f90a2e9c5e0aa68bd1e2876e2b4358e57bffddf61361c428b81"
+    },
+    {
+      "file": "reconstruction/vintage-tea-table/glm-5.3-flash--default.png",
+      "bytes": 353944,
+      "sha256": "1bfbaf958418a83179b58ba70658dd4c82b9818f698eda7aaee7a639a229ad11"
+    },
+    {
+      "file": "reconstruction/vintage-tea-table/gpt-6-astra--high.png",
+      "bytes": 408598,
+      "sha256": "3d72dacba30f829e085d3c6bd3e33ca21599c8efabe122aae110b0408d72136f"
+    },
+    {
+      "file": "reconstruction/vintage-tea-table/gpt-6-astra--low.png",
+      "bytes": 385761,
+      "sha256": "71b37822d3b5b6801bbcb782217106b9b26959240d57ab353df61cee5c31c00f"
+    },
+    {
+      "file": "reconstruction/vintage-tea-table/gt.png",
+      "bytes": 419477,
+      "sha256": "85c3cc9c44d8991ffd0e29ff416827017d543277f3aba4911af05123722822f0"
+    },
+    {
+      "file": "reconstruction/vintage-tea-table/kimi-k3.1-pro--default.png",
+      "bytes": 386088,
+      "sha256": "5e60b05523e1b0dd3b1b00c1a7b7805d2529a6b56ff1af81b425d181b599bd8f"
+    },
+    {
+      "file": "reconstruction/vintage-tea-table/qwen4-max-preview--default.png",
+      "bytes": 380653,
+      "sha256": "c511a8421f6cd9f07dad2ce85c8e2fb8404b896ad4ac79e0b2f9b041f44ad218"
+    },
+    {
+      "file": "diagnostics/baseline-H01.png",
+      "bytes": 379487,
+      "sha256": "31f0e6c36104a08ea929d1bd043ed9e873347ba80de5ef749e1223d3c10297cd"
+    },
+    {
+      "file": "diagnostics/baseline-H03.png",
+      "bytes": 370127,
+      "sha256": "d34847a035da73c01e7ec52798975edacd9f8d308481bb9c8f695cc3380d007e"
+    },
+    {
+      "file": "diagnostics/gt-H01.png",
+      "bytes": 361292,
+      "sha256": "cf473346d0725d18fe436a1a95b6f69cee3e173b4c9ba6f7f1a17f9e870cb07d"
+    },
+    {
+      "file": "diagnostics/gt-H03.png",
+      "bytes": 390422,
+      "sha256": "a7155b5851040400ff65053d040df147f52d069561365548bcd15b8f009ab039"
+    },
+    {
+      "file": "diagnostics/gt_materials_lighting-H01.png",
+      "bytes": 362432,
+      "sha256": "f05eb4ae7bb381ff17b12fbc3b5424d6d69c2f62e1c4915a1f3cc46749f34601"
+    },
+    {
+      "file": "diagnostics/gt_materials_lighting-H03.png",
+      "bytes": 390402,
+      "sha256": "b20437896c241a20c6bfaf83bc70bb9f56aafa4cc95015745ac2c2b2e28c5a4c"
+    },
+    {
+      "file": "diagnostics/gt_materials_lighting_controls-H01.png",
+      "bytes": 360952,
+      "sha256": "f58c08b6e91758edfdac22a1da61b9526483805fa44d9de52904475768cca9e3"
+    },
+    {
+      "file": "diagnostics/gt_materials_lighting_controls-H03.png",
+      "bytes": 391197,
+      "sha256": "a5114815837b04905ca1c576cf5266bf1bf69d8c76e749c7756b00dccfd4b295"
+    },
+    {
+      "file": "diagnostics/gt_materials_lighting_controls_shells-H01.png",
+      "bytes": 359770,
+      "sha256": "e00748787ba84a7062499584e8878b0f77a21943ec2b14eb082a572bd1c49370"
+    },
+    {
+      "file": "diagnostics/gt_materials_lighting_controls_shells-H03.png",
+      "bytes": 387056,
+      "sha256": "a9514006931816789e33a8530b0981b32328d54a940a49a0b86452730afb47cc"
+    },
+    {
+      "file": "diagnostics/station-gt-H03.png",
+      "bytes": 408516,
+      "sha256": "06b099e9248240f72ae2673560f93cee974d4048f05edda564d35a01e4de245b"
+    },
+    {
+      "file": "diagnostics/station-gt-H06.png",
+      "bytes": 364010,
+      "sha256": "53242a01db0dfbe0a7d5c80a2781ed2d6c0c4c98f7af9895f6d25b4f9d69f388"
+    },
+    {
+      "file": "diagnostics/station-prediction-H03.png",
+      "bytes": 382171,
+      "sha256": "2c72e7e6041276b12ea38c6213649e9866c42fff052b8f501cd5f672765d83e2"
+    },
+    {
+      "file": "diagnostics/station-prediction-H06.png",
+      "bytes": 335377,
+      "sha256": "0362f96d6dee6db88913b0bade3738462d1a67a51bae82ecf7c6655e52318435"
+    },
+    {
+      "file": "video/modern-villa-astra62-high.mp4",
+      "bytes": 15150031,
+      "sha256": "691fe43118580bb2aa90a116872172b00462f9ef000159e8ba864b21cf32a0c3"
+    },
+    {
+      "file": "video/villa-35.webp",
+      "bytes": 10274,
+      "sha256": "1461002393fd5198b69d8d2cce16b0397cc9347dd62bb9e8a32f1063478ee356"
+    },
+    {
+      "file": "video/villa-5.webp",
+      "bytes": 16086,
+      "sha256": "2ade79ce10801c924cc6c274e88de275f37dad82c07866d2f26cea68b2a45b41"
+    },
+    {
+      "file": "video/villa-65.webp",
+      "bytes": 4240,
+      "sha256": "e72c334fa28a4c798e9bd68fa1cfaf7e91f5b329b60b495fae64a06771238c8e"
+    }
+  ],
+  "diagnostics": {
+    "official_scores_changed": false,
+    "GT_assisted": true
+  },
+  "video": {
+    "model_label": "GPT-6.2-Astra (high)",
+    "label_source": "Supplied video filename",
+    "leaderboard_member": false,
+    "exact_trial_linkage_verified": false
+  }
+}

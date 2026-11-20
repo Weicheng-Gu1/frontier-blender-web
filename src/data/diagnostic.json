@@ -1,0 +1,72 @@
+{
+  "source": {
+    "trial": "handheld-console__MBrhXYQ",
+    "model": "kimi-k3.1-pro",
+    "effort": "default",
+    "submission_sha256": "77dcfe5f6b3bf74619db11434e21d7ce160381d4307e3db14df5af9557e46ade",
+    "archive_sha256": "a35396421ab58bea5a39d55f70782cf1532f59765bd053ab62b06ffec03bb267"
+  },
+  "diagnostic_only": true,
+  "GT_assisted": true,
+  "official_scores_changed": false,
+  "views": {
+    "H01": {
+      "gt": "diagnostics/gt-H01.png",
+      "variants": [
+        {
+          "variant": "baseline",
+          "db": 17.265632294859174,
+          "image": "diagnostics/baseline-H01.png",
+          "sha256": "31f0e6c36104a08ea929d1bd043ed9e873347ba80de5ef749e1223d3c10297cd"
+        },
+        {
+          "variant": "gt_materials_lighting",
+          "db": 24.059493174573632,
+          "image": "diagnostics/gt_materials_lighting-H01.png",
+          "sha256": "f05eb4ae7bb381ff17b12fbc3b5424d6d69c2f62e1c4915a1f3cc46749f34601"
+        },
+        {
+          "variant": "gt_materials_lighting_controls",
+          "db": 27.691875953708447,
+          "image": "diagnostics/gt_materials_lighting_controls-H01.png",
+          "sha256": "f58c08b6e91758edfdac22a1da61b9526483805fa44d9de52904475768cca9e3"
+        },
+        {
+          "variant": "gt_materials_lighting_controls_shells",
+          "db": 29.541566581336014,
+          "image": "diagnostics/gt_materials_lighting_controls_shells-H01.png",
+          "sha256": "e00748787ba84a7062499584e8878b0f77a21943ec2b14eb082a572bd1c49370"
+        }
+      ]
+    },
+    "H03": {
+      "gt": "diagnostics/gt-H03.png",
+      "variants": [
+        {
+          "variant": "baseline",
+          "db": 11.776533751975027,
+          "image": "diagnostics/baseline-H03.png",
+          "sha256": "d34847a035da73c01e7ec52798975edacd9f8d308481bb9c8f695cc3380d007e"
+        },
+        {
+          "variant": "gt_materials_lighting",
+          "db": 12.788114304795698,
+          "image": "diagnostics/gt_materials_lighting-H03.png",
+          "sha256": "b20437896c241a20c6bfaf83bc70bb9f56aafa4cc95015745ac2c2b2e28c5a4c"
+        },
+        {
+          "variant": "gt_materials_lighting_controls",
+          "db": 20.615906891149756,
+          "image": "diagnostics/gt_materials_lighting_controls-H03.png",
+          "sha256": "a5114815837b04905ca1c576cf5266bf1bf69d8c76e749c7756b00dccfd4b295"
+        },
+        {
+          "variant": "gt_materials_lighting_controls_shells",
+          "db": 21.36608537165082,
+          "image": "diagnostics/gt_materials_lighting_controls_shells-H03.png",
+          "sha256": "a9514006931816789e33a8530b0981b32328d54a940a49a0b86452730afb47cc"
+        }
+      ]
+    }
+  }
+}

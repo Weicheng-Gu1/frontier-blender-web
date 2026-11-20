@@ -1,0 +1,24 @@
+---
+import data from '../data/diagnostic.json';
+import {url} from '../lib/site';
+const variants=['Original agent output','GT materials + lighting','+ GT button structures','+ GT controller geometry'];
+const views=Object.entries(data.views).map(([id,v])=>({id,gt:url(v.gt),variants:v.variants.map(x=>({...x,image:url(x.image)}))}));
+---
+<section class="diagnostic-explorer not-prose" data-views={JSON.stringify(views)} aria-label="Console diagnostic interventions">
+ <div class="diagnostic-controls"><label>Camera <select id="diagnostic-view"><option value="0">Front · H01</option><option value="1">Side · H03</option></select></label><span>GT-assisted diagnosis · Kimi-K3.1-Pro</span></div>
+ <div class="diagnostic-variants" role="group" aria-label="Choose diagnostic intervention">{variants.map((v,i)=><button type="button" data-variant={i} aria-pressed={i===0?'true':'false'}>{v}</button>)}</div>
+ <div class="comparison-pair"><figure><img class="diagnostic-gt" src={views[0].gt} width="768" height="576" alt="Console ground truth, front camera H01" loading="lazy"/><figcaption>Ground truth</figcaption></figure><figure><img class="diagnostic-prediction" src={views[0].variants[0].image} width="768" height="576" alt="Original Kimi console reconstruction, front camera H01" loading="lazy"/><figcaption><span class="diagnostic-label">Original agent output</span> · <strong class="diagnostic-db">{views[0].variants[0].db.toFixed(2)} dB</strong></figcaption></figure></div>
+ <p class="explorer-note">The replacements use ground-truth information to isolate error sources. They are diagnostic interventions, not new agent results or changes to the official leaderboard. PSNR uses the same fixed GT foreground mask, with no image alignment.</p>
+</section>
+<script>
+document.querySelectorAll<HTMLElement>('.diagnostic-explorer').forEach(root=>{
+ const views=JSON.parse(root.dataset.views!);let variant=0;
+ const render=()=>{const v=views[Number(root.querySelector<HTMLSelectElement>('#diagnostic-view')!.value)],p=v.variants[variant];const label=root.querySelector(`[data-variant="${variant}"]`)!.textContent!;
+ root.querySelector<HTMLImageElement>('.diagnostic-gt')!.src=v.gt;root.querySelector<HTMLImageElement>('.diagnostic-gt')!.alt=`Console ground truth, camera ${v.id}`;
+ root.querySelector<HTMLImageElement>('.diagnostic-prediction')!.src=p.image;root.querySelector<HTMLImageElement>('.diagnostic-prediction')!.alt=`${label}, camera ${v.id}`;
+ root.querySelector('.diagnostic-label')!.textContent=label;root.querySelector('.diagnostic-db')!.textContent=`${p.db.toFixed(2)} dB`;
+ root.querySelectorAll<HTMLButtonElement>('[data-variant]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.variant)===variant)));};
+ root.querySelector('#diagnostic-view')!.addEventListener('change',render);
+ root.querySelectorAll<HTMLButtonElement>('[data-variant]').forEach(b=>b.addEventListener('click',()=>{variant=Number(b.dataset.variant);render();}));
+});
+</script>

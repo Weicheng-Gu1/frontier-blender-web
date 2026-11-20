@@ -7,8 +7,8 @@ const target=path.join(root,'.pages-publish');
 const remote='https://github.com/Weicheng-Gu1/frontier-blender-web.git';
 const run=(cmd,args,cwd=root)=>execFileSync(cmd,args,{cwd,stdio:'inherit'});
 const base=process.env.PAGES_BASE||'/frontier-blender-web';
-run(process.execPath,['node_modules/astro/astro.js','check']);
-run(process.execPath,['node_modules/astro/astro.js','build','--base',base,'--outDir','dist-pages']);
+run(process.execPath,['node_modules/astro/bin/astro.mjs','check']);
+run(process.execPath,['node_modules/astro/bin/astro.mjs','build','--base',base,'--outDir','dist-pages']);
 if(!existsSync(path.join(target,'.git'))) run('git',['clone','--branch','gh-pages','--single-branch',remote,target]);
 run('git',['pull','--ff-only'],target);
 // Only clear files tracked by this dedicated deployment checkout.
