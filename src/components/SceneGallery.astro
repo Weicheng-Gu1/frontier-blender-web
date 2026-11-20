@@ -1,0 +1,6 @@
+---
+import tasks from "../../public/tasks.json";
+import {url,labels} from "../lib/site";
+const picks=["handheld-console","camping-dining-set","furnished-kitchen","modern-villa","kyoto-shopping-street","florence-historic-city"];
+---
+<div class="scene-grid not-prose">{picks.map(slug=>{const t=tasks.find(t=>t.slug===slug)!;return <a class="scene-tile" href={url(`task/${slug}/`)}><img src={url(t.cover)} alt={t.title} width="600" height="450" loading="eager"/><div><span>{labels[t.category]}</span><strong>{t.title.replace(/ Reconstruction|Reconstruct a |Reconstruct the /g,"")}</strong></div></a>})}</div>

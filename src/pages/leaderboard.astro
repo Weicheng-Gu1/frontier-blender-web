@@ -1,0 +1,7 @@
+---
+import Site from "../layouts/Site.astro";
+import ResultsTable from "../components/ResultsTable.astro";
+import results from "../data/results.json";
+import {url} from "../lib/site";
+---
+<Site title="Leaderboard · FrontierBlender" active="Leaderboard" wide><p class="eyebrow">Results / 80 reconstruction tasks</p><h1>Leaderboard</h1><p class="page-intro">Reconstruction quality, with the resources it takes to get there.</p><div class="release-line"><span>Paper snapshot · {results.date}</span><span>7 complete configurations</span><a href={url("data/results.json")} download>Download results JSON</a></div><ResultsTable/><section class="method-notes"><h2>Reading the results</h2><p>Scores are out of 100; higher is better. Overall is the mean across the 80 tasks. Category columns average tasks within each category. Only complete configurations in the approved paper selection are shown.</p><p>Average tokens include prompt and completion tokens, including cached input, without double-counting reasoning. Average cost is the per-task USD cost from recorded CLI charges or published API-rate calculations. These figures describe the dated release, not ongoing jobs.</p><details><summary>Result provenance and normalization</summary><p>Archive revision: <code>{results.archive_commit}</code></p><p>Normalization: <code>{results.score_normalization}</code>. PSNR uses the sigmoid with center 30 dB and slope 0.25. No scores were recomputed for this website redesign.</p></details></section></Site>

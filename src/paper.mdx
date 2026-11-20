@@ -1,0 +1,55 @@
+---
+title: FrontierBlender
+---
+import Header from "./components/Header.astro";
+import Wide from "./components/Wide.astro";
+import SceneGallery from "./components/SceneGallery.astro";
+import {url as siteUrl,github} from "./lib/site";
+
+<div className="article-kicker">A benchmark for visual agents in 3D creation</div>
+<Header title="FrontierBlender" subtitle="Reconstructing the world from sparse references." summary="From the details of a handheld console to the structure of an entire city: can visual agents faithfully rebuild what they see?" authors={[]} links={[{name:"Explore tasks",url:siteUrl("task/"),icon:"ri:box-3-line"},{name:"Leaderboard",url:siteUrl("leaderboard/"),icon:"ri:bar-chart-line"},{name:"Website source",url:github,icon:"ri:github-line"}]}/>
+
+<Wide><SceneGallery/></Wide>
+<p className="figure-caption">Six scales of reconstruction, from individual objects to cities. Explore an example to see its supplied views and technical drawings.</p>
+
+<nav className="article-toc" aria-label="On this page"><a href="#beyond-a-plausible-image">Motivation</a><a href="#three-complementary-inputs">Inputs</a><a href="#from-objects-to-cities">Task collection</a><a href="#measuring-faithfulness">Evaluation</a><a href="#explore-the-results">Results</a></nav>
+
+## Beyond a plausible image
+
+A convincing render is only one part of reconstructing a 3D scene. The model must also preserve the original product or environment: its proportions, component relationships, materials, and spatial organization. Details that seem unimportant from one viewpoint can become decisive from another.
+
+FrontierBlender asks agents to build an editable Blender scene from limited reference information. The objective is **faithful reconstruction**, rather than a simplified substitute or a redesigned version. The task is the same across scales, but the demands change: a small object exposes subtle shape errors, while a building or city requires consistent structure across many connected parts.
+
+## Three complementary inputs
+
+<div className="input-triptych">
+<div><span>Visual appearance</span><h3>Multi-view images</h3><p>Reference images show the target from different viewpoints, with camera parameters to connect the observations to 3D space.</p></div>
+<div><span>Essential requirements</span><h3>Production specification</h3><p>A client-style brief states the reconstruction objective and the essential structures and details that must survive delivery.</p></div>
+<div><span>Structure and dimensions</span><h3>Technical drawings</h3><p>Drawings complement the images with geometric and spatial information that may be difficult to infer from appearance alone.</p></div>
+</div>
+
+These inputs describe the target without prescribing every modeling operation. Agents choose how to organize their work, use Blender, inspect intermediate results, and refine the scene within the task budget of **21,600 seconds**.
+
+## From objects to cities
+
+The collection contains **80 tasks across six categories**: objects, object arrangements, interiors, buildings, blocks, and cities. Moving through these categories changes both the reconstruction scale and the number of relationships that need to remain consistent.
+
+An object must retain its recognizable shape and fine components. An arrangement must preserve the relationship between separate objects. Interiors and buildings add enclosing structures, circulation, and nested spaces. Blocks and cities extend the same problem across repeated and interconnected structures.
+
+<a className="text-cta" href={siteUrl("task/")}>Browse all 80 tasks</a>
+
+## Measuring faithfulness
+
+Evaluation combines image appearance, depth, and surface geometry. **PSNR, SSIM, and LPIPS** capture complementary aspects of rendered appearance; **depth** and **surface distance** assess spatial agreement. The different signals help reveal cases where a plausible image hides missing or displaced geometry.
+
+The PSNR score uses a smooth sigmoid centered at 30 dB, with slope 0.25. This normalization changes the score scale; it does not alter the original rendered images or the raw PSNR measurement.
+
+<div className="metric-equation">PSNR score = 100 / (1 + exp(−0.25 × (PSNR<sub>dB</sub> − 30)))</div>
+
+## Explore the results
+
+The leaderboard presents overall reconstruction scores alongside average token use, average cost, and results for each task category. Each task page also shows the corresponding per-model score, so an aggregate ranking can be inspected at the level of individual examples.
+
+The current website preview uses the **November 17, 2026 paper result snapshot**, with seven complete configurations and the approved experiment selection. It is a dated result release, not a live experiment monitor. Costs follow the recorded CLI charge or the published API-rate calculation recorded in that release.
+
+<div className="closing-links"><a href={siteUrl("leaderboard/")}>View the leaderboard</a><a href={siteUrl("task/")}>Inspect individual tasks</a></div>
