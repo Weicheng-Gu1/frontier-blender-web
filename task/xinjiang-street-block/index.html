@@ -1,0 +1,2205 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Xinjiang Traditional Architectural Street Block · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Xinjiang Traditional Architectural Street Block · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Blocks</p><h1 class="task-title">Xinjiang Traditional Architectural Street Block</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P01.webp" alt="Xinjiang Traditional Architectural Street Block, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -5.2118377685546875,
+    -3.339244842529297,
+    350
+  ],
+  &quot;target&quot;: [
+    -5.2118377685546875,
+    -3.339244842529297,
+    0
+  ],
+  &quot;scale&quot;: 364.951356124878,
+  &quot;caption&quot;: &quot;All-site architectural plan with complete building and street layout&quot;,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -5.2118377685546875
+    ],
+    [
+      0,
+      1,
+      0,
+      -3.339244842529297
+    ],
+    [
+      0,
+      0,
+      1,
+      350
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    364.95135921836766,
+    273.7135077848028
+  ],
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P02.webp" alt="Xinjiang Traditional Architectural Street Block, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -265.48724365234375,
+    -281.2939758300781,
+    154.88723754882812
+  ],
+  &quot;target&quot;: [
+    -5.2118377685546875,
+    -3.339244842529297,
+    3
+  ],
+  &quot;lens&quot;: 35,
+  &quot;caption&quot;: &quot;Negative-X/Y panoramic overview with complete modeled architecture&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7299396991729736,
+      0.2532327473163605,
+      -0.6348710656166077,
+      -265.48724365234375
+    ],
+    [
+      -0.6835115551948547,
+      0.27043378353118896,
+      -0.6779952049255371,
+      -281.2939758300781
+    ],
+    [
+      -2.5264265346436332e-8,
+      0.9288372993469238,
+      0.37048786878585815,
+      154.88723754882812
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P03.webp" alt="Xinjiang Traditional Architectural Street Block, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    253.76609802246094,
+    239.03749084472656,
+    145.62451171875
+  ],
+  &quot;target&quot;: [
+    -5.2118377685546875,
+    -3.339244842529297,
+    3
+  ],
+  &quot;lens&quot;: 35,
+  &quot;caption&quot;: &quot;Opposite panoramic overview with complete modeled architecture&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.6833180785179138,
+      -0.27238187193870544,
+      0.6774101853370667,
+      253.76609802246094
+    ],
+    [
+      0.730120837688446,
+      -0.2549213171005249,
+      0.6339863538742065,
+      239.03749084472656
+    ],
+    [
+      -9.618870677741143e-8,
+      0.9278056025505066,
+      0.3730640113353729,
+      145.62451171875
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P04.webp" alt="Xinjiang Traditional Architectural Street Block, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;lens&quot;: 50,
+  &quot;position&quot;: [
+    -100.584,
+    72.922,
+    2.34
+  ],
+  &quot;target&quot;: [
+    -41.323,
+    63.536,
+    2.34
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.15643420815467834,
+      -3.9076050484254665e-7,
+      -0.9876883029937744,
+      -100.58399963378906
+    ],
+    [
+      -0.9876883029937744,
+      9.837782499744208e-8,
+      0.15643420815467834,
+      72.9219970703125
+    ],
+    [
+      3.603831544296554e-8,
+      1,
+      -4.013392356227996e-7,
+      2.3399999141693115
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start_m&quot;: 0.01,
+  &quot;clip_end_m&quot;: 706.8900146484375,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P05.webp" alt="Xinjiang Traditional Architectural Street Block, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;lens&quot;: 35,
+  &quot;position&quot;: [
+    -48,
+    62,
+    3.5
+  ],
+  &quot;target&quot;: [
+    5,
+    30,
+    3
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.5168687701225281,
+      0.006913498509675264,
+      -0.8560367226600647,
+      -48
+    ],
+    [
+      -0.8560646176338196,
+      -0.004174248315393925,
+      0.5168519020080566,
+      62
+    ],
+    [
+      -5.45913501071027e-8,
+      0.9999673962593079,
+      0.008075940422713757,
+      3.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start_m&quot;: 0.01,
+  &quot;clip_end_m&quot;: 706.8900146484375,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P06.webp" alt="Xinjiang Traditional Architectural Street Block, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;lens&quot;: 35,
+  &quot;position&quot;: [
+    66,
+    -15,
+    25
+  ],
+  &quot;target&quot;: [
+    5,
+    20,
+    3
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.497669517993927,
+      -0.25895580649375916,
+      0.8278084993362427,
+      66
+    ],
+    [
+      0.8673667311668396,
+      0.14858122169971466,
+      -0.4749721884727478,
+      -15
+    ],
+    [
+      1.0208211165263492e-8,
+      0.9543927311897278,
+      0.298554003238678,
+      25
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start_m&quot;: 0.01,
+  &quot;clip_end_m&quot;: 706.8900146484375,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P07.webp" alt="Xinjiang Traditional Architectural Street Block, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    -98,
+    76,
+    180
+  ],
+  &quot;target&quot;: [
+    -98,
+    76,
+    0
+  ],
+  &quot;caption&quot;: &quot;Western sector vertical plan with source ground opening&quot;,
+  &quot;lens&quot;: 35,
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 145,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -98
+    ],
+    [
+      0,
+      1,
+      0,
+      76
+    ],
+    [
+      0,
+      0,
+      1,
+      180
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    145.0000005401671,
+    108.75000040512532
+  ],
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P08.webp" alt="Xinjiang Traditional Architectural Street Block, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;position&quot;: [
+    0,
+    22,
+    180
+  ],
+  &quot;target&quot;: [
+    0,
+    22,
+    0
+  ],
+  &quot;caption&quot;: &quot;Vertical plan of the central bend and courtyard&quot;,
+  &quot;lens&quot;: 35,
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 160,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      22
+    ],
+    [
+      0,
+      0,
+      1,
+      180
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    159.99999761581424,
+    119.99999374151263
+  ],
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P09.webp" alt="Xinjiang Traditional Architectural Street Block, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;position&quot;: [
+    65,
+    -60,
+    180
+  ],
+  &quot;target&quot;: [
+    65,
+    -60,
+    0
+  ],
+  &quot;caption&quot;: &quot;Southern courtyard sector vertical plan&quot;,
+  &quot;lens&quot;: 35,
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 180,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      65
+    ],
+    [
+      0,
+      1,
+      0,
+      -60
+    ],
+    [
+      0,
+      0,
+      1,
+      180
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    179.99999564141046,
+    135.00000238884243
+  ],
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P10.webp" alt="Xinjiang Traditional Architectural Street Block, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;position&quot;: [
+    -170,
+    115,
+    45
+  ],
+  &quot;target&quot;: [
+    -110,
+    74,
+    4
+  ],
+  &quot;caption&quot;: &quot;Western street from its northwestern rear&quot;,
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.5641906261444092,
+      0.40570464730262756,
+      -0.719091534614563,
+      -170
+    ],
+    [
+      -0.8256445527076721,
+      -0.27723148465156555,
+      0.4913794696331024,
+      115
+    ],
+    [
+      1.3743557758516545e-7,
+      0.8709456920623779,
+      0.4913792610168457,
+      45
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P11.webp" alt="Xinjiang Traditional Architectural Street Block, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;position&quot;: [
+    -100,
+    135,
+    35
+  ],
+  &quot;target&quot;: [
+    -90,
+    75,
+    4
+  ],
+  &quot;caption&quot;: &quot;North-facing backs, roofs and balconies&quot;,
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.986393928527832,
+      0.0746484249830246,
+      -0.1464739888906479,
+      -100
+    ],
+    [
+      -0.1643989533185959,
+      -0.4478909373283386,
+      0.8788439631462097,
+      135
+    ],
+    [
+      -5.3994313020666596e-8,
+      0.890966534614563,
+      0.45406901836395264,
+      35
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P12.webp" alt="Xinjiang Traditional Architectural Street Block, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;position&quot;: [
+    -150,
+    20,
+    32
+  ],
+  &quot;target&quot;: [
+    -110,
+    70,
+    4
+  ],
+  &quot;caption&quot;: &quot;Opposite elevated facade cluster with pergola and arched windows&quot;,
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7808687686920166,
+      0.25028711557388306,
+      -0.5723637938499451,
+      -150
+    ],
+    [
+      -0.6246950626373291,
+      0.3128588795661926,
+      -0.715454638004303,
+      20
+    ],
+    [
+      1.5013782217465632e-8,
+      0.9162289500236511,
+      0.4006549119949341,
+      32
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P13.webp" alt="Xinjiang Traditional Architectural Street Block, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;position&quot;: [
+    -45,
+    110,
+    30
+  ],
+  &quot;target&quot;: [
+    -50,
+    55,
+    4
+  ],
+  &quot;caption&quot;: &quot;Central north-side roofs and lane junction&quot;,
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9958932399749756,
+      -0.038562923669815063,
+      0.08191214501857758,
+      -45
+    ],
+    [
+      0.09053562581539154,
+      -0.42419400811195374,
+      0.9010341763496399,
+      110
+    ],
+    [
+      1.2794296821994067e-7,
+      0.904749870300293,
+      0.4259432256221771,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P14.webp" alt="Xinjiang Traditional Architectural Street Block, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;position&quot;: [
+    -65,
+    -10,
+    35
+  ],
+  &quot;target&quot;: [
+    -20,
+    35,
+    4
+  ],
+  &quot;caption&quot;: &quot;Central bend from the southwest&quot;,
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7071065306663513,
+      0.30965951085090637,
+      -0.6356974244117737,
+      -65
+    ],
+    [
+      -0.7071070075035095,
+      0.30965912342071533,
+      -0.6356971263885498,
+      -10
+    ],
+    [
+      -1.5745830239666248e-7,
+      0.8990117907524109,
+      0.4379243850708008,
+      35
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P15.webp" alt="Xinjiang Traditional Architectural Street Block, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;position&quot;: [
+    65,
+    80,
+    35
+  ],
+  &quot;target&quot;: [
+    22,
+    31,
+    4
+  ],
+  &quot;caption&quot;: &quot;Courtyard north and east facades from the opposite side&quot;,
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7516257166862488,
+      -0.2832533121109009,
+      0.5956730246543884,
+      65
+    ],
+    [
+      0.6595898270606995,
+      -0.3227771818637848,
+      0.6787902116775513,
+      80
+    ],
+    [
+      9.1226993959026e-8,
+      0.9030960202217102,
+      0.42943865060806274,
+      35
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P16.webp" alt="Xinjiang Traditional Architectural Street Block, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;position&quot;: [
+    140,
+    30,
+    30
+  ],
+  &quot;target&quot;: [
+    95,
+    -23,
+    3
+  ],
+  &quot;caption&quot;: &quot;Eastern building group from the northeast&quot;,
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7622942328453064,
+      -0.23429761826992035,
+      0.6033340096473694,
+      140
+    ],
+    [
+      0.6472305059432983,
+      -0.27595099806785583,
+      0.7105938196182251,
+      30
+    ],
+    [
+      1.9795362504737568e-7,
+      0.9321778416633606,
+      0.362000435590744,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P17.webp" alt="Xinjiang Traditional Architectural Street Block, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;position&quot;: [
+    145,
+    -90,
+    32
+  ],
+  &quot;target&quot;: [
+    90,
+    -40,
+    3
+  ],
+  &quot;caption&quot;: &quot;Eastern courtyard from the southeast&quot;,
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.6726727485656738,
+      -0.26894357800483704,
+      0.6893335580825806,
+      145
+    ],
+    [
+      0.7399401068687439,
+      0.24449422955513,
+      -0.6266667246818542,
+      -90
+    ],
+    [
+      -8.596370548730192e-8,
+      0.931607186794281,
+      0.363466739654541,
+      32
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P18.webp" alt="Xinjiang Traditional Architectural Street Block, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;position&quot;: [
+    70,
+    -145,
+    35
+  ],
+  &quot;target&quot;: [
+    45,
+    -86,
+    3
+  ],
+  &quot;caption&quot;: &quot;Southern courtyard and roofs from the rear&quot;,
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.920751690864563,
+      -0.17430981993675232,
+      0.3490450084209442,
+      70
+    ],
+    [
+      0.3901491165161133,
+      0.41137105226516724,
+      -0.8237460255622864,
+      -145
+    ],
+    [
+      1.6022816851091193e-8,
+      0.8946451544761658,
+      0.4467774033546448,
+      35
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P19.webp" alt="Xinjiang Traditional Architectural Street Block, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;position&quot;: [
+    -125,
+    75,
+    3
+  ],
+  &quot;target&quot;: [
+    -150,
+    83,
+    4
+  ],
+  &quot;caption&quot;: &quot;Projecting timber beam ends and recessed vertical openings in a narrow gap&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.30477574467658997,
+      0.036258067935705185,
+      0.9517336487770081,
+      -125
+    ],
+    [
+      0.952424168586731,
+      -0.011602666229009628,
+      -0.3045547604560852,
+      75
+    ],
+    [
+      8.057047296006203e-8,
+      0.9992750883102417,
+      -0.03806926682591438,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P20.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P20.webp" alt="Xinjiang Traditional Architectural Street Block, reference P20" loading="lazy" width="800" height="600"></a><figcaption>P20</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P20&quot;,
+  &quot;position&quot;: [
+    -72,
+    70,
+    3
+  ],
+  &quot;target&quot;: [
+    -115,
+    76,
+    4
+  ],
+  &quot;caption&quot;: &quot;Reverse view along western lane&quot;,
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.1381959468126297,
+      0.022805560380220413,
+      0.990142285823822,
+      -72
+    ],
+    [
+      0.9904049038887024,
+      -0.0031821622978895903,
+      -0.13815930485725403,
+      70
+    ],
+    [
+      -6.760175086384379e-9,
+      0.9997348785400391,
+      -0.02302650175988674,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P20.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P21.webp" alt="Xinjiang Traditional Architectural Street Block, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;position&quot;: [
+    -63,
+    64,
+    3
+  ],
+  &quot;target&quot;: [
+    -60,
+    49,
+    4
+  ],
+  &quot;caption&quot;: &quot;Arched window and fabric awning detail&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9805806875228882,
+      -0.01279325783252716,
+      -0.1956983357667923,
+      -63
+    ],
+    [
+      -0.19611606001853943,
+      0.06396590918302536,
+      0.9784921407699585,
+      64
+    ],
+    [
+      -8.069171997249214e-8,
+      0.9978700876235962,
+      -0.06523269414901733,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P22.webp" alt="Xinjiang Traditional Architectural Street Block, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;position&quot;: [
+    -35,
+    59,
+    3
+  ],
+  &quot;target&quot;: [
+    -12,
+    45,
+    4
+  ],
+  &quot;caption&quot;: &quot;Lane junction and arched windows&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.5199469327926636,
+      -0.031702302396297455,
+      -0.8536100387573242,
+      -35
+    ],
+    [
+      -0.8541985750198364,
+      0.019297095015645027,
+      0.5195887684822083,
+      59
+    ],
+    [
+      3.5120610419880904e-8,
+      0.9993109703063965,
+      -0.037113528698682785,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P23.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P23.webp" alt="Xinjiang Traditional Architectural Street Block, reference P23" loading="lazy" width="800" height="600"></a><figcaption>P23</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P23&quot;,
+  &quot;position&quot;: [
+    0,
+    38,
+    3
+  ],
+  &quot;target&quot;: [
+    23,
+    33,
+    5
+  ],
+  &quot;caption&quot;: &quot;Courtyard north facade and entry details&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.21242967247962952,
+      -0.08273442834615707,
+      -0.973667562007904,
+      0
+    ],
+    [
+      -0.9771763682365417,
+      0.017985817044973373,
+      0.21166688203811646,
+      38
+    ],
+    [
+      6.774362049100091e-8,
+      0.9964092373847961,
+      -0.08466684818267822,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P23.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P25.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P25.webp" alt="Xinjiang Traditional Architectural Street Block, reference P25" loading="lazy" width="800" height="600"></a><figcaption>P25</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P25&quot;,
+  &quot;position&quot;: [
+    50,
+    -20,
+    3
+  ],
+  &quot;target&quot;: [
+    12,
+    -32,
+    5
+  ],
+  &quot;caption&quot;: &quot;Southwest courtyard facade&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.3011314272880554,
+      0.047798555344343185,
+      0.9523839354515076,
+      50
+    ],
+    [
+      0.9535826444625854,
+      0.015094340778887272,
+      0.3007528781890869,
+      -20
+    ],
+    [
+      -5.5642043861325874e-8,
+      0.998742938041687,
+      -0.050125252455472946,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P25.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P26.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P26.webp" alt="Xinjiang Traditional Architectural Street Block, reference P26" loading="lazy" width="800" height="600"></a><figcaption>P26</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P26&quot;,
+  &quot;position&quot;: [
+    60,
+    -58,
+    3
+  ],
+  &quot;target&quot;: [
+    34,
+    -82,
+    4
+  ],
+  &quot;caption&quot;: &quot;Courtyard porch columns, doors/windows and roof eaves&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.678280234336853,
+      0.020758600905537605,
+      0.734510064125061,
+      60
+    ],
+    [
+      0.734803318977356,
+      0.019161619246006012,
+      0.6780095100402832,
+      -58
+    ],
+    [
+      1.272411509489757e-7,
+      0.999600887298584,
+      -0.0282504353672266,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P26.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P27.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P27.webp" alt="Xinjiang Traditional Architectural Street Block, reference P27" loading="lazy" width="800" height="600"></a><figcaption>P27</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P27&quot;,
+  &quot;position&quot;: [
+    90,
+    -65,
+    3
+  ],
+  &quot;target&quot;: [
+    109,
+    -31,
+    4
+  ],
+  &quot;caption&quot;: &quot;Paired wooden doors, window grilles and perforated parapet&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8729434609413147,
+      -0.012520596385002136,
+      -0.4876607060432434,
+      90
+    ],
+    [
+      -0.48782142996788025,
+      -0.022405102849006653,
+      -0.8726558089256287,
+      -65
+    ],
+    [
+      8.305727305923938e-8,
+      0.9996705651283264,
+      -0.02566620148718357,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P27.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P29.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P29.webp" alt="Xinjiang Traditional Architectural Street Block, reference P29" loading="lazy" width="800" height="600"></a><figcaption>P29</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P29&quot;,
+  &quot;position&quot;: [
+    88,
+    -67,
+    8
+  ],
+  &quot;target&quot;: [
+    104,
+    -72,
+    1
+  ],
+  &quot;caption&quot;: &quot;Detached courtyard planters and benches&quot;,
+  &quot;lens&quot;: 38,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.2982752025127411,
+      0.36779680848121643,
+      -0.8807709217071533,
+      88
+    ],
+    [
+      -0.9544799327850342,
+      -0.11493664234876633,
+      0.27524110674858093,
+      -67
+    ],
+    [
+      -4.4624503203749555e-8,
+      0.9227757453918457,
+      0.3853374123573303,
+      8
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P29.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P30.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P30.webp" alt="Xinjiang Traditional Architectural Street Block, reference P30" loading="lazy" width="800" height="600"></a><figcaption>P30</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P30&quot;,
+  &quot;position&quot;: [
+    42,
+    -2,
+    3
+  ],
+  &quot;target&quot;: [
+    60,
+    0,
+    3
+  ],
+  &quot;caption&quot;: &quot;Open courtyard arcade, market stall and surrounding facade&quot;,
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.11043135821819305,
+      -3.7235889038811365e-8,
+      -0.9938837289810181,
+      42
+    ],
+    [
+      -0.9938837289810181,
+      -6.070055036389022e-8,
+      -0.11043135821819305,
+      -2
+    ],
+    [
+      -5.621728149662886e-8,
+      1,
+      -4.371138828673793e-8,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P30.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P31.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P31.webp" alt="Xinjiang Traditional Architectural Street Block, reference P31" loading="lazy" width="800" height="600"></a><figcaption>P31</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P31&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    28,
+    104,
+    7
+  ],
+  &quot;target&quot;: [
+    15,
+    72,
+    5
+  ],
+  &quot;lens&quot;: 65,
+  &quot;caption&quot;: &quot;Closer rear-facade view with several identifiable buildings&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.9264666438102722,
+      -0.02175741456449032,
+      0.37574753165245056,
+      28
+    ],
+    [
+      0.3763769268989563,
+      -0.0535564161837101,
+      0.9249173402786255,
+      104
+    ],
+    [
+      -1.2083643241567188e-7,
+      0.9983277320861816,
+      0.05780722573399544,
+      7
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1386.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      1386.666732788086,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P31.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/public/P32.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/public/P32.webp" alt="Xinjiang Traditional Architectural Street Block, reference P32" loading="lazy" width="800" height="600"></a><figcaption>P32</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P32&quot;,
+  &quot;position&quot;: [
+    -5,
+    -95,
+    18
+  ],
+  &quot;target&quot;: [
+    25,
+    -70,
+    3
+  ],
+  &quot;lens&quot;: 38,
+  &quot;caption&quot;: &quot;Crenellated facade, arched windows and projecting beams with roofed courtyard buildings behind&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.6401843428611755,
+      0.2754600942134857,
+      -0.7171370983123779,
+      -5
+    ],
+    [
+      -0.7682213187217712,
+      0.22954998910427094,
+      -0.5976142287254333,
+      -95
+    ],
+    [
+      -4.362710015470839e-8,
+      0.9335033893585205,
+      0.35856860876083374,
+      18
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;clip&quot;: [
+    0.009999999776482582,
+    706.8900146484375
+  ],
+  &quot;samples&quot;: 48,
+  &quot;denoising&quot;: true,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 706.8900146484375,
+  &quot;image&quot;: &quot;images/public/P32.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-001.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-002.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-003.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-004.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-005.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-006.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-006.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-006" loading="lazy"></a><figcaption>sheet-006 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-007.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-007.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-007" loading="lazy"></a><figcaption>sheet-007 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-008.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-008.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-008" loading="lazy"></a><figcaption>sheet-008 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-009.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-009.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-009" loading="lazy"></a><figcaption>sheet-009 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-010.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-010.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-010" loading="lazy"></a><figcaption>sheet-010 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-011.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-011.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-011" loading="lazy"></a><figcaption>sheet-011 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-012.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-012.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-012" loading="lazy"></a><figcaption>sheet-012 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-013.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-013.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-013" loading="lazy"></a><figcaption>sheet-013 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-014.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-014.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-014" loading="lazy"></a><figcaption>sheet-014 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-015.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-015.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-015" loading="lazy"></a><figcaption>sheet-015 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-016.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-016.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-016" loading="lazy"></a><figcaption>sheet-016 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-017.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-017.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-017" loading="lazy"></a><figcaption>sheet-017 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-018.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/xinjiang-street-block/images/drawings/sheet-018.webp" alt="Xinjiang Traditional Architectural Street Block, drawing sheet-018" loading="lazy"></a><figcaption>sheet-018 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>38.56</td></tr><tr><th>GPT-6-Astra (low)</th><td>33.23</td></tr><tr><th>Kimi-K3.1-Pro</th><td>21.21</td></tr><tr><th>Qwen4-Max-Preview</th><td>17.09</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>16.35</td></tr><tr><th>Opus-5.5</th><td>15.88</td></tr><tr><th>GLM-5.3-Flash</th><td>12.14</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Concrete and green pump-bottle display · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Concrete and green pump-bottle display · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Object arrangements</p><h1 class="task-title">Concrete and green pump-bottle display</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/public/P01.webp" alt="Concrete and green pump-bottle display, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;position&quot;: [
+    1,
+    -7,
+    2.2
+  ],
+  &quot;target&quot;: [
+    0.2,
+    0.5,
+    1.05
+  ],
+  &quot;lens&quot;: 48,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9943591952323914,
+      -0.01598677597939968,
+      0.10485327243804932,
+      1
+    ],
+    [
+      0.10606501251459122,
+      0.14987604320049286,
+      -0.9829991459846497,
+      -7
+    ],
+    [
+      -7.449260319702944e-9,
+      0.9885755181312561,
+      0.15072624385356903,
+      2.200000047683716
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/public/P02.webp" alt="Concrete and green pump-bottle display, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;position&quot;: [
+    0.25,
+    -3.8,
+    1
+  ],
+  &quot;target&quot;: [
+    0.05,
+    0.2,
+    0.65
+  ],
+  &quot;lens&quot;: 65,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9987523555755615,
+      -0.004347511567175388,
+      0.049748022109270096,
+      0.25
+    ],
+    [
+      0.04993762448430061,
+      0.08695027232170105,
+      -0.9949602484703064,
+      -3.799999952316284
+    ],
+    [
+      -3.1037572512104816e-9,
+      0.9962031841278076,
+      0.0870588943362236,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1386.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      1386.666732788086,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/public/P03.webp" alt="Concrete and green pump-bottle display, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;position&quot;: [
+    -2.8,
+    -3,
+    1.8
+  ],
+  &quot;target&quot;: [
+    0.05,
+    0.2,
+    0.65
+  ],
+  &quot;lens&quot;: 60,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.74676513671875,
+      0.17238876223564148,
+      -0.642358124256134,
+      -2.799999952316284
+    ],
+    [
+      -0.6650878190994263,
+      0.19355939328670502,
+      -0.7212440371513367,
+      -3
+    ],
+    [
+      8.746071955556545e-8,
+      0.9658244252204895,
+      0.25919708609580994,
+      1.7999999523162842
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1280.0000610351562,
+      0,
+      384
+    ],
+    [
+      0,
+      1280.0000610351562,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/public/P05.webp" alt="Concrete and green pump-bottle display, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    0.1,
+    -0.2,
+    4
+  ],
+  &quot;target&quot;: [
+    0.1,
+    0.35,
+    0
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0.10000000149011612
+    ],
+    [
+      0,
+      0.9906788468360901,
+      -0.1362183392047882,
+      -0.20000000298023224
+    ],
+    [
+      0,
+      0.1362183392047882,
+      0.9906788468360901,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/public/P06.webp" alt="Concrete and green pump-bottle display, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    0,
+    2.2,
+    1.65
+  ],
+  &quot;target&quot;: [
+    0.03,
+    0.04,
+    0.75
+  ],
+  &quot;lens&quot;: 55,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.9999035596847534,
+      0.005340969190001488,
+      -0.012819481082260609,
+      0
+    ],
+    [
+      -0.013887587003409863,
+      -0.3845464587211609,
+      0.9230011105537415,
+      2.200000047683716
+    ],
+    [
+      3.455778241345797e-8,
+      0.9230901598930359,
+      0.3845835328102112,
+      1.649999976158142
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1173.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      1173.3333892822266,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/drawings/arrangement.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/drawings/arrangement.webp" alt="Concrete and green pump-bottle display, drawing arrangement" loading="lazy"></a><figcaption>arrangement · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/drawings/bottle.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/drawings/bottle.webp" alt="Concrete and green pump-bottle display, drawing bottle" loading="lazy"></a><figcaption>bottle · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/drawings/components.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/drawings/components.webp" alt="Concrete and green pump-bottle display, drawing components" loading="lazy"></a><figcaption>components · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/drawings/ends-section.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/drawings/ends-section.webp" alt="Concrete and green pump-bottle display, drawing ends-section" loading="lazy"></a><figcaption>ends-section · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/pump-bottle-display/images/drawings/supports.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/pump-bottle-display/images/drawings/supports.webp" alt="Concrete and green pump-bottle display, drawing supports" loading="lazy"></a><figcaption>supports · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>79.42</td></tr><tr><th>GPT-6-Astra (low)</th><td>73.96</td></tr><tr><th>Qwen4-Max-Preview</th><td>70.26</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>66.41</td></tr><tr><th>Opus-5.5</th><td>62.19</td></tr><tr><th>Kimi-K3.1-Pro</th><td>59.16</td></tr><tr><th>GLM-5.3-Flash</th><td>40.21</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

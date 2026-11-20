@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Open-frame 3D Printer · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Open-frame 3D Printer · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Objects</p><h1 class="task-title">Open-frame 3D Printer</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/open-frame-printer/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/open-frame-printer/images/public/P01.webp" alt="Open-frame 3D Printer, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    0.78,
+    -0.82,
+    0.62
+  ],
+  &quot;target&quot;: [
+    0.018,
+    -0.032,
+    0.25
+  ],
+  &quot;lens&quot;: 58,
+  &quot;Tcw&quot;: [
+    [
+      0.718866765499115,
+      -0.22231657803058624,
+      0.6586394309997559,
+      0.7799999713897705
+    ],
+    [
+      0.6951478719711304,
+      0.22990214824676514,
+      -0.6811126470565796,
+      -0.8199999928474426
+    ],
+    [
+      2.72605742424048e-8,
+      0.9474810361862183,
+      0.3198119103908539,
+      0.6200000047683716
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1237.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      1237.3334197998047,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;coverage_order&quot;: &quot;far&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/open-frame-printer/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/open-frame-printer/images/public/P02.webp" alt="Open-frame 3D Printer, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -0.78,
+    -0.46,
+    0.52
+  ],
+  &quot;target&quot;: [
+    0.018,
+    -0.032,
+    0.25
+  ],
+  &quot;lens&quot;: 58,
+  &quot;Tcw&quot;: [
+    [
+      0.4726502299308777,
+      0.251804918050766,
+      -0.8445093631744385,
+      -0.7799999713897705
+    ],
+    [
+      -0.8812501430511475,
+      0.1350533813238144,
+      -0.4529446065425873,
+      -0.46000000834465027
+    ],
+    [
+      1.6326808349731436e-7,
+      0.9583083391189575,
+      0.2857361137866974,
+      0.5199999809265137
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1237.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      1237.3334197998047,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;rear&quot;,
+  &quot;coverage_order&quot;: &quot;near&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/open-frame-printer/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/open-frame-printer/images/public/P03.webp" alt="Open-frame 3D Printer, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    0.58,
+    0.7,
+    0.56
+  ],
+  &quot;target&quot;: [
+    0.018,
+    -0.032,
+    0.25
+  ],
+  &quot;lens&quot;: 58,
+  &quot;Tcw&quot;: [
+    [
+      -0.79318767786026,
+      -0.19391506910324097,
+      0.5772782564163208,
+      0.5799999833106995
+    ],
+    [
+      0.6089772582054138,
+      -0.25257280468940735,
+      0.7519000172615051,
+      0.699999988079071
+    ],
+    [
+      3.558846728424214e-8,
+      0.9479472041130066,
+      0.3184274733066559,
+      0.5600000023841858
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1237.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      1237.3334197998047,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/open-frame-printer/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/open-frame-printer/images/public/P04.webp" alt="Open-frame 3D Printer, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    0.018,
+    -0.032,
+    2
+  ],
+  &quot;target&quot;: [
+    0.018,
+    -0.032,
+    0.25
+  ],
+  &quot;scale&quot;: 0.55,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0.017999999225139618
+    ],
+    [
+      0,
+      1,
+      0,
+      -0.03200000151991844
+    ],
+    [
+      0,
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    0.5500000196695335,
+    0.4125000282749553
+  ],
+  &quot;category&quot;: &quot;top_down&quot;,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/open-frame-printer/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/open-frame-printer/images/public/P05.webp" alt="Open-frame 3D Printer, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    0.4113840701993852,
+    -0.49026844359614596,
+    0.47
+  ],
+  &quot;target&quot;: [
+    0.020032429670380096,
+    -0.05498819656527458,
+    0.39
+  ],
+  &quot;lens&quot;: 54,
+  &quot;category&quot;: &quot;detail&quot;,
+  &quot;coverage_order&quot;: &quot;near&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7436342835426331,
+      -0.09053552895784378,
+      0.6624284386634827,
+      0.41138407588005066
+    ],
+    [
+      0.6685866117477417,
+      0.10069795697927475,
+      -0.736784815788269,
+      -0.49026843905448914
+    ],
+    [
+      1.231573776294681e-8,
+      0.9907891154289246,
+      0.1354133039712906,
+      0.4699999988079071
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1152.0000915527344,
+      0,
+      384
+    ],
+    [
+      0,
+      1152.0001373291016,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/open-frame-printer/images/drawings/assembly.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/open-frame-printer/images/drawings/assembly.webp" alt="Open-frame 3D Printer, drawing assembly" loading="lazy"></a><figcaption>assembly · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/open-frame-printer/images/drawings/interior.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/open-frame-printer/images/drawings/interior.webp" alt="Open-frame 3D Printer, drawing interior" loading="lazy"></a><figcaption>interior · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/open-frame-printer/images/drawings/panels.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/open-frame-printer/images/drawings/panels.webp" alt="Open-frame 3D Printer, drawing panels" loading="lazy"></a><figcaption>panels · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>74.50</td></tr><tr><th>Opus-5.5</th><td>68.08</td></tr><tr><th>GPT-6-Astra (low)</th><td>63.23</td></tr><tr><th>Kimi-K3.1-Pro</th><td>42.78</td></tr><tr><th>Qwen4-Max-Preview</th><td>42.11</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>32.67</td></tr><tr><th>GLM-5.3-Flash</th><td>27.34</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

@@ -1,0 +1,1984 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Florence Historic City · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Florence Historic City · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Cities</p><h1 class="task-title">Florence Historic City</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P01.webp" alt="Florence Historic City, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;caption&quot;: &quot;Complete city setting, surrounding terrain and river&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -2893.850830078125,
+    -2893.850830078125,
+    3017.223876953125
+  ],
+  &quot;target&quot;: [
+    5.002220859751105e-12,
+    0.000030517578125,
+    70.60722351074219
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 3150,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.4131658971309662,
+      -0.573841392993927,
+      -2893.850830078125
+    ],
+    [
+      -0.7071068286895752,
+      0.4131658375263214,
+      -0.5738413333892822,
+      -2893.850830078125
+    ],
+    [
+      4.705583478425979e-9,
+      0.8115343451499939,
+      0.584304690361023,
+      3017.223876953125
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    3150.000129998085,
+    2362.4999350582602
+  ],
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;reference_plane_origin&quot;: [
+    -8.781116775935516e-7,
+    -0.0003014610515492677,
+    70.60751619753819
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P02.webp" alt="Florence Historic City, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;caption&quot;: &quot;Walled city, river crossings and surrounding districts - oblique 1&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -729.9620971679688,
+    -767.4620971679688,
+    791
+  ],
+  &quot;target&quot;: [
+    12.5,
+    -25,
+    35
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071066498756409,
+      0.41316595673561096,
+      -0.5738415122032166,
+      -729.9620971679688
+    ],
+    [
+      -0.7071069478988647,
+      0.41316574811935425,
+      -0.5738413333892822,
+      -767.4620971679688
+    ],
+    [
+      -4.550531329527985e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      791
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P03.webp" alt="Florence Historic City, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;caption&quot;: &quot;Walled city, river crossings and surrounding districts - oblique 2&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    754.9620971679688,
+    -767.4620971679688,
+    791
+  ],
+  &quot;target&quot;: [
+    12.5,
+    -25,
+    35
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071066498756409,
+      -0.41316595673561096,
+      0.5738415122032166,
+      754.9620971679688
+    ],
+    [
+      0.7071069478988647,
+      0.41316574811935425,
+      -0.5738413333892822,
+      -767.4620971679688
+    ],
+    [
+      4.550531329527985e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      791
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P04.webp" alt="Florence Historic City, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;caption&quot;: &quot;Walled city, river crossings and surrounding districts - oblique 3&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    754.9620971679688,
+    717.4620971679688,
+    791
+  ],
+  &quot;target&quot;: [
+    12.5,
+    -25,
+    35
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      -0.4131658673286438,
+      0.573841392993927,
+      754.9620971679688
+    ],
+    [
+      0.7071067094802856,
+      -0.4131658971309662,
+      0.573841392993927,
+      717.4620971679688
+    ],
+    [
+      2.1898673097098253e-8,
+      0.8115342855453491,
+      0.5843048095703125,
+      791
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P05.webp" alt="Florence Historic City, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;caption&quot;: &quot;Walled city, river crossings and surrounding districts - oblique 4&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -729.9620971679688,
+    717.4620971679688,
+    791
+  ],
+  &quot;target&quot;: [
+    12.5,
+    -25,
+    35
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      0.4131658673286438,
+      -0.573841392993927,
+      -729.9620971679688
+    ],
+    [
+      -0.7071067094802856,
+      -0.4131658971309662,
+      0.573841392993927,
+      717.4620971679688
+    ],
+    [
+      -2.1898673097098253e-8,
+      0.8115342855453491,
+      0.5843048095703125,
+      791
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P06.webp" alt="Florence Historic City, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;caption&quot;: &quot;Measured-layout companion: vertical overhead of the walled city&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    12.5,
+    -25,
+    1000
+  ],
+  &quot;target&quot;: [
+    12.5,
+    -25,
+    0
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 950,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      12.5
+    ],
+    [
+      0,
+      1,
+      0,
+      -25
+    ],
+    [
+      0,
+      0,
+      1,
+      1000
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    950.0000433530678,
+    712.4999734158347
+  ],
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;reference_plane_origin&quot;: [
+    12.5,
+    -25,
+    0
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P07.webp" alt="Florence Historic City, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;caption&quot;: &quot;Western riverbank and bridges - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -925.4026489257812,
+    -632.0761108398438,
+    711.2000122070312
+  ],
+  &quot;target&quot;: [
+    -190,
+    -15,
+    20
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6427875757217407,
+      0.44760337471961975,
+      -0.6216713190078735,
+      -925.4026489257812
+    ],
+    [
+      -0.7660443186759949,
+      0.3755839169025421,
+      -0.5216442346572876,
+      -632.0761108398438
+    ],
+    [
+      3.7689378729055534e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      711.2000122070312
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P08.webp" alt="Florence Historic City, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;caption&quot;: &quot;Central urban district - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -697.9026489257812,
+    -632.0761108398438,
+    726.2000122070312
+  ],
+  &quot;target&quot;: [
+    37.5,
+    -15,
+    35
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6427875757217407,
+      0.44760337471961975,
+      -0.6216713190078735,
+      -697.9026489257812
+    ],
+    [
+      -0.7660443186759949,
+      0.3755839169025421,
+      -0.5216442346572876,
+      -632.0761108398438
+    ],
+    [
+      3.7689378729055534e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      726.2000122070312
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P09.webp" alt="Florence Historic City, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;caption&quot;: &quot;Eastern urban district - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -492.9026794433594,
+    -632.0761108398438,
+    718.7000122070312
+  ],
+  &quot;target&quot;: [
+    242.5,
+    -15,
+    27.5
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6427876353263855,
+      0.44760337471961975,
+      -0.6216713190078735,
+      -492.9026794433594
+    ],
+    [
+      -0.7660443782806396,
+      0.3755837380886078,
+      -0.5216443538665771,
+      -632.0761108398438
+    ],
+    [
+      -1.2465787335713685e-7,
+      0.8115344047546387,
+      0.584304690361023,
+      718.7000122070312
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P10.webp" alt="Florence Historic City, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;caption&quot;: &quot;Cathedral, dome and adjoining bell tower - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    18.510221481323242,
+    -174.60853576660156,
+    141.83999633789062
+  ],
+  &quot;target&quot;: [
+    113,
+    -62,
+    36
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7660444974899292,
+      0.37558382749557495,
+      -0.5216441750526428,
+      18.510221481323242
+    ],
+    [
+      -0.6427875757217407,
+      0.4476034641265869,
+      -0.6216713786125183,
+      -174.60853576660156
+    ],
+    [
+      1.2640485991255446e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      141.83999633789062
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P11.webp" alt="Florence Historic City, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;caption&quot;: &quot;Cathedral, dome and adjoining bell tower - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    216.9447021484375,
+    41.944698333740234,
+    141.83999633789062
+  ],
+  &quot;target&quot;: [
+    113,
+    -62,
+    36
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      -0.4131658673286438,
+      0.573841392993927,
+      216.9447021484375
+    ],
+    [
+      0.7071067094802856,
+      -0.4131658971309662,
+      0.573841392993927,
+      41.944698333740234
+    ],
+    [
+      2.1898673097098253e-8,
+      0.8115342855453491,
+      0.5843048095703125,
+      141.83999633789062
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P12.webp" alt="Florence Historic City, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;caption&quot;: &quot;Ponte Vecchio bridge and riverside shops - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -196.384033203125,
+    -112.884033203125,
+    111.26000213623047
+  ],
+  &quot;target&quot;: [
+    -93.5,
+    -10,
+    6.5
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071066498756409,
+      0.41316595673561096,
+      -0.5738415122032166,
+      -196.384033203125
+    ],
+    [
+      -0.7071069478988647,
+      0.41316574811935425,
+      -0.5738413333892822,
+      -112.884033203125
+    ],
+    [
+      -4.550531329527985e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      111.26000213623047
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P13.webp" alt="Florence Historic City, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;caption&quot;: &quot;Ponte Vecchio bridge and riverside shops - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    9.384037017822266,
+    92.884033203125,
+    111.26000213623047
+  ],
+  &quot;target&quot;: [
+    -93.5,
+    -10,
+    6.5
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      -0.4131658375263214,
+      0.5738414525985718,
+      9.384037017822266
+    ],
+    [
+      0.7071067094802856,
+      -0.41316574811935425,
+      0.5738415122032166,
+      92.884033203125
+    ],
+    [
+      -6.351110215518929e-8,
+      0.8115344047546387,
+      0.584304690361023,
+      111.26000213623047
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P14.webp" alt="Florence Historic City, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;caption&quot;: &quot;Santa Croce church and immediate square - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -21.593067169189453,
+    -294.3150634765625,
+    85.87999725341797
+  ],
+  &quot;target&quot;: [
+    48.5,
+    -235.5,
+    20
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6427873373031616,
+      0.44760340452194214,
+      -0.6216715574264526,
+      -21.593067169189453
+    ],
+    [
+      -0.766044557094574,
+      0.3755834996700287,
+      -0.5216442346572876,
+      -294.3150634765625
+    ],
+    [
+      -1.483591489659375e-7,
+      0.8115344643592834,
+      0.5843045115470886,
+      85.87999725341797
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P15.webp" alt="Florence Historic City, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;caption&quot;: &quot;Santa Croce church and immediate square - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    118.59306335449219,
+    -176.6849365234375,
+    85.87999725341797
+  ],
+  &quot;target&quot;: [
+    48.5,
+    -235.5,
+    20
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.6427876353263855,
+      -0.4476032853126526,
+      0.6216714382171631,
+      118.59306335449219
+    ],
+    [
+      0.7660444378852844,
+      -0.37558385729789734,
+      0.5216442346572876,
+      -176.6849365234375
+    ],
+    [
+      8.79770070127961e-8,
+      0.8115344047546387,
+      0.584304690361023,
+      85.87999725341797
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P16.webp" alt="Florence Historic City, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;caption&quot;: &quot;San Lorenzo roof complex - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    142.8106689453125,
+    9.828207969665527,
+    91.69999694824219
+  ],
+  &quot;target&quot;: [
+    217.5,
+    72.5,
+    21.5
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6427873373031616,
+      0.44760340452194214,
+      -0.6216715574264526,
+      142.8106689453125
+    ],
+    [
+      -0.766044557094574,
+      0.37558355927467346,
+      -0.5216441750526428,
+      9.828207969665527
+    ],
+    [
+      -1.0189954480210872e-7,
+      0.8115344643592834,
+      0.5843045711517334,
+      91.69999694824219
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P17.webp" alt="Florence Historic City, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;caption&quot;: &quot;San Lorenzo roof complex - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    292.1893310546875,
+    135.1717987060547,
+    91.69999694824219
+  ],
+  &quot;target&quot;: [
+    217.5,
+    72.5,
+    21.5
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.6427876353263855,
+      -0.447603315114975,
+      0.6216713786125183,
+      292.1893310546875
+    ],
+    [
+      0.7660444378852844,
+      -0.3755838871002197,
+      0.5216441750526428,
+      135.1717987060547
+    ],
+    [
+      8.576890309086593e-8,
+      0.8115343451499939,
+      0.584304690361023,
+      91.69999694824219
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P18.webp" alt="Florence Historic City, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;caption&quot;: &quot;City-wall gate and western river crossing - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -368.4159851074219,
+    -161.7763214111328,
+    114.69999694824219
+  ],
+  &quot;target&quot;: [
+    -265,
+    -75,
+    17.5
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6427873373031616,
+      0.44760337471961975,
+      -0.6216716170310974,
+      -368.4159851074219
+    ],
+    [
+      -0.766044557094574,
+      0.3755835294723511,
+      -0.5216441750526428,
+      -161.7763214111328
+    ],
+    [
+      -5.3820023993012e-8,
+      0.8115344643592834,
+      0.5843045115470886,
+      114.69999694824219
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P19.webp" alt="Florence Historic City, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;caption&quot;: &quot;City-wall gate and western river crossing - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -161.58399963378906,
+    11.776327133178711,
+    114.69999694824219
+  ],
+  &quot;target&quot;: [
+    -265,
+    -75,
+    17.5
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.6427876353263855,
+      -0.44760337471961975,
+      0.6216713786125183,
+      -161.58399963378906
+    ],
+    [
+      0.7660444378852844,
+      -0.3755839169025421,
+      0.5216441750526428,
+      11.776327133178711
+    ],
+    [
+      6.17291391336039e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      114.69999694824219
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P20.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P20.webp" alt="Florence Historic City, reference P20" loading="lazy" width="800" height="600"></a><figcaption>P20</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P20&quot;,
+  &quot;caption&quot;: &quot;Upper room - interior view 1&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    33.07484436035156,
+    95.57267761230469,
+    9.42715835571289
+  ],
+  &quot;target&quot;: [
+    32.340206146240234,
+    100.74656677246094,
+    9.42715835571289
+  ],
+  &quot;lens&quot;: 22,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9900693893432617,
+      9.418523738702334e-10,
+      0.140579491853714,
+      33.07484436035156
+    ],
+    [
+      0.140579491853714,
+      -4.401609032811393e-8,
+      -0.9900693893432617,
+      95.57267761230469
+    ],
+    [
+      5.255260226988412e-9,
+      1,
+      -4.371138828673793e-8,
+      9.42715835571289
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P20.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P21.webp" alt="Florence Historic City, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;caption&quot;: &quot;Upper room - interior view 2&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    32.340206146240234,
+    100.74656677246094,
+    9.42715835571289
+  ],
+  &quot;target&quot;: [
+    33.07484436035156,
+    95.57267761230469,
+    9.42715835571289
+  ],
+  &quot;lens&quot;: 22,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.9900693893432617,
+      -4.256643393318882e-8,
+      -0.1405794769525528,
+      32.340206146240234
+    ],
+    [
+      -0.1405794769525528,
+      3.8105838484625565e-8,
+      0.9900693893432617,
+      100.74656677246094
+    ],
+    [
+      -3.678682602981098e-8,
+      1,
+      -4.371138828673793e-8,
+      9.42715835571289
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P22.webp" alt="Florence Historic City, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;caption&quot;: &quot;Small enclosed room - interior view 1&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    48.54111862182617,
+    23.298782348632812,
+    2.443026542663574
+  ],
+  &quot;target&quot;: [
+    45.7927131652832,
+    21.539640426635742,
+    2.443026542663574
+  ],
+  &quot;lens&quot;: 22,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.5390890836715698,
+      1.802152915786337e-8,
+      0.842248797416687,
+      48.54111862182617
+    ],
+    [
+      0.842248797416687,
+      -1.68203214911955e-7,
+      0.5390890836715698,
+      23.298782348632812
+    ],
+    [
+      1.5138415676574368e-7,
+      1,
+      7.549790126404332e-8,
+      2.443026542663574
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P23.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P23.webp" alt="Florence Historic City, reference P23" loading="lazy" width="800" height="600"></a><figcaption>P23</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P23&quot;,
+  &quot;caption&quot;: &quot;Small enclosed room - interior view 2&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    45.7927131652832,
+    21.539640426635742,
+    2.443026542663574
+  ],
+  &quot;target&quot;: [
+    48.54111862182617,
+    23.298782348632812,
+    2.443026542663574
+  ],
+  &quot;lens&quot;: 22,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.5390887260437012,
+      -5.674747782791201e-8,
+      -0.8422488570213318,
+      45.7927131652832
+    ],
+    [
+      -0.8422488570213318,
+      7.575954974470278e-9,
+      -0.5390887260437012,
+      21.539640426635742
+    ],
+    [
+      3.6972764405618364e-8,
+      1,
+      -4.371138473402425e-8,
+      2.443026542663574
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P23.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P24.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P24.webp" alt="Florence Historic City, reference P24" loading="lazy" width="800" height="600"></a><figcaption>P24</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P24&quot;,
+  &quot;caption&quot;: &quot;Decorated courtyard rooms - interior view 1&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    173.2106170654297,
+    -143.03366088867188,
+    0.7539024353027344
+  ],
+  &quot;target&quot;: [
+    178.6786651611328,
+    -143.03366088867188,
+    0.7539024353027344
+  ],
+  &quot;lens&quot;: 22,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      7.549790126404332e-8,
+      7.549790126404332e-8,
+      -1,
+      173.2106170654297
+    ],
+    [
+      -1,
+      -1.4610056261045272e-15,
+      -7.549790126404332e-8,
+      -143.03366088867188
+    ],
+    [
+      -7.16093850883226e-15,
+      1,
+      7.549790126404332e-8,
+      0.7539024353027344
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P24.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P25.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P25.webp" alt="Florence Historic City, reference P25" loading="lazy" width="800" height="600"></a><figcaption>P25</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P25&quot;,
+  &quot;caption&quot;: &quot;Decorated courtyard rooms - interior view 2&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    178.6786651611328,
+    -143.03366088867188,
+    0.7539024353027344
+  ],
+  &quot;target&quot;: [
+    173.2106170654297,
+    -143.03366088867188,
+    0.7539024353027344
+  ],
+  &quot;lens&quot;: 22,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      7.549790126404332e-8,
+      -7.549790126404332e-8,
+      1,
+      178.6786651611328
+    ],
+    [
+      1,
+      -1.4610056261045272e-15,
+      -7.549790126404332e-8,
+      -143.03366088867188
+    ],
+    [
+      7.16093850883226e-15,
+      1,
+      7.549790126404332e-8,
+      0.7539024353027344
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P25.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P26.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P26.webp" alt="Florence Historic City, reference P26" loading="lazy" width="800" height="600"></a><figcaption>P26</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P26&quot;,
+  &quot;caption&quot;: &quot;Northwestern bell-tower shaft - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    59.70539474487305,
+    154.1553955078125,
+    78.5739974975586
+  ],
+  &quot;target&quot;: [
+    102.45,
+    196.9,
+    35.050000000000004
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071066498756409,
+      0.41316595673561096,
+      -0.5738415122032166,
+      59.70539474487305
+    ],
+    [
+      -0.7071069478988647,
+      0.41316574811935425,
+      -0.5738413333892822,
+      154.1553955078125
+    ],
+    [
+      -4.550531329527985e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      78.5739974975586
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P26.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/public/P27.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/public/P27.webp" alt="Florence Historic City, reference P27" loading="lazy" width="800" height="600"></a><figcaption>P27</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P27&quot;,
+  &quot;caption&quot;: &quot;Cathedral bell-tower upper platform - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    80.45405578613281,
+    -35.54594039916992,
+    37.119998931884766
+  ],
+  &quot;target&quot;: [
+    90,
+    -26,
+    27.4
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071064114570618,
+      0.41316577792167664,
+      -0.57384192943573,
+      80.45405578613281
+    ],
+    [
+      -0.7071071267127991,
+      0.41316547989845276,
+      -0.5738412737846375,
+      -35.54594039916992
+    ],
+    [
+      9.58539274620307e-8,
+      0.811534583568573,
+      0.5843043923377991,
+      37.119998931884766
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P27.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 20000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 20000
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D01.webp" alt="Florence Historic City, drawing D01" loading="lazy"></a><figcaption>D01 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D02.webp" alt="Florence Historic City, drawing D02" loading="lazy"></a><figcaption>D02 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D03.webp" alt="Florence Historic City, drawing D03" loading="lazy"></a><figcaption>D03 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D04.webp" alt="Florence Historic City, drawing D04" loading="lazy"></a><figcaption>D04 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D05.webp" alt="Florence Historic City, drawing D05" loading="lazy"></a><figcaption>D05 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D06.webp" alt="Florence Historic City, drawing D06" loading="lazy"></a><figcaption>D06 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D07.webp" alt="Florence Historic City, drawing D07" loading="lazy"></a><figcaption>D07 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D08.webp" alt="Florence Historic City, drawing D08" loading="lazy"></a><figcaption>D08 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D09.webp" alt="Florence Historic City, drawing D09" loading="lazy"></a><figcaption>D09 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D10.webp" alt="Florence Historic City, drawing D10" loading="lazy"></a><figcaption>D10 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D11.webp" alt="Florence Historic City, drawing D11" loading="lazy"></a><figcaption>D11 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D11B.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D11B.webp" alt="Florence Historic City, drawing D11B" loading="lazy"></a><figcaption>D11B · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D12.webp" alt="Florence Historic City, drawing D12" loading="lazy"></a><figcaption>D12 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/D13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/D13.webp" alt="Florence Historic City, drawing D13" loading="lazy"></a><figcaption>D13 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/S00.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/S00.webp" alt="Florence Historic City, drawing S00" loading="lazy"></a><figcaption>S00 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/florence-historic-city/images/drawings/S01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/florence-historic-city/images/drawings/S01.webp" alt="Florence Historic City, drawing S01" loading="lazy"></a><figcaption>S01 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>17.10</td></tr><tr><th>GPT-6-Astra (low)</th><td>11.76</td></tr><tr><th>Kimi-K3.1-Pro</th><td>10.22</td></tr><tr><th>Qwen4-Max-Preview</th><td>9.62</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>9.01</td></tr><tr><th>Opus-5.5</th><td>8.98</td></tr><tr><th>GLM-5.3-Flash</th><td>6.54</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

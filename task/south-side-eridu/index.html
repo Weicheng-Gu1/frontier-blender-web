@@ -1,0 +1,2065 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="South Side Eridu Night Street · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>South Side Eridu Night Street · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Blocks</p><h1 class="task-title">South Side Eridu Night Street</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P01.webp" alt="South Side Eridu Night Street, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;position&quot;: [
+    18,
+    -24,
+    14
+  ],
+  &quot;target&quot;: [
+    0,
+    -2,
+    3
+  ],
+  &quot;lens&quot;: 52,
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.773957371711731,
+      -0.22853447496891022,
+      0.5905607342720032,
+      18
+    ],
+    [
+      0.6332377195358276,
+      0.27932000160217285,
+      -0.7217966318130493,
+      -24
+    ],
+    [
+      -5.261378888121726e-9,
+      0.9326051473617554,
+      0.3608984351158142,
+      14
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P02.webp" alt="South Side Eridu Night Street, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;position&quot;: [
+    -18,
+    -22,
+    11
+  ],
+  &quot;target&quot;: [
+    0,
+    -2,
+    3
+  ],
+  &quot;lens&quot;: 52,
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7432940602302551,
+      0.19064708054065704,
+      -0.6412234902381897,
+      -18
+    ],
+    [
+      -0.6689648628234863,
+      0.21182993054389954,
+      -0.7124703526496887,
+      -22
+    ],
+    [
+      -6.363781324125739e-8,
+      0.9585310220718384,
+      0.28498807549476624,
+      11
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P03.webp" alt="South Side Eridu Night Street, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;position&quot;: [
+    12,
+    -19,
+    10
+  ],
+  &quot;target&quot;: [
+    1,
+    -3,
+    2.5
+  ],
+  &quot;lens&quot;: 32,
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.8240419030189514,
+      -0.20413324236869812,
+      0.5284737348556519,
+      12
+    ],
+    [
+      0.566528856754303,
+      0.29692092537879944,
+      -0.7686890959739685,
+      -19
+    ],
+    [
+      6.059246260292639e-8,
+      0.9328276515007019,
+      0.36032265424728394,
+      10
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P04.webp" alt="South Side Eridu Night Street, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;position&quot;: [
+    -9,
+    -9,
+    4
+  ],
+  &quot;target&quot;: [
+    -2,
+    -2,
+    1.8
+  ],
+  &quot;lens&quot;: 32,
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071068286895752,
+      0.1534005105495453,
+      -0.6902667880058289,
+      -9
+    ],
+    [
+      -0.7071067690849304,
+      0.15340039134025574,
+      -0.6902668476104736,
+      -9
+    ],
+    [
+      -1.0048990617406162e-7,
+      0.9761847257614136,
+      0.2169409990310669,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P05.webp" alt="South Side Eridu Night Street, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    0,
+    0,
+    33
+  ],
+  &quot;target&quot;: [
+    0,
+    0,
+    0
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    25.999999031424558,
+    19.49999974574894
+  ],
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      33
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;scale&quot;: 26,
+  &quot;ortho_scale&quot;: 26,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P06.webp" alt="South Side Eridu Night Street, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    0,
+    12,
+    15
+  ],
+  &quot;target&quot;: [
+    0,
+    0,
+    4
+  ],
+  &quot;lens&quot;: 22,
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -1.4953677407447685e-7,
+      6.776075167636009e-8,
+      0
+    ],
+    [
+      1.5099580252808664e-7,
+      -0.6757246255874634,
+      0.7371541261672974,
+      12
+    ],
+    [
+      -6.44440447672423e-8,
+      0.7371541261672974,
+      0.6757246255874634,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P07.webp" alt="South Side Eridu Night Street, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    -110,
+    -140,
+    155
+  ],
+  &quot;target&quot;: [
+    -8,
+    0,
+    20
+  ],
+  &quot;lens&quot;: 28,
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.8082365393638611,
+      0.36198458075523376,
+      -0.46445760130882263,
+      -110
+    ],
+    [
+      -0.5888579487800598,
+      0.496841698884964,
+      -0.6374908685684204,
+      -140
+    ],
+    [
+      4.770348382976408e-8,
+      0.7887429594993591,
+      0.6147231459617615,
+      155
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P08.webp" alt="South Side Eridu Night Street, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;description&quot;: &quot;South-west grocery and rail medium&quot;,
+  &quot;position&quot;: [
+    -65,
+    -75,
+    38
+  ],
+  &quot;target&quot;: [
+    -20,
+    -30,
+    10
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 42,
+  &quot;lens&quot;: 42,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.2847670614719391,
+      -0.647230863571167,
+      -65
+    ],
+    [
+      -0.7071068286895752,
+      0.28476688265800476,
+      -0.6472308039665222,
+      -75
+    ],
+    [
+      -1.1093602836353966e-7,
+      0.9153225421905518,
+      0.4027213752269745,
+      38
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P09.webp" alt="South Side Eridu Night Street, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;description&quot;: &quot;North-east construction medium&quot;,
+  &quot;position&quot;: [
+    75,
+    70,
+    65
+  ],
+  &quot;target&quot;: [
+    20,
+    25,
+    25
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 42,
+  &quot;lens&quot;: 42,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.633237898349762,
+      -0.37963470816612244,
+      0.6744532585144043,
+      75
+    ],
+    [
+      0.7739571928977966,
+      -0.31061047315597534,
+      0.5518254637718201,
+      70
+    ],
+    [
+      1.423630493491146e-7,
+      0.8714348077774048,
+      0.49051129817962646,
+      65
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P10.webp" alt="South Side Eridu Night Street, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;description&quot;: &quot;North-west bridge and facade medium&quot;,
+  &quot;position&quot;: [
+    -80,
+    60,
+    60
+  ],
+  &quot;target&quot;: [
+    -25,
+    25,
+    22
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 40,
+  &quot;lens&quot;: 40,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.5368754863739014,
+      0.42485731840133667,
+      -0.7288764715194702,
+      -80
+    ],
+    [
+      -0.8436614871025085,
+      -0.2703637480735779,
+      0.46383053064346313,
+      60
+    ],
+    [
+      7.693480519321838e-9,
+      0.8639442920684814,
+      0.5035874247550964,
+      60
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P11.webp" alt="South Side Eridu Night Street, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;description&quot;: &quot;South-east tower and bridge medium&quot;,
+  &quot;position&quot;: [
+    75,
+    -85,
+    60
+  ],
+  &quot;target&quot;: [
+    15,
+    -35,
+    25
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 40,
+  &quot;lens&quot;: 40,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6401843428611755,
+      -0.31415972113609314,
+      0.7010475397109985,
+      75
+    ],
+    [
+      0.7682213187217712,
+      0.261799693107605,
+      -0.584206223487854,
+      -85
+    ],
+    [
+      4.9734047991023544e-8,
+      0.9125592708587646,
+      0.408944308757782,
+      60
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P12.webp" alt="South Side Eridu Night Street, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;description&quot;: &quot;Vertical district plan west&quot;,
+  &quot;position&quot;: [
+    -8,
+    -2,
+    245
+  ],
+  &quot;target&quot;: [
+    -8,
+    -2,
+    0
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 43,
+  &quot;lens&quot;: 43,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      917.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      917.3333358764648,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -8
+    ],
+    [
+      0,
+      1,
+      0,
+      -2
+    ],
+    [
+      0,
+      0,
+      1,
+      245
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P13.webp" alt="South Side Eridu Night Street, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;description&quot;: &quot;Northern railway and construction district&quot;,
+  &quot;position&quot;: [
+    57,
+    80,
+    78
+  ],
+  &quot;target&quot;: [
+    -2,
+    35,
+    25
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 40,
+  &quot;lens&quot;: 40,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.6064493656158447,
+      -0.46214529871940613,
+      0.6470246315002441,
+      57
+    ],
+    [
+      0.7951220870018005,
+      -0.35248371958732605,
+      0.4934937059879303,
+      80
+    ],
+    [
+      -1.2867938892213715e-7,
+      0.8137425780296326,
+      0.5812254548072815,
+      78
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P14.webp" alt="South Side Eridu Night Street, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;description&quot;: &quot;North-west building and rail district&quot;,
+  &quot;position&quot;: [
+    -62,
+    70,
+    77
+  ],
+  &quot;target&quot;: [
+    -3,
+    33,
+    23
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 42,
+  &quot;lens&quot;: 42,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.5312889218330383,
+      0.5191298723220825,
+      -0.6695044040679932,
+      -62
+    ],
+    [
+      -0.8471907377243042,
+      -0.3255557715892792,
+      0.4198586344718933,
+      70
+    ],
+    [
+      1.4705572937145917e-7,
+      0.7902641296386719,
+      0.6127662062644958,
+      77
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P15.webp" alt="South Side Eridu Night Street, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;description&quot;: &quot;South-west street and grocery district&quot;,
+  &quot;position&quot;: [
+    -70,
+    -85,
+    53
+  ],
+  &quot;target&quot;: [
+    -24,
+    -33,
+    9
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 38,
+  &quot;lens&quot;: 38,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7489964962005615,
+      0.3546844720840454,
+      -0.5596455335617065,
+      -70
+    ],
+    [
+      -0.6625739336013794,
+      0.4009477198123932,
+      -0.6326426267623901,
+      -85
+    ],
+    [
+      9.413624013632216e-8,
+      0.8446536660194397,
+      0.5353131294250488,
+      53
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P16.webp" alt="South Side Eridu Night Street, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;description&quot;: &quot;South frontage and construction district&quot;,
+  &quot;position&quot;: [
+    5,
+    -90,
+    53
+  ],
+  &quot;target&quot;: [
+    -33,
+    -39,
+    11
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 38,
+  &quot;lens&quot;: 38,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.8018828630447388,
+      -0.3292476534843445,
+      0.4985778331756592,
+      5
+    ],
+    [
+      0.5974813103675842,
+      0.44188523292541504,
+      -0.6691438555717468,
+      -90
+    ],
+    [
+      -1.4145624049888283e-7,
+      0.8344659805297852,
+      0.5510594248771667,
+      53
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P17.webp" alt="South Side Eridu Night Street, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;description&quot;: &quot;West building sector&quot;,
+  &quot;position&quot;: [
+    -103,
+    -12,
+    48
+  ],
+  &quot;target&quot;: [
+    -57,
+    -15,
+    9
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 38,
+  &quot;lens&quot;: 38,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.06507911533117294,
+      0.6445173621177673,
+      -0.7618150115013123,
+      -103
+    ],
+    [
+      -0.9978800415992737,
+      -0.042033601552248,
+      0.04968368634581566,
+      -12
+    ],
+    [
+      1.6979926442672877e-7,
+      0.7634333968162537,
+      0.6458865404129028,
+      48
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P18.webp" alt="South Side Eridu Night Street, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;description&quot;: &quot;Vertical west sector plan&quot;,
+  &quot;position&quot;: [
+    -54,
+    -17,
+    95
+  ],
+  &quot;target&quot;: [
+    -54,
+    -17,
+    0
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 40,
+  &quot;lens&quot;: 40,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -54
+    ],
+    [
+      0,
+      1,
+      0,
+      -17
+    ],
+    [
+      0,
+      0,
+      1,
+      95
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P19.webp" alt="South Side Eridu Night Street, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;description&quot;: &quot;East building and court sector&quot;,
+  &quot;position&quot;: [
+    91,
+    -1,
+    58
+  ],
+  &quot;target&quot;: [
+    37,
+    -5,
+    14
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 40,
+  &quot;lens&quot;: 40,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.07387188822031021,
+      -0.6289109587669373,
+      0.7739599347114563,
+      91
+    ],
+    [
+      0.9972676634788513,
+      -0.0465860553085804,
+      0.05733058601617813,
+      -1
+    ],
+    [
+      -9.146842927520993e-8,
+      0.7760803699493408,
+      0.6306340098381042,
+      58
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P20.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P20.webp" alt="South Side Eridu Night Street, reference P20" loading="lazy" width="800" height="600"></a><figcaption>P20</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P20&quot;,
+  &quot;description&quot;: &quot;South-east construction sector&quot;,
+  &quot;position&quot;: [
+    101,
+    -105,
+    83
+  ],
+  &quot;target&quot;: [
+    36,
+    -43,
+    44
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 43,
+  &quot;lens&quot;: 43,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      917.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      917.3333358764648,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P20.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6902109980583191,
+      -0.28817659616470337,
+      0.6637492179870605,
+      101
+    ],
+    [
+      0.723608136177063,
+      0.2748762369155884,
+      -0.633114755153656,
+      -105
+    ],
+    [
+      -1.8288307757075017e-8,
+      0.9172770977020264,
+      0.3982495367527008,
+      83
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P21.webp" alt="South Side Eridu Night Street, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;description&quot;: &quot;South street approach&quot;,
+  &quot;position&quot;: [
+    34,
+    -61,
+    33
+  ],
+  &quot;target&quot;: [
+    -3,
+    -21,
+    4
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;lens_mm&quot;: 40,
+  &quot;lens&quot;: 40,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7340994477272034,
+      -0.31903043389320374,
+      0.599431037902832,
+      34
+    ],
+    [
+      0.6790419816970825,
+      0.3448978662490845,
+      -0.6480335593223572,
+      -61
+    ],
+    [
+      -5.241188816285103e-8,
+      0.8827599287033081,
+      0.4698243737220764,
+      33
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P22.webp" alt="South Side Eridu Night Street, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;description&quot;: &quot;Rear railway and yard medium&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    45,
+    35,
+    38
+  ],
+  &quot;target&quot;: [
+    0,
+    0,
+    20
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.6139407157897949,
+      -0.2376652956008911,
+      0.7527230381965637,
+      45
+    ],
+    [
+      0.7893521189689636,
+      -0.18485096096992493,
+      0.5854514241218567,
+      35
+    ],
+    [
+      1.0262505156788393e-7,
+      0.9535959362983704,
+      0.30108916759490967,
+      38
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;lens_mm&quot;: 42,
+  &quot;lens&quot;: 42,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P23.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P23.webp" alt="South Side Eridu Night Street, reference P23" loading="lazy" width="800" height="600"></a><figcaption>P23</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P23&quot;,
+  &quot;description&quot;: &quot;East exposed frame detail&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    85,
+    -40,
+    55
+  ],
+  &quot;target&quot;: [
+    35,
+    -20,
+    28
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.37139052152633667,
+      -0.4161417782306671,
+      0.8299970626831055,
+      85
+    ],
+    [
+      0.9284766912460327,
+      0.16645663976669312,
+      -0.33199867606163025,
+      -40
+    ],
+    [
+      -6.571997612780933e-9,
+      0.8939341306686401,
+      0.4481983780860901,
+      55
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;lens_mm&quot;: 44,
+  &quot;lens&quot;: 44,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      938.6666564941406,
+      0,
+      384
+    ],
+    [
+      0,
+      938.6666564941406,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P23.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P24.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P24.webp" alt="South Side Eridu Night Street, reference P24" loading="lazy" width="800" height="600"></a><figcaption>P24</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P24&quot;,
+  &quot;description&quot;: &quot;Signal tower close detail&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    70,
+    -20,
+    60
+  ],
+  &quot;target&quot;: [
+    36,
+    -43,
+    35
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.5603092908859253,
+      -0.4308369755744934,
+      0.7074128985404968,
+      70
+    ],
+    [
+      0.8282834887504578,
+      -0.2914484739303589,
+      0.4785439074039459,
+      -20
+    ],
+    [
+      -1.657037529412264e-8,
+      0.8540710210800171,
+      0.5201564431190491,
+      60
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;lens_mm&quot;: 48,
+  &quot;lens&quot;: 48,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P24.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P25.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P25.webp" alt="South Side Eridu Night Street, reference P25" loading="lazy" width="800" height="600"></a><figcaption>P25</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P25&quot;,
+  &quot;description&quot;: &quot;Longitudinal railway track, deck and railing medium&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    20,
+    -55,
+    22
+  ],
+  &quot;target&quot;: [
+    -3,
+    -21,
+    8
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8282833695411682,
+      -0.18086782097816467,
+      0.5303145051002502,
+      20
+    ],
+    [
+      0.5603094696998596,
+      0.26736971735954285,
+      -0.7839431166648865,
+      -55
+    ],
+    [
+      2.6629800586874808e-8,
+      0.9464672803878784,
+      0.32279983162879944,
+      22
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;lens_mm&quot;: 50,
+  &quot;lens&quot;: 50,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P25.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P26.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P26.webp" alt="South Side Eridu Night Street, reference P26" loading="lazy" width="800" height="600"></a><figcaption>P26</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P26&quot;,
+  &quot;description&quot;: &quot;Exposed construction-frame roof detail&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    60,
+    -5,
+    42
+  ],
+  &quot;target&quot;: [
+    30,
+    -5,
+    18
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -4.371138828673793e-8,
+      -0.6246951222419739,
+      0.7808687686920166,
+      60
+    ],
+    [
+      1,
+      2.3566408824393648e-9,
+      5.7863211111452983e-8,
+      -5
+    ],
+    [
+      -3.798709258262534e-8,
+      0.7808687686920166,
+      0.6246951222419739,
+      42
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;lens_mm&quot;: 45,
+  &quot;lens&quot;: 45,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P26.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P27.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P27.webp" alt="South Side Eridu Night Street, reference P27" loading="lazy" width="800" height="600"></a><figcaption>P27</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P27&quot;,
+  &quot;description&quot;: &quot;Rooftop enclosure and ventilation equipment detail&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -35,
+    -55,
+    30
+  ],
+  &quot;target&quot;: [
+    -5,
+    -25,
+    8
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7071066498756409,
+      0.3255065381526947,
+      -0.6277306079864502,
+      -35
+    ],
+    [
+      -0.7071069478988647,
+      0.32550638914108276,
+      -0.6277303695678711,
+      -55
+    ],
+    [
+      -1.2146536221280257e-8,
+      0.8877449631690979,
+      0.4603356420993805,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;lens_mm&quot;: 45,
+  &quot;lens&quot;: 45,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P27.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P28.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P28.webp" alt="South Side Eridu Night Street, reference P28" loading="lazy" width="800" height="600"></a><figcaption>P28</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P28&quot;,
+  &quot;description&quot;: &quot;Facade pipe and service detail&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    65,
+    10,
+    38
+  ],
+  &quot;target&quot;: [
+    35,
+    5,
+    15
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.16439884901046753,
+      -0.5949713587760925,
+      0.7867541313171387,
+      65
+    ],
+    [
+      0.986393928527832,
+      -0.09916192293167114,
+      0.13112549483776093,
+      10
+    ],
+    [
+      1.3617312788483105e-7,
+      0.7976064085960388,
+      0.6031782627105713,
+      38
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;render_percentage&quot;: 100,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;lens_mm&quot;: 45,
+  &quot;lens&quot;: 45,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P28.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P29.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P29.webp" alt="South Side Eridu Night Street, reference P29" loading="lazy" width="800" height="600"></a><figcaption>P29</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P29&quot;,
+  &quot;position&quot;: [
+    7,
+    -13,
+    7
+  ],
+  &quot;target&quot;: [
+    2,
+    -1,
+    3.2
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 38,
+  &quot;Tcw&quot;: [
+    [
+      0.923076868057251,
+      -0.10791027545928955,
+      0.3691672086715698,
+      7
+    ],
+    [
+      0.3846154808998108,
+      0.25898462533950806,
+      -0.8860010504722595,
+      -13
+    ],
+    [
+      -5.865418373218745e-9,
+      0.9598345160484314,
+      0.28056666254997253,
+      7
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P29.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/public/P30.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/public/P30.webp" alt="South Side Eridu Night Street, reference P30" loading="lazy" width="800" height="600"></a><figcaption>P30</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P30&quot;,
+  &quot;position&quot;: [
+    -8,
+    -12,
+    3
+  ],
+  &quot;target&quot;: [
+    -1,
+    -3,
+    1.7
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 40,
+  &quot;Tcw&quot;: [
+    [
+      0.7893521785736084,
+      0.06954939663410187,
+      -0.6099885106086731,
+      -8
+    ],
+    [
+      -0.6139406561851501,
+      0.08942060172557831,
+      -0.7842708826065063,
+      -12
+    ],
+    [
+      -2.320245506837182e-8,
+      0.9935626983642578,
+      0.11328354477882385,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P30.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1548.75
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-001.webp" alt="South Side Eridu Night Street, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-002.webp" alt="South Side Eridu Night Street, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-003.webp" alt="South Side Eridu Night Street, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-004.webp" alt="South Side Eridu Night Street, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-005.webp" alt="South Side Eridu Night Street, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-006.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-006.webp" alt="South Side Eridu Night Street, drawing sheet-006" loading="lazy"></a><figcaption>sheet-006 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-007.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-007.webp" alt="South Side Eridu Night Street, drawing sheet-007" loading="lazy"></a><figcaption>sheet-007 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-008.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-008.webp" alt="South Side Eridu Night Street, drawing sheet-008" loading="lazy"></a><figcaption>sheet-008 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-009.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-009.webp" alt="South Side Eridu Night Street, drawing sheet-009" loading="lazy"></a><figcaption>sheet-009 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-010.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-010.webp" alt="South Side Eridu Night Street, drawing sheet-010" loading="lazy"></a><figcaption>sheet-010 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-011.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-011.webp" alt="South Side Eridu Night Street, drawing sheet-011" loading="lazy"></a><figcaption>sheet-011 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-012.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-012.webp" alt="South Side Eridu Night Street, drawing sheet-012" loading="lazy"></a><figcaption>sheet-012 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-013.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-013.webp" alt="South Side Eridu Night Street, drawing sheet-013" loading="lazy"></a><figcaption>sheet-013 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-014.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-014.webp" alt="South Side Eridu Night Street, drawing sheet-014" loading="lazy"></a><figcaption>sheet-014 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-015.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-015.webp" alt="South Side Eridu Night Street, drawing sheet-015" loading="lazy"></a><figcaption>sheet-015 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-016.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-016.webp" alt="South Side Eridu Night Street, drawing sheet-016" loading="lazy"></a><figcaption>sheet-016 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-017.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-017.webp" alt="South Side Eridu Night Street, drawing sheet-017" loading="lazy"></a><figcaption>sheet-017 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-018.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-018.webp" alt="South Side Eridu Night Street, drawing sheet-018" loading="lazy"></a><figcaption>sheet-018 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-019.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/south-side-eridu/images/drawings/sheet-019.webp" alt="South Side Eridu Night Street, drawing sheet-019" loading="lazy"></a><figcaption>sheet-019 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>18.92</td></tr><tr><th>GPT-6-Astra (low)</th><td>17.54</td></tr><tr><th>Opus-5.5</th><td>14.27</td></tr><tr><th>Kimi-K3.1-Pro</th><td>12.52</td></tr><tr><th>Qwen4-Max-Preview</th><td>11.76</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>11.62</td></tr><tr><th>GLM-5.3-Flash</th><td>6.51</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

@@ -1,0 +1,1163 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Yongding Hakka Tulou Courtyard Reconstruction · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Yongding Hakka Tulou Courtyard Reconstruction · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Buildings</p><h1 class="task-title">Yongding Hakka Tulou Courtyard Reconstruction</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P01.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -6,
+    0,
+    6
+  ],
+  &quot;target&quot;: [
+    1,
+    0,
+    3
+  ],
+  &quot;lens&quot;: 22,
+  &quot;Tcw&quot;: [
+    [
+      7.549790126404332e-8,
+      0.39391911029815674,
+      -0.9191451072692871,
+      -6
+    ],
+    [
+      -1,
+      -2.60090216031017e-9,
+      -8.32539299722157e-8,
+      0
+    ],
+    [
+      -3.5185919955438294e-8,
+      0.9191451072692871,
+      0.39391911029815674,
+      6
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P02.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    6,
+    0,
+    6
+  ],
+  &quot;target&quot;: [
+    -2,
+    0,
+    2.8
+  ],
+  &quot;lens&quot;: 22,
+  &quot;Tcw&quot;: [
+    [
+      -1.6292068494294654e-7,
+      -0.37139052152633667,
+      0.9284766912460327,
+      6
+    ],
+    [
+      1,
+      -8.345367064066522e-8,
+      1.4208946197413752e-7,
+      0
+    ],
+    [
+      2.471411164606252e-8,
+      0.9284766912460327,
+      0.37139052152633667,
+      6
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P03.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    0,
+    -55,
+    23
+  ],
+  &quot;target&quot;: [
+    2.25,
+    0.05,
+    3
+  ],
+  &quot;lens&quot;: 34,
+  &quot;category&quot;: &quot;rear&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9991657733917236,
+      0.013934570364654064,
+      -0.03838695213198662,
+      0
+    ],
+    [
+      -0.0408378541469574,
+      0.34093227982521057,
+      -0.9392004013061523,
+      -55
+    ],
+    [
+      -3.538641824007982e-9,
+      0.9399845004081726,
+      0.34121695160865784,
+      23
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P04.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    45,
+    38,
+    26
+  ],
+  &quot;target&quot;: [
+    2.25,
+    0.05,
+    3
+  ],
+  &quot;lens&quot;: 34,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.6638752222061157,
+      -0.27914613485336304,
+      0.6937918066978455,
+      45
+    ],
+    [
+      0.747843325138092,
+      -0.24780312180519104,
+      0.615892767906189,
+      38
+    ],
+    [
+      -3.0888443802723486e-7,
+      0.9277235269546509,
+      0.3732679486274719,
+      26
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P05.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    2,
+    -50,
+    5
+  ],
+  &quot;target&quot;: [
+    2,
+    0,
+    5
+  ],
+  &quot;scale&quot;: 55,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      7.549790126404332e-8,
+      -1,
+      -50
+    ],
+    [
+      0,
+      1,
+      7.549790126404332e-8,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    55.00000174157327,
+    41.25000130617995
+  ],
+  &quot;category&quot;: &quot;rear&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P06.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    2,
+    0,
+    40
+  ],
+  &quot;target&quot;: [
+    2,
+    0,
+    0
+  ],
+  &quot;scale&quot;: 64,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      40
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    64,
+    47.99999856948857
+  ],
+  &quot;category&quot;: &quot;top_down&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P07.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    0,
+    -6,
+    6
+  ],
+  &quot;target&quot;: [
+    0,
+    2,
+    3
+  ],
+  &quot;lens&quot;: 22,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0.35112321376800537,
+      -0.936329185962677,
+      -6
+    ],
+    [
+      0,
+      0.936329185962677,
+      0.35112321376800537,
+      6
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P08.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    0,
+    6,
+    6
+  ],
+  &quot;target&quot;: [
+    0,
+    -2,
+    3
+  ],
+  &quot;lens&quot;: 22,
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -2.362649276221873e-8,
+      -1.701234850770561e-7,
+      0
+    ],
+    [
+      -1.5099580252808664e-7,
+      -0.35112321376800537,
+      0.936329185962677,
+      6
+    ],
+    [
+      -8.18564913629416e-8,
+      0.936329185962677,
+      0.35112321376800537,
+      6
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P09.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    4,
+    -3,
+    5
+  ],
+  &quot;target&quot;: [
+    0,
+    0,
+    0.1
+  ],
+  &quot;lens&quot;: 30,
+  &quot;Tcw&quot;: [
+    [
+      0.599999725818634,
+      -0.5599427819252014,
+      0.5713706016540527,
+      4
+    ],
+    [
+      0.8000001907348633,
+      0.41995683312416077,
+      -0.4285275936126709,
+      -3
+    ],
+    [
+      -4.420006405325694e-8,
+      0.714212954044342,
+      0.6999284029006958,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P10.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    1,
+    0,
+    3
+  ],
+  &quot;target&quot;: [
+    -4,
+    1,
+    1
+  ],
+  &quot;lens&quot;: 28,
+  &quot;Tcw&quot;: [
+    [
+      0.19611598551273346,
+      -0.3580572009086609,
+      0.9128710627555847,
+      1
+    ],
+    [
+      0.9805806875228882,
+      0.07161134481430054,
+      -0.1825740784406662,
+      0
+    ],
+    [
+      3.5454817748359346e-8,
+      0.9309494495391846,
+      0.3651480972766876,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P11.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    1,
+    3,
+    3
+  ],
+  &quot;target&quot;: [
+    -3,
+    -4,
+    1
+  ],
+  &quot;lens&quot;: 28,
+  &quot;Tcw&quot;: [
+    [
+      -0.8682431578636169,
+      -0.11945611238479614,
+      0.4815434515476227,
+      1
+    ],
+    [
+      0.49613893032073975,
+      -0.20904822647571564,
+      0.8427010178565979,
+      3
+    ],
+    [
+      2.0815670964680066e-8,
+      0.9705818295478821,
+      0.24077151715755463,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P12.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    3,
+    3,
+    5
+  ],
+  &quot;target&quot;: [
+    2,
+    10,
+    1.6
+  ],
+  &quot;lens&quot;: 28,
+  &quot;Tcw&quot;: [
+    [
+      0.9899494647979736,
+      -0.061283648014068604,
+      0.12745323777198792,
+      3
+    ],
+    [
+      0.1414213925600052,
+      0.42898544669151306,
+      -0.8921723365783691,
+      3
+    ],
+    [
+      -9.641017761907733e-9,
+      0.9012301564216614,
+      0.43334075808525085,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P14.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    12.1,
+    1.1,
+    4.75
+  ],
+  &quot;target&quot;: [
+    10.2,
+    3,
+    4.5
+  ],
+  &quot;lens&quot;: 20,
+  &quot;category&quot;: &quot;interior&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071065306663513,
+      -0.06550633907318115,
+      0.7040661573410034,
+      12.100000381469727
+    ],
+    [
+      0.7071070075035095,
+      0.06550624221563339,
+      -0.70406574010849,
+      1.100000023841858
+    ],
+    [
+      3.8097454080343596e-8,
+      0.9956996440887451,
+      0.09263988584280014,
+      4.75
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      426.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      426.66668701171875,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P16.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;position&quot;: [
+    12.1,
+    1.1,
+    4.75
+  ],
+  &quot;target&quot;: [
+    11.5,
+    5.5,
+    4.4
+  ],
+  &quot;lens&quot;: 23,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;category&quot;: &quot;interior&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9908301830291748,
+      -0.010616159066557884,
+      0.13469558954238892,
+      12.100000381469727
+    ],
+    [
+      0.13511331379413605,
+      0.07785172760486603,
+      -0.9877669215202332,
+      1.100000023841858
+    ],
+    [
+      6.611857727989445e-9,
+      0.99690842628479,
+      0.07857222110033035,
+      4.75
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      490.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      490.6666145324707,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P17.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;position&quot;: [
+    12.1,
+    1.1,
+    7.65
+  ],
+  &quot;target&quot;: [
+    11.5,
+    5.5,
+    7.3
+  ],
+  &quot;lens&quot;: 23,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;category&quot;: &quot;interior&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9908301830291748,
+      -0.010616159066557884,
+      0.13469558954238892,
+      12.100000381469727
+    ],
+    [
+      0.13511331379413605,
+      0.07785172760486603,
+      -0.9877669215202332,
+      1.100000023841858
+    ],
+    [
+      6.611857727989445e-9,
+      0.99690842628479,
+      0.07857222110033035,
+      7.650000095367432
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      490.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      490.6666145324707,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P18.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;position&quot;: [
+    2.6,
+    12.2,
+    2.05
+  ],
+  &quot;target&quot;: [
+    2.1,
+    9.7,
+    1.25
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;category&quot;: &quot;interior&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.9805806875228882,
+      -0.05871557071805,
+      0.1871202439069748,
+      2.5999999046325684
+    ],
+    [
+      0.19611606001853943,
+      -0.2935783863067627,
+      0.935601532459259,
+      12.199999809265137
+    ],
+    [
+      8.416861874138704e-8,
+      0.9541299939155579,
+      0.29939237236976624,
+      2.049999952316284
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P19.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;position&quot;: [
+    -11.3,
+    -1.5,
+    4.85
+  ],
+  &quot;target&quot;: [
+    -8,
+    -1.5,
+    3.8
+  ],
+  &quot;lens&quot;: 19,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;category&quot;: &quot;interior&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -1.6292068494294654e-7,
+      0.3032032549381256,
+      -0.9529258608818054,
+      -11.300000190734863
+    ],
+    [
+      -1,
+      4.786242513432626e-8,
+      1.8619780917106254e-7,
+      -1.5
+    ],
+    [
+      1.0206513678667761e-7,
+      0.9529258608818054,
+      0.3032032549381256,
+      4.849999904632568
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      405.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      405.3332977294922,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P20.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/public/P20.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, reference P20" loading="lazy" width="800" height="600"></a><figcaption>P20</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P20&quot;,
+  &quot;position&quot;: [
+    -11.3,
+    -1.5,
+    7.65
+  ],
+  &quot;target&quot;: [
+    -8,
+    -1.5,
+    6.7
+  ],
+  &quot;lens&quot;: 19,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;category&quot;: &quot;interior&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -1.6292068494294654e-7,
+      0.27664345502853394,
+      -0.9609725475311279,
+      -11.300000190734863
+    ],
+    [
+      -1,
+      -1.2711877772630942e-8,
+      1.6587777906806878e-7,
+      -1.5
+    ],
+    [
+      3.367324197256494e-8,
+      0.9609725475311279,
+      0.27664345502853394,
+      7.650000095367432
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      405.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      405.3332977294922,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100.08000183105469,
+  &quot;image&quot;: &quot;images/public/P20.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/drawings/sheet-001.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/drawings/sheet-002.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/drawings/sheet-003.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/yongding-hakka-tulou/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/yongding-hakka-tulou/images/drawings/sheet-004.webp" alt="Yongding Hakka Tulou Courtyard Reconstruction, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>36.06</td></tr><tr><th>GPT-6-Astra (low)</th><td>32.18</td></tr><tr><th>Kimi-K3.1-Pro</th><td>26.48</td></tr><tr><th>Opus-5.5</th><td>25.90</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>24.38</td></tr><tr><th>Qwen4-Max-Preview</th><td>23.41</td></tr><tr><th>GLM-5.3-Flash</th><td>16.50</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

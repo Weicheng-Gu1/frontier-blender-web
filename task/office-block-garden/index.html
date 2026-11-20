@@ -1,0 +1,2271 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Office Block and Garden Terrace · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Office Block and Garden Terrace · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Buildings</p><h1 class="task-title">Office Block and Garden Terrace</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P01.webp" alt="Office Block and Garden Terrace, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;position&quot;: [
+    0,
+    9,
+    85
+  ],
+  &quot;target&quot;: [
+    0,
+    9,
+    0
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Complete city site from above&quot;,
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 200,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      9
+    ],
+    [
+      0,
+      0,
+      1,
+      85
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    200.00000447034847,
+    149.99999636784204
+  ],
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;position_world&quot;: [
+    0,
+    9,
+    85
+  ],
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;ortho_scale&quot;: 200,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P02.webp" alt="Office Block and Garden Terrace, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;position&quot;: [
+    57,
+    -65,
+    49
+  ],
+  &quot;target&quot;: [
+    0,
+    10,
+    4
+  ],
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;City context from the southeast&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7961621284484863,
+      -0.2608160078525543,
+      0.5459861159324646,
+      57
+    ],
+    [
+      0.6050833463668823,
+      0.34317895770072937,
+      -0.7184026837348938,
+      -65
+    ],
+    [
+      -2.828566714185854e-8,
+      0.902332067489624,
+      0.43104153871536255,
+      49
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    57,
+    -65,
+    49
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P03.webp" alt="Office Block and Garden Terrace, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;position&quot;: [
+    39,
+    -30,
+    27
+  ],
+  &quot;target&quot;: [
+    -7,
+    9,
+    9
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Main office and landscaped terrace&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6466852426528931,
+      -0.21815036237239838,
+      0.7308957576751709,
+      39
+    ],
+    [
+      0.7627569437026978,
+      0.1849536895751953,
+      -0.6196724772453308,
+      -30
+    ],
+    [
+      -9.826133151591421e-8,
+      0.9582288861274719,
+      0.286002516746521,
+      27
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    39,
+    -30,
+    27
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P04.webp" alt="Office Block and Garden Terrace, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;position&quot;: [
+    -44,
+    40,
+    26
+  ],
+  &quot;target&quot;: [
+    -10,
+    10,
+    10
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Rear and west office elevations&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.6616217494010925,
+      0.2495129257440567,
+      -0.7071067690849304,
+      -44
+    ],
+    [
+      -0.7498377561569214,
+      -0.22015874087810516,
+      0.623917818069458,
+      40
+    ],
+    [
+      -1.8282422331594717e-7,
+      0.9430129528045654,
+      0.33275604248046875,
+      26
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    -44,
+    40,
+    26
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P05.webp" alt="Office Block and Garden Terrace, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    19,
+    4,
+    16
+  ],
+  &quot;target&quot;: [
+    6,
+    4,
+    0
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Central terrace and planted border from above&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -4.371138828673793e-8,
+      -0.7761139869689941,
+      0.6305926442146301,
+      19
+    ],
+    [
+      1,
+      -2.6663782293212535e-8,
+      3.650098889806941e-8,
+      4
+    ],
+    [
+      -1.1514941888890462e-8,
+      0.6305926442146301,
+      0.7761139869689941,
+      16
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    19,
+    4,
+    16
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P06.webp" alt="Office Block and Garden Terrace, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    9.42,
+    -12.19,
+    1.42
+  ],
+  &quot;target&quot;: [
+    5.7,
+    5,
+    1.3
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Terrace route looking north&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9773759841918945,
+      -0.0014430665178224444,
+      0.21150410175323486,
+      9.420000076293945
+    ],
+    [
+      0.21150900423526764,
+      0.006668248679488897,
+      -0.9773532748222351,
+      -12.1899995803833
+    ],
+    [
+      2.3915758262660347e-8,
+      0.9999766945838928,
+      0.006822608411312103,
+      1.4199999570846558
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    9.42,
+    -12.19,
+    1.42
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P07.webp" alt="Office Block and Garden Terrace, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    7,
+    14.7,
+    2
+  ],
+  &quot;target&quot;: [
+    7,
+    -3,
+    1
+  ],
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Northern terrace through the glass balustrade&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -7.86273659514336e-8,
+      -1.5567881916922488e-7,
+      7
+    ],
+    [
+      -1.5099580252808664e-7,
+      -0.05640725418925285,
+      0.9984078407287598,
+      14.699999809265137
+    ],
+    [
+      -8.728359546239517e-8,
+      0.9984078407287598,
+      0.05640725418925285,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    7,
+    14.7,
+    2
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P08.webp" alt="Office Block and Garden Terrace, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;position&quot;: [
+    7,
+    -7,
+    2.1
+  ],
+  &quot;target&quot;: [
+    9.5,
+    -4.3,
+    0.5
+  ],
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Southern sofa and chairs&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7337606549263,
+      0.2709178626537323,
+      -0.6230560541152954,
+      7
+    ],
+    [
+      -0.679408073425293,
+      0.29259130358695984,
+      -0.6729004383087158,
+      -7
+    ],
+    [
+      4.2660303734010085e-8,
+      0.9170571565628052,
+      0.3987557590007782,
+      2.0999999046325684
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    7,
+    -7,
+    2.1
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P09.webp" alt="Office Block and Garden Terrace, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;position&quot;: [
+    9.5,
+    0.5,
+    2.8
+  ],
+  &quot;target&quot;: [
+    5.1,
+    1.8,
+    0.5
+  ],
+  &quot;lens&quot;: 40,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Middle sofa and low table&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.2833460569381714,
+      -0.42978042364120483,
+      0.8573236465454102,
+      9.5
+    ],
+    [
+      0.9590177536010742,
+      0.12698052823543549,
+      -0.2533000707626343,
+      0.5
+    ],
+    [
+      1.145819883419108e-8,
+      0.8939601182937622,
+      0.4481464922428131,
+      2.799999952316284
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    9.5,
+    0.5,
+    2.8
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P10.webp" alt="Office Block and Garden Terrace, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;position&quot;: [
+    9,
+    8,
+    3
+  ],
+  &quot;target&quot;: [
+    4.9,
+    10.1,
+    0.5
+  ],
+  &quot;lens&quot;: 40,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Northern chairs and round table behind the glass railing&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.45587578415870667,
+      -0.4245431125164032,
+      0.7822661995887756,
+      9
+    ],
+    [
+      0.890043318271637,
+      0.21744872629642487,
+      -0.40067291259765625,
+      8
+    ],
+    [
+      1.5485913706925203e-7,
+      0.8789078593254089,
+      0.4769914448261261,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    9,
+    8,
+    3
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P11.webp" alt="Office Block and Garden Terrace, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;position&quot;: [
+    -8,
+    10,
+    65
+  ],
+  &quot;target&quot;: [
+    -8,
+    10,
+    0
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Office and terrace plan view&quot;,
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 90,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -8
+    ],
+    [
+      0,
+      1,
+      0,
+      10
+    ],
+    [
+      0,
+      0,
+      1,
+      65
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    89.99999782070523,
+    67.50000119442122
+  ],
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;position_world&quot;: [
+    -8,
+    10,
+    65
+  ],
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;ortho_scale&quot;: 90,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P12.webp" alt="Office Block and Garden Terrace, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    35,
+    -5,
+    12
+  ],
+  &quot;K&quot;: [
+    [
+      1357.5757141113281,
+      0,
+      384
+    ],
+    [
+      0,
+      1357.5756225585938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.2295229434967041,
+      -0.33001089096069336,
+      0.915648341178894,
+      35
+    ],
+    [
+      0.9733033776283264,
+      0.07782276719808578,
+      -0.21592679619789124,
+      -5
+    ],
+    [
+      -9.559526858993195e-8,
+      0.9407636523246765,
+      0.33906278014183044,
+      12
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 42,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;caption&quot;: &quot;East oblique office facade and terrace&quot;,
+  &quot;target_world&quot;: [
+    -4,
+    10,
+    8
+  ],
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 42,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P13.webp" alt="Office Block and Garden Terrace, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    -30,
+    42,
+    15
+  ],
+  &quot;K&quot;: [
+    [
+      1357.5757141113281,
+      0,
+      384
+    ],
+    [
+      0,
+      1357.5756225585938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7477773427963257,
+      0.16673186421394348,
+      -0.6426736116409302,
+      -30
+    ],
+    [
+      -0.6639495491981506,
+      -0.187782883644104,
+      0.7238151431083679,
+      42
+    ],
+    [
+      -4.891200333645429e-8,
+      0.9679553508758545,
+      0.2511213421821594,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 42,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;caption&quot;: &quot;West/north office facade with recessed windows and interior furnishing appearance visible&quot;,
+  &quot;target_world&quot;: [
+    -7,
+    16,
+    9
+  ],
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 42,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P14.webp" alt="Office Block and Garden Terrace, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    -4,
+    56,
+    16
+  ],
+  &quot;K&quot;: [
+    [
+      1357.5757141113281,
+      0,
+      384
+    ],
+    [
+      0,
+      1357.5756225585938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9846938252449036,
+      0.04564790427684784,
+      -0.16821134090423584,
+      -4
+    ],
+    [
+      -0.17429517209529877,
+      -0.25789129734039307,
+      0.9503227472305298,
+      56
+    ],
+    [
+      -3.570564732768844e-9,
+      0.9650948643684387,
+      0.2619001269340515,
+      16
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 42,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;caption&quot;: &quot;North office elevation and surrounding buildings&quot;,
+  &quot;target_world&quot;: [
+    -5,
+    16,
+    9
+  ],
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 42,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P15.webp" alt="Office Block and Garden Terrace, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    -4,
+    -38,
+    13
+  ],
+  &quot;K&quot;: [
+    [
+      1357.5757141113281,
+      0,
+      384
+    ],
+    [
+      0,
+      1357.5756225585938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9724807739257812,
+      0.06483041495084763,
+      -0.22378192842006683,
+      -4
+    ],
+    [
+      -0.23298361897468567,
+      0.2706041634082794,
+      -0.9340726137161255,
+      -38
+    ],
+    [
+      2.3617421351929124e-9,
+      0.9605051875114441,
+      0.2782617211341858,
+      13
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 42,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;caption&quot;: &quot;South office elevation and terrace approach&quot;,
+  &quot;target_world&quot;: [
+    -3,
+    6,
+    8
+  ],
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 42,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P16.webp" alt="Office Block and Garden Terrace, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    22,
+    28,
+    34
+  ],
+  &quot;K&quot;: [
+    [
+      1357.5757141113281,
+      0,
+      384
+    ],
+    [
+      0,
+      1357.5756225585938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.845891535282135,
+      -0.3893086016178131,
+      0.3645634949207306,
+      22
+    ],
+    [
+      0.5333553552627563,
+      -0.6174360513687134,
+      0.5781908631324768,
+      28
+    ],
+    [
+      -4.9927834311347397e-8,
+      0.6835284233093262,
+      0.729923665523529,
+      34
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 42,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;caption&quot;: &quot;Roof and terrace oblique from northeast&quot;,
+  &quot;target_world&quot;: [
+    -4,
+    10,
+    7
+  ],
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 42,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P17.webp" alt="Office Block and Garden Terrace, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    72,
+    65,
+    48
+  ],
+  &quot;K&quot;: [
+    [
+      1551.5150756835938,
+      0,
+      384
+    ],
+    [
+      0,
+      1551.5150756835938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.6884620785713196,
+      -0.33054402470588684,
+      0.6455698609352112,
+      72
+    ],
+    [
+      0.7252723574638367,
+      -0.313767671585083,
+      0.6128048300743103,
+      65
+    ],
+    [
+      -8.154527719739235e-9,
+      0.8901066184043884,
+      0.4557517170906067,
+      48
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 48,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;caption&quot;: &quot;Far northeast site context&quot;,
+  &quot;target_world&quot;: [
+    0,
+    10,
+    3
+  ],
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 48,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P18.webp" alt="Office Block and Garden Terrace, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;caption&quot;: &quot;Complete rear elevation of central office with full silhouette&quot;,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    -55,
+    58,
+    24
+  ],
+  &quot;K&quot;: [
+    [
+      1551.5150756835938,
+      0,
+      384
+    ],
+    [
+      0,
+      1551.5150756835938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.6792603731155396,
+      0.19621016085147858,
+      -0.7071823477745056,
+      -55
+    ],
+    [
+      -0.7338973879814148,
+      -0.18160270154476166,
+      0.6545341610908508,
+      58
+    ],
+    [
+      3.996796493765942e-8,
+      0.9635983109474182,
+      0.2673536539077759,
+      24
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 48,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;target_world&quot;: [
+    -8,
+    11,
+    9
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;,
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 48,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P19.webp" alt="Office Block and Garden Terrace, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    1.7000000476837158,
+    -11,
+    4.300000190734863
+  ],
+  &quot;K&quot;: [
+    [
+      1292.9293212890625,
+      0,
+      384
+    ],
+    [
+      0,
+      1292.9293212890625,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9580977559089661,
+      0.06600429862737656,
+      -0.2787334620952606,
+      1.7000000476837158
+    ],
+    [
+      -0.2864418625831604,
+      0.2207728624343872,
+      -0.932314395904541,
+      -11
+    ],
+    [
+      1.757663348200822e-8,
+      0.9730889797210693,
+      0.23042838275432587,
+      4.300000190734863
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 40,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;caption&quot;: &quot;West terrace seating route&quot;,
+  &quot;target_world&quot;: [
+    8,
+    1,
+    0.8
+  ],
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 40,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P20.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P20.webp" alt="Office Block and Garden Terrace, reference P20" loading="lazy" width="800" height="600"></a><figcaption>P20</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    20,
+    -2,
+    4.099999904632568
+  ],
+  &quot;K&quot;: [
+    [
+      1292.9293212890625,
+      0,
+      384
+    ],
+    [
+      0,
+      1292.9293212890625,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.26340606808662415,
+      -0.18958048522472382,
+      0.9458733201026917,
+      20
+    ],
+    [
+      0.964685320854187,
+      0.05176480859518051,
+      -0.25826945900917053,
+      -2
+    ],
+    [
+      -9.898778330352798e-8,
+      0.9804995656013489,
+      0.1965206414461136,
+      4.099999904632568
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 40,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P20&quot;,
+  &quot;caption&quot;: &quot;East terrace seating route&quot;,
+  &quot;target_world&quot;: [
+    8,
+    2,
+    0.8
+  ],
+  &quot;image&quot;: &quot;images/public/P20.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 40,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P21.webp" alt="Office Block and Garden Terrace, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    10,
+    23,
+    5.199999809265137
+  ],
+  &quot;K&quot;: [
+    [
+      1292.9293212890625,
+      0,
+      384
+    ],
+    [
+      0,
+      1292.9293212890625,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9785726070404053,
+      -0.03851936757564545,
+      0.20226934552192688,
+      10
+    ],
+    [
+      0.2059045135974884,
+      -0.18306545913219452,
+      0.9612962007522583,
+      23
+    ],
+    [
+      5.875862463255999e-9,
+      0.9823457598686218,
+      0.18707408010959625,
+      5.199999809265137
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 40,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;caption&quot;: &quot;North terrace and glass balustrade&quot;,
+  &quot;target_world&quot;: [
+    7,
+    9,
+    1
+  ],
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 40,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P22.webp" alt="Office Block and Garden Terrace, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;caption&quot;: &quot;Opposite peripheral building group and site relationship&quot;,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    -78,
+    72,
+    46
+  ],
+  &quot;K&quot;: [
+    [
+      1616.1615600585938,
+      0,
+      384
+    ],
+    [
+      0,
+      1616.1616516113281,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.6424489617347717,
+      0.2917516827583313,
+      -0.7086186408996582,
+      -78
+    ],
+    [
+      -0.7663288116455078,
+      -0.24458889663219452,
+      0.5940678119659424,
+      72
+    ],
+    [
+      4.084711235918803e-8,
+      0.9246928691864014,
+      0.3807135224342346,
+      46
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 50,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;target_world&quot;: [
+    0,
+    10,
+    3
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;,
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 50,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P23.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P23.webp" alt="Office Block and Garden Terrace, reference P23" loading="lazy" width="800" height="600"></a><figcaption>P23</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P23&quot;,
+  &quot;caption&quot;: &quot;Unobstructed reverse detail of individual terrace armchair, sofa and table&quot;,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    13.5,
+    -4.5,
+    3.5999999046325684
+  ],
+  &quot;K&quot;: [
+    [
+      1680.8080444335938,
+      0,
+      384
+    ],
+    [
+      0,
+      1680.808090209961,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.6303755044937134,
+      -0.1843937337398529,
+      0.754072904586792,
+      13.5
+    ],
+    [
+      0.7762907147407532,
+      0.1497342586517334,
+      -0.6123338341712952,
+      -4.5
+    ],
+    [
+      -2.601894344422817e-8,
+      0.9713796973228455,
+      0.23753191530704498,
+      3.5999999046325684
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 52,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;target_world&quot;: [
+    10,
+    -4,
+    0.75
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P23.webp&quot;,
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 52,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P24.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P24.webp" alt="Office Block and Garden Terrace, reference P24" loading="lazy" width="800" height="600"></a><figcaption>P24</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P24&quot;,
+  &quot;caption&quot;: &quot;Clear planted-border access route along the terrace&quot;,
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    16,
+    13,
+    4.800000190734863
+  ],
+  &quot;K&quot;: [
+    [
+      1454.5453491210938,
+      0,
+      384
+    ],
+    [
+      0,
+      1454.5454864501953,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.727471113204956,
+      -0.1621842384338379,
+      0.6666949987411499,
+      16
+    ],
+    [
+      0.6861386895179749,
+      -0.1719539910554886,
+      0.7068561911582947,
+      13
+    ],
+    [
+      -6.10093948694157e-8,
+      0.9716625213623047,
+      0.23637236654758453,
+      4.800000190734863
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 45,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;target_world&quot;: [
+    5,
+    10.5,
+    0.8
+  ],
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;image&quot;: &quot;images/public/P24.webp&quot;,
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 45,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P25.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P25.webp" alt="Office Block and Garden Terrace, reference P25" loading="lazy" width="800" height="600"></a><figcaption>P25</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    14,
+    -6,
+    2.700000047683716
+  ],
+  &quot;K&quot;: [
+    [
+      1551.5150756835938,
+      0,
+      384
+    ],
+    [
+      0,
+      1551.5150756835938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.6856013536453247,
+      -0.0995204970240593,
+      0.721142590045929,
+      14
+    ],
+    [
+      0.7279775738716125,
+      0.09372737258672714,
+      -0.6791642308235168,
+      -6
+    ],
+    [
+      -3.237201440242643e-8,
+      0.9906112551689148,
+      0.13670825958251953,
+      2.700000047683716
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 48,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P25&quot;,
+  &quot;caption&quot;: &quot;Southern sofa and armchair detail&quot;,
+  &quot;target_world&quot;: [
+    9.2,
+    -3.5,
+    0.8
+  ],
+  &quot;image&quot;: &quot;images/public/P25.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 48,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P26.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P26.webp" alt="Office Block and Garden Terrace, reference P26" loading="lazy" width="800" height="600"></a><figcaption>P26</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    13,
+    5,
+    2.799999952316284
+  ],
+  &quot;K&quot;: [
+    [
+      1551.5150756835938,
+      0,
+      384
+    ],
+    [
+      0,
+      1551.5150756835938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.38071468472480774,
+      -0.1911909282207489,
+      0.9047111868858337,
+      13
+    ],
+    [
+      0.9246929883956909,
+      -0.07871724665164948,
+      0.37248775362968445,
+      5
+    ],
+    [
+      9.682146639988787e-8,
+      0.978391170501709,
+      0.2067616581916809,
+      2.799999952316284
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 48,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P26&quot;,
+  &quot;caption&quot;: &quot;Middle sofa and low table detail&quot;,
+  &quot;target_world&quot;: [
+    8.2,
+    3,
+    0.8
+  ],
+  &quot;image&quot;: &quot;images/public/P26.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 48,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P27.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P27.webp" alt="Office Block and Garden Terrace, reference P27" loading="lazy" width="800" height="600"></a><figcaption>P27</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    8,
+    -2,
+    3.799999952316284
+  ],
+  &quot;K&quot;: [
+    [
+      1454.5453491210938,
+      0,
+      384
+    ],
+    [
+      0,
+      1454.5454864501953,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8510472178459167,
+      -0.26438987255096436,
+      0.45367053151130676,
+      8
+    ],
+    [
+      0.5250896215438843,
+      0.4285140037536621,
+      -0.7352936267852783,
+      -2
+    ],
+    [
+      1.0171686604110164e-8,
+      0.8639869689941406,
+      0.5035139918327332,
+      3.799999952316284
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 45,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P27&quot;,
+  &quot;caption&quot;: &quot;Office entrance and lower facade&quot;,
+  &quot;target_world&quot;: [
+    0.5,
+    2.5,
+    4
+  ],
+  &quot;image&quot;: &quot;images/public/P27.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 45,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P28.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P28.webp" alt="Office Block and Garden Terrace, reference P28" loading="lazy" width="800" height="600"></a><figcaption>P28</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    21,
+    25,
+    15
+  ],
+  &quot;K&quot;: [
+    [
+      1454.5453491210938,
+      0,
+      384
+    ],
+    [
+      0,
+      1454.5454864501953,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8310816287994385,
+      -0.24907755851745605,
+      0.49725615978240967,
+      21
+    ],
+    [
+      0.556150496006012,
+      -0.3722081780433655,
+      0.7430731058120728,
+      25
+    ],
+    [
+      -3.150352156922054e-8,
+      0.8941034078598022,
+      0.44786012172698975,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 45,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P28&quot;,
+  &quot;caption&quot;: &quot;Upper east office facade, roof cornice and terrace landscaping&quot;,
+  &quot;target_world&quot;: [
+    -1,
+    18,
+    10
+  ],
+  &quot;image&quot;: &quot;images/public/P28.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 45,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P29.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P29.webp" alt="Office Block and Garden Terrace, reference P29" loading="lazy" width="800" height="600"></a><figcaption>P29</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    -27,
+    27,
+    10
+  ],
+  &quot;K&quot;: [
+    [
+      1454.5453491210938,
+      0,
+      384
+    ],
+    [
+      0,
+      1454.5454864501953,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.60981285572052,
+      0.1677275151014328,
+      -0.7745940089225769,
+      -27
+    ],
+    [
+      -0.7925456166267395,
+      -0.12905552983283997,
+      0.5960002541542053,
+      27
+    ],
+    [
+      -3.0421603014474385e-9,
+      0.9773493409156799,
+      0.21163144707679749,
+      10
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 45,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P29&quot;,
+  &quot;caption&quot;: &quot;Rear office facade with recessed windows and interior furnishing appearance&quot;,
+  &quot;target_world&quot;: [
+    -7,
+    18,
+    8
+  ],
+  &quot;image&quot;: &quot;images/public/P29.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 45,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/public/P30.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/public/P30.webp" alt="Office Block and Garden Terrace, reference P30" loading="lazy" width="800" height="600"></a><figcaption>P30</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;width&quot;: 768,
+  &quot;height&quot;: 576,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position_world&quot;: [
+    10,
+    2,
+    25
+  ],
+  &quot;K&quot;: [
+    [
+      1357.5757141113281,
+      0,
+      384
+    ],
+    [
+      0,
+      1357.5756225585938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.01344382669776678,
+      -0.9831488132476807,
+      0.1823112815618515,
+      10
+    ],
+    [
+      0.9999098777770996,
+      -0.01321847178041935,
+      0.0024511937517672777,
+      2
+    ],
+    [
+      -1.154542417225457e-8,
+      0.1823277622461319,
+      0.9832377433776855,
+      25
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens_mm&quot;: 42,
+  &quot;sensor_width_mm&quot;: 23.760000228881836,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;pixel_center&quot;: &quot;(u+0.5,v+0.5), top-left origin&quot;,
+  &quot;id&quot;: &quot;P30&quot;,
+  &quot;caption&quot;: &quot;Terrace top-down furniture arrangement&quot;,
+  &quot;target_world&quot;: [
+    8,
+    2,
+    0
+  ],
+  &quot;image&quot;: &quot;images/public/P30.webp&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;sensor_height_mm&quot;: 24,
+  &quot;lens&quot;: 42,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 300
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/office-block-garden/images/drawings/A-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/drawings/A-001.webp" alt="Office Block and Garden Terrace, drawing A-001" loading="lazy"></a><figcaption>A-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/drawings/A-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/drawings/A-002.webp" alt="Office Block and Garden Terrace, drawing A-002" loading="lazy"></a><figcaption>A-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/drawings/A-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/drawings/A-003.webp" alt="Office Block and Garden Terrace, drawing A-003" loading="lazy"></a><figcaption>A-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/drawings/A-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/drawings/A-004.webp" alt="Office Block and Garden Terrace, drawing A-004" loading="lazy"></a><figcaption>A-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/drawings/A-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/drawings/A-005.webp" alt="Office Block and Garden Terrace, drawing A-005" loading="lazy"></a><figcaption>A-005 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/office-block-garden/images/drawings/A-006.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/office-block-garden/images/drawings/A-006.webp" alt="Office Block and Garden Terrace, drawing A-006" loading="lazy"></a><figcaption>A-006 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>25.44</td></tr><tr><th>GPT-6-Astra (low)</th><td>24.69</td></tr><tr><th>Kimi-K3.1-Pro</th><td>16.76</td></tr><tr><th>Opus-5.5</th><td>13.92</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>13.88</td></tr><tr><th>Qwen4-Max-Preview</th><td>12.37</td></tr><tr><th>GLM-5.3-Flash</th><td>10.59</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

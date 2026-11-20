@@ -1,0 +1,715 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Opera House Auditorium · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Opera House Auditorium · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Interiors</p><h1 class="task-title">Opera House Auditorium</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P01.webp" alt="Opera House Auditorium, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;caption&quot;: &quot;Auditorium overview&quot;,
+  &quot;position&quot;: [
+    0,
+    -57,
+    18
+  ],
+  &quot;target&quot;: [
+    0,
+    15,
+    15
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0.041630469262599945,
+      -0.9991330504417419,
+      -57
+    ],
+    [
+      0,
+      0.9991330504417419,
+      0.041630469262599945,
+      18
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;far_overview&quot;,
+  &quot;order&quot;: &quot;far&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;scene or declared ROI subject&quot;,
+  &quot;route_role&quot;: &quot;far&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P02.webp" alt="Opera House Auditorium, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;caption&quot;: &quot;Stage and twin stairs&quot;,
+  &quot;position&quot;: [
+    12,
+    -5,
+    9
+  ],
+  &quot;target&quot;: [
+    0,
+    26,
+    12
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9325680732727051,
+      0.03244733437895775,
+      0.3595329523086548,
+      12
+    ],
+    [
+      0.3609941899776459,
+      -0.08382212370634079,
+      -0.9287932515144348,
+      -5
+    ],
+    [
+      -4.9380407318722064e-8,
+      0.995952308177948,
+      -0.08988313376903534,
+      9
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;order&quot;: &quot;near&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;scene or declared ROI subject&quot;,
+  &quot;route_role&quot;: &quot;near&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P03.webp" alt="Opera House Auditorium, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;caption&quot;: &quot;Seating from the stage&quot;,
+  &quot;position&quot;: [
+    0,
+    14,
+    15
+  ],
+  &quot;target&quot;: [
+    0,
+    -48,
+    16
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -1.5099888628355984e-7,
+      1.0254259663611265e-9,
+      0
+    ],
+    [
+      -1.4098429090836362e-9,
+      0.0161268413066864,
+      0.9998698830604553,
+      14
+    ],
+    [
+      -1.5099580252808664e-7,
+      0.9998698830604553,
+      -0.0161268413066864,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;detail&quot;,
+  &quot;order&quot;: &quot;near&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;scene or declared ROI subject&quot;,
+  &quot;route_role&quot;: &quot;near&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P04.webp" alt="Opera House Auditorium, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;caption&quot;: &quot;Right balconies and seating&quot;,
+  &quot;position&quot;: [
+    -18,
+    -25,
+    21
+  ],
+  &quot;target&quot;: [
+    20,
+    -30,
+    18
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.13045446574687958,
+      0.0773668959736824,
+      -0.9884310960769653,
+      -18
+    ],
+    [
+      -0.9914543032646179,
+      -0.010179754346609116,
+      0.13005667924880981,
+      -25
+    ],
+    [
+      9.632842079554393e-8,
+      0.9969506859779358,
+      0.07803374528884888,
+      21
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;order&quot;: &quot;near&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;scene or declared ROI subject&quot;,
+  &quot;route_role&quot;: &quot;near&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P05.webp" alt="Opera House Auditorium, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;caption&quot;: &quot;Ceiling ornament&quot;,
+  &quot;position&quot;: [
+    0,
+    -22,
+    15
+  ],
+  &quot;target&quot;: [
+    0,
+    -22,
+    48
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      8.74227694680485e-8,
+      -1.5099580252808664e-7,
+      0
+    ],
+    [
+      8.742278367890322e-8,
+      1,
+      -8.74227694680485e-8,
+      -22
+    ],
+    [
+      1.5099580252808664e-7,
+      -8.742278367890322e-8,
+      -1,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;ceiling_upward&quot;,
+  &quot;order&quot;: &quot;detail&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;scene or declared ROI subject&quot;,
+  &quot;route_role&quot;: &quot;detail&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P06.webp" alt="Opera House Auditorium, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;caption&quot;: &quot;Rear entrance and red stair&quot;,
+  &quot;position&quot;: [
+    0,
+    -45,
+    20
+  ],
+  &quot;target&quot;: [
+    0,
+    -78,
+    16
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -6.79874077036402e-8,
+      -1.6034188377034297e-7,
+      0
+    ],
+    [
+      -1.5099580252808664e-7,
+      -0.12033124268054962,
+      0.9927337765693665,
+      -45
+    ],
+    [
+      -8.678753715685161e-8,
+      0.9927337765693665,
+      0.12033124268054962,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;rear&quot;,
+  &quot;order&quot;: &quot;detail&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;scene or declared ROI subject&quot;,
+  &quot;route_role&quot;: &quot;detail&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P07.webp" alt="Opera House Auditorium, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;caption&quot;: &quot;Left seats and aisles&quot;,
+  &quot;position&quot;: [
+    0,
+    -15,
+    8
+  ],
+  &quot;target&quot;: [
+    -17,
+    -35,
+    7
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7619394063949585,
+      -0.024655530229210854,
+      0.6471788287162781,
+      0
+    ],
+    [
+      0.647648274898529,
+      -0.029006492346525192,
+      0.7613871097564697,
+      -15
+    ],
+    [
+      -1.4596233555153049e-8,
+      0.9992750883102417,
+      0.03806930035352707,
+      8
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;order&quot;: &quot;detail&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;scene or declared ROI subject&quot;,
+  &quot;route_role&quot;: &quot;detail&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P08.webp" alt="Opera House Auditorium, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;caption&quot;: &quot;Stage central apparatus&quot;,
+  &quot;position&quot;: [
+    -6,
+    15,
+    8
+  ],
+  &quot;target&quot;: [
+    0,
+    25,
+    7
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8574928641319275,
+      0.04395623877644539,
+      -0.5126146674156189,
+      -6
+    ],
+    [
+      -0.514495849609375,
+      0.07326030731201172,
+      -0.8543576598167419,
+      15
+    ],
+    [
+      -3.670117365572878e-8,
+      0.996343731880188,
+      0.08543549478054047,
+      8
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;detail&quot;,
+  &quot;order&quot;: &quot;detail&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;scene or declared ROI subject&quot;,
+  &quot;route_role&quot;: &quot;detail&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P09.webp" alt="Opera House Auditorium, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;caption&quot;: &quot;Left balconies&quot;,
+  &quot;position&quot;: [
+    18,
+    -25,
+    21
+  ],
+  &quot;target&quot;: [
+    -20,
+    -30,
+    18
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.13045446574687958,
+      -0.0773668959736824,
+      0.9884310960769653,
+      18
+    ],
+    [
+      0.9914543032646179,
+      -0.010179754346609116,
+      0.13005667924880981,
+      -25
+    ],
+    [
+      -9.632842079554393e-8,
+      0.9969506859779358,
+      0.07803374528884888,
+      21
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;order&quot;: &quot;detail&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;scene or declared ROI subject&quot;,
+  &quot;route_role&quot;: &quot;detail&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/public/P10.webp" alt="Opera House Auditorium, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;caption&quot;: &quot;Downward view of the audience and aisles&quot;,
+  &quot;position&quot;: [
+    0,
+    -30,
+    43
+  ],
+  &quot;target&quot;: [
+    0,
+    -30,
+    0
+  ],
+  &quot;lens&quot;: 15.5,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      -30
+    ],
+    [
+      0,
+      0,
+      1,
+      43
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      330.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      330.66667556762695,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;top_down&quot;,
+  &quot;order&quot;: &quot;layout&quot;,
+  &quot;coverage&quot;: &quot;audience layout with physical balcony occlusion&quot;,
+  &quot;subject&quot;: &quot;audience and connected aisles&quot;,
+  &quot;route_role&quot;: &quot;layout&quot;,
+  &quot;clip_range&quot;: [
+    0.009999999776482582,
+    168.74000549316406
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 168.74000549316406,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-001.webp" alt="Opera House Auditorium, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-002.webp" alt="Opera House Auditorium, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-003.webp" alt="Opera House Auditorium, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-004.webp" alt="Opera House Auditorium, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-005.webp" alt="Opera House Auditorium, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-006.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-006.webp" alt="Opera House Auditorium, drawing sheet-006" loading="lazy"></a><figcaption>sheet-006 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-007.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-007.webp" alt="Opera House Auditorium, drawing sheet-007" loading="lazy"></a><figcaption>sheet-007 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-008.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-008.webp" alt="Opera House Auditorium, drawing sheet-008" loading="lazy"></a><figcaption>sheet-008 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-009.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/opera-house-auditorium/images/drawings/sheet-009.webp" alt="Opera House Auditorium, drawing sheet-009" loading="lazy"></a><figcaption>sheet-009 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>22.61</td></tr><tr><th>GPT-6-Astra (low)</th><td>22.23</td></tr><tr><th>Qwen4-Max-Preview</th><td>16.63</td></tr><tr><th>Kimi-K3.1-Pro</th><td>16.14</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>15.30</td></tr><tr><th>Opus-5.5</th><td>11.89</td></tr><tr><th>GLM-5.3-Flash</th><td>10.61</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

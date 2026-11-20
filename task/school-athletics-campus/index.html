@@ -1,0 +1,889 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="School athletics campus reconstruction · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>School athletics campus reconstruction · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Blocks</p><h1 class="task-title">School athletics campus reconstruction</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P01.webp" alt="School athletics campus reconstruction, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    -400,
+    -450,
+    400
+  ],
+  &quot;target&quot;: [
+    55,
+    120,
+    10
+  ],
+  &quot;scale&quot;: 470,
+  &quot;Tcw&quot;: [
+    [
+      0.7815372347831726,
+      0.2941810190677643,
+      -0.550142765045166,
+      -400
+    ],
+    [
+      -0.623858630657196,
+      0.3685346245765686,
+      -0.6891898512840271,
+      -450
+    ],
+    [
+      9.581404469827248e-8,
+      0.881838858127594,
+      0.4715508818626404,
+      400
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    470.0000148825352,
+    352.5000111619014
+  ],
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;caption&quot;: &quot;South-west campus and road oblique overview&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P02.webp" alt="School athletics campus reconstruction, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    -350,
+    500,
+    380
+  ],
+  &quot;target&quot;: [
+    55,
+    120,
+    10
+  ],
+  &quot;scale&quot;: 460,
+  &quot;Tcw&quot;: [
+    [
+      -0.684240460395813,
+      0.4043370187282562,
+      -0.6068991422653198,
+      -350
+    ],
+    [
+      -0.7292564511299133,
+      -0.3793777823448181,
+      0.5694361329078674,
+      500
+    ],
+    [
+      5.721617313270144e-8,
+      0.8322162628173828,
+      0.554451048374176,
+      380
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    460.0000209920118,
+    344.99998803134116
+  ],
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;caption&quot;: &quot;North-west campus, roofs and courtyard rear-oblique overview&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P03.webp" alt="School athletics campus reconstruction, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    -150,
+    -120,
+    110
+  ],
+  &quot;target&quot;: [
+    -40,
+    65,
+    12
+  ],
+  &quot;scale&quot;: 160,
+  &quot;Tcw&quot;: [
+    [
+      0.859535813331604,
+      0.21178364753723145,
+      -0.46512991189956665,
+      -150
+    ],
+    [
+      -0.511075496673584,
+      0.35618141293525696,
+      -0.7822636961936951,
+      -120
+    ],
+    [
+      -3.2364386726158045e-8,
+      0.9101002812385559,
+      0.41438809037208557,
+      110
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    159.99999761581424,
+    119.99999374151263
+  ],
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;caption&quot;: &quot;Western classroom facades and courtyard wings&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P04.webp" alt="School athletics campus reconstruction, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    200,
+    -50,
+    150
+  ],
+  &quot;target&quot;: [
+    45,
+    100,
+    16
+  ],
+  &quot;scale&quot;: 240,
+  &quot;Tcw&quot;: [
+    [
+      0.6954213380813599,
+      -0.3792078495025635,
+      0.61040198802948,
+      200
+    ],
+    [
+      0.7186022400856018,
+      0.36697518825531006,
+      -0.5907114744186401,
+      -50
+    ],
+    [
+      3.4225337230964215e-8,
+      0.8494296073913574,
+      0.5277019739151001,
+      150
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    239.99998748302525,
+    179.99999564141046
+  ],
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;caption&quot;: &quot;Central taller building and stepped courtyard&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P05.webp" alt="School athletics campus reconstruction, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    430,
+    -90,
+    230
+  ],
+  &quot;target&quot;: [
+    185,
+    115,
+    0
+  ],
+  &quot;scale&quot;: 220,
+  &quot;Tcw&quot;: [
+    [
+      0.6417224407196045,
+      -0.44811713695526123,
+      0.6224012970924377,
+      430
+    ],
+    [
+      0.7669369578361511,
+      0.3749549388885498,
+      -0.5207844972610474,
+      -90
+    ],
+    [
+      2.2448594094726104e-8,
+      0.8115416169166565,
+      0.5842946171760559,
+      230
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    220.00000696629309,
+    165.0000052247198
+  ],
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;caption&quot;: &quot;Running track, striped field and outdoor courts&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P06.webp" alt="School athletics campus reconstruction, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    -170,
+    400,
+    160
+  ],
+  &quot;target&quot;: [
+    45,
+    165,
+    20
+  ],
+  &quot;scale&quot;: 180,
+  &quot;Tcw&quot;: [
+    [
+      -0.7378053665161133,
+      0.27161768078804016,
+      -0.6179537773132324,
+      -170
+    ],
+    [
+      -0.6750133633613586,
+      -0.29688459634780884,
+      0.675437867641449,
+      400
+    ],
+    [
+      -8.590842526245979e-8,
+      0.9154689311981201,
+      0.40238863229751587,
+      160
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    179.99999564141046,
+    135.00000238884243
+  ],
+  &quot;category&quot;: &quot;rear&quot;,
+  &quot;caption&quot;: &quot;Rear oblique view of the taller building, roof tiers and parking&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P07.webp" alt="School athletics campus reconstruction, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    8,
+    158,
+    1200
+  ],
+  &quot;target&quot;: [
+    8,
+    158,
+    0
+  ],
+  &quot;scale&quot;: 1040,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      8
+    ],
+    [
+      0,
+      1,
+      0,
+      158
+    ],
+    [
+      0,
+      0,
+      1,
+      1200
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    1039.9999990314245,
+    779.9999756645419
+  ],
+  &quot;category&quot;: &quot;top_down&quot;,
+  &quot;caption&quot;: &quot;Whole-site top-down terrain and road extent&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P08.webp" alt="School athletics campus reconstruction, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    60,
+    108,
+    800
+  ],
+  &quot;target&quot;: [
+    60,
+    108,
+    0
+  ],
+  &quot;scale&quot;: 410,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      60
+    ],
+    [
+      0,
+      1,
+      0,
+      108
+    ],
+    [
+      0,
+      0,
+      1,
+      800
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    409.99999961815774,
+    307.50000705214933
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;caption&quot;: &quot;Campus overhead layout, roofs, athletics grounds and gates&quot;,
+  &quot;category&quot;: &quot;top_down&quot;,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P09.webp" alt="School athletics campus reconstruction, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    70,
+    42,
+    12
+  ],
+  &quot;target&quot;: [
+    46,
+    78,
+    3
+  ],
+  &quot;lens&quot;: 36,
+  &quot;Tcw&quot;: [
+    [
+      0.8320502638816833,
+      -0.11296658962965012,
+      0.5430753827095032,
+      70
+    ],
+    [
+      0.5547001957893372,
+      0.16944988071918488,
+      -0.8146130442619324,
+      42
+    ],
+    [
+      -1.7098553684036233e-9,
+      0.9790430665016174,
+      0.20365341007709503,
+      12
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      768,
+      0,
+      384
+    ],
+    [
+      0,
+      768.0000228881836,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;caption&quot;: &quot;Courtyard sculpture, water basins, paving and central sloped access&quot;,
+  &quot;category&quot;: &quot;detail&quot;,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P10.webp" alt="School athletics campus reconstruction, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -46,
+    41,
+    3.5
+  ],
+  &quot;target&quot;: [
+    -46,
+    26.75,
+    3.4
+  ],
+  &quot;lens&quot;: 50,
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -8.63588738297949e-8,
+      -1.5160554767135181e-7,
+      -46
+    ],
+    [
+      -1.5099580252808664e-7,
+      -0.007017391733825207,
+      0.9999753832817078,
+      41
+    ],
+    [
+      -8.74206236289865e-8,
+      0.9999753832817078,
+      0.007017391733825207,
+      3.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;caption&quot;: &quot;Indoor south-west wing window bay above the ground slab&quot;,
+  &quot;category&quot;: &quot;interior&quot;,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P11.webp" alt="School athletics campus reconstruction, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    26,
+    175,
+    20
+  ],
+  &quot;target&quot;: [
+    62,
+    159,
+    20
+  ],
+  &quot;lens&quot;: 24,
+  &quot;Tcw&quot;: [
+    [
+      -0.4061383903026581,
+      -1.2161930840193236e-7,
+      -0.9138115644454956,
+      26
+    ],
+    [
+      -0.9138115644454956,
+      1.2750221856094868e-7,
+      0.4061383903026581,
+      175
+    ],
+    [
+      6.711872657660933e-8,
+      1,
+      -1.6292068494294654e-7,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;caption&quot;: &quot;Indoor upper central volume, glazing, fins and open floor edge&quot;,
+  &quot;category&quot;: &quot;interior&quot;,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P12.webp" alt="School athletics campus reconstruction, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -43,
+    90,
+    7.5
+  ],
+  &quot;target&quot;: [
+    -43,
+    77.2,
+    7.4
+  ],
+  &quot;lens&quot;: 45,
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -8.623783998018553e-8,
+      -1.5167411504535266e-7,
+      -43
+    ],
+    [
+      -1.5099580252808664e-7,
+      -0.007812018971890211,
+      0.999969482421875,
+      90
+    ],
+    [
+      -8.742009072193468e-8,
+      0.999969482421875,
+      0.007812018971890211,
+      7.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;caption&quot;: &quot;Indoor west connector window bay above the +5.102 m slab&quot;,
+  &quot;category&quot;: &quot;interior&quot;,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P13.webp" alt="School athletics campus reconstruction, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    46,
+    -53,
+    19
+  ],
+  &quot;target&quot;: [
+    46,
+    19,
+    6
+  ],
+  &quot;lens&quot;: 36,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      46
+    ],
+    [
+      0,
+      0.1776825487613678,
+      -0.9840878844261169,
+      -53
+    ],
+    [
+      0,
+      0.9840878844261169,
+      0.1776825487613678,
+      19
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      768,
+      0,
+      384
+    ],
+    [
+      0,
+      768.0000228881836,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;caption&quot;: &quot;Front entrance gateway and both side pavilions&quot;,
+  &quot;category&quot;: &quot;detail&quot;,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P14.webp" alt="School athletics campus reconstruction, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    175,
+    -2,
+    12
+  ],
+  &quot;target&quot;: [
+    151,
+    14,
+    -0.5
+  ],
+  &quot;lens&quot;: 36,
+  &quot;Tcw&quot;: [
+    [
+      0.5547001957893372,
+      -0.3308463990688324,
+      0.7634450793266296,
+      175
+    ],
+    [
+      0.8320503234863281,
+      0.22056430578231812,
+      -0.5089633464813232,
+      -2
+    ],
+    [
+      -3.8796237333826866e-8,
+      0.9175467491149902,
+      0.39762791991233826,
+      12
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      768,
+      0,
+      384
+    ],
+    [
+      0,
+      768.0000228881836,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;caption&quot;: &quot;East glazed canopy and descending ramp beside the courts&quot;,
+  &quot;category&quot;: &quot;detail&quot;,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/public/P15.webp" alt="School athletics campus reconstruction, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    -140,
+    125,
+    12
+  ],
+  &quot;target&quot;: [
+    -113,
+    125,
+    2.5
+  ],
+  &quot;scale&quot;: 35,
+  &quot;Tcw&quot;: [
+    [
+      7.549790126404332e-8,
+      0.3319062292575836,
+      -0.9433122873306274,
+      -140
+    ],
+    [
+      -1,
+      6.126301688169633e-9,
+      -7.787932787550744e-8,
+      125
+    ],
+    [
+      -2.0069622408414034e-8,
+      0.9433122873306274,
+      0.3319062292575836,
+      12
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    34.99999980442226,
+    26.249998997664118
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000,
+  &quot;caption&quot;: &quot;West entrance, paired kiosks and overhead gateway&quot;,
+  &quot;category&quot;: &quot;detail&quot;,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/athletics_plan.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/athletics_plan.webp" alt="School athletics campus reconstruction, drawing athletics_plan" loading="lazy"></a><figcaption>athletics_plan · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b01_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b01_elevations.webp" alt="School athletics campus reconstruction, drawing b01_elevations" loading="lazy"></a><figcaption>b01_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b01_plans.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b01_plans.webp" alt="School athletics campus reconstruction, drawing b01_plans" loading="lazy"></a><figcaption>b01_plans · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b01_roof_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b01_roof_sections.webp" alt="School athletics campus reconstruction, drawing b01_roof_sections" loading="lazy"></a><figcaption>b01_roof_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b02_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b02_elevations.webp" alt="School athletics campus reconstruction, drawing b02_elevations" loading="lazy"></a><figcaption>b02_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b02_plans.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b02_plans.webp" alt="School athletics campus reconstruction, drawing b02_plans" loading="lazy"></a><figcaption>b02_plans · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b02_roof_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b02_roof_sections.webp" alt="School athletics campus reconstruction, drawing b02_roof_sections" loading="lazy"></a><figcaption>b02_roof_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b03_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b03_elevations.webp" alt="School athletics campus reconstruction, drawing b03_elevations" loading="lazy"></a><figcaption>b03_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b03_plans.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b03_plans.webp" alt="School athletics campus reconstruction, drawing b03_plans" loading="lazy"></a><figcaption>b03_plans · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b03_roof_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b03_roof_sections.webp" alt="School athletics campus reconstruction, drawing b03_roof_sections" loading="lazy"></a><figcaption>b03_roof_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b04_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b04_elevations.webp" alt="School athletics campus reconstruction, drawing b04_elevations" loading="lazy"></a><figcaption>b04_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b04_plans.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b04_plans.webp" alt="School athletics campus reconstruction, drawing b04_plans" loading="lazy"></a><figcaption>b04_plans · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b04_roof_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b04_roof_sections.webp" alt="School athletics campus reconstruction, drawing b04_roof_sections" loading="lazy"></a><figcaption>b04_roof_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b05_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b05_elevations.webp" alt="School athletics campus reconstruction, drawing b05_elevations" loading="lazy"></a><figcaption>b05_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b05_plans.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b05_plans.webp" alt="School athletics campus reconstruction, drawing b05_plans" loading="lazy"></a><figcaption>b05_plans · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b05_roof_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b05_roof_sections.webp" alt="School athletics campus reconstruction, drawing b05_roof_sections" loading="lazy"></a><figcaption>b05_roof_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b06_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b06_elevations.webp" alt="School athletics campus reconstruction, drawing b06_elevations" loading="lazy"></a><figcaption>b06_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b06_plan_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b06_plan_sections.webp" alt="School athletics campus reconstruction, drawing b06_plan_sections" loading="lazy"></a><figcaption>b06_plan_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b07_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b07_elevations.webp" alt="School athletics campus reconstruction, drawing b07_elevations" loading="lazy"></a><figcaption>b07_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/b07_plan_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/b07_plan_sections.webp" alt="School athletics campus reconstruction, drawing b07_plan_sections" loading="lazy"></a><figcaption>b07_plan_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/campus_plan.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/campus_plan.webp" alt="School athletics campus reconstruction, drawing campus_plan" loading="lazy"></a><figcaption>campus_plan · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/courtyard_plan.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/courtyard_plan.webp" alt="School athletics campus reconstruction, drawing courtyard_plan" loading="lazy"></a><figcaption>courtyard_plan · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/gateway_details.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/gateway_details.webp" alt="School athletics campus reconstruction, drawing gateway_details" loading="lazy"></a><figcaption>gateway_details · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/gateway_interiors.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/gateway_interiors.webp" alt="School athletics campus reconstruction, drawing gateway_interiors" loading="lazy"></a><figcaption>gateway_interiors · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/r01_ramp.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/r01_ramp.webp" alt="School athletics campus reconstruction, drawing r01_ramp" loading="lazy"></a><figcaption>r01_ramp · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/r02_ramp.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/r02_ramp.webp" alt="School athletics campus reconstruction, drawing r02_ramp" loading="lazy"></a><figcaption>r02_ramp · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/sculpture_details.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/sculpture_details.webp" alt="School athletics campus reconstruction, drawing sculpture_details" loading="lazy"></a><figcaption>sculpture_details · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/site_plan.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/site_plan.webp" alt="School athletics campus reconstruction, drawing site_plan" loading="lazy"></a><figcaption>site_plan · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/west_kiosk_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/west_kiosk_elevations.webp" alt="School athletics campus reconstruction, drawing west_kiosk_elevations" loading="lazy"></a><figcaption>west_kiosk_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/school-athletics-campus/images/drawings/west_kiosk_plans.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/school-athletics-campus/images/drawings/west_kiosk_plans.webp" alt="School athletics campus reconstruction, drawing west_kiosk_plans" loading="lazy"></a><figcaption>west_kiosk_plans · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>48.29</td></tr><tr><th>GPT-6-Astra (low)</th><td>46.12</td></tr><tr><th>Qwen4-Max-Preview</th><td>36.03</td></tr><tr><th>Opus-5.5</th><td>31.57</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>31.49</td></tr><tr><th>Kimi-K3.1-Pro</th><td>30.32</td></tr><tr><th>GLM-5.3-Flash</th><td>18.01</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

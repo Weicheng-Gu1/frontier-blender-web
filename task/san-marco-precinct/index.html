@@ -1,0 +1,1986 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Reconstruct the San Marco Precinct of Venice · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Reconstruct the San Marco Precinct of Venice · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Blocks</p><h1 class="task-title">Reconstruct the San Marco Precinct of Venice</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P01.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    -25,
+    -65,
+    350
+  ],
+  &quot;target&quot;: [
+    -25,
+    -65,
+    0
+  ],
+  &quot;scale&quot;: 210,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -25
+    ],
+    [
+      0,
+      1,
+      0,
+      -65
+    ],
+    [
+      0,
+      0,
+      1,
+      350
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    209.99999198131295,
+    157.49999783642127
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P02.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -27,
+    1,
+    49
+  ],
+  &quot;target&quot;: [
+    -4,
+    -91,
+    20
+  ],
+  &quot;lens&quot;: 24,
+  &quot;Tcw&quot;: [
+    [
+      -0.9701425433158875,
+      0.07092642039060593,
+      -0.23193304240703583,
+      -27
+    ],
+    [
+      -0.2425355464220047,
+      -0.28370600938796997,
+      0.9277324080467224,
+      1
+    ],
+    [
+      -5.5128072773413805e-8,
+      0.9562846422195435,
+      0.29243743419647217,
+      49
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P03.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -88,
+    -19,
+    86
+  ],
+  &quot;target&quot;: [
+    -18,
+    -88,
+    18
+  ],
+  &quot;lens&quot;: 29,
+  &quot;Tcw&quot;: [
+    [
+      -0.7020017504692078,
+      0.40518704056739807,
+      -0.5856765508651733,
+      -88
+    ],
+    [
+      -0.7121752500534058,
+      -0.3993990421295166,
+      0.5773100256919861,
+      -19
+    ],
+    [
+      -1.0109141612701933e-7,
+      0.8223769664764404,
+      0.5689429640769958,
+      86
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      618.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      618.6667098999023,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P04.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -3,
+    -159,
+    79
+  ],
+  &quot;target&quot;: [
+    -13,
+    -87,
+    21
+  ],
+  &quot;lens&quot;: 27,
+  &quot;Tcw&quot;: [
+    [
+      0.9904922842979431,
+      -0.08580026030540466,
+      0.10753313452005386,
+      -3
+    ],
+    [
+      0.137568399310112,
+      0.6177618503570557,
+      -0.7742384076118469,
+      -159
+    ],
+    [
+      -1.0194115773742851e-8,
+      0.7816702723503113,
+      0.623691737651825,
+      79
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      576.0000457763672,
+      0,
+      384
+    ],
+    [
+      0,
+      576.0000686645508,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P05.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    73,
+    -102,
+    83
+  ],
+  &quot;target&quot;: [
+    -16,
+    -89,
+    17
+  ],
+  &quot;lens&quot;: 30,
+  &quot;Tcw&quot;: [
+    [
+      0.1445336490869522,
+      -0.5853893756866455,
+      0.7977651953697205,
+      73
+    ],
+    [
+      0.9894998669624329,
+      0.08550617843866348,
+      -0.11652754992246628,
+      -102
+    ],
+    [
+      1.3852172742190305e-7,
+      0.8062307238578796,
+      0.5916012525558472,
+      83
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P06.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -35,
+    -7,
+    30
+  ],
+  &quot;target&quot;: [
+    -26,
+    -62,
+    19
+  ],
+  &quot;lens&quot;: 33,
+  &quot;Tcw&quot;: [
+    [
+      -0.9868745803833008,
+      0.031270623207092285,
+      -0.15843212604522705,
+      -35
+    ],
+    [
+      -0.16148866713047028,
+      -0.1910974532365799,
+      0.9681958556175232,
+      -7
+    ],
+    [
+      1.1213425210598871e-7,
+      0.9810728430747986,
+      0.19363906979560852,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      704.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      703.9999923706055,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P07.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -82,
+    -22,
+    18
+  ],
+  &quot;target&quot;: [
+    -28,
+    -93,
+    15
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.7959461212158203,
+      0.02034776657819748,
+      -0.6050253510475159,
+      -82
+    ],
+    [
+      -0.6053674817085266,
+      -0.026753466576337814,
+      0.7954963445663452,
+      -22
+    ],
+    [
+      4.7100652267317855e-8,
+      0.9994349479675293,
+      0.03361218795180321,
+      18
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;west arcade and basilica frontage streetscape&quot;,
+  &quot;source_view&quot;: &quot;P02&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P08.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -42,
+    -5,
+    24
+  ],
+  &quot;target&quot;: [
+    -10,
+    -100,
+    12
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.9476810097694397,
+      0.037941824644804,
+      -0.31695592403411865,
+      -42
+    ],
+    [
+      -0.31921881437301636,
+      -0.11263978481292725,
+      0.940963089466095,
+      -5
+    ],
+    [
+      9.06438568648582e-9,
+      0.9929112195968628,
+      0.11885832250118256,
+      24
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;basilica entrance court and paving close view&quot;,
+  &quot;source_view&quot;: &quot;P02&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P09.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    18,
+    -5,
+    22
+  ],
+  &quot;target&quot;: [
+    -18,
+    -90,
+    13
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.9208176732063293,
+      -0.037844184786081314,
+      0.3881528675556183,
+      18
+    ],
+    [
+      0.3899933993816376,
+      -0.08935429155826569,
+      0.9164719581604004,
+      -5
+    ],
+    [
+      -7.838729665365918e-9,
+      0.9952806830406189,
+      0.09703798592090607,
+      22
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;campanile base and eastern arcade streetscape&quot;,
+  &quot;source_view&quot;: &quot;P02&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P10.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -18,
+    8,
+    16
+  ],
+  &quot;target&quot;: [
+    -67,
+    -72,
+    10
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.8527544140815735,
+      -0.03333714231848717,
+      0.5212470889091492,
+      -18
+    ],
+    [
+      0.5223120450973511,
+      -0.054427891969680786,
+      0.8510156869888306,
+      8
+    ],
+    [
+      -5.306117856207493e-8,
+      0.9979610443115234,
+      0.06382601708173752,
+      16
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;opposite-facing west colonnade detail&quot;,
+  &quot;source_view&quot;: &quot;P02&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P11.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -2,
+    4,
+    15
+  ],
+  &quot;target&quot;: [
+    -8,
+    -90,
+    12
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.9979690909385681,
+      -0.0020278252195566893,
+      0.06366781890392303,
+      -2
+    ],
+    [
+      0.0637001097202301,
+      -0.031769294291734695,
+      0.9974632859230042,
+      4
+    ],
+    [
+      6.994079759792271e-10,
+      0.9994931817054749,
+      0.0318339467048645,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;basilica nave portal and square paving&quot;,
+  &quot;source_view&quot;: &quot;P02&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P12.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    45,
+    2,
+    20
+  ],
+  &quot;target&quot;: [
+    -8,
+    -93,
+    14
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.873288631439209,
+      -0.02683100476861,
+      0.48646387457847595,
+      45
+    ],
+    [
+      0.4872032701969147,
+      -0.04809339717030525,
+      0.8719633221626282,
+      2
+    ],
+    [
+      4.8846828804016695e-8,
+      0.9984824061393738,
+      0.05507156625390053,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;rear arcade edge and roofline view&quot;,
+  &quot;source_view&quot;: &quot;P02&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P13.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -93,
+    -25,
+    38
+  ],
+  &quot;target&quot;: [
+    -30,
+    -88,
+    18
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      0.15487603843212128,
+      -0.6899372339248657,
+      -93
+    ],
+    [
+      -0.7071067094802856,
+      -0.15487608313560486,
+      0.6899372339248657,
+      -25
+    ],
+    [
+      -2.897126805123662e-8,
+      0.97571861743927,
+      0.2190278321504593,
+      38
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;northwest square edge and roof blocks&quot;,
+  &quot;source_view&quot;: &quot;P03&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P14.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -70,
+    -8,
+    58
+  ],
+  &quot;target&quot;: [
+    -16,
+    -92,
+    18
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.8411785364151001,
+      0.20107512176036835,
+      -0.5019835233688354,
+      -70
+    ],
+    [
+      -0.5407574772834778,
+      -0.3127835988998413,
+      0.7808634638786316,
+      -8
+    ],
+    [
+      -1.251761716503097e-8,
+      0.9282968640327454,
+      0.3718397617340088,
+      58
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;high oblique basilica domes and tower&quot;,
+  &quot;source_view&quot;: &quot;P03&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P15.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -55,
+    18,
+    48
+  ],
+  &quot;target&quot;: [
+    -20,
+    -78,
+    15
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.9395073652267456,
+      0.10526793450117111,
+      -0.32595181465148926,
+      -55
+    ],
+    [
+      -0.34252873063087463,
+      -0.28873488306999207,
+      0.8940392136573792,
+      18
+    ],
+    [
+      7.1559718151092966e-9,
+      0.9516043663024902,
+      0.3073258101940155,
+      48
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;north arcade roofs toward campanile&quot;,
+  &quot;source_view&quot;: &quot;P03&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P16.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -30,
+    34,
+    24
+  ],
+  &quot;target&quot;: [
+    -66,
+    -72,
+    11
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.9468815922737122,
+      -0.03709512576460838,
+      0.3194356858730316,
+      -30
+    ],
+    [
+      0.3215823471546173,
+      -0.1092245802283287,
+      0.9405608773231506,
+      34
+    ],
+    [
+      2.842620361320769e-9,
+      0.9933246970176697,
+      0.11535188555717468,
+      24
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;opposite north arcade streetscape&quot;,
+  &quot;source_view&quot;: &quot;P03&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P17.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -40,
+    20,
+    35
+  ],
+  &quot;target&quot;: [
+    -25,
+    -65,
+    30
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.9847834706306458,
+      0.010050291195511818,
+      -0.17349456250667572,
+      -40
+    ],
+    [
+      -0.17378540337085724,
+      -0.05695163086056709,
+      0.9831353425979614,
+      20
+    ],
+    [
+      -7.912416832844826e-10,
+      0.9983263611793518,
+      0.057831622660160065,
+      35
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;upper facade and bell tower detail&quot;,
+  &quot;source_view&quot;: &quot;P03&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P18.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -15,
+    22,
+    30
+  ],
+  &quot;target&quot;: [
+    8,
+    -84,
+    14
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.9772595167160034,
+      0.030944377183914185,
+      -0.20977681875228882,
+      -15
+    ],
+    [
+      -0.21204686164855957,
+      -0.1426132172346115,
+      0.9667975902557373,
+      22
+    ],
+    [
+      1.451671782781716e-9,
+      0.9892946481704712,
+      0.14593178033828735,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;eastern roof and palace frontage&quot;,
+  &quot;source_view&quot;: &quot;P03&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P19.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -50,
+    -158,
+    40
+  ],
+  &quot;target&quot;: [
+    -14,
+    -110,
+    18
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.800000011920929,
+      0.20655274391174316,
+      -0.563325822353363,
+      -50
+    ],
+    [
+      -0.6000000238418579,
+      0.27540361881256104,
+      -0.7511010766029358,
+      -158
+    ],
+    [
+      -2.0112743470690475e-8,
+      0.9388763308525085,
+      0.3442545533180237,
+      40
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;rear basilica volumes and canal-side street&quot;,
+  &quot;source_view&quot;: &quot;P04&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P20.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P20.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P20" loading="lazy" width="800" height="600"></a><figcaption>P20</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P20&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -8,
+    -165,
+    55
+  ],
+  &quot;target&quot;: [
+    -15,
+    -100,
+    20
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.9942510724067688,
+      -0.05053671449422836,
+      0.09439655393362045,
+      -8
+    ],
+    [
+      0.10707318782806396,
+      0.4692695140838623,
+      -0.8765394687652588,
+      -165
+    ],
+    [
+      -9.540898071591641e-10,
+      0.881607711315155,
+      0.4719828963279724,
+      55
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;south rear roofscape overview&quot;,
+  &quot;source_view&quot;: &quot;P04&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P20.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P21.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    48,
+    -158,
+    42
+  ],
+  &quot;target&quot;: [
+    -12,
+    -103,
+    15
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.6757245659828186,
+      -0.23209209740161896,
+      0.6996638774871826,
+      48
+    ],
+    [
+      0.7371541857719421,
+      0.21275104582309723,
+      -0.641358494758606,
+      -158
+    ],
+    [
+      1.5178072132471243e-8,
+      0.9491418600082397,
+      0.31484878063201904,
+      42
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;south-east palace rear and arcade&quot;,
+  &quot;source_view&quot;: &quot;P04&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P22.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -20,
+    -145,
+    22
+  ],
+  &quot;target&quot;: [
+    -55,
+    -110,
+    10
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.7071066498756409,
+      -0.16660234332084656,
+      0.6871998906135559,
+      -20
+    ],
+    [
+      0.7071067690849304,
+      0.16660234332084656,
+      -0.6871997714042664,
+      -145
+    ],
+    [
+      -1.0703847586057691e-8,
+      0.9718473553657532,
+      0.23561127483844757,
+      22
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;opposite rear colonnade and street&quot;,
+  &quot;source_view&quot;: &quot;P04&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P23.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P23.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P23" loading="lazy" width="800" height="600"></a><figcaption>P23</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P23&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    8,
+    -150,
+    26
+  ],
+  &quot;target&quot;: [
+    -15,
+    -116,
+    20
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.8282833695411682,
+      -0.0810379758477211,
+      0.55441814661026,
+      8
+    ],
+    [
+      0.5603094100952148,
+      0.11979521811008453,
+      -0.8195745944976807,
+      -150
+    ],
+    [
+      2.2555255441147892e-8,
+      0.9894856810569763,
+      0.14463073015213013,
+      26
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;basilica side wall and roof detail&quot;,
+  &quot;source_view&quot;: &quot;P04&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P23.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P24.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P24.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P24" loading="lazy" width="800" height="600"></a><figcaption>P24</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P24&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    38,
+    -145,
+    24
+  ],
+  &quot;target&quot;: [
+    12,
+    -106,
+    14
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.8320503234863281,
+      -0.11573857069015503,
+      0.5424913167953491,
+      38
+    ],
+    [
+      0.5547001361846924,
+      0.1736079454421997,
+      -0.8137370944023132,
+      -145
+    ],
+    [
+      -3.965691064422572e-8,
+      0.9779902100563049,
+      0.20865075290203094,
+      24
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;palace side elevation streetscape&quot;,
+  &quot;source_view&quot;: &quot;P04&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P24.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P25.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P25.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P25" loading="lazy" width="800" height="600"></a><figcaption>P25</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P25&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    86,
+    -105,
+    40
+  ],
+  &quot;target&quot;: [
+    -12,
+    -88,
+    18
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.1709168702363968,
+      -0.21278879046440125,
+      0.9620334506034851,
+      86
+    ],
+    [
+      0.9852854609489441,
+      0.03691233694553375,
+      -0.16688336431980133,
+      -105
+    ],
+    [
+      4.1417607121729816e-9,
+      0.9764007329940796,
+      0.21596664190292358,
+      40
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;east approach and palace frontage&quot;,
+  &quot;source_view&quot;: &quot;P05&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P25.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P26.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P26.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P26" loading="lazy" width="800" height="600"></a><figcaption>P26</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P26&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    98,
+    -82,
+    52
+  ],
+  &quot;target&quot;: [
+    -20,
+    -83,
+    20
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      -0.008474292233586311,
+      -0.2617145776748657,
+      0.9651080369949341,
+      98
+    ],
+    [
+      0.9999641180038452,
+      -0.0022179530933499336,
+      0.008178893476724625,
+      -82
+    ],
+    [
+      2.870379134378709e-8,
+      0.9651427865028381,
+      0.26172393560409546,
+      52
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;eastern oblique square and campanile&quot;,
+  &quot;source_view&quot;: &quot;P05&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P26.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P27.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P27.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P27" loading="lazy" width="800" height="600"></a><figcaption>P27</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P27&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    102,
+    -130,
+    46
+  ],
+  &quot;target&quot;: [
+    -20,
+    -100,
+    18
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.23878799378871918,
+      -0.211238831281662,
+      0.9478176832199097,
+      102
+    ],
+    [
+      0.971071720123291,
+      0.05194389820098877,
+      -0.23306980729103088,
+      -130
+    ],
+    [
+      4.925549745848912e-8,
+      0.9760531783103943,
+      0.21753163635730743,
+      46
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;opposite eastern roof blocks&quot;,
+  &quot;source_view&quot;: &quot;P05&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P27.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P28.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P28.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P28" loading="lazy" width="800" height="600"></a><figcaption>P28</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P28&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    65,
+    -92,
+    22
+  ],
+  &quot;target&quot;: [
+    8,
+    -86,
+    12
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.10468468070030212,
+      -0.17093366384506226,
+      0.9797054529190063,
+      65
+    ],
+    [
+      0.9945054650306702,
+      0.017992958426475525,
+      -0.10312679409980774,
+      -92
+    ],
+    [
+      3.981793739171735e-8,
+      0.9851182103157043,
+      0.17187803983688354,
+      22
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;east arcade close streetscape&quot;,
+  &quot;source_view&quot;: &quot;P05&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P28.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P29.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P29.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P29" loading="lazy" width="800" height="600"></a><figcaption>P29</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P29&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    55,
+    -112,
+    18
+  ],
+  &quot;target&quot;: [
+    5,
+    -92,
+    10
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.3713906407356262,
+      -0.13643376529216766,
+      0.9183979630470276,
+      55
+    ],
+    [
+      0.9284766912460327,
+      0.054573554545640945,
+      -0.3673591613769531,
+      -112
+    ],
+    [
+      -4.694354061030026e-8,
+      0.9891448616981506,
+      0.14694368839263916,
+      18
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;retail arcade frontage and paving&quot;,
+  &quot;source_view&quot;: &quot;P05&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P29.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/public/P30.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/public/P30.webp" alt="Reconstruct the San Marco Precinct of Venice, reference P30" loading="lazy" width="800" height="600"></a><figcaption>P30</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P30&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    80,
+    -124,
+    20
+  ],
+  &quot;target&quot;: [
+    -5,
+    -106,
+    12
+  ],
+  &quot;lens&quot;: 34,
+  &quot;Tcw&quot;: [
+    [
+      0.20717057585716248,
+      -0.08969870954751968,
+      0.9741840362548828,
+      80
+    ],
+    [
+      0.9783048629760742,
+      0.01899508759379387,
+      -0.20629791915416718,
+      -124
+    ],
+    [
+      -5.3467431371245766e-8,
+      0.9957877993583679,
+      0.09168790280818939,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;palace courtyard-facing arcade evidence&quot;,
+  &quot;source_view&quot;: &quot;P05&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2588.860107421875,
+  &quot;image&quot;: &quot;images/public/P30.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/arcade_lower.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/arcade_lower.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing arcade_lower" loading="lazy"></a><figcaption>arcade_lower · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/arcade_middle.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/arcade_middle.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing arcade_middle" loading="lazy"></a><figcaption>arcade_middle · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/arcade_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/arcade_sections.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing arcade_sections" loading="lazy"></a><figcaption>arcade_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/arcade_upper.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/arcade_upper.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing arcade_upper" loading="lazy"></a><figcaption>arcade_upper · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_facades.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_facades.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing basilica_facades" loading="lazy"></a><figcaption>basilica_facades · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_lower.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_lower.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing basilica_lower" loading="lazy"></a><figcaption>basilica_lower · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_roof.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_roof.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing basilica_roof" loading="lazy"></a><figcaption>basilica_roof · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_sections.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing basilica_sections" loading="lazy"></a><figcaption>basilica_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_sides.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/basilica_sides.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing basilica_sides" loading="lazy"></a><figcaption>basilica_sides · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/boundary_pavilion.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/boundary_pavilion.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing boundary_pavilion" loading="lazy"></a><figcaption>boundary_pavilion · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/boundary_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/boundary_sections.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing boundary_sections" loading="lazy"></a><figcaption>boundary_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/boundary_tower.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/boundary_tower.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing boundary_tower" loading="lazy"></a><figcaption>boundary_tower · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/building_index.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/building_index.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing building_index" loading="lazy"></a><figcaption>building_index · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/district_north.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/district_north.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing district_north" loading="lazy"></a><figcaption>district_north · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/district_south.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/district_south.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing district_south" loading="lazy"></a><figcaption>district_south · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_facades.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_facades.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing palace_facades" loading="lazy"></a><figcaption>palace_facades · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_lower.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_lower.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing palace_lower" loading="lazy"></a><figcaption>palace_lower · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_roof.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_roof.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing palace_roof" loading="lazy"></a><figcaption>palace_roof · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_rooms.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_rooms.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing palace_rooms" loading="lazy"></a><figcaption>palace_rooms · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_sections.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing palace_sections" loading="lazy"></a><figcaption>palace_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_sides.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_sides.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing palace_sides" loading="lazy"></a><figcaption>palace_sides · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_upper.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/palace_upper.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing palace_upper" loading="lazy"></a><figcaption>palace_upper · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/site_plan.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/site_plan.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing site_plan" loading="lazy"></a><figcaption>site_plan · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/street_structures.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/street_structures.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing street_structures" loading="lazy"></a><figcaption>street_structures · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/tower_plans.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/tower_plans.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing tower_plans" loading="lazy"></a><figcaption>tower_plans · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/tower_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/tower_sections.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing tower_sections" loading="lazy"></a><figcaption>tower_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/urban_frontages.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/urban_frontages.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing urban_frontages" loading="lazy"></a><figcaption>urban_frontages · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/san-marco-precinct/images/drawings/urban_sides.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/san-marco-precinct/images/drawings/urban_sides.webp" alt="Reconstruct the San Marco Precinct of Venice, drawing urban_sides" loading="lazy"></a><figcaption>urban_sides · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>15.77</td></tr><tr><th>GPT-6-Astra (low)</th><td>14.58</td></tr><tr><th>Kimi-K3.1-Pro</th><td>11.01</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>10.44</td></tr><tr><th>Opus-5.5</th><td>10.00</td></tr><tr><th>Qwen4-Max-Preview</th><td>9.75</td></tr><tr><th>GLM-5.3-Flash</th><td>7.50</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

@@ -1,0 +1,2866 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Reconstruct the Central City Park Block · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Reconstruct the Central City Park Block · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Blocks</p><h1 class="task-title">Reconstruct the Central City Park Block</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P01.webp" alt="Reconstruct the Central City Park Block, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;position&quot;: [
+    340,
+    -360,
+    330
+  ],
+  &quot;target&quot;: [
+    50,
+    10,
+    8
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7870559096336365,
+      -0.34859994053840637,
+      0.5089411735534668,
+      340
+    ],
+    [
+      0.6168816685676575,
+      0.4447652995586395,
+      -0.6493387222290039,
+      -360
+    ],
+    [
+      7.16606649575624e-8,
+      0.8250223994255066,
+      0.5651000738143921,
+      330
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        50,
+        10,
+        8
+      ],
+      &quot;pixel&quot;: [
+        384.00001707142684,
+        288.0001213075508
+      ],
+      &quot;projection_error_px&quot;: 0.00001707142683926577
+    },
+    {
+      &quot;world&quot;: [
+        51,
+        10,
+        8
+      ],
+      &quot;pixel&quot;: [
+        385.3272112558895,
+        288.58795813898286
+      ],
+      &quot;projection_error_px&quot;: 0.00001704202230712326
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P02.webp" alt="Reconstruct the Central City Park Block, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;position&quot;: [
+    -270,
+    -310,
+    300
+  ],
+  &quot;target&quot;: [
+    50,
+    10,
+    8
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.38337254524230957,
+      -0.5941595435142517,
+      -270
+    ],
+    [
+      -0.7071068286895752,
+      0.3833724856376648,
+      -0.5941594243049622,
+      -310
+    ],
+    [
+      -1.0038068154472057e-8,
+      0.8402684330940247,
+      0.5421706438064575,
+      300
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        50,
+        10,
+        8
+      ],
+      &quot;pixel&quot;: [
+        383.999938165994,
+        287.9999014055712
+      ],
+      &quot;projection_error_px&quot;: 0.000006830544805325189
+    },
+    {
+      &quot;world&quot;: [
+        51,
+        10,
+        8
+      ],
+      &quot;pixel&quot;: [
+        385.2589533626783,
+        287.3172999227283
+      ],
+      &quot;projection_error_px&quot;: 0.000011712287687259959
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P03.webp" alt="Reconstruct the Central City Park Block, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;position&quot;: [
+    370,
+    330,
+    300
+  ],
+  &quot;target&quot;: [
+    50,
+    10,
+    8
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7071070671081543,
+      -0.38337230682373047,
+      0.5941592454910278,
+      370
+    ],
+    [
+      0.707106351852417,
+      -0.3833725154399872,
+      0.5941599011421204,
+      330
+    ],
+    [
+      -1.5220696525375388e-7,
+      0.8402684926986694,
+      0.5421704649925232,
+      300
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        50,
+        10,
+        8
+      ],
+      &quot;pixel&quot;: [
+        384.00042901330653,
+        288.0001104937689
+      ],
+      &quot;projection_error_px&quot;: 0.000017026001842168625
+    },
+    {
+      &quot;world&quot;: [
+        51,
+        10,
+        8
+      ],
+      &quot;pixel&quot;: [
+        382.7386402545275,
+        288.68421653330563
+      ],
+      &quot;projection_error_px&quot;: 0.00000861704586441192
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P04.webp" alt="Reconstruct the Central City Park Block, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;position&quot;: [
+    -270,
+    330,
+    300
+  ],
+  &quot;target&quot;: [
+    50,
+    10,
+    8
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7071070671081543,
+      0.38337230682373047,
+      -0.5941592454910278,
+      -270
+    ],
+    [
+      -0.707106351852417,
+      -0.3833725154399872,
+      0.5941599011421204,
+      330
+    ],
+    [
+      1.5220696525375388e-7,
+      0.8402684926986694,
+      0.5421704649925232,
+      300
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        50,
+        10,
+        8
+      ],
+      &quot;pixel&quot;: [
+        383.99955738751055,
+        288.0000968945248
+      ],
+      &quot;projection_error_px&quot;: 0.000007737001169516589
+    },
+    {
+      &quot;world&quot;: [
+        51,
+        10,
+        8
+      ],
+      &quot;pixel&quot;: [
+        382.7405495388035,
+        287.31749859233247
+      ],
+      &quot;projection_error_px&quot;: 0.000010105177295827161
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P05.webp" alt="Reconstruct the Central City Park Block, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    51,
+    11,
+    400
+  ],
+  &quot;target&quot;: [
+    51,
+    11,
+    0
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 355,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      51
+    ],
+    [
+      0,
+      1,
+      0,
+      11
+    ],
+    [
+      0,
+      0,
+      1,
+      400
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    355.0000124808871,
+    266.2499928555191
+  ],
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        51,
+        11,
+        0
+      ],
+      &quot;pixel&quot;: [
+        384,
+        288
+      ],
+      &quot;projection_error_px&quot;: 0
+    },
+    {
+      &quot;world&quot;: [
+        52,
+        11,
+        0
+      ],
+      &quot;pixel&quot;: [
+        386.16338028169014,
+        288
+      ],
+      &quot;projection_error_px&quot;: 0.000010831591112037131
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P06.webp" alt="Reconstruct the Central City Park Block, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    -10,
+    -95,
+    95
+  ],
+  &quot;target&quot;: [
+    -10,
+    5,
+    0
+  ],
+  &quot;lens&quot;: 48,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -10
+    ],
+    [
+      0,
+      0.6887496113777161,
+      -0.7249993085861206,
+      -95
+    ],
+    [
+      0,
+      0.7249993085861206,
+      0.6887496113777161,
+      95
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        -10,
+        5,
+        0
+      ],
+      &quot;pixel&quot;: [
+        384,
+        287.99977697772965
+      ],
+      &quot;projection_error_px&quot;: 0.000017028618003678275
+    },
+    {
+      &quot;world&quot;: [
+        -9,
+        5,
+        0
+      ],
+      &quot;pixel&quot;: [
+        391.42399365625545,
+        287.99977697772965
+      ],
+      &quot;projection_error_px&quot;: 0.000017574213302395947
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P07.webp" alt="Reconstruct the Central City Park Block, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    170,
+    -85,
+    85
+  ],
+  &quot;target&quot;: [
+    110,
+    -27,
+    25
+  ],
+  &quot;lens&quot;: 48,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.6950219869613647,
+      -0.4197193384170532,
+      0.5837637186050415,
+      170
+    ],
+    [
+      0.7189884781837463,
+      0.4057284891605377,
+      -0.5643048882484436,
+      -85
+    ],
+    [
+      8.214176716592192e-8,
+      0.8119236826896667,
+      0.583763599395752,
+      85
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        110,
+        -27,
+        25
+      ],
+      &quot;pixel&quot;: [
+        383.9999309666678,
+        288.00008551225665
+      ],
+      &quot;projection_error_px&quot;: 3.687814000841172e-7
+    },
+    {
+      &quot;world&quot;: [
+        111,
+        -27,
+        25
+      ],
+      &quot;pixel&quot;: [
+        390.9639243438601,
+        292.2055590203026
+      ],
+      &quot;projection_error_px&quot;: 0.000011379992940874217
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P08.webp" alt="Reconstruct the Central City Park Block, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;position&quot;: [
+    34.7,
+    -2,
+    1.15
+  ],
+  &quot;target&quot;: [
+    32.9,
+    0.55,
+    0.72
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8169679641723633,
+      -0.07870234549045563,
+      0.5712873935699463,
+      34.70000076293945
+    ],
+    [
+      0.5766830444335938,
+      0.11149493604898453,
+      -0.8093241453170776,
+      -2
+    ],
+    [
+      5.3124779242352815e-8,
+      0.9906436204910278,
+      0.1364741027355194,
+      1.149999976158142
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        32.900001525878906,
+        0.550000011920929,
+        0.7200000286102295
+      ],
+      &quot;pixel&quot;: [
+        384.0001925241338,
+        288.00012535962384
+      ],
+      &quot;projection_error_px&quot;: 0.000009418665058547049
+    },
+    {
+      &quot;world&quot;: [
+        33.900001525878906,
+        0.550000011920929,
+        0.7200000286102295
+      ],
+      &quot;pixel&quot;: [
+        620.4819773609679,
+        310.7815326900117
+      ],
+      &quot;projection_error_px&quot;: 0.000017267938346776646
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P09.webp" alt="Reconstruct the Central City Park Block, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;position&quot;: [
+    30.8,
+    2.6,
+    1.4
+  ],
+  &quot;target&quot;: [
+    32.9,
+    0.55,
+    0.72
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.6985362768173218,
+      0.16152611374855042,
+      -0.6971057057380676,
+      30.799999237060547
+    ],
+    [
+      -0.7155746221542358,
+      -0.15768016874790192,
+      0.6805070638656616,
+      2.5999999046325684
+    ],
+    [
+      -8.639052140324566e-8,
+      0.9741900563240051,
+      0.2257293164730072,
+      1.399999976158142
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        32.900001525878906,
+        0.550000011920929,
+        0.7200000286102295
+      ],
+      &quot;pixel&quot;: [
+        384.0004802890266,
+        287.99986519109217
+      ],
+      &quot;projection_error_px&quot;: 0.00002252535472280215
+    },
+    {
+      &quot;world&quot;: [
+        33.900001525878906,
+        0.550000011920929,
+        0.7200000286102295
+      ],
+      &quot;pixel&quot;: [
+        243.3976599628902,
+        255.48765685494368
+      ],
+      &quot;projection_error_px&quot;: 0.000012659387039093417
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P10.webp" alt="Reconstruct the Central City Park Block, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;position&quot;: [
+    57,
+    -80,
+    80
+  ],
+  &quot;target&quot;: [
+    110,
+    -27,
+    25
+  ],
+  &quot;lens&quot;: 48,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7071065902709961,
+      0.4183264374732971,
+      -0.5700904726982117,
+      57
+    ],
+    [
+      -0.7071069478988647,
+      0.4183262288570404,
+      -0.5700901746749878,
+      -80
+    ],
+    [
+      1.0411936202103789e-8,
+      0.8062294721603394,
+      0.5916027426719666,
+      80
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        110,
+        -27,
+        25
+      ],
+      &quot;pixel&quot;: [
+        383.9997519997177,
+        288.0003781552948
+      ],
+      &quot;projection_error_px&quot;: 0.00003483254090497212
+    },
+    {
+      &quot;world&quot;: [
+        111,
+        -27,
+        25
+      ],
+      &quot;pixel&quot;: [
+        391.7407708018952,
+        283.42076246271165
+      ],
+      &quot;projection_error_px&quot;: 0.000035686588603311975
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P11.webp" alt="Reconstruct the Central City Park Block, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;description&quot;: &quot;south street looking east buildings&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -170,
+    -35,
+    32
+  ],
+  &quot;target&quot;: [
+    35,
+    -5,
+    14
+  ],
+  &quot;lens&quot;: 48,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.14479905366897583,
+      0.08564092963933945,
+      -0.9857478141784668,
+      -170
+    ],
+    [
+      -0.9894610643386841,
+      0.012532743625342846,
+      -0.1442556530237198,
+      -35
+    ],
+    [
+      -6.389711870724568e-8,
+      0.9962472319602966,
+      0.08655308932065964,
+      32
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P11.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        35,
+        -5,
+        14
+      ],
+      &quot;pixel&quot;: [
+        383.99986643494236,
+        288.0003752991938
+      ],
+      &quot;projection_error_px&quot;: 0.000019124139669202123
+    },
+    {
+      &quot;world&quot;: [
+        36,
+        -5,
+        14
+      ],
+      &quot;pixel&quot;: [
+        384.7094824725597,
+        287.5806730643401
+      ],
+      &quot;projection_error_px&quot;: 0.000007475961183445179
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P12.webp" alt="Reconstruct the Central City Park Block, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;description&quot;: &quot;north street looking south over park&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -20,
+    210,
+    55
+  ],
+  &quot;target&quot;: [
+    -5,
+    20,
+    8
+  ],
+  &quot;lens&quot;: 50,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.9968981742858887,
+      0.018843570724129677,
+      -0.07641329616308212,
+      -20
+    ],
+    [
+      -0.0787024274468422,
+      -0.23868601024150848,
+      0.9679023027420044,
+      210
+    ],
+    [
+      -5.003768066558223e-8,
+      0.9709139466285706,
+      0.23942868411540985,
+      55
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P12.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        -5,
+        20,
+        8
+      ],
+      &quot;pixel&quot;: [
+        383.9999590289314,
+        287.9997634042244
+      ],
+      &quot;projection_error_px&quot;: 0.00003060212327454792
+    },
+    {
+      &quot;world&quot;: [
+        -4,
+        20,
+        8
+      ],
+      &quot;pixel&quot;: [
+        378.5850839140414,
+        287.89741040514275
+      ],
+      &quot;projection_error_px&quot;: 0.000016165017939329118
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P13.webp" alt="Reconstruct the Central City Park Block, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;description&quot;: &quot;east avenue looking west across hotel and park&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    250,
+    -15,
+    35
+  ],
+  &quot;target&quot;: [
+    75,
+    0,
+    12
+  ],
+  &quot;lens&quot;: 48,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.08540105074644089,
+      -0.12936531007289886,
+      0.9879125952720642,
+      250
+    ],
+    [
+      0.996346652507782,
+      0.011088332161307335,
+      -0.08467814326286316,
+      -15
+    ],
+    [
+      1.1159702495433521e-7,
+      0.9915350079536438,
+      0.12983964383602142,
+      35
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P13.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        75,
+        0,
+        12
+      ],
+      &quot;pixel&quot;: [
+        384.000082176736,
+        288.0003087226643
+      ],
+      &quot;projection_error_px&quot;: 0.000009375998388350126
+    },
+    {
+      &quot;world&quot;: [
+        76,
+        0,
+        12
+      ],
+      &quot;pixel&quot;: [
+        384.49652917726814,
+        288.7523244425145
+      ],
+      &quot;projection_error_px&quot;: 0.0000070776146685602725
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P14.webp" alt="Reconstruct the Central City Park Block, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;description&quot;: &quot;west avenue looking east across park&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -230,
+    20,
+    40
+  ],
+  &quot;target&quot;: [
+    -10,
+    5,
+    10
+  ],
+  &quot;lens&quot;: 48,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.06802408397197723,
+      0.13449333608150482,
+      -0.9885768890380859,
+      -230
+    ],
+    [
+      -0.9976837038993835,
+      -0.009169821627438068,
+      0.06740318983793259,
+      20
+    ],
+    [
+      2.068682789513332e-7,
+      0.9908720254898071,
+      0.1348055899143219,
+      40
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P14.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        -10,
+        5,
+        10
+      ],
+      &quot;pixel&quot;: [
+        383.999777443824,
+        288.00035664526496
+      ],
+      &quot;projection_error_px&quot;: 0.000006325659910544346
+    },
+    {
+      &quot;world&quot;: [
+        -9,
+        5,
+        10
+      ],
+      &quot;pixel&quot;: [
+        383.6881585123338,
+        287.38423753531566
+      ],
+      &quot;projection_error_px&quot;: 0.00001310555347799891
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P15.webp" alt="Reconstruct the Central City Park Block, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;description&quot;: &quot;pedestrian park path junction with benches, railings and paving&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    50,
+    10,
+    3
+  ],
+  &quot;target&quot;: [
+    40,
+    4,
+    1
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;Tcw&quot;: [
+    [
+      -0.5144959688186646,
+      -0.14494287967681885,
+      0.8451541066169739,
+      50
+    ],
+    [
+      0.8574928045272827,
+      -0.08696538954973221,
+      0.5070928335189819,
+      10
+    ],
+    [
+      -3.333387041948299e-7,
+      0.9856107831001282,
+      0.1690308153629303,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P15.webp&quot;,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        40,
+        4,
+        1
+      ],
+      &quot;pixel&quot;: [
+        384.0002093185862,
+        288.0000045136083
+      ],
+      &quot;projection_error_px&quot;: 0.00001956324973662049
+    },
+    {
+      &quot;world&quot;: [
+        41,
+        4,
+        1
+      ],
+      &quot;pixel&quot;: [
+        342.04264267324425,
+        299.82021216916
+      ],
+      &quot;projection_error_px&quot;: 0.000004573334820179298
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P16.webp" alt="Reconstruct the Central City Park Block, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;description&quot;: &quot;central park north path with readable lawn, paths and autumn canopy&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    15,
+    90,
+    46
+  ],
+  &quot;target&quot;: [
+    15,
+    2,
+    3
+  ],
+  &quot;lens&quot;: 48,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -1.3686366173715214e-7,
+      1.0118152715676842e-7,
+      15
+    ],
+    [
+      1.5099580252808664e-7,
+      -0.4390268325805664,
+      0.898473858833313,
+      90
+    ],
+    [
+      -7.854703198972857e-8,
+      0.898473858833313,
+      0.4390268325805664,
+      46
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P16.webp&quot;,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        15,
+        2,
+        3
+      ],
+      &quot;pixel&quot;: [
+        383.99990098734946,
+        288.0001554439755
+      ],
+      &quot;projection_error_px&quot;: 0.000015428267431616405
+    },
+    {
+      &quot;world&quot;: [
+        16,
+        2,
+        3
+      ],
+      &quot;pixel&quot;: [
+        373.5449338701585,
+        288.0001568748884
+      ],
+      &quot;projection_error_px&quot;: 0.0000043657639707817
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P17.webp" alt="Reconstruct the Central City Park Block, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;description&quot;: &quot;south-west street corner facade entrance, sidewalk paving and trees&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -140,
+    -140,
+    8
+  ],
+  &quot;target&quot;: [
+    -50,
+    -80,
+    10
+  ],
+  &quot;lens&quot;: 45,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;Tcw&quot;: [
+    [
+      0.5547003149986267,
+      -0.015381728298962116,
+      -0.8319080471992493,
+      -140
+    ],
+    [
+      -0.8320502042770386,
+      -0.01025453396141529,
+      -0.5546055436134338,
+      -140
+    ],
+    [
+      -3.751072341628969e-8,
+      0.999829113483429,
+      -0.018486563116312027,
+      8
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P17.webp&quot;,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        -50,
+        -80,
+        10
+      ],
+      &quot;pixel&quot;: [
+        384.0001320960015,
+        287.99972760984673
+      ],
+      &quot;projection_error_px&quot;: 0.000005233100068835483
+    },
+    {
+      &quot;world&quot;: [
+        -49,
+        -80,
+        10
+      ],
+      &quot;pixel&quot;: [
+        388.88481089179504,
+        288.1351809649167
+      ],
+      &quot;projection_error_px&quot;: 0.000014749216916243313
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P18.webp" alt="Reconstruct the Central City Park Block, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;description&quot;: &quot;central park east edge and westward path context&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    92,
+    4,
+    46
+  ],
+  &quot;target&quot;: [
+    8,
+    4,
+    3
+  ],
+  &quot;lens&quot;: 48,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;Tcw&quot;: [
+    [
+      1.9470718370939721e-7,
+      -0.4556712210178375,
+      0.8901481628417969,
+      92
+    ],
+    [
+      1,
+      1.670118905394702e-7,
+      -1.3324149961135845e-7,
+      4
+    ],
+    [
+      -8.795100114866727e-8,
+      0.8901481628417969,
+      0.4556712210178375,
+      46
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P18.webp&quot;,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        8,
+        4,
+        3
+      ],
+      &quot;pixel&quot;: [
+        383.9998639842915,
+        287.9998679203861
+      ],
+      &quot;projection_error_px&quot;: 0.000005249487685432541
+    },
+    {
+      &quot;world&quot;: [
+        9,
+        4,
+        3
+      ],
+      &quot;pixel&quot;: [
+        383.99986482199904,
+        292.991590752513
+      ],
+      &quot;projection_error_px&quot;: 0.000004067332326940232
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P19.webp" alt="Reconstruct the Central City Park Block, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;description&quot;: &quot;hotel front from south east&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    180,
+    -105,
+    30
+  ],
+  &quot;target&quot;: [
+    110,
+    -28,
+    23
+  ],
+  &quot;lens&quot;: 52,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7399399280548096,
+      -0.045146822929382324,
+      0.6711562275886536,
+      180
+    ],
+    [
+      0.6726729273796082,
+      0.04966147989034653,
+      -0.7382715344429016,
+      -105
+    ],
+    [
+      3.356767308559938e-9,
+      0.9977452158927917,
+      0.06711556017398834,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P19.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        110,
+        -28,
+        23
+      ],
+      &quot;pixel&quot;: [
+        384.0003255031887,
+        288.0000545212888
+      ],
+      &quot;projection_error_px&quot;: 0.0000050686184067672
+    },
+    {
+      &quot;world&quot;: [
+        111,
+        -28,
+        23
+      ],
+      &quot;pixel&quot;: [
+        391.9214352121363,
+        288.4833580231353
+      ],
+      &quot;projection_error_px&quot;: 0.000017975808191295073
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P20.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P20.webp" alt="Reconstruct the Central City Park Block, reference P20" loading="lazy" width="800" height="600"></a><figcaption>P20</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P20&quot;,
+  &quot;description&quot;: &quot;hotel rear from north west&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    45,
+    65,
+    30
+  ],
+  &quot;target&quot;: [
+    110,
+    -27,
+    22
+  ],
+  &quot;lens&quot;: 52,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.8167216777801514,
+      0.040877342224121094,
+      -0.5755819082260132,
+      45
+    ],
+    [
+      -0.5770316123962402,
+      -0.05785706639289856,
+      0.8146697878837585,
+      65
+    ],
+    [
+      5.6116789437510306e-8,
+      0.9974876046180725,
+      0.07084064930677414,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P20.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P20.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        110,
+        -27,
+        22
+      ],
+      &quot;pixel&quot;: [
+        384.00001207619215,
+        288.00024357309115
+      ],
+      &quot;projection_error_px&quot;: 0.000013918974275384244
+    },
+    {
+      &quot;world&quot;: [
+        111,
+        -27,
+        22
+      ],
+      &quot;pixel&quot;: [
+        376.0178482690774,
+        287.6007296217855
+      ],
+      &quot;projection_error_px&quot;: 0.0000203476969318217
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P21.webp" alt="Reconstruct the Central City Park Block, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;description&quot;: &quot;east hotel exterior facade and neighboring roofs from the east avenue&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    280,
+    -30,
+    70
+  ],
+  &quot;target&quot;: [
+    110,
+    -27,
+    22
+  ],
+  &quot;lens&quot;: 55,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.017643921077251434,
+      -0.27164751291275024,
+      0.9622350335121155,
+      280
+    ],
+    [
+      0.9998442530632019,
+      0.004793500527739525,
+      -0.01698029413819313,
+      -30
+    ],
+    [
+      1.8023490611085435e-7,
+      0.962384819984436,
+      0.27168983221054077,
+      70
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1173.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      1173.3333892822266,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P21.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        110,
+        -27,
+        22
+      ],
+      &quot;pixel&quot;: [
+        384.00037943112534,
+        288.0000979735761
+      ],
+      &quot;projection_error_px&quot;: 0.000013220187838669517
+    },
+    {
+      &quot;world&quot;: [
+        111,
+        -27,
+        22
+      ],
+      &quot;pixel&quot;: [
+        384.11820199013465,
+        289.8140663884806
+      ],
+      &quot;projection_error_px&quot;: 0.000007410056525714026
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P22.webp" alt="Reconstruct the Central City Park Block, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;description&quot;: &quot;hotel west side and park edge&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    55,
+    -10,
+    22
+  ],
+  &quot;target&quot;: [
+    95,
+    -27,
+    17
+  ],
+  &quot;lens&quot;: 50,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.39114075899124146,
+      0.1051822304725647,
+      -0.9143005609512329,
+      55
+    ],
+    [
+      -0.9203308820724487,
+      -0.0447024330496788,
+      0.3885778784751892,
+      -10
+    ],
+    [
+      2.6464981317531056e-8,
+      0.9934476613998413,
+      0.11428739130496979,
+      22
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P22.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        95,
+        -27,
+        17
+      ],
+      &quot;pixel&quot;: [
+        383.9999425969578,
+        288.00022379920244
+      ],
+      &quot;projection_error_px&quot;: 0.00019436697732544417
+    },
+    {
+      &quot;world&quot;: [
+        96,
+        -27,
+        17
+      ],
+      &quot;pixel&quot;: [
+        374.6585527874888,
+        285.4882217377792
+      ],
+      &quot;projection_error_px&quot;: 0.00009026307475323847
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P23.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P23.webp" alt="Reconstruct the Central City Park Block, reference P23" loading="lazy" width="800" height="600"></a><figcaption>P23</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P23&quot;,
+  &quot;description&quot;: &quot;north perimeter rooftop mechanical units with pitched-roof buildings beyond&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    65,
+    55,
+    42
+  ],
+  &quot;target&quot;: [
+    105,
+    95,
+    15
+  ],
+  &quot;lens&quot;: 50,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071065902709961,
+      0.3045843243598938,
+      -0.6381446719169617,
+      65
+    ],
+    [
+      -0.7071069478988647,
+      0.3045841455459595,
+      -0.6381443738937378,
+      55
+    ],
+    [
+      -1.21055379054269e-8,
+      0.9024725556373596,
+      0.43074721097946167,
+      42
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P23.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P23.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        105,
+        95,
+        15
+      ],
+      &quot;pixel&quot;: [
+        383.9997002733933,
+        288.00032457703605
+      ],
+      &quot;projection_error_px&quot;: 0.0001623975051643356
+    },
+    {
+      &quot;world&quot;: [
+        106,
+        95,
+        15
+      ],
+      &quot;pixel&quot;: [
+        395.91141250676424,
+        282.86935510952003
+      ],
+      &quot;projection_error_px&quot;: 0.000147551829513759
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P24.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P24.webp" alt="Reconstruct the Central City Park Block, reference P24" loading="lazy" width="800" height="600"></a><figcaption>P24</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P24&quot;,
+  &quot;description&quot;: &quot;north perimeter rear from north&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    105,
+    190,
+    38
+  ],
+  &quot;target&quot;: [
+    105,
+    95,
+    14
+  ],
+  &quot;lens&quot;: 50,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -4.5193647935093395e-8,
+      -1.671570828420954e-7,
+      105
+    ],
+    [
+      -1.5099580252808664e-7,
+      -0.24493595957756042,
+      0.9695392847061157,
+      190
+    ],
+    [
+      -8.47597974029668e-8,
+      0.9695392847061157,
+      0.24493595957756042,
+      38
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P24.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P24.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        105,
+        95,
+        14
+      ],
+      &quot;pixel&quot;: [
+        384.000246196073,
+        288.00025929294037
+      ],
+      &quot;projection_error_px&quot;: 0.0000173142370840651
+    },
+    {
+      &quot;world&quot;: [
+        106,
+        95,
+        14
+      ],
+      &quot;pixel&quot;: [
+        373.1141929592898,
+        288.0002597849115
+      ],
+      &quot;projection_error_px&quot;: 0.0000038180539263521496
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P25.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P25.webp" alt="Reconstruct the Central City Park Block, reference P25" loading="lazy" width="800" height="600"></a><figcaption>P25</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P25&quot;,
+  &quot;description&quot;: &quot;south perimeter rooftop railing, gutter and mechanical details&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    10,
+    -100,
+    28
+  ],
+  &quot;target&quot;: [
+    15,
+    -57,
+    12
+  ],
+  &quot;lens&quot;: 50,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9933072924613953,
+      0.04004198685288429,
+      -0.10833786427974701,
+      10
+    ],
+    [
+      -0.11550088226795197,
+      0.3443608582019806,
+      -0.9317054748535156,
+      -100
+    ],
+    [
+      -1.848377806368262e-8,
+      0.937982976436615,
+      0.3466811180114746,
+      28
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P25.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P25.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        15,
+        -57,
+        12
+      ],
+      &quot;pixel&quot;: [
+        383.9999838133495,
+        287.9999614275594
+      ],
+      &quot;projection_error_px&quot;: 0.000006701533095565537
+    },
+    {
+      &quot;world&quot;: [
+        16,
+        -57,
+        12
+      ],
+      &quot;pixel&quot;: [
+        406.90361023738404,
+        287.0766754339902
+      ],
+      &quot;projection_error_px&quot;: 0.000007648345672350843
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P26.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P26.webp" alt="Reconstruct the Central City Park Block, reference P26" loading="lazy" width="800" height="600"></a><figcaption>P26</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P26&quot;,
+  &quot;description&quot;: &quot;west-side park canopy and perimeter context&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -145,
+    5,
+    28
+  ],
+  &quot;target&quot;: [
+    -80,
+    4,
+    12
+  ],
+  &quot;lens&quot;: 50,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.015382799319922924,
+      0.2389640361070633,
+      -0.9709065556526184,
+      -145
+    ],
+    [
+      -0.9998816847801208,
+      -0.003676425665616989,
+      0.014937015250325203,
+      5
+    ],
+    [
+      -5.650744228091753e-8,
+      0.9710214734077454,
+      0.23899231851100922,
+      28
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P26.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P26.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        -80,
+        4,
+        12
+      ],
+      &quot;pixel&quot;: [
+        384.00000442190395,
+        288.00006150601297
+      ],
+      &quot;projection_error_px&quot;: 0.000007158537812301802
+    },
+    {
+      &quot;world&quot;: [
+        -79,
+        4,
+        12
+      ],
+      &quot;pixel&quot;: [
+        383.7584169783301,
+        284.24711373849243
+      ],
+      &quot;projection_error_px&quot;: 0.000009093717039831972
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P27.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P27.webp" alt="Reconstruct the Central City Park Block, reference P27" loading="lazy" width="800" height="600"></a><figcaption>P27</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P27&quot;,
+  &quot;description&quot;: &quot;roof oblique east to west&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    245,
+    120,
+    150
+  ],
+  &quot;target&quot;: [
+    30,
+    15,
+    0
+  ],
+  &quot;lens&quot;: 55,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.4388352036476135,
+      -0.4772838354110718,
+      0.761330246925354,
+      245
+    ],
+    [
+      0.8985675573348999,
+      -0.23309201002120972,
+      0.3718124032020569,
+      120
+    ],
+    [
+      -4.2051176762925024e-8,
+      0.8472710847854614,
+      0.5311607718467712,
+      150
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1173.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      1173.3333892822266,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P27.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P27.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        30,
+        15,
+        0
+      ],
+      &quot;pixel&quot;: [
+        383.99996706271736,
+        287.9998821191989
+      ],
+      &quot;projection_error_px&quot;: 0.000014883974927215604
+    },
+    {
+      &quot;world&quot;: [
+        31,
+        15,
+        0
+      ],
+      &quot;pixel&quot;: [
+        382.1717410492573,
+        289.9882908483453
+      ],
+      &quot;projection_error_px&quot;: 0.000005783648020951659
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P28.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P28.webp" alt="Reconstruct the Central City Park Block, reference P28" loading="lazy" width="800" height="600"></a><figcaption>P28</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P28&quot;,
+  &quot;description&quot;: &quot;roof oblique west to east&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -230,
+    130,
+    145
+  ],
+  &quot;target&quot;: [
+    45,
+    15,
+    0
+  ],
+  &quot;lens&quot;: 55,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.38580605387687683,
+      0.4035733938217163,
+      -0.8296277523040771,
+      -230
+    ],
+    [
+      -0.9225798845291138,
+      -0.168767049908638,
+      0.3469351530075073,
+      130
+    ],
+    [
+      -2.8210394020788954e-8,
+      0.8992475867271423,
+      0.43744003772735596,
+      145
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1173.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      1173.3333892822266,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P28.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;image&quot;: &quot;images/public/P28.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        45,
+        15,
+        0
+      ],
+      &quot;pixel&quot;: [
+        384.00010127291773,
+        288.00002447428847
+      ],
+      &quot;projection_error_px&quot;: 0.000009720183356876078
+    },
+    {
+      &quot;world&quot;: [
+        46,
+        15,
+        0
+      ],
+      &quot;pixel&quot;: [
+        382.6378588030193,
+        286.5750419960342
+      ],
+      &quot;projection_error_px&quot;: 0.000003273234142397996
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P29.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P29.webp" alt="Reconstruct the Central City Park Block, reference P29" loading="lazy" width="800" height="600"></a><figcaption>P29</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P29&quot;,
+  &quot;description&quot;: &quot;north-east street corner and pitched-roof building frontage&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    185,
+    145,
+    28
+  ],
+  &quot;target&quot;: [
+    120,
+    95,
+    10
+  ],
+  &quot;lens&quot;: 50,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.6097109317779541,
+      -0.16993209719657898,
+      0.774193525314331,
+      185
+    ],
+    [
+      0.7926238775253296,
+      -0.13071706891059875,
+      0.5955337285995483,
+      145
+    ],
+    [
+      9.864606020926203e-9,
+      0.9767477512359619,
+      0.21439185738563538,
+      28
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P29.webp&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;image&quot;: &quot;images/public/P29.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        120,
+        95,
+        10
+      ],
+      &quot;pixel&quot;: [
+        384.00013725339636,
+        288.0002180909139
+      ],
+      &quot;projection_error_px&quot;: 0.000056567289220765815
+    },
+    {
+      &quot;world&quot;: [
+        121,
+        95,
+        10
+      ],
+      &quot;pixel&quot;: [
+        376.1818430704634,
+        290.17924365922505
+      ],
+      &quot;projection_error_px&quot;: 0.00004901960795677951
+    }
+  ]
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/public/P30.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/public/P30.webp" alt="Reconstruct the Central City Park Block, reference P30" loading="lazy" width="800" height="600"></a><figcaption>P30</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P30&quot;,
+  &quot;description&quot;: &quot;south-east rooftop equipment and adjacent park-edge buildings&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    105,
+    -75,
+    14
+  ],
+  &quot;target&quot;: [
+    42,
+    -35,
+    3
+  ],
+  &quot;lens&quot;: 45,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;sensor_fit&quot;: &quot;AUTO&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 2000,
+  &quot;Tcw&quot;: [
+    [
+      0.5360082387924194,
+      -0.12310877442359924,
+      0.8351882696151733,
+      105
+    ],
+    [
+      0.8442127704620361,
+      0.07816427946090698,
+      -0.5302783846855164,
+      -75
+    ],
+    [
+      3.112099733471041e-8,
+      0.9893101453781128,
+      0.14582669734954834,
+      14
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;file&quot;: &quot;images/P30.webp&quot;,
+  &quot;image&quot;: &quot;images/public/P30.webp&quot;,
+  &quot;landmark_checks&quot;: [
+    {
+      &quot;world&quot;: [
+        42,
+        -35,
+        3
+      ],
+      &quot;pixel&quot;: [
+        383.9999404523136,
+        287.9998452518723
+      ],
+      &quot;projection_error_px&quot;: 0.000016913249226035987
+    },
+    {
+      &quot;world&quot;: [
+        43,
+        -35,
+        3
+      ],
+      &quot;pixel&quot;: [
+        390.8979282569769,
+        289.5841522489651
+      ],
+      &quot;projection_error_px&quot;: 0.000020961773088856717
+    }
+  ]
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/central-city-park/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/drawings/sheet-001.webp" alt="Reconstruct the Central City Park Block, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/drawings/sheet-002.webp" alt="Reconstruct the Central City Park Block, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/drawings/sheet-003.webp" alt="Reconstruct the Central City Park Block, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/drawings/sheet-004.webp" alt="Reconstruct the Central City Park Block, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/central-city-park/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/central-city-park/images/drawings/sheet-005.webp" alt="Reconstruct the Central City Park Block, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>20.12</td></tr><tr><th>GPT-6-Astra (low)</th><td>19.86</td></tr><tr><th>Kimi-K3.1-Pro</th><td>12.03</td></tr><tr><th>Qwen4-Max-Preview</th><td>11.45</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>10.89</td></tr><tr><th>Opus-5.5</th><td>10.45</td></tr><tr><th>GLM-5.3-Flash</th><td>8.60</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

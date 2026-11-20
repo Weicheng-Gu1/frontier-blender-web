@@ -1,0 +1,1442 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Modern Villa and Enclosed Grounds · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Modern Villa and Enclosed Grounds · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Buildings</p><h1 class="task-title">Modern Villa and Enclosed Grounds</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P01.webp" alt="Modern Villa and Enclosed Grounds, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6101424098014832,
+      -0.028879517689347267,
+      -0.7917652726173401,
+      -10.67454719543457
+    ],
+    [
+      -0.7922917604446411,
+      -0.02223571017384529,
+      -0.6097370982170105,
+      -15.364916801452637
+    ],
+    [
+      0.0000034499646517360816,
+      0.9993354082107544,
+      -0.036447957158088684,
+      0.7815461754798889
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;far&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P02.webp" alt="Modern Villa and Enclosed Grounds, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9751455187797546,
+      -0.02657553181052208,
+      -0.2199658304452896,
+      6.361639976501465
+    ],
+    [
+      -0.22156542539596558,
+      -0.11693599820137024,
+      -0.9681087136268616,
+      -13.019248008728027
+    ],
+    [
+      0.000006080098501115572,
+      0.9927838444709778,
+      -0.11991781741380692,
+      0.43449389934539795
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 26,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;K&quot;: [
+    [
+      554.6666564941406,
+      0,
+      384
+    ],
+    [
+      0,
+      554.6666450500488,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;near&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P03.webp" alt="Modern Villa and Enclosed Grounds, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.8553569912910461,
+      0.004413722548633814,
+      0.5180201530456543,
+      9.154640197753906
+    ],
+    [
+      0.5180390477180481,
+      0.007270977832376957,
+      0.8553259372711182,
+      10.185975074768066
+    ],
+    [
+      0.000008658563274366315,
+      0.9999638199806213,
+      -0.008505761623382568,
+      0.943418025970459
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P04.webp" alt="Modern Villa and Enclosed Grounds, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.8862038254737854,
+      -0.0394638366997242,
+      -0.46161168813705444,
+      3.043931007385254
+    ],
+    [
+      -0.463295578956604,
+      0.07550875842571259,
+      0.8829810619354248,
+      11.715795516967773
+    ],
+    [
+      0.00000990561420621816,
+      0.9963638186454773,
+      -0.08519957214593887,
+      0.7908477783203125
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 31,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;K&quot;: [
+    [
+      661.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      661.3333511352539,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P05.webp" alt="Modern Villa and Enclosed Grounds, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    29,
+    -28,
+    24
+  ],
+  &quot;target&quot;: [
+    3,
+    -1,
+    0
+  ],
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7203200459480286,
+      -0.3740280270576477,
+      0.584159255027771,
+      29
+    ],
+    [
+      0.6936418414115906,
+      0.3884134590625763,
+      -0.6066266894340515,
+      -28
+    ],
+    [
+      5.984438189443608e-8,
+      0.8421626687049866,
+      0.5392234921455383,
+      24
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;far&quot;,
+  &quot;category&quot;: &quot;top_down&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P06.webp" alt="Modern Villa and Enclosed Grounds, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    25,
+    32,
+    25
+  ],
+  &quot;target&quot;: [
+    7,
+    8,
+    2
+  ],
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8000000715255737,
+      -0.3650588095188141,
+      0.47616374492645264,
+      25
+    ],
+    [
+      0.5999999046325684,
+      -0.48674526810646057,
+      0.6348851919174194,
+      32
+    ],
+    [
+      3.313724050713063e-8,
+      0.7936064004898071,
+      0.6084315180778503,
+      25
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;far&quot;,
+  &quot;category&quot;: &quot;top_down&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P07.webp" alt="Modern Villa and Enclosed Grounds, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    2,
+    9,
+    1.6
+  ],
+  &quot;target&quot;: [
+    6,
+    7,
+    1
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.4472135305404663,
+      0.11893431842327118,
+      -0.8864844441413879,
+      2
+    ],
+    [
+      -0.8944272398948669,
+      -0.05946711078286171,
+      0.4432421326637268,
+      9
+    ],
+    [
+      3.202565324045281e-8,
+      0.9911196827888489,
+      0.1329725980758667,
+      1.600000023841858
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P08.webp" alt="Modern Villa and Enclosed Grounds, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;position&quot;: [
+    9.7,
+    4.8,
+    1.6
+  ],
+  &quot;target&quot;: [
+    13,
+    1.5,
+    1
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      0.09016671031713486,
+      -0.7013344168663025,
+      9.699999809265137
+    ],
+    [
+      -0.7071067094802856,
+      -0.09016672521829605,
+      0.7013344168663025,
+      4.800000190734863
+    ],
+    [
+      -1.3131121967546733e-8,
+      0.9918366074562073,
+      0.1275150030851364,
+      1.600000023841858
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P09.webp" alt="Modern Villa and Enclosed Grounds, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;position&quot;: [
+    14,
+    -0.8,
+    1.6
+  ],
+  &quot;target&quot;: [
+    11.8,
+    2,
+    1
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7863182425498962,
+      -0.10265378654003143,
+      0.6092337965965271,
+      14
+    ],
+    [
+      0.6178216934204102,
+      0.13065028190612793,
+      -0.7753881216049194,
+      -0.800000011920929
+    ],
+    [
+      -3.657985914173878e-8,
+      0.9860997200012207,
+      0.1661544144153595,
+      1.600000023841858
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P10.webp" alt="Modern Villa and Enclosed Grounds, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;position&quot;: [
+    9.4,
+    8.6,
+    1.6
+  ],
+  &quot;target&quot;: [
+    9.2,
+    4.2,
+    1.5
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9989685416221619,
+      -0.0010306040057912469,
+      0.0453958660364151,
+      9.399999618530273
+    ],
+    [
+      0.04540756344795227,
+      -0.022674549371004105,
+      0.9987111687660217,
+      8.600000381469727
+    ],
+    [
+      5.508292133526993e-8,
+      0.9997423887252808,
+      0.02269795909523964,
+      1.600000023841858
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P11.webp" alt="Modern Villa and Enclosed Grounds, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;position&quot;: [
+    3,
+    7,
+    4.6
+  ],
+  &quot;target&quot;: [
+    5,
+    10,
+    4.5
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8320503234863281,
+      0.015378699637949467,
+      -0.554486870765686,
+      3
+    ],
+    [
+      -0.5547001361846924,
+      0.02306821569800377,
+      -0.8317304849624634,
+      7
+    ],
+    [
+      8.992439859412116e-8,
+      0.9996156096458435,
+      0.027724483981728554,
+      4.599999904632568
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P12.webp" alt="Modern Villa and Enclosed Grounds, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;position&quot;: [
+    9,
+    7,
+    4.6
+  ],
+  &quot;target&quot;: [
+    12,
+    10,
+    4.5
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7071065902709961,
+      0.01666184514760971,
+      -0.7069105505943298,
+      9
+    ],
+    [
+      -0.7071069478988647,
+      0.01666170172393322,
+      -0.7069101929664612,
+      7
+    ],
+    [
+      -9.576112347531307e-8,
+      0.9997223615646362,
+      0.023563304916024208,
+      4.599999904632568
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P13.webp" alt="Modern Villa and Enclosed Grounds, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;position&quot;: [
+    14,
+    -2.7,
+    1.5
+  ],
+  &quot;target&quot;: [
+    12.2,
+    -4.5,
+    0.75
+  ],
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      -0.19984003901481628,
+      0.6782801151275635,
+      14
+    ],
+    [
+      0.7071067094802856,
+      -0.19984012842178345,
+      0.6782801151275635,
+      -2.700000047683716
+    ],
+    [
+      6.149042519609793e-8,
+      0.9592329263687134,
+      0.28261658549308777,
+      1.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;near&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P14.webp" alt="Modern Villa and Enclosed Grounds, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;position&quot;: [
+    2,
+    13,
+    4.6
+  ],
+  &quot;target&quot;: [
+    3,
+    9,
+    4.5
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9701425433158875,
+      0.0058805267326533794,
+      -0.24246424436569214,
+      2
+    ],
+    [
+      -0.2425355464220047,
+      -0.023522503674030304,
+      0.9698573350906372,
+      13
+    ],
+    [
+      -9.439172288239206e-8,
+      0.9997060298919678,
+      0.024246418848633766,
+      4.599999904632568
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P15.webp" alt="Modern Villa and Enclosed Grounds, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;position&quot;: [
+    -6,
+    -12,
+    1.5
+  ],
+  &quot;target&quot;: [
+    2,
+    -16,
+    1
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.4472135305404663,
+      0.04992220178246498,
+      -0.893032968044281,
+      -6
+    ],
+    [
+      -0.8944272398948669,
+      -0.024960938841104507,
+      0.44651639461517334,
+      -12
+    ],
+    [
+      1.418414399267931e-7,
+      0.9984411597251892,
+      0.05581464618444443,
+      1.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;near&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P16.webp" alt="Modern Villa and Enclosed Grounds, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;position&quot;: [
+    9,
+    22,
+    2
+  ],
+  &quot;target&quot;: [
+    9,
+    13,
+    2
+  ],
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -8.74227694680485e-8,
+      -1.5099580252808664e-7,
+      9
+    ],
+    [
+      -1.5099580252808664e-7,
+      -7.549791547489804e-8,
+      1,
+      22
+    ],
+    [
+      -8.742278367890322e-8,
+      1,
+      7.549790126404332e-8,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;near&quot;,
+  &quot;category&quot;: &quot;rear&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P17.webp" alt="Modern Villa and Enclosed Grounds, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;position&quot;: [
+    5,
+    6.5,
+    1.6
+  ],
+  &quot;target&quot;: [
+    5,
+    11,
+    1.5
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      5
+    ],
+    [
+      0,
+      0.022216593846678734,
+      -0.9997531771659851,
+      6.5
+    ],
+    [
+      0,
+      0.9997531771659851,
+      0.022216593846678734,
+      1.600000023841858
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P18.webp" alt="Modern Villa and Enclosed Grounds, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.5913636088371277,
+      0.051915112882852554,
+      -0.8047321438789368,
+      -8
+    ],
+    [
+      -0.8064050674438477,
+      0.03807111829519272,
+      -0.5901367664337158,
+      -5
+    ],
+    [
+      3.8019297932123663e-8,
+      0.9979255199432373,
+      0.06437847763299942,
+      3.200000047683716
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;lens&quot;: 30,
+  &quot;coverage_order&quot;: &quot;near&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P19.webp" alt="Modern Villa and Enclosed Grounds, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -7.153255410230486e-8,
+      -1.5890215365743643e-7,
+      8
+    ],
+    [
+      -1.5099580252808664e-7,
+      -0.0995037630200386,
+      0.9950371980667114,
+      24
+    ],
+    [
+      -8.698891207359338e-8,
+      0.9950371980667114,
+      0.0995037630200386,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;lens&quot;: 28,
+  &quot;coverage_order&quot;: &quot;near&quot;,
+  &quot;category&quot;: &quot;rear&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P21.webp" alt="Modern Villa and Enclosed Grounds, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9486833214759827,
+      0.00999495480209589,
+      -0.3160697817802429,
+      5
+    ],
+    [
+      -0.3162277638912201,
+      0.029984766617417336,
+      -0.9482093453407288,
+      -9
+    ],
+    [
+      -3.0452376620360155e-8,
+      0.9995003938674927,
+      0.031606730073690414,
+      1.399999976158142
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;lens&quot;: 30,
+  &quot;coverage_order&quot;: &quot;near&quot;,
+  &quot;category&quot;: &quot;pool&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P22.webp" alt="Modern Villa and Enclosed Grounds, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -1.6292068494294654e-7,
+      -0.27630698680877686,
+      0.9610693454742432,
+      10
+    ],
+    [
+      1,
+      -6.13898123447143e-8,
+      1.518706369552092e-7,
+      -16
+    ],
+    [
+      1.703695140520267e-8,
+      0.9610693454742432,
+      0.27630698680877686,
+      2.799999952316284
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;lens&quot;: 28,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;pavilion&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P25.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P25.webp" alt="Modern Villa and Enclosed Grounds, reference P25" loading="lazy" width="800" height="600"></a><figcaption>P25</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P25&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.8137333393096924,
+      -0.026997771114110947,
+      0.5806110501289368,
+      12
+    ],
+    [
+      0.5812383890151978,
+      0.03779677301645279,
+      -0.812855064868927,
+      0
+    ],
+    [
+      4.947291998291803e-8,
+      0.9989206790924072,
+      0.046448636800050735,
+      4.800000190734863
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;lens&quot;: 24,
+  &quot;coverage_order&quot;: &quot;detail&quot;,
+  &quot;category&quot;: &quot;oblique&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P25.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/public/P27.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/public/P27.webp" alt="Modern Villa and Enclosed Grounds, reference P27" loading="lazy" width="800" height="600"></a><figcaption>P27</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P27&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071065902709961,
+      0.671492338180542,
+      -0.2215813845396042,
+      0
+    ],
+    [
+      -0.7071069478988647,
+      0.6714920401573181,
+      -0.22158114612102509,
+      -2
+    ],
+    [
+      8.768245152168674e-8,
+      0.3133632242679596,
+      0.9496333599090576,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;lens&quot;: 32,
+  &quot;coverage_order&quot;: &quot;far&quot;,
+  &quot;category&quot;: &quot;top_down&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 183.9499969482422,
+  &quot;image&quot;: &quot;images/public/P27.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-001.webp" alt="Modern Villa and Enclosed Grounds, drawing A-001" loading="lazy"></a><figcaption>A-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-101.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-101.webp" alt="Modern Villa and Enclosed Grounds, drawing A-101" loading="lazy"></a><figcaption>A-101 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-102.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-102.webp" alt="Modern Villa and Enclosed Grounds, drawing A-102" loading="lazy"></a><figcaption>A-102 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-103.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-103.webp" alt="Modern Villa and Enclosed Grounds, drawing A-103" loading="lazy"></a><figcaption>A-103 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-104.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-104.webp" alt="Modern Villa and Enclosed Grounds, drawing A-104" loading="lazy"></a><figcaption>A-104 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-105.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-105.webp" alt="Modern Villa and Enclosed Grounds, drawing A-105" loading="lazy"></a><figcaption>A-105 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-201.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-201.webp" alt="Modern Villa and Enclosed Grounds, drawing A-201" loading="lazy"></a><figcaption>A-201 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-202.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-202.webp" alt="Modern Villa and Enclosed Grounds, drawing A-202" loading="lazy"></a><figcaption>A-202 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-203.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-203.webp" alt="Modern Villa and Enclosed Grounds, drawing A-203" loading="lazy"></a><figcaption>A-203 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-204.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-204.webp" alt="Modern Villa and Enclosed Grounds, drawing A-204" loading="lazy"></a><figcaption>A-204 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-205.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-205.webp" alt="Modern Villa and Enclosed Grounds, drawing A-205" loading="lazy"></a><figcaption>A-205 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-301.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-301.webp" alt="Modern Villa and Enclosed Grounds, drawing A-301" loading="lazy"></a><figcaption>A-301 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/modern-villa/images/drawings/A-302.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/modern-villa/images/drawings/A-302.webp" alt="Modern Villa and Enclosed Grounds, drawing A-302" loading="lazy"></a><figcaption>A-302 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>34.31</td></tr><tr><th>GPT-6-Astra (low)</th><td>34.06</td></tr><tr><th>Qwen4-Max-Preview</th><td>18.53</td></tr><tr><th>Kimi-K3.1-Pro</th><td>17.66</td></tr><tr><th>Opus-5.5</th><td>16.28</td></tr><tr><th>GLM-5.3-Flash</th><td>14.94</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>14.29</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

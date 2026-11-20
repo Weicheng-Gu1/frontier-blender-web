@@ -1,0 +1,530 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Reconstruct the furnished kitchen · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Reconstruct the furnished kitchen · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Interiors</p><h1 class="task-title">Reconstruct the furnished kitchen</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/public/P01.webp" alt="Reconstruct the furnished kitchen, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.005093746818602085,
+      0.042541246861219406,
+      -0.9990817308425903,
+      -1.0461686849594116
+    ],
+    [
+      -0.9999868869781494,
+      0.00020241858146619052,
+      -0.0050897435285151005,
+      0.10052900016307831
+    ],
+    [
+      -0.000014291331353888381,
+      0.999094545841217,
+      0.042541731148958206,
+      1.5640923976898193
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Cooking wall, red refrigerator and microwave&quot;,
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/public/P02.webp" alt="Reconstruct the furnished kitchen, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9999870657920837,
+      0.00022126427211333066,
+      0.005052794236689806,
+      -0.4447340965270996
+    ],
+    [
+      0.005057620350271463,
+      -0.04121547192335129,
+      -0.9991373419761658,
+      -1.2719480991363525
+    ],
+    [
+      -0.000012820109986932948,
+      0.999150276184082,
+      -0.041216060519218445,
+      1.3474842309951782
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Room route toward the entry door&quot;,
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/public/P03.webp" alt="Reconstruct the furnished kitchen, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.025669215247035027,
+      0.035559769719839096,
+      -0.9990378618240356,
+      -0.5236613750457764
+    ],
+    [
+      -0.9996705055236816,
+      0.0009055302944034338,
+      -0.025653239339590073,
+      1.870059847831726
+    ],
+    [
+      -0.000007564265615656041,
+      0.9993671178817749,
+      0.03557129576802254,
+      1.2259091138839722
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 16,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Entry-side console table and plant&quot;,
+  &quot;K&quot;: [
+    [
+      341.33333587646484,
+      0,
+      384
+    ],
+    [
+      0,
+      341.33333587646484,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/public/P04.webp" alt="Reconstruct the furnished kitchen, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.00876470748335123,
+      0.006323256064206362,
+      0.9999415874481201,
+      0.6850579380989075
+    ],
+    [
+      0.9999616146087646,
+      -0.00005080802657175809,
+      -0.008764561265707016,
+      1.989500880241394
+    ],
+    [
+      -0.0000046155023483152036,
+      0.9999800324440002,
+      -0.006323458161205053,
+      0.7563396096229553
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 18,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Entry storage shelf and boxes&quot;,
+  &quot;K&quot;: [
+    [
+      384,
+      0,
+      384
+    ],
+    [
+      0,
+      384.0000114440918,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/public/P05.webp" alt="Reconstruct the furnished kitchen, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.01586473360657692,
+      -0.014622109942138195,
+      0.9997672438621521,
+      0.6261618137359619
+    ],
+    [
+      0.9998740553855896,
+      0.00023708076332695782,
+      -0.0158629659563303,
+      -0.22047178447246552
+    ],
+    [
+      -0.000005075568424217636,
+      0.999893069267273,
+      0.014624030329287052,
+      0.8987858891487122
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 18,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Glass-front sideboard and countertop containers&quot;,
+  &quot;K&quot;: [
+    [
+      384,
+      0,
+      384
+    ],
+    [
+      0,
+      384.0000114440918,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/public/P06.webp" alt="Reconstruct the furnished kitchen, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.9998193979263306,
+      -0.00013423706695903093,
+      -0.019005266949534416,
+      0.26836854219436646
+    ],
+    [
+      -0.019005736336112022,
+      0.006312510930001736,
+      0.9997994303703308,
+      2.488460063934326
+    ],
+    [
+      -0.000014239192751119845,
+      0.999980092048645,
+      -0.006313921883702278,
+      1.6983270645141602
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Sliding doors, curtain and opposite end of the kitchen&quot;,
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/public/P07.webp" alt="Reconstruct the furnished kitchen, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    -0.7,
+    0.1,
+    2.25
+  ],
+  &quot;target&quot;: [
+    0.9,
+    -0.12,
+    0.78
+  ],
+  &quot;lens&quot;: 23,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Sink, dish rack, cooking surface and lower cabinets&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.13621839880943298,
+      0.6668418645858765,
+      -0.7326434850692749,
+      -0.699999988079071
+    ],
+    [
+      -0.9906788468360901,
+      -0.091690793633461,
+      0.1007385179400444,
+      0.10000000149011612
+    ],
+    [
+      4.610302806185018e-9,
+      0.7395368218421936,
+      0.673116147518158,
+      2.25
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      490.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      490.6666145324707,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/public/P08.webp" alt="Reconstruct the furnished kitchen, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;position&quot;: [
+    -0.5,
+    0,
+    1.9
+  ],
+  &quot;target&quot;: [
+    1.15,
+    -0.05,
+    2.1
+  ],
+  &quot;lens&quot;: 25,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Hanging utensils, pans, open shelf and upper cabinets&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.030289113521575928,
+      -0.1202218234539032,
+      -0.992284893989563,
+      -0.5
+    ],
+    [
+      -0.999541163444519,
+      0.0036432852502912283,
+      0.030069202184677124,
+      0
+    ],
+    [
+      2.0281548529510474e-7,
+      0.9927403926849365,
+      -0.12027700990438461,
+      1.899999976158142
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      533.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      533.3333587646484,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/public/P09.webp" alt="Reconstruct the furnished kitchen, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;scale&quot;: 2.6600000858306885,
+  &quot;position&quot;: [
+    -0.10000000149011612,
+    0.7099999785423279,
+    2.799999952316284
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -0.10000000149011612
+    ],
+    [
+      0,
+      1,
+      0,
+      0.7099999785423279
+    ],
+    [
+      0,
+      0,
+      1,
+      2.799999952316284
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Interior top-down layout beneath the ceiling&quot;,
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    2.660000025367737,
+    1.9950000190258028
+  ],
+  &quot;pixel_to_plane&quot;: {
+    &quot;pixel_coordinates&quot;: &quot;u,v measured from top-left boundary; pixel centers i+0.5,j+0.5&quot;,
+    &quot;x&quot;: &quot;cx+(u/width-0.5)*horizontal_extent&quot;,
+    &quot;y&quot;: &quot;cy+(0.5-v/height)*vertical_extent&quot;,
+    &quot;ray_direction_world&quot;: [
+      0,
+      0,
+      -1
+    ],
+    &quot;plane_z_m&quot;: 2.799999952316284,
+    &quot;plane_semantics&quot;: &quot;ray origin plane at camera altitude&quot;
+  },
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/drawings/sheet-001.webp" alt="Reconstruct the furnished kitchen, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/drawings/sheet-002.webp" alt="Reconstruct the furnished kitchen, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/drawings/sheet-003.webp" alt="Reconstruct the furnished kitchen, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-kitchen/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-kitchen/images/drawings/sheet-004.webp" alt="Reconstruct the furnished kitchen, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (low)</th><td>45.19</td></tr><tr><th>GPT-6-Astra (high)</th><td>40.77</td></tr><tr><th>Kimi-K3.1-Pro</th><td>35.47</td></tr><tr><th>Qwen4-Max-Preview</th><td>30.54</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>28.98</td></tr><tr><th>Opus-5.5</th><td>28.14</td></tr><tr><th>GLM-5.3-Flash</th><td>20.22</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

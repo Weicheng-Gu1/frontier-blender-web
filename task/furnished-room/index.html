@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Reconstruct the furnished room environment · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Reconstruct the furnished room environment · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Interiors</p><h1 class="task-title">Reconstruct the furnished room environment</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/furnished-room/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/public/P01.webp" alt="Reconstruct the furnished room environment, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;caption&quot;: &quot;Kitchen and dining overview&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9908826947212219,
+      -0.02116885967552662,
+      0.1330539733171463,
+      -3.0865962505340576
+    ],
+    [
+      0.13472741842269897,
+      0.15569248795509338,
+      -0.978574812412262,
+      -4.484633445739746
+    ],
+    [
+      -1.9127068640045763e-7,
+      0.9875788688659668,
+      0.15712501108646393,
+      1.0827585458755493
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 35,
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/public/P02.webp" alt="Reconstruct the furnished room environment, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;caption&quot;: &quot;Living-room seating and media furniture&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.8611648678779602,
+      0.070745088160038,
+      -0.5033786296844482,
+      -1.6455501317977905
+    ],
+    [
+      -0.5083255767822266,
+      0.11985080689191818,
+      -0.8527840971946716,
+      -2.09590744972229
+    ],
+    [
+      4.18451691075461e-8,
+      0.9902680516242981,
+      0.13917285203933716,
+      1.2068700790405273
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 35,
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/public/P03.webp" alt="Reconstruct the furnished room environment, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;caption&quot;: &quot;Bedroom interior with bed, desk and wardrobes&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 20,
+  &quot;position&quot;: [
+    6.4,
+    -1,
+    1.25
+  ],
+  &quot;target&quot;: [
+    5.8,
+    2,
+    0.7
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9805806875228882,
+      -0.03470004349946976,
+      0.19302189350128174,
+      6.400000095367432
+    ],
+    [
+      0.19611616432666779,
+      0.17350038886070251,
+      -0.9651092886924744,
+      -1
+    ],
+    [
+      -3.9345991353911813e-8,
+      0.9842222332954407,
+      0.17693637311458588,
+      1.25
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      426.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      426.66668701171875,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/public/P04.webp" alt="Reconstruct the furnished room environment, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;caption&quot;: &quot;Bathroom with shower, vanity and storage&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 20,
+  &quot;position&quot;: [
+    8.361923635005951,
+    -0.8778570532798767,
+    1.036992573738098
+  ],
+  &quot;target&quot;: [
+    10.210389614105225,
+    1.8261092901229858,
+    0.6348237991333008
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8255369663238525,
+      0.06877651065587997,
+      -0.5601415634155273,
+      8.361923217773438
+    ],
+    [
+      -0.5643481016159058,
+      0.10060703754425049,
+      -0.8193835616111755,
+      -0.8778570294380188
+    ],
+    [
+      -1.654283465768458e-7,
+      0.9925461411476135,
+      0.12186872959136963,
+      1.0369925498962402
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      426.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      426.66668701171875,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/public/P05.webp" alt="Reconstruct the furnished room environment, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    0.8,
+    0,
+    2.1
+  ],
+  &quot;target&quot;: [
+    0.8,
+    0,
+    0
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 14,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0.800000011920929
+    ],
+    [
+      0,
+      0.9999999403953552,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      2.0999999046325684
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      298.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      298.6666603088379,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;Living-room seating layout from vertically overhead&quot;,
+  &quot;pose_source&quot;: &quot;position_target&quot;,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/public/P06.webp" alt="Reconstruct the furnished room environment, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    1.8,
+    2.6,
+    1.3
+  ],
+  &quot;target&quot;: [
+    0.6,
+    -1.2,
+    0.6
+  ],
+  &quot;lens&quot;: 20,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9535827040672302,
+      -0.05209888145327568,
+      0.2965902090072632,
+      1.7999999523162842
+    ],
+    [
+      0.3011312782764435,
+      -0.16498014330863953,
+      0.939202606678009,
+      2.5999999046325684
+    ],
+    [
+      9.3769422448986e-8,
+      0.9849198460578918,
+      0.17301082611083984,
+      1.2999999523162842
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      426.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      426.66668701171875,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;caption&quot;: &quot;Living-room opposite-side view toward the sofa and rear wall&quot;,
+  &quot;pose_source&quot;: &quot;position_target&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-001.webp" alt="Reconstruct the furnished room environment, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-002.webp" alt="Reconstruct the furnished room environment, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-003.webp" alt="Reconstruct the furnished room environment, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-004.webp" alt="Reconstruct the furnished room environment, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-005.webp" alt="Reconstruct the furnished room environment, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-006.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-006.webp" alt="Reconstruct the furnished room environment, drawing sheet-006" loading="lazy"></a><figcaption>sheet-006 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-007.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-007.webp" alt="Reconstruct the furnished room environment, drawing sheet-007" loading="lazy"></a><figcaption>sheet-007 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-008.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-008.webp" alt="Reconstruct the furnished room environment, drawing sheet-008" loading="lazy"></a><figcaption>sheet-008 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-009.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-009.webp" alt="Reconstruct the furnished room environment, drawing sheet-009" loading="lazy"></a><figcaption>sheet-009 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-010.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-010.webp" alt="Reconstruct the furnished room environment, drawing sheet-010" loading="lazy"></a><figcaption>sheet-010 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/furnished-room/images/drawings/sheet-011.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/furnished-room/images/drawings/sheet-011.webp" alt="Reconstruct the furnished room environment, drawing sheet-011" loading="lazy"></a><figcaption>sheet-011 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>41.32</td></tr><tr><th>GPT-6-Astra (low)</th><td>36.31</td></tr><tr><th>Kimi-K3.1-Pro</th><td>27.04</td></tr><tr><th>Qwen4-Max-Preview</th><td>22.36</td></tr><tr><th>Opus-5.5</th><td>19.49</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>16.66</td></tr><tr><th>GLM-5.3-Flash</th><td>15.83</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

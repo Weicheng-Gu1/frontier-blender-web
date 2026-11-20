@@ -1,0 +1,1576 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Reconstruct Maple Drive · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Reconstruct Maple Drive · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Blocks</p><h1 class="task-title">Reconstruct Maple Drive</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P01.webp" alt="Reconstruct Maple Drive, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;position&quot;: [
+    -45,
+    -75,
+    38
+  ],
+  &quot;target&quot;: [
+    0,
+    0,
+    0
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8574929237365723,
+      0.20501603186130524,
+      -0.47188374400138855,
+      -45
+    ],
+    [
+      -0.5144957304000854,
+      0.3416934311389923,
+      -0.7864729762077332,
+      -75
+    ],
+    [
+      1.1870525895574247e-8,
+      0.9171772003173828,
+      0.3984795808792114,
+      38
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P02.webp" alt="Reconstruct Maple Drive, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;position&quot;: [
+    13.399999618530273,
+    4.400000095367432,
+    58
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      13.399999618530273
+    ],
+    [
+      0,
+      1,
+      0,
+      4.400000095367432
+    ],
+    [
+      0,
+      0,
+      1,
+      58
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Both houses architectural roof layout at useful scale&quot;,
+  &quot;scale&quot;: 52,
+  &quot;extent&quot;: [
+    51.999998062849116,
+    38.99999949149788
+  ],
+  &quot;K&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P03.webp" alt="Reconstruct Maple Drive, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;position&quot;: [
+    -17.154306411743164,
+    -26.889863967895508,
+    -0.3952470123767853
+  ],
+  &quot;target&quot;: [
+    -3,
+    2,
+    2.8
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8980113863945007,
+      -0.04348456859588623,
+      -0.4378179609775543,
+      -17.154306411743164
+    ],
+    [
+      -0.4399721324443817,
+      -0.0887547954916954,
+      -0.8936145901679993,
+      -26.889863967895508
+    ],
+    [
+      1.2612718647275756e-9,
+      0.9951037764549255,
+      -0.0988348200917244,
+      -0.3952470123767853
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P04.webp" alt="Reconstruct Maple Drive, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;position&quot;: [
+    -15.5,
+    1,
+    2.700000047683716
+  ],
+  &quot;target&quot;: [
+    -9.4,
+    1.5,
+    2
+  ],
+  &quot;lens&quot;: 18,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.08169294893741608,
+      0.11324970424175262,
+      -0.9902023673057556,
+      -15.5
+    ],
+    [
+      -0.9966575503349304,
+      0.009282765910029411,
+      -0.08116383105516434,
+      1
+    ],
+    [
+      3.7034361355381407e-8,
+      0.9935231804847717,
+      0.11362950503826141,
+      2.700000047683716
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      384,
+      0,
+      384
+    ],
+    [
+      0,
+      384.0000114440918,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P05.webp" alt="Reconstruct Maple Drive, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    -3,
+    10.5,
+    3
+  ],
+  &quot;target&quot;: [
+    -3,
+    3,
+    2.5
+  ],
+  &quot;lens&quot;: 10,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -7.699185289311572e-8,
+      -1.5646376994027378e-7,
+      -3
+    ],
+    [
+      -1.5099580252808664e-7,
+      -0.06651905924081802,
+      0.9977851510047913,
+      10.5
+    ],
+    [
+      -8.722915367798123e-8,
+      0.9977851510047913,
+      0.06651905924081802,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      213.33334350585938,
+      0,
+      384
+    ],
+    [
+      0,
+      213.33334350585938,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P06.webp" alt="Reconstruct Maple Drive, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    36,
+    -22,
+    13
+  ],
+  &quot;target&quot;: [
+    27,
+    4,
+    4
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.94498610496521,
+      -0.1016986146569252,
+      0.3108998239040375,
+      36
+    ],
+    [
+      0.32711055874824524,
+      0.29379600286483765,
+      -0.8981550931930542,
+      -22
+    ],
+    [
+      1.579678887697611e-10,
+      0.9504426121711731,
+      0.31089985370635986,
+      13
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P07.webp" alt="Reconstruct Maple Drive, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    23.5,
+    12.300000190734863,
+    3.5
+  ],
+  &quot;target&quot;: [
+    23.5,
+    7,
+    3.8
+  ],
+  &quot;lens&quot;: 14,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -1.5103368866675737e-7,
+      3.6006253534281996e-9,
+      23.5
+    ],
+    [
+      -4.94054130939503e-9,
+      0.05651330202817917,
+      0.9984018206596375,
+      12.300000190734863
+    ],
+    [
+      -1.5099580252808664e-7,
+      0.9984018206596375,
+      -0.05651330202817917,
+      3.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      298.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      298.6666603088379,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P08.webp" alt="Reconstruct Maple Drive, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;position&quot;: [
+    -13,
+    -10,
+    4
+  ],
+  &quot;target&quot;: [
+    -6,
+    -2.5,
+    1
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7310552597045898,
+      0.19150501489639282,
+      -0.6548924446105957,
+      -13
+    ],
+    [
+      -0.6823182702064514,
+      0.20518410205841064,
+      -0.7016703486442566,
+      -10
+    ],
+    [
+      1.2479175381940877e-7,
+      0.9598048329353333,
+      0.2806682884693146,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P09.webp" alt="Reconstruct Maple Drive, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;position&quot;: [
+    -6,
+    -18,
+    2
+  ],
+  &quot;target&quot;: [
+    -1.8,
+    -11.7,
+    0
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8320502638816833,
+      0.1416613906621933,
+      -0.5363062620162964,
+      -6
+    ],
+    [
+      -0.5547002553939819,
+      0.21249213814735413,
+      -0.804459273815155,
+      -18
+    ],
+    [
+      4.665680464199795e-8,
+      0.9668397903442383,
+      0.25538375973701477,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P10.webp" alt="Reconstruct Maple Drive, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;position&quot;: [
+    -68,
+    -25,
+    -4
+  ],
+  &quot;target&quot;: [
+    -63.8,
+    -17.55,
+    -8.3
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8711065649986267,
+      0.22060127556324005,
+      -0.43875765800476074,
+      -68
+    ],
+    [
+      -0.49109387397766113,
+      0.3913044333457947,
+      -0.7782722115516663,
+      -25
+    ],
+    [
+      -1.6217938991758274e-8,
+      0.8934292197227478,
+      0.44920384883880615,
+      -4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P11.webp" alt="Reconstruct Maple Drive, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;position&quot;: [
+    0,
+    5,
+    160
+  ],
+  &quot;target&quot;: [
+    0,
+    5,
+    0
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 180,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      5
+    ],
+    [
+      0,
+      0,
+      1,
+      160
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: [
+    179.99999564141046,
+    135.00000238884243
+  ],
+  &quot;K&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P13.webp" alt="Reconstruct Maple Drive, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;position&quot;: [
+    25,
+    -4,
+    3.5999999046325684
+  ],
+  &quot;target&quot;: [
+    25.9,
+    2.6,
+    2.7
+  ],
+  &quot;lens&quot;: 40,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9908301830291748,
+      0.018091153353452682,
+      -0.13389654457569122,
+      25
+    ],
+    [
+      -0.1351131945848465,
+      0.13266843557357788,
+      -0.9819080829620361,
+      -4
+    ],
+    [
+      -5.231298505492532e-9,
+      0.9909953474998474,
+      0.13389624655246735,
+      3.5999999046325684
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P15.webp" alt="Reconstruct Maple Drive, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;position&quot;: [
+    40,
+    -58,
+    28
+  ],
+  &quot;target&quot;: [
+    3,
+    -1,
+    2
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.8387796878814697,
+      -0.1945611983537674,
+      0.5085219144821167,
+      40
+    ],
+    [
+      0.5444709062576294,
+      0.2997295558452606,
+      -0.7833987474441528,
+      -58
+    ],
+    [
+      -4.609908899055881e-8,
+      0.9339743852615356,
+      0.3573399782180786,
+      28
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P18.webp" alt="Reconstruct Maple Drive, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;position&quot;: [
+    13.800000190734863,
+    5.699999809265137,
+    4.099999904632568
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.02658657357096672,
+      0.24479392170906067,
+      -0.9692105650901794,
+      13.800000190734863
+    ],
+    [
+      -0.9996464848518372,
+      0.006510595325380564,
+      -0.02577708475291729,
+      5.699999809265137
+    ],
+    [
+      6.415719866481595e-8,
+      0.9695532917976379,
+      0.24488048255443573,
+      4.099999904632568
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Second house west-side electric box and hose together&quot;,
+  &quot;lens&quot;: 40,
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P19.webp" alt="Reconstruct Maple Drive, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;position&quot;: [
+    35.650001525878906,
+    0.25,
+    3.7674551010131836
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9998610615730286,
+      0.004380421247333288,
+      -0.016078069806098938,
+      35.650001525878906
+    ],
+    [
+      -0.016664104536175728,
+      0.2628292143344879,
+      -0.9646984338760376,
+      0.25
+    ],
+    [
+      9.621506924517575e-10,
+      0.9648324251174927,
+      0.26286572217941284,
+      3.7674551010131836
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Second house eastern side two waste bins and ground context&quot;,
+  &quot;lens&quot;: 28,
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P24.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P24.webp" alt="Reconstruct Maple Drive, reference P24" loading="lazy" width="800" height="600"></a><figcaption>P24</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P24&quot;,
+  &quot;position&quot;: [
+    -19,
+    -17,
+    7
+  ],
+  &quot;target&quot;: [
+    -4,
+    0,
+    2.5
+  ],
+  &quot;lens&quot;: 55,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7498378753662109,
+      0.12881016731262207,
+      -0.6489615440368652,
+      -19
+    ],
+    [
+      -0.661621630191803,
+      0.14598491787910461,
+      -0.7354897856712341,
+      -17
+    ],
+    [
+      3.452786856428247e-8,
+      0.9808651208877563,
+      0.1946886032819748,
+      7
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1173.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      1173.3333892822266,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P24.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P28.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P28.webp" alt="Reconstruct Maple Drive, reference P28" loading="lazy" width="800" height="600"></a><figcaption>P28</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P28&quot;,
+  &quot;position&quot;: [
+    26.100000381469727,
+    -0.699999988079071,
+    4.800000190734863
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9998866319656372,
+      -0.00791104231029749,
+      0.012813477776944637,
+      26.100000381469727
+    ],
+    [
+      0.015058877877891064,
+      0.5252811312675476,
+      -0.8507955074310303,
+      -0.699999988079071
+    ],
+    [
+      1.0395017069342316e-9,
+      0.8508920073509216,
+      0.5253406763076782,
+      4.800000190734863
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Second house complete porch bench from above low parapet&quot;,
+  &quot;lens&quot;: 48,
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P28.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P30.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P30.webp" alt="Reconstruct Maple Drive, reference P30" loading="lazy" width="800" height="600"></a><figcaption>P30</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P30&quot;,
+  &quot;position&quot;: [
+    -15,
+    -24,
+    4
+  ],
+  &quot;target&quot;: [
+    -2,
+    -12,
+    1
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6782801151275635,
+      0.12284698337316513,
+      -0.7244616746902466,
+      -15
+    ],
+    [
+      -0.7348034381866455,
+      0.11339712142944336,
+      -0.6687338948249817,
+      -24
+    ],
+    [
+      -7.425526149518191e-8,
+      0.9859257936477661,
+      0.16718339920043945,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P30.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P35.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P35.webp" alt="Reconstruct Maple Drive, reference P35" loading="lazy" width="800" height="600"></a><figcaption>P35</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P35&quot;,
+  &quot;position&quot;: [
+    -17.799999237060547,
+    -13.100000381469727,
+    -0.3499999940395355
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6980230212211609,
+      0.30743613839149475,
+      -0.6467201113700867,
+      -17.799999237060547
+    ],
+    [
+      -0.7160753011703491,
+      0.299685537815094,
+      -0.6304162740707397,
+      -13.100000381469727
+    ],
+    [
+      -8.750037494564822e-8,
+      0.9031453132629395,
+      0.4293348491191864,
+      -0.3499999940395355
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Roadside hydrant with sloping curb context&quot;,
+  &quot;lens&quot;: 55,
+  &quot;K&quot;: [
+    [
+      1173.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      1173.3333892822266,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P35.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P36.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P36.webp" alt="Reconstruct Maple Drive, reference P36" loading="lazy" width="800" height="600"></a><figcaption>P36</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P36&quot;,
+  &quot;position&quot;: [
+    22.799999237060547,
+    11.300000190734863,
+    4.300000190734863
+  ],
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.9863938093185425,
+      0.10070821642875671,
+      -0.12994207441806793,
+      22.799999237060547
+    ],
+    [
+      -0.1643991768360138,
+      -0.6042482256889343,
+      0.7796517610549927,
+      11.300000190734863
+    ],
+    [
+      6.497085536238956e-8,
+      0.7904061079025269,
+      0.6125831007957458,
+      4.300000190734863
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Second house rear-yard barbecue bowl, grill legs and lid&quot;,
+  &quot;lens&quot;: 38,
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P36.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P44.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P44.webp" alt="Reconstruct Maple Drive, reference P44" loading="lazy" width="800" height="600"></a><figcaption>P44</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P44&quot;,
+  &quot;position&quot;: [
+    22,
+    -24,
+    6
+  ],
+  &quot;target&quot;: [
+    25,
+    3,
+    2
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9938837289810181,
+      0.01608673669397831,
+      -0.10925354808568954,
+      22
+    ],
+    [
+      -0.11043152213096619,
+      0.14478065073490143,
+      -0.9832819700241089,
+      -24
+    ],
+    [
+      1.0900134128632999e-9,
+      0.9893329739570618,
+      0.14567160606384277,
+      6
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P44.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P45.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P45.webp" alt="Reconstruct Maple Drive, reference P45" loading="lazy" width="800" height="600"></a><figcaption>P45</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P45&quot;,
+  &quot;position&quot;: [
+    -12,
+    -15,
+    4
+  ],
+  &quot;target&quot;: [
+    -8,
+    -12,
+    1
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.599999725818634,
+      0.41159650683403015,
+      -0.6859946250915527,
+      -12
+    ],
+    [
+      -0.8000001311302185,
+      0.3086971342563629,
+      -0.5144956707954407,
+      -15
+    ],
+    [
+      -5.867497776534947e-8,
+      0.8574931025505066,
+      0.5144954919815063,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P45.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P47.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P47.webp" alt="Reconstruct Maple Drive, reference P47" loading="lazy" width="800" height="600"></a><figcaption>P47</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P47&quot;,
+  &quot;position&quot;: [
+    -30,
+    -10,
+    8
+  ],
+  &quot;target&quot;: [
+    -5,
+    2,
+    3
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.4327310621738434,
+      0.1599692553281784,
+      -0.8872168064117432,
+      -30
+    ],
+    [
+      -0.9015230536460876,
+      0.07678525894880295,
+      -0.4258640706539154,
+      -10
+    ],
+    [
+      1.3337530191392943e-8,
+      0.9841310381889343,
+      0.17744334042072296,
+      8
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P47.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P48.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P48.webp" alt="Reconstruct Maple Drive, reference P48" loading="lazy" width="800" height="600"></a><figcaption>P48</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P48&quot;,
+  &quot;position&quot;: [
+    15,
+    -20,
+    5
+  ],
+  &quot;target&quot;: [
+    3,
+    2,
+    2
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.8778955936431885,
+      -0.0569184236228466,
+      0.4754572808742523,
+      15
+    ],
+    [
+      0.4788520932197571,
+      0.10435052216053009,
+      -0.871671736240387,
+      -20
+    ],
+    [
+      -3.3027781398686784e-8,
+      0.9929105043411255,
+      0.11886437237262726,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P48.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/public/P49.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/public/P49.webp" alt="Reconstruct Maple Drive, reference P49" loading="lazy" width="800" height="600"></a><figcaption>P49</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P49&quot;,
+  &quot;position&quot;: [
+    45,
+    -20,
+    8
+  ],
+  &quot;target&quot;: [
+    25,
+    3,
+    2
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7546055316925049,
+      -0.12673887610435486,
+      0.6438227891921997,
+      45
+    ],
+    [
+      0.6561787128448486,
+      0.14574973285198212,
+      -0.7403962016105652,
+      -20
+    ],
+    [
+      -1.8424831438323963e-8,
+      0.9811698198318481,
+      0.19314689934253693,
+      8
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 500,
+  &quot;image&quot;: &quot;images/public/P49.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/maple-drive/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/drawings/sheet-001.webp" alt="Reconstruct Maple Drive, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/drawings/sheet-002.webp" alt="Reconstruct Maple Drive, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/drawings/sheet-003.webp" alt="Reconstruct Maple Drive, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/drawings/sheet-004.webp" alt="Reconstruct Maple Drive, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/maple-drive/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/maple-drive/images/drawings/sheet-005.webp" alt="Reconstruct Maple Drive, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>33.74</td></tr><tr><th>GPT-6-Astra (low)</th><td>32.16</td></tr><tr><th>Opus-5.5</th><td>31.14</td></tr><tr><th>Kimi-K3.1-Pro</th><td>20.69</td></tr><tr><th>Qwen4-Max-Preview</th><td>19.07</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>16.94</td></tr><tr><th>GLM-5.3-Flash</th><td>9.79</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

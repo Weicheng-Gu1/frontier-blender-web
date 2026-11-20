@@ -1,0 +1,2003 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Kyoto stepped shopping street and pagoda · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Kyoto stepped shopping street and pagoda · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Blocks</p><h1 class="task-title">Kyoto stepped shopping street and pagoda</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P01.webp" alt="Kyoto stepped shopping street and pagoda, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;caption&quot;: &quot;Whole built site from the northwest&quot;,
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -135,
+    150,
+    125
+  ],
+  &quot;target&quot;: [
+    -2,
+    -30,
+    10
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8042691349983215,
+      0.2715989947319031,
+      -0.5285689830780029,
+      -135
+    ],
+    [
+      -0.5942652225494385,
+      -0.36757779121398926,
+      0.7153568267822266,
+      150
+    ],
+    [
+      -1.0368349734335425e-8,
+      0.8894495964050293,
+      0.45703330636024475,
+      125
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P02.webp" alt="Kyoto stepped shopping street and pagoda, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;caption&quot;: &quot;Whole built site from the southeast&quot;,
+  &quot;lens&quot;: 40,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    120,
+    -180,
+    105
+  ],
+  &quot;target&quot;: [
+    -8,
+    -35,
+    10
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7496868968009949,
+      -0.2917611598968506,
+      0.5940075516700745,
+      120
+    ],
+    [
+      0.6617926955223083,
+      0.33051052689552307,
+      -0.6728991270065308,
+      -180
+    ],
+    [
+      8.209840274275848e-8,
+      0.8975734114646912,
+      0.4408648610115051,
+      105
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P03.webp" alt="Kyoto stepped shopping street and pagoda, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;caption&quot;: &quot;Top view of the street network and building roofs&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -2
+    ],
+    [
+      0,
+      1,
+      0,
+      -33
+    ],
+    [
+      0,
+      0,
+      1,
+      220
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;scale&quot;: 145,
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    145.0000005401671,
+    108.75000040512532
+  ],
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;,
+  &quot;position&quot;: [
+    -2,
+    -33,
+    220
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P04.webp" alt="Kyoto stepped shopping street and pagoda, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;caption&quot;: &quot;Looking downhill along the central stepped street&quot;,
+  &quot;lens&quot;: 36,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9934924840927124,
+      -0.018406294286251068,
+      0.11239942163228989,
+      -4.001250267028809
+    ],
+    [
+      0.11389651894569397,
+      -0.16055035591125488,
+      0.9804341793060303,
+      30.724462509155273
+    ],
+    [
+      -3.9365650650324824e-7,
+      0.9868560433387756,
+      0.16160200536251068,
+      7.739007949829102
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      768,
+      0,
+      384
+    ],
+    [
+      0,
+      768.0000228881836,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;,
+  &quot;position&quot;: [
+    -4.001250267028809,
+    30.724462509155273,
+    7.739007949829102
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P05.webp" alt="Kyoto stepped shopping street and pagoda, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;caption&quot;: &quot;Looking uphill from the lower central street&quot;,
+  &quot;lens&quot;: 25,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -5,
+    -20,
+    3
+  ],
+  &quot;target&quot;: [
+    -4,
+    22,
+    6
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9997166395187378,
+      -0.0016954031307250261,
+      -0.02374231442809105,
+      -5
+    ],
+    [
+      -0.02380276843905449,
+      -0.07120676338672638,
+      -0.9971775412559509,
+      -20
+    ],
+    [
+      4.390366736828355e-9,
+      0.9974600672721863,
+      -0.07122695446014404,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      533.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      533.3333587646484,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P06.webp" alt="Kyoto stepped shopping street and pagoda, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;caption&quot;: &quot;Middle steps, adjacent shopfronts and lower street&quot;,
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -5,
+    11,
+    5
+  ],
+  &quot;target&quot;: [
+    -8,
+    -10,
+    2
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9899494051933289,
+      -0.019803009927272797,
+      0.14002805948257446,
+      -5
+    ],
+    [
+      0.14142140746116638,
+      -0.13862060010433197,
+      0.9801960587501526,
+      11
+    ],
+    [
+      -5.908728795134266e-8,
+      0.9901475310325623,
+      0.1400279551744461,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P07.webp" alt="Kyoto stepped shopping street and pagoda, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;caption&quot;: &quot;Upper plaza and shopfronts&quot;,
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -3.799999952316284,
+    27,
+    7
+  ],
+  &quot;target&quot;: [
+    -2,
+    36,
+    7
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9805806875228882,
+      9.854105975648508e-9,
+      -0.1961161345243454,
+      -3.799999952316284
+    ],
+    [
+      -0.1961161345243454,
+      -4.654786778246489e-8,
+      -0.9805806875228882,
+      27
+    ],
+    [
+      -1.8791533662465554e-8,
+      1,
+      -4.371138828673793e-8,
+      7
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P08.webp" alt="Kyoto stepped shopping street and pagoda, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;caption&quot;: &quot;Lower street and southern shop blocks&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -4,
+    -32,
+    3
+  ],
+  &quot;target&quot;: [
+    5,
+    -58,
+    4
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9449860453605652,
+      -0.011881193146109581,
+      -0.3268946409225464,
+      -4
+    ],
+    [
+      -0.3271104693412781,
+      0.03432336077094078,
+      0.944362461566925,
+      -32
+    ],
+    [
+      -3.0643384718587185e-8,
+      0.9993401765823364,
+      -0.03632155805826187,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P09.webp" alt="Kyoto stepped shopping street and pagoda, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;caption&quot;: &quot;Western branch shopfronts and paving&quot;,
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -31,
+    9,
+    3
+  ],
+  &quot;target&quot;: [
+    -43,
+    13,
+    4
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.3162277936935425,
+      0.07476663589477539,
+      0.9457324147224426,
+      -31
+    ],
+    [
+      0.9486832618713379,
+      -0.024922160431742668,
+      -0.3152441680431366,
+      9
+    ],
+    [
+      -5.197042085569592e-8,
+      0.996889591217041,
+      -0.0788109302520752,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P10.webp" alt="Kyoto stepped shopping street and pagoda, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;caption&quot;: &quot;Complete pagoda from the street side&quot;,
+  &quot;lens&quot;: 20,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -7,
+    -43,
+    23
+  ],
+  &quot;target&quot;: [
+    -7,
+    -90,
+    23
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -8.742278367890322e-8,
+      -1.5099580252808664e-7,
+      -7
+    ],
+    [
+      -1.5099580252808664e-7,
+      -7.549791547489804e-8,
+      1,
+      -43
+    ],
+    [
+      -8.742279788975793e-8,
+      1,
+      7.549790126404332e-8,
+      23
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      426.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      426.66668701171875,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P11.webp" alt="Kyoto stepped shopping street and pagoda, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;caption&quot;: &quot;Pagoda roof tiers and bracket detail from the southwest&quot;,
+  &quot;lens&quot;: 27,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -35,
+    -113,
+    20
+  ],
+  &quot;target&quot;: [
+    -7,
+    -90,
+    20
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.6347391605377197,
+      -1.7690776132894825e-7,
+      -0.7727264165878296,
+      -35
+    ],
+    [
+      -0.77272629737854,
+      -4.130732733642617e-8,
+      -0.6347392201423645,
+      -113
+    ],
+    [
+      8.037103071956153e-8,
+      1,
+      -1.6292068494294654e-7,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      576.0000457763672,
+      0,
+      384
+    ],
+    [
+      0,
+      576.0000686645508,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P12.webp" alt="Kyoto stepped shopping street and pagoda, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;caption&quot;: &quot;Eastern shopfront detail&quot;,
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -7,
+    5,
+    5
+  ],
+  &quot;target&quot;: [
+    2,
+    8,
+    5
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.3162275552749634,
+      3.44131017016025e-8,
+      -0.9486833810806274,
+      -7
+    ],
+    [
+      -0.9486833214759827,
+      1.3550608457535418e-7,
+      -0.31622758507728577,
+      5
+    ],
+    [
+      1.1766999108431264e-7,
+      1,
+      7.549790126404332e-8,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P13.webp" alt="Kyoto stepped shopping street and pagoda, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;caption&quot;: &quot;Small upper street shrine and wooden storefront&quot;,
+  &quot;lens&quot;: 30,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -4,
+    19,
+    6
+  ],
+  &quot;target&quot;: [
+    -9,
+    21,
+    5.5
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.37139061093330383,
+      -0.0858377143740654,
+      0.9245003461837769,
+      -4
+    ],
+    [
+      0.9284766316413879,
+      0.03433522582054138,
+      -0.3698000907897949,
+      19
+    ],
+    [
+      -1.3252531516627641e-7,
+      0.9957173466682434,
+      0.0924500972032547,
+      6
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P14.webp" alt="Kyoto stepped shopping street and pagoda, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;caption&quot;: &quot;Western shopfront with three blue umbrellas beside the steps&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -4,
+    12,
+    4
+  ],
+  &quot;target&quot;: [
+    -9,
+    10,
+    4
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.37139058113098145,
+      -1.5864081603922386e-7,
+      0.9284766912460327,
+      -4
+    ],
+    [
+      0.9284766316413879,
+      -1.276631280688889e-7,
+      0.37139061093330383,
+      12
+    ],
+    [
+      5.961452131941769e-8,
+      1,
+      1.9470718370939721e-7,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P15.webp" alt="Kyoto stepped shopping street and pagoda, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;caption&quot;: &quot;Small shrine and adjacent middle-street storefront&quot;,
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -4,
+    -11,
+    2
+  ],
+  &quot;target&quot;: [
+    -10,
+    -11,
+    1.8
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -4.371138473402425e-8,
+      -0.03331493213772774,
+      0.9994449019432068,
+      -4
+    ],
+    [
+      0.9999999403953552,
+      5.909949507554302e-8,
+      4.5705657925054766e-8,
+      -11
+    ],
+    [
+      -6.058936463659848e-8,
+      0.9994449019432068,
+      0.03331493213772774,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P25.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P25.webp" alt="Kyoto stepped shopping street and pagoda, reference P25" loading="lazy" width="800" height="600"></a><figcaption>P25</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P25&quot;,
+  &quot;caption&quot;: &quot;Northeast oblique view of rear perimeter panels, roof groups and pagoda&quot;,
+  &quot;lens&quot;: 40,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    98,
+    75,
+    65
+  ],
+  &quot;target&quot;: [
+    -3,
+    -30,
+    9
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7207011580467224,
+      -0.24872475862503052,
+      0.6470901966094971,
+      98
+    ],
+    [
+      0.6932457089424133,
+      -0.2585751712322235,
+      0.6727177500724792,
+      75
+    ],
+    [
+      -9.661548716621837e-8,
+      0.9334210753440857,
+      0.3587828278541565,
+      65
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P25.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P26.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P26.webp" alt="Kyoto stepped shopping street and pagoda, reference P26" loading="lazy" width="800" height="600"></a><figcaption>P26</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P26&quot;,
+  &quot;caption&quot;: &quot;Southwest overview of the pagoda and the stepped shop district&quot;,
+  &quot;lens&quot;: 38,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -78,
+    -135,
+    55
+  ],
+  &quot;target&quot;: [
+    -7,
+    -55,
+    10
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7479247450828552,
+      0.2574063539505005,
+      -0.6118419170379639,
+      -78
+    ],
+    [
+      -0.6637835502624512,
+      0.2900351583957672,
+      -0.689399003982544,
+      -135
+    ],
+    [
+      -1.1369989394438562e-8,
+      0.9217491149902344,
+      0.3877865970134735,
+      55
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P26.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P27.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P27.webp" alt="Kyoto stepped shopping street and pagoda, reference P27" loading="lazy" width="800" height="600"></a><figcaption>P27</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P27&quot;,
+  &quot;caption&quot;: &quot;Eastern rear timber panels and adjacent lower street roofs&quot;,
+  &quot;lens&quot;: 30,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    58,
+    -12,
+    22
+  ],
+  &quot;target&quot;: [
+    -5,
+    -22,
+    4
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.15676753222942352,
+      -0.26821833848953247,
+      0.9505171775817871,
+      58
+    ],
+    [
+      0.9876355528831482,
+      -0.04257442429661751,
+      0.15087570250034332,
+      -12
+    ],
+    [
+      8.988629218720234e-8,
+      0.96241694688797,
+      0.27157625555992126,
+      22
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P27.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P28.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P28.webp" alt="Kyoto stepped shopping street and pagoda, reference P28" loading="lazy" width="800" height="600"></a><figcaption>P28</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P28&quot;,
+  &quot;caption&quot;: &quot;Western branch buildings, rear panels and open-ended roof structures&quot;,
+  &quot;lens&quot;: 30,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -54,
+    48,
+    20
+  ],
+  &quot;target&quot;: [
+    -28,
+    12,
+    4
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8106791973114014,
+      0.19846418499946594,
+      -0.5508277416229248,
+      -54
+    ],
+    [
+      -0.5854905843734741,
+      -0.27479639649391174,
+      0.7626845240592957,
+      48
+    ],
+    [
+      9.434915426709267e-8,
+      0.940796971321106,
+      0.3389706313610077,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P28.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P29.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P29.webp" alt="Kyoto stepped shopping street and pagoda, reference P29" loading="lazy" width="800" height="600"></a><figcaption>P29</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P29&quot;,
+  &quot;caption&quot;: &quot;Pagoda upper tiers and finial from the southeast&quot;,
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    30,
+    -130,
+    28
+  ],
+  &quot;target&quot;: [
+    -7,
+    -90,
+    23
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7340993881225586,
+      -0.06204981729388237,
+      0.6762010455131531,
+      30
+    ],
+    [
+      0.6790420413017273,
+      0.06708083301782608,
+      -0.731028139591217,
+      -130
+    ],
+    [
+      2.997379056068894e-8,
+      0.9958162307739258,
+      0.09137842804193497,
+      28
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P29.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P30.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P30.webp" alt="Kyoto stepped shopping street and pagoda, reference P30" loading="lazy" width="800" height="600"></a><figcaption>P30</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P30&quot;,
+  &quot;caption&quot;: &quot;Upper plaza storefronts, parasol, bench and paving&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -4,
+    25,
+    10
+  ],
+  &quot;target&quot;: [
+    -4,
+    35,
+    6.5
+  ],
+  &quot;lens&quot;: 22,
+  &quot;sensor_width&quot;: 36,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -4
+    ],
+    [
+      0,
+      0.3303503692150116,
+      -0.9438583850860596,
+      25
+    ],
+    [
+      0,
+      0.9438583850860596,
+      0.3303503692150116,
+      10
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P30.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P33.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P33.webp" alt="Kyoto stepped shopping street and pagoda, reference P33" loading="lazy" width="800" height="600"></a><figcaption>P33</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P33&quot;,
+  &quot;caption&quot;: &quot;High oblique roofs and connected street&quot;,
+  &quot;lens&quot;: 34,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -30,
+    58,
+    32
+  ],
+  &quot;target&quot;: [
+    -3,
+    -10,
+    4
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9294163584709167,
+      0.13189992308616638,
+      -0.344655841588974,
+      -30
+    ],
+    [
+      -0.3690328598022461,
+      -0.3321927785873413,
+      0.8680222034454346,
+      58
+    ],
+    [
+      -1.1405821709331576e-7,
+      0.9339434504508972,
+      0.35742077231407166,
+      32
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      725.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      725.3333129882812,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P33.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P34.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P34.webp" alt="Kyoto stepped shopping street and pagoda, reference P34" loading="lazy" width="800" height="600"></a><figcaption>P34</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P34&quot;,
+  &quot;caption&quot;: &quot;Complete primary pagoda from the west, including finial and base&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -100.21671295166016,
+    -90.32013702392578,
+    22.82997703552246
+  ],
+  &quot;target&quot;: [
+    -7.216710090637207,
+    -90.32013702392578,
+    22.82997764647007
+  ],
+  &quot;lens&quot;: 40,
+  &quot;sensor_width&quot;: 36,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;shift&quot;: [
+    0,
+    0
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;Tcw&quot;: [
+    [
+      7.549790126404332e-8,
+      7.549790126404332e-8,
+      -1,
+      -100.21671295166016
+    ],
+    [
+      -1,
+      -1.4610056261045272e-15,
+      -7.549790126404332e-8,
+      -90.32013702392578
+    ],
+    [
+      -7.16093850883226e-15,
+      1,
+      7.549790126404332e-8,
+      22.82997703552246
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P34.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P35.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P35.webp" alt="Kyoto stepped shopping street and pagoda, reference P35" loading="lazy" width="800" height="600"></a><figcaption>P35</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P35&quot;,
+  &quot;caption&quot;: &quot;Lower street far southeast&quot;,
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    62,
+    -78,
+    18
+  ],
+  &quot;target&quot;: [
+    8,
+    -55,
+    3
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.3918618857860565,
+      -0.22780171036720276,
+      0.891375720500946,
+      62
+    ],
+    [
+      0.9200239777565002,
+      0.09702659398317337,
+      -0.37965983152389526,
+      -78
+    ],
+    [
+      1.8069638230144847e-8,
+      0.9688612818717957,
+      0.24760407209396362,
+      18
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P35.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P36.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P36.webp" alt="Kyoto stepped shopping street and pagoda, reference P36" loading="lazy" width="800" height="600"></a><figcaption>P36</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P36&quot;,
+  &quot;caption&quot;: &quot;Upper rear timber panels and neighboring roof planes&quot;,
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -45,
+    55,
+    24
+  ],
+  &quot;target&quot;: [
+    -5,
+    22,
+    5
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.636383056640625,
+      0.26537996530532837,
+      -0.7242858409881592,
+      -45
+    ],
+    [
+      -0.7713732123374939,
+      -0.21893839538097382,
+      0.597536027431488,
+      55
+    ],
+    [
+      1.2855068121098157e-7,
+      0.9389564990997314,
+      0.34403568506240845,
+      24
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P36.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P38.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P38.webp" alt="Kyoto stepped shopping street and pagoda, reference P38" loading="lazy" width="800" height="600"></a><figcaption>P38</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P38&quot;,
+  &quot;caption&quot;: &quot;Pagoda roof tiles, upper balcony and bracket detail from the north&quot;,
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    10,
+    -62,
+    30
+  ],
+  &quot;target&quot;: [
+    -7,
+    -90,
+    25
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8547875881195068,
+      -0.07831017673015594,
+      0.513035774230957,
+      10
+    ],
+    [
+      0.5189779996871948,
+      -0.12898147106170654,
+      0.8450003266334534,
+      -62
+    ],
+    [
+      -1.7957059839091016e-8,
+      0.9885501265525818,
+      0.15089301764965057,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P38.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P39.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P39.webp" alt="Kyoto stepped shopping street and pagoda, reference P39" loading="lazy" width="800" height="600"></a><figcaption>P39</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P39&quot;,
+  &quot;caption&quot;: &quot;Western branch roof tiles, eaves and timber partitions&quot;,
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -62,
+    8,
+    10
+  ],
+  &quot;target&quot;: [
+    -38,
+    10,
+    3
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.08304517716169357,
+      0.27814406156539917,
+      -0.9569427371025085,
+      -62
+    ],
+    [
+      -0.9965457916259766,
+      0.023178566247224808,
+      -0.07974493503570557,
+      8
+    ],
+    [
+      -2.137808507995942e-8,
+      0.9602596759796143,
+      0.2791081666946411,
+      10
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P39.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P40.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P40.webp" alt="Kyoto stepped shopping street and pagoda, reference P40" loading="lazy" width="800" height="600"></a><figcaption>P40</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P40&quot;,
+  &quot;caption&quot;: &quot;Southern open-sided building and its neighboring roof group&quot;,
+  &quot;lens&quot;: 30,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -55,
+    -45,
+    14
+  ],
+  &quot;target&quot;: [
+    -12,
+    -45,
+    3
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -1.6292068494294654e-7,
+      0.24783310294151306,
+      -0.9688027501106262,
+      -55
+    ],
+    [
+      -1,
+      -1.2611496913450537e-7,
+      1.359050827431929e-7,
+      -45
+    ],
+    [
+      -8.849874433281002e-8,
+      0.9688027501106262,
+      0.24783310294151306,
+      14
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P40.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P42.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P42.webp" alt="Kyoto stepped shopping street and pagoda, reference P42" loading="lazy" width="800" height="600"></a><figcaption>P42</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P42&quot;,
+  &quot;caption&quot;: &quot;High southeast view of the main shop district and connected streets&quot;,
+  &quot;lens&quot;: 38,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    82,
+    -110,
+    58
+  ],
+  &quot;target&quot;: [
+    -4,
+    -35,
+    8
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.6572627425193787,
+      -0.30247291922569275,
+      0.690301239490509,
+      82
+    ],
+    [
+      0.7536615133285522,
+      0.2637844383716583,
+      -0.602006733417511,
+      -110
+    ],
+    [
+      1.3245502472614135e-8,
+      0.9159300923347473,
+      0.4013378918170929,
+      58
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P42.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/public/P43.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/public/P43.webp" alt="Kyoto stepped shopping street and pagoda, reference P43" loading="lazy" width="800" height="600"></a><figcaption>P43</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P43&quot;,
+  &quot;caption&quot;: &quot;Lower street branch, small tower, trees and neighboring roofs&quot;,
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -48,
+    -5,
+    12
+  ],
+  &quot;target&quot;: [
+    -10,
+    -40,
+    3
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.6774756908416748,
+      0.1262364685535431,
+      -0.724631667137146,
+      -48
+    ],
+    [
+      -0.7355451583862305,
+      -0.11627033352851868,
+      0.6674237847328186,
+      -5
+    ],
+    [
+      7.325670026148146e-8,
+      0.9851626753807068,
+      0.17162296175956726,
+      12
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;engine&quot;: &quot;BLENDER_EEVEE_NEXT&quot;,
+  &quot;frame&quot;: 1,
+  &quot;samples&quot;: 32,
+  &quot;image&quot;: &quot;images/public/P43.webp&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 3000
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-001.webp" alt="Kyoto stepped shopping street and pagoda, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-002.webp" alt="Kyoto stepped shopping street and pagoda, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-003.webp" alt="Kyoto stepped shopping street and pagoda, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-004.webp" alt="Kyoto stepped shopping street and pagoda, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/kyoto-shopping-street/images/drawings/sheet-005.webp" alt="Kyoto stepped shopping street and pagoda, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>19.25</td></tr><tr><th>GPT-6-Astra (low)</th><td>18.94</td></tr><tr><th>Qwen4-Max-Preview</th><td>13.27</td></tr><tr><th>Kimi-K3.1-Pro</th><td>12.45</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>11.76</td></tr><tr><th>Opus-5.5</th><td>10.77</td></tr><tr><th>GLM-5.3-Flash</th><td>10.25</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

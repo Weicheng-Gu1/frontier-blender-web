@@ -1,0 +1,1972 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Thames Riverside Miniature City · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Thames Riverside Miniature City · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Cities</p><h1 class="task-title">Thames Riverside Miniature City</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P01.webp" alt="Thames Riverside Miniature City, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;caption&quot;: &quot;Riverfront, bridge and Gothic landmark ensemble&quot;,
+  &quot;position&quot;: [
+    -7.3433628,
+    3.0779777,
+    1.7666589
+  ],
+  &quot;target&quot;: [
+    1.7,
+    -9.3,
+    1.2
+  ],
+  &quot;lens&quot;: 55,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.807455837726593,
+      0.021791748702526093,
+      -0.5895254015922546,
+      -7.343362808227539
+    ],
+    [
+      -0.5899280309677124,
+      -0.02982725203037262,
+      0.8069047331809998,
+      3.0779776573181152
+    ],
+    [
+      -5.5972964929651425e-8,
+      0.9993174076080322,
+      0.03693975508213043,
+      1.766658902168274
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1173.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      1173.3333892822266,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P02.webp" alt="Thames Riverside Miniature City, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;caption&quot;: &quot;Elevated river-side overview of the entire city&quot;,
+  &quot;position&quot;: [
+    14,
+    15,
+    32
+  ],
+  &quot;target&quot;: [
+    14,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -1,
+      -1.513081713255815e-7,
+      5.789618384710593e-8,
+      14
+    ],
+    [
+      1.5099580252808664e-7,
+      -0.7409867644309998,
+      0.6715195178985596,
+      15
+    ],
+    [
+      -5.870609953717576e-8,
+      0.6715195178985596,
+      0.7409867644309998,
+      32
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P03.webp" alt="Thames Riverside Miniature City, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;caption&quot;: &quot;West-side overview connecting riverfront and city blocks&quot;,
+  &quot;position&quot;: [
+    -27,
+    -14,
+    24
+  ],
+  &quot;target&quot;: [
+    8.1,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 39,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;extent&quot;: null,
+  &quot;Tcw&quot;: [
+    [
+      1.9470718370939721e-7,
+      0.5644310712814331,
+      -0.8254802227020264,
+      -27
+    ],
+    [
+      -1,
+      1.44073183605542e-7,
+      -1.373598195186787e-7,
+      -14
+    ],
+    [
+      4.1399420780408036e-8,
+      0.8254802227020264,
+      0.5644310712814331,
+      24
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      831.9999389648438,
+      0,
+      384
+    ],
+    [
+      0,
+      831.9999847412109,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P04.webp" alt="Thames Riverside Miniature City, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;caption&quot;: &quot;Tall Gothic tower, spires and neighboring roofs&quot;,
+  &quot;position&quot;: [
+    -2,
+    -4,
+    3
+  ],
+  &quot;target&quot;: [
+    1.7,
+    -9.2,
+    1
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8147909045219421,
+      0.17337031662464142,
+      -0.553225576877594,
+      -2
+    ],
+    [
+      -0.5797549486160278,
+      -0.24365589022636414,
+      0.7775062918663025,
+      -4
+    ],
+    [
+      -1.632359527548033e-7,
+      0.9542403221130371,
+      0.29904091358184814,
+      3
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P05.webp" alt="Thames Riverside Miniature City, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;caption&quot;: &quot;Eastern city blocks and street corridors&quot;,
+  &quot;position&quot;: [
+    24,
+    -4,
+    8
+  ],
+  &quot;target&quot;: [
+    19,
+    -16,
+    0.3
+  ],
+  &quot;lens&quot;: 40,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.923076868057251,
+      -0.19600796699523926,
+      0.3309226632118225,
+      24
+    ],
+    [
+      0.3846152722835541,
+      -0.47041940689086914,
+      0.7942144870758057,
+      -4
+    ],
+    [
+      8.469216083994979e-8,
+      0.8603990077972412,
+      0.5096209645271301,
+      8
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P06.webp" alt="Thames Riverside Miniature City, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;caption&quot;: &quot;Opposite-side overview of roofs and block spacing&quot;,
+  &quot;position&quot;: [
+    14,
+    -43,
+    32
+  ],
+  &quot;target&quot;: [
+    14,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      14
+    ],
+    [
+      0,
+      0.7409869432449341,
+      -0.67151939868927,
+      -43
+    ],
+    [
+      0,
+      0.67151939868927,
+      0.7409869432449341,
+      32
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P07.webp" alt="Thames Riverside Miniature City, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;caption&quot;: &quot;Orthographic site plan, north of image is positive Y&quot;,
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;position&quot;: [
+    14,
+    -14,
+    40
+  ],
+  &quot;target&quot;: [
+    14,
+    -14,
+    0
+  ],
+  &quot;scale&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      14
+    ],
+    [
+      0,
+      1,
+      0,
+      -14
+    ],
+    [
+      0,
+      0,
+      1,
+      40
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    41.99999921768905,
+    31.49999818112712
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P08.webp" alt="Thames Riverside Miniature City, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;caption&quot;: &quot;Clock tower, bridge connection and western riverfront&quot;,
+  &quot;position&quot;: [
+    -7,
+    -3,
+    3.4
+  ],
+  &quot;target&quot;: [
+    -3.75,
+    -8.1,
+    0.8
+  ],
+  &quot;lens&quot;: 50,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8433209657669067,
+      0.21226203441619873,
+      -0.4937150776386261,
+      -7
+    ],
+    [
+      -0.5374102592468262,
+      -0.3330884277820587,
+      0.7747530937194824,
+      -3
+    ],
+    [
+      -1.1278817169113609e-7,
+      0.9186930656433105,
+      0.3949722349643707,
+      3.4000000953674316
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1066.6666259765625,
+      0,
+      384
+    ],
+    [
+      0,
+      1066.6667175292969,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P09.webp" alt="Thames Riverside Miniature City, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;position&quot;: [
+    32,
+    -31,
+    4.5
+  ],
+  &quot;target&quot;: [
+    25,
+    -24,
+    0.4
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;caption&quot;: &quot;Southeastern district roofs and street-facing blocks&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      -0.2705696225166321,
+      0.6532933115959167,
+      32
+    ],
+    [
+      0.7071068286895752,
+      0.27056947350502014,
+      -0.653293251991272,
+      -31
+    ],
+    [
+      6.690111575835544e-8,
+      0.9238962531089783,
+      0.3826431334018707,
+      4.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;shift_x&quot;: 0,
+  &quot;shift_y&quot;: 0,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P10.webp" alt="Thames Riverside Miniature City, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;caption&quot;: &quot;South elevated overview&quot;,
+  &quot;position&quot;: [
+    14,
+    -43,
+    24
+  ],
+  &quot;target&quot;: [
+    14,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 38,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      14
+    ],
+    [
+      0,
+      0.6375676989555359,
+      -0.7703943252563477,
+      -43
+    ],
+    [
+      0,
+      0.7703943252563477,
+      0.6375676989555359,
+      24
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P11.webp" alt="Thames Riverside Miniature City, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;caption&quot;: &quot;East elevated overview&quot;,
+  &quot;position&quot;: [
+    38,
+    -14,
+    20
+  ],
+  &quot;target&quot;: [
+    14,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 40,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      7.549790126404332e-8,
+      -0.6401844024658203,
+      0.7682212591171265,
+      38
+    ],
+    [
+      1,
+      4.8332577051724e-8,
+      -5.7999091751526066e-8,
+      -14
+    ],
+    [
+      0,
+      0.7682212591171265,
+      0.6401844024658203,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P12.webp" alt="Thames Riverside Miniature City, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;caption&quot;: &quot;West elevated overview&quot;,
+  &quot;position&quot;: [
+    -20,
+    -14,
+    20
+  ],
+  &quot;target&quot;: [
+    14,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 40,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      7.549790126404332e-8,
+      0.507020115852356,
+      -0.861934244632721,
+      -20
+    ],
+    [
+      -1,
+      3.8278955116766156e-8,
+      -6.507422511958794e-8,
+      -14
+    ],
+    [
+      0,
+      0.861934244632721,
+      0.507020115852356,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P13.webp" alt="Thames Riverside Miniature City, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;caption&quot;: &quot;Northeast oblique overview&quot;,
+  &quot;position&quot;: [
+    34,
+    10,
+    28
+  ],
+  &quot;target&quot;: [
+    14,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7682212591171265,
+      -0.42727434635162354,
+      0.4767313003540039,
+      34
+    ],
+    [
+      0.6401844024658203,
+      -0.5127291679382324,
+      0.5720775127410889,
+      10
+    ],
+    [
+      -5.007674275248064e-10,
+      0.7446780800819397,
+      0.6674238443374634,
+      28
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P14.webp" alt="Thames Riverside Miniature City, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;caption&quot;: &quot;Southwest oblique overview&quot;,
+  &quot;position&quot;: [
+    -18,
+    -38,
+    26
+  ],
+  &quot;target&quot;: [
+    10,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 42,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.650791347026825,
+      0.4374949336051941,
+      -0.6205390691757202,
+      -18
+    ],
+    [
+      -0.7592566609382629,
+      0.3749956488609314,
+      -0.5318905711174011,
+      -38
+    ],
+    [
+      1.4544866644428112e-8,
+      0.8172982335090637,
+      0.5762147903442383,
+      26
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P15.webp" alt="Thames Riverside Miniature City, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;caption&quot;: &quot;Top-down footprint oblique&quot;,
+  &quot;position&quot;: [
+    8,
+    -12,
+    34
+  ],
+  &quot;target&quot;: [
+    14,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 45,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.31622767448425293,
+      0.9326841235160828,
+      -0.17349448800086975,
+      8
+    ],
+    [
+      -0.9486833214759827,
+      -0.31089460849761963,
+      0.05783148482441902,
+      -12
+    ],
+    [
+      1.1521599674324534e-8,
+      0.182879239320755,
+      0.9831354022026062,
+      34
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      960,
+      0,
+      384
+    ],
+    [
+      0,
+      960.0000457763672,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P16.webp" alt="Thames Riverside Miniature City, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;caption&quot;: &quot;Riverfront opposite oblique&quot;,
+  &quot;position&quot;: [
+    24,
+    8,
+    10
+  ],
+  &quot;target&quot;: [
+    1,
+    -8,
+    0
+  ],
+  &quot;lens&quot;: 48,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.5710645318031311,
+      -0.2759442627429962,
+      0.7731364965438843,
+      24
+    ],
+    [
+      0.8209051489830017,
+      -0.19196127355098724,
+      0.5378341674804688,
+      8
+    ],
+    [
+      1.563236651236366e-9,
+      0.9418097734451294,
+      0.33614635467529297,
+      10
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P17.webp" alt="Thames Riverside Miniature City, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;caption&quot;: &quot;Gothic tower north facade&quot;,
+  &quot;position&quot;: [
+    4,
+    0,
+    4
+  ],
+  &quot;target&quot;: [
+    1.7,
+    -9.3,
+    1.15
+  ],
+  &quot;lens&quot;: 58,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9707533717155457,
+      -0.06845580786466599,
+      0.2301122397184372,
+      4
+    ],
+    [
+      0.24007882177829742,
+      -0.2767995595932007,
+      0.9304537177085876,
+      0
+    ],
+    [
+      5.878666442526992e-9,
+      0.9584861397743225,
+      0.28513893485069275,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1237.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      1237.3334197998047,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P18.webp" alt="Thames Riverside Miniature City, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;caption&quot;: &quot;Gothic tower east facade&quot;,
+  &quot;position&quot;: [
+    10,
+    -9,
+    4
+  ],
+  &quot;target&quot;: [
+    1.7,
+    -9.3,
+    1.15
+  ],
+  &quot;lens&quot;: 58,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.0361209437251091,
+      -0.3243599832057953,
+      0.9452438354492188,
+      10
+    ],
+    [
+      0.999347448348999,
+      -0.011723870411515236,
+      0.034165382385253906,
+      -9
+    ],
+    [
+      3.249191493637227e-8,
+      0.9458610415458679,
+      0.32457178831100464,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1237.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      1237.3334197998047,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P19.webp" alt="Thames Riverside Miniature City, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;caption&quot;: &quot;Gothic tower rear south&quot;,
+  &quot;position&quot;: [
+    2,
+    -17,
+    4
+  ],
+  &quot;target&quot;: [
+    1.7,
+    -9.3,
+    1.15
+  ],
+  &quot;lens&quot;: 58,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9992418885231018,
+      -0.013504729606211185,
+      0.03651416674256325,
+      2
+    ],
+    [
+      0.038931507617235184,
+      0.34662124514579773,
+      -0.9371968507766724,
+      -17
+    ],
+    [
+      2.534806142762136e-9,
+      0.937907874584198,
+      0.34688422083854675,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1237.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      1237.3334197998047,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P20.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P20.webp" alt="Thames Riverside Miniature City, reference P20" loading="lazy" width="800" height="600"></a><figcaption>P20</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P20&quot;,
+  &quot;caption&quot;: &quot;Gothic tower high detail&quot;,
+  &quot;position&quot;: [
+    5,
+    -5,
+    7
+  ],
+  &quot;target&quot;: [
+    1.7,
+    -9.3,
+    1.2
+  ],
+  &quot;lens&quot;: 62,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7933093309402466,
+      -0.4448122978210449,
+      0.4156949520111084,
+      5
+    ],
+    [
+      0.608818769454956,
+      -0.5796039700508118,
+      0.5416631698608398,
+      -5
+    ],
+    [
+      1.0554956020314421e-8,
+      0.6827893257141113,
+      0.7306153178215027,
+      7
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1322.666748046875,
+      0,
+      384
+    ],
+    [
+      0,
+      1322.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P20.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P21.webp" alt="Thames Riverside Miniature City, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;caption&quot;: &quot;Clock tower north facade&quot;,
+  &quot;position&quot;: [
+    -8,
+    -2,
+    4
+  ],
+  &quot;target&quot;: [
+    -3.75,
+    -8.1,
+    0.8
+  ],
+  &quot;lens&quot;: 58,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.820493757724762,
+      0.22600726783275604,
+      -0.5250815749168396,
+      -8
+    ],
+    [
+      -0.5716554522514343,
+      -0.32438692450523376,
+      0.7536465525627136,
+      -2
+    ],
+    [
+      -4.4518735364817985e-9,
+      0.9185280799865723,
+      0.3953557312488556,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1237.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      1237.3334197998047,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P22.webp" alt="Thames Riverside Miniature City, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;caption&quot;: &quot;Clock tower east oblique&quot;,
+  &quot;position&quot;: [
+    2,
+    -7,
+    3.5
+  ],
+  &quot;target&quot;: [
+    -3.75,
+    -8.1,
+    0.8
+  ],
+  &quot;lens&quot;: 58,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.1878969818353653,
+      -0.41134655475616455,
+      0.8919017314910889,
+      2
+    ],
+    [
+      0.9821887612342834,
+      -0.07869234681129456,
+      0.1706247180700302,
+      -7
+    ],
+    [
+      -4.377560713919593e-8,
+      0.908075749874115,
+      0.4188060164451599,
+      3.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1237.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      1237.3334197998047,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P23.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P23.webp" alt="Thames Riverside Miniature City, reference P23" loading="lazy" width="800" height="600"></a><figcaption>P23</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P23&quot;,
+  &quot;caption&quot;: &quot;Clock tower rear&quot;,
+  &quot;position&quot;: [
+    -5,
+    -14,
+    4
+  ],
+  &quot;target&quot;: [
+    -3.75,
+    -8.1,
+    0.8
+  ],
+  &quot;lens&quot;: 58,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.978285014629364,
+      0.09714540094137192,
+      -0.183087557554245,
+      -5
+    ],
+    [
+      -0.20726378262043,
+      0.45852625370025635,
+      -0.8641732335090637,
+      -14
+    ],
+    [
+      -3.674204274162207e-9,
+      0.8833552002906799,
+      0.46870410442352295,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1237.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      1237.3334197998047,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P23.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P24.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P24.webp" alt="Thames Riverside Miniature City, reference P24" loading="lazy" width="800" height="600"></a><figcaption>P24</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P24&quot;,
+  &quot;caption&quot;: &quot;Bridge and riverfront west&quot;,
+  &quot;position&quot;: [
+    -12,
+    -10,
+    5
+  ],
+  &quot;target&quot;: [
+    2,
+    -12,
+    0
+  ],
+  &quot;lens&quot;: 48,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.14142140746116638,
+      0.32998305559158325,
+      -0.9333333373069763,
+      -12
+    ],
+    [
+      -0.9899494051933289,
+      -0.04714043810963631,
+      0.13333341479301453,
+      -10
+    ],
+    [
+      2.4533838072215985e-8,
+      0.9428091049194336,
+      0.33333322405815125,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P24.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P25.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P25.webp" alt="Thames Riverside Miniature City, reference P25" loading="lazy" width="800" height="600"></a><figcaption>P25</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P25&quot;,
+  &quot;caption&quot;: &quot;Bridge and riverfront east&quot;,
+  &quot;position&quot;: [
+    14,
+    -2,
+    5
+  ],
+  &quot;target&quot;: [
+    2,
+    -12,
+    0
+  ],
+  &quot;lens&quot;: 48,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.6401845812797546,
+      -0.2341962307691574,
+      0.7316527962684631,
+      14
+    ],
+    [
+      0.7682210803031921,
+      -0.1951635777950287,
+      0.6097109913825989,
+      -2
+    ],
+    [
+      -4.7395239732850314e-8,
+      0.9523987174034119,
+      0.30485519766807556,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1024.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      1024.0000076293945,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P25.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P26.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P26.webp" alt="Thames Riverside Miniature City, reference P26" loading="lazy" width="800" height="600"></a><figcaption>P26</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P26&quot;,
+  &quot;caption&quot;: &quot;Central blocks street level&quot;,
+  &quot;position&quot;: [
+    18,
+    -20,
+    4
+  ],
+  &quot;target&quot;: [
+    14,
+    -16,
+    0.4
+  ],
+  &quot;lens&quot;: 52,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7071066498756409,
+      -0.379642128944397,
+      0.5965500473976135,
+      18
+    ],
+    [
+      0.7071068286895752,
+      0.37964197993278503,
+      -0.596549928188324,
+      -20
+    ],
+    [
+      3.9881662416973995e-8,
+      0.8436490893363953,
+      0.5368949174880981,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P26.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P27.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P27.webp" alt="Thames Riverside Miniature City, reference P27" loading="lazy" width="800" height="600"></a><figcaption>P27</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P27&quot;,
+  &quot;caption&quot;: &quot;Central blocks rear&quot;,
+  &quot;position&quot;: [
+    10,
+    -31,
+    5
+  ],
+  &quot;target&quot;: [
+    14,
+    -16,
+    0.4
+  ],
+  &quot;lens&quot;: 52,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9662348628044128,
+      0.07320250570774078,
+      -0.24704544246196747,
+      10
+    ],
+    [
+      -0.25766268372535706,
+      0.27450937032699585,
+      -0.9264202117919922,
+      -31
+    ],
+    [
+      4.134372399988706e-9,
+      0.9587940573692322,
+      0.28410205245018005,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P27.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P28.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P28.webp" alt="Thames Riverside Miniature City, reference P28" loading="lazy" width="800" height="600"></a><figcaption>P28</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P28&quot;,
+  &quot;caption&quot;: &quot;Eastern blocks close&quot;,
+  &quot;position&quot;: [
+    30,
+    -16,
+    5
+  ],
+  &quot;target&quot;: [
+    22,
+    -16,
+    0.5
+  ],
+  &quot;lens&quot;: 52,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -4.371138828673793e-8,
+      -0.4902612566947937,
+      0.8715755343437195,
+      30
+    ],
+    [
+      1,
+      -5.852018247765045e-8,
+      1.7234548010947037e-8,
+      -16
+    ],
+    [
+      4.255532815022889e-8,
+      0.8715755343437195,
+      0.4902612566947937,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P28.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P29.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P29.webp" alt="Thames Riverside Miniature City, reference P29" loading="lazy" width="800" height="600"></a><figcaption>P29</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P29&quot;,
+  &quot;caption&quot;: &quot;Western blocks close&quot;,
+  &quot;position&quot;: [
+    -12,
+    -20,
+    5
+  ],
+  &quot;target&quot;: [
+    2,
+    -17,
+    0.5
+  ],
+  &quot;lens&quot;: 52,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.20952902734279633,
+      0.2931779623031616,
+      -0.9328152537345886,
+      -12
+    ],
+    [
+      -0.9778024554252625,
+      0.06282386183738708,
+      -0.1998888999223709,
+      -20
+    ],
+    [
+      3.2866118715446646e-8,
+      0.9539915323257446,
+      0.2998335659503937,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P29.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/public/P30.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/public/P30.webp" alt="Thames Riverside Miniature City, reference P30" loading="lazy" width="800" height="600"></a><figcaption>P30</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P30&quot;,
+  &quot;caption&quot;: &quot;High south roof survey&quot;,
+  &quot;position&quot;: [
+    14,
+    -36,
+    16
+  ],
+  &quot;target&quot;: [
+    14,
+    -14,
+    0
+  ],
+  &quot;lens&quot;: 46,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      14
+    ],
+    [
+      0,
+      0.5881717205047607,
+      -0.8087360858917236,
+      -36
+    ],
+    [
+      0,
+      0.8087360858917236,
+      0.5881717205047607,
+      16
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      981.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      981.3332290649414,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P30.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/drawings/sheet-001.webp" alt="Thames Riverside Miniature City, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/drawings/sheet-002.webp" alt="Thames Riverside Miniature City, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/thames-riverside-city/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/thames-riverside-city/images/drawings/sheet-003.webp" alt="Thames Riverside Miniature City, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>45.29</td></tr><tr><th>GPT-6-Astra (low)</th><td>40.25</td></tr><tr><th>Opus-5.5</th><td>36.81</td></tr><tr><th>Qwen4-Max-Preview</th><td>29.52</td></tr><tr><th>Kimi-K3.1-Pro</th><td>28.21</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>27.13</td></tr><tr><th>GLM-5.3-Flash</th><td>20.70</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

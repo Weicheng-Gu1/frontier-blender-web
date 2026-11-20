@@ -1,0 +1,1390 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Reconstruct the waterfront exhibition district · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Reconstruct the waterfront exhibition district · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Blocks</p><h1 class="task-title">Reconstruct the waterfront exhibition district</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P01.webp" alt="Reconstruct the waterfront exhibition district, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.09946972131729126,
+      -1.5880301873494318e-7,
+      0.9950405955314636,
+      73.66210174560547
+    ],
+    [
+      0.9950405955314636,
+      3.688734864226717e-7,
+      -0.09946972131729126,
+      6.916658878326416
+    ],
+    [
+      -3.512479906930821e-7,
+      1,
+      1.9470718370939721e-7,
+      7.837623119354248
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;lens&quot;: 18.006145477294922,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;K&quot;: [
+    [
+      384.131103515625,
+      0,
+      384
+    ],
+    [
+      0,
+      384.1310920715332,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;position&quot;: [
+    73.66210174560547,
+    6.916658878326416,
+    7.837623119354248
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P02.webp" alt="Reconstruct the waterfront exhibition district, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;position&quot;: [
+    190,
+    -230,
+    210
+  ],
+  &quot;target&quot;: [
+    -20,
+    0,
+    45
+  ],
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.7384853959083557,
+      -0.31565508246421814,
+      0.5958196520805359,
+      190
+    ],
+    [
+      0.6742693185806274,
+      0.3457174301147461,
+      -0.6525643467903137,
+      -230
+    ],
+    [
+      1.575351049609708e-8,
+      0.8836521506309509,
+      0.46814391016960144,
+      210
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P03.webp" alt="Reconstruct the waterfront exhibition district, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;position&quot;: [
+    -250,
+    205,
+    220
+  ],
+  &quot;target&quot;: [
+    -25,
+    -5,
+    45
+  ],
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.6823181509971619,
+      0.3613484799861908,
+      -0.6355069875717163,
+      -250
+    ],
+    [
+      -0.7310552000999451,
+      -0.33725857734680176,
+      0.5931398272514343,
+      205
+    ],
+    [
+      3.3266471799464625e-9,
+      0.8693008422851562,
+      0.49428337812423706,
+      220
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P04.webp" alt="Reconstruct the waterfront exhibition district, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;position&quot;: [
+    -7,
+    -6,
+    420
+  ],
+  &quot;target&quot;: [
+    -7,
+    -6,
+    0
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 340,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -7
+    ],
+    [
+      0,
+      1,
+      0,
+      -6
+    ],
+    [
+      0,
+      0,
+      1,
+      420
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    339.99999335035693,
+    254.9999849195601
+  ],
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P05.webp" alt="Reconstruct the waterfront exhibition district, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    -45,
+    18,
+    20
+  ],
+  &quot;target&quot;: [
+    8,
+    10,
+    12
+  ],
+  &quot;lens&quot;: 26,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.1492527425289154,
+      0.14596420526504517,
+      -0.97796630859375,
+      -45
+    ],
+    [
+      -0.9887990951538086,
+      -0.022032277658581734,
+      0.14761760830879211,
+      18
+    ],
+    [
+      6.320316714436558e-8,
+      0.9890444874763489,
+      0.1476176530122757,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      554.6666564941406,
+      0,
+      384
+    ],
+    [
+      0,
+      554.6666450500488,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P06.webp" alt="Reconstruct the waterfront exhibition district, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    35,
+    -65,
+    20
+  ],
+  &quot;target&quot;: [
+    6,
+    8,
+    12
+  ],
+  &quot;lens&quot;: 28,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9293521046638489,
+      -0.03740774095058441,
+      0.36729463934898376,
+      35
+    ],
+    [
+      0.3691946566104889,
+      0.09416411072015762,
+      -0.924569308757782,
+      -65
+    ],
+    [
+      7.776073829290908e-8,
+      0.9948536157608032,
+      0.10132236033678055,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P07.webp" alt="Reconstruct the waterfront exhibition district, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    65,
+    35,
+    20
+  ],
+  &quot;target&quot;: [
+    10,
+    78,
+    40
+  ],
+  &quot;lens&quot;: 20,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.6159219145774841,
+      0.21696002781391144,
+      0.7573431134223938,
+      65
+    ],
+    [
+      0.7878072261810303,
+      -0.16962352395057678,
+      -0.592104434967041,
+      35
+    ],
+    [
+      2.0679637202647427e-7,
+      0.9613304138183594,
+      -0.27539750933647156,
+      20
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      426.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      426.66668701171875,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P08.webp" alt="Reconstruct the waterfront exhibition district, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;position&quot;: [
+    -55,
+    -125,
+    8
+  ],
+  &quot;target&quot;: [
+    -66,
+    -62,
+    6
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9850966930389404,
+      -0.0053763557225465775,
+      0.17191697657108307,
+      -55
+    ],
+    [
+      0.17200101912021637,
+      0.03079189918935299,
+      -0.9846153259277344,
+      -125
+    ],
+    [
+      -7.676983493354328e-9,
+      0.9995113611221313,
+      0.03125773370265961,
+      8
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P09.webp" alt="Reconstruct the waterfront exhibition district, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;position&quot;: [
+    25,
+    34,
+    4.400000095367432
+  ],
+  &quot;target&quot;: [
+    16,
+    12,
+    3.7
+  ],
+  &quot;lens&quot;: 18,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.9255468845367432,
+      -0.011145472526550293,
+      0.37846872210502625,
+      25
+    ],
+    [
+      0.3786327838897705,
+      -0.02724475786089897,
+      0.9251458048820496,
+      34
+    ],
+    [
+      1.0137713246649582e-7,
+      0.9995666742324829,
+      0.029436342418193817,
+      4.400000095367432
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      384,
+      0,
+      384
+    ],
+    [
+      0,
+      384.0000114440918,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P10.webp" alt="Reconstruct the waterfront exhibition district, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;position&quot;: [
+    23,
+    1,
+    4.099999904632568
+  ],
+  &quot;target&quot;: [
+    15,
+    25,
+    3.8
+  ],
+  &quot;lens&quot;: 18,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9486832022666931,
+      -0.0037497119046747684,
+      0.31620553135871887,
+      23
+    ],
+    [
+      0.3162277638912201,
+      0.011249171569943428,
+      -0.9486165046691895,
+      1
+    ],
+    [
+      -1.1737166794034692e-8,
+      0.9999296069145203,
+      0.011857664212584496,
+      4.099999904632568
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      384,
+      0,
+      384
+    ],
+    [
+      0,
+      384.0000114440918,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P11.webp" alt="Reconstruct the waterfront exhibition district, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;position&quot;: [
+    26,
+    32,
+    9
+  ],
+  &quot;target&quot;: [
+    10,
+    8,
+    8.3
+  ],
+  &quot;lens&quot;: 18,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8320504426956177,
+      -0.013457508757710457,
+      0.5545366406440735,
+      26
+    ],
+    [
+      0.5547000169754028,
+      -0.020186370238661766,
+      0.8318054676055908,
+      32
+    ],
+    [
+      5.337583885989261e-8,
+      0.9997056722640991,
+      0.024260954931378365,
+      9
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      384,
+      0,
+      384
+    ],
+    [
+      0,
+      384.0000114440918,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P12.webp" alt="Reconstruct the waterfront exhibition district, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;position&quot;: [
+    21,
+    13,
+    10
+  ],
+  &quot;target&quot;: [
+    10,
+    8,
+    7.7
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.4138028621673584,
+      -0.17023098468780518,
+      0.8943089246749878,
+      21
+    ],
+    [
+      0.910366415977478,
+      -0.07737777382135391,
+      0.40650397539138794,
+      13
+    ],
+    [
+      6.132646745982129e-8,
+      0.9823614358901978,
+      0.18699173629283905,
+      10
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P13.webp" alt="Reconstruct the waterfront exhibition district, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;position&quot;: [
+    2,
+    3,
+    9
+  ],
+  &quot;target&quot;: [
+    13,
+    8,
+    7.7
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.41380271315574646,
+      0.09738314151763916,
+      -0.9051430225372314,
+      2
+    ],
+    [
+      -0.9103665947914124,
+      0.04426494613289833,
+      -0.4114283621311188,
+      3
+    ],
+    [
+      -7.888849040682544e-8,
+      0.9942620992660522,
+      0.10697130858898163,
+      9
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P14.webp" alt="Reconstruct the waterfront exhibition district, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;position&quot;: [
+    35,
+    -35,
+    60
+  ],
+  &quot;target&quot;: [
+    5,
+    6,
+    25
+  ],
+  &quot;lens&quot;: 35,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8070303797721863,
+      -0.3350123167037964,
+      0.48628050088882446,
+      35
+    ],
+    [
+      0.5905099511146545,
+      0.4578503668308258,
+      -0.6645833849906921,
+      -35
+    ],
+    [
+      -8.944047635850438e-8,
+      0.8234924077987671,
+      0.5673272609710693,
+      60
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P15.webp" alt="Reconstruct the waterfront exhibition district, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;position&quot;: [
+    10,
+    42,
+    4
+  ],
+  &quot;target&quot;: [
+    11,
+    55,
+    3.7
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9970544576644897,
+      0.0017642047023400664,
+      -0.07667621225118637,
+      10
+    ],
+    [
+      -0.07669651508331299,
+      0.022934824228286743,
+      -0.9967905879020691,
+      42
+    ],
+    [
+      1.2966339113518188e-8,
+      0.999735414981842,
+      0.02300257608294487,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P16.webp" alt="Reconstruct the waterfront exhibition district, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;position&quot;: [
+    13,
+    16,
+    4
+  ],
+  &quot;target&quot;: [
+    18,
+    29,
+    3.8
+  ],
+  &quot;lens&quot;: 18,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9333456158638,
+      0.005154192913323641,
+      -0.35894209146499634,
+      13
+    ],
+    [
+      -0.35897910594940186,
+      0.013400841504335403,
+      -0.9332494139671326,
+      16
+    ],
+    [
+      -2.1163014451985873e-8,
+      0.9998969435691833,
+      0.014357863925397396,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      384,
+      0,
+      384
+    ],
+    [
+      0,
+      384.0000114440918,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P17.webp" alt="Reconstruct the waterfront exhibition district, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;position&quot;: [
+    19,
+    14,
+    4
+  ],
+  &quot;target&quot;: [
+    13,
+    6,
+    3.6
+  ],
+  &quot;lens&quot;: 20,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8000000715255737,
+      -0.023980693891644478,
+      0.5995204448699951,
+      19
+    ],
+    [
+      0.5999999046325684,
+      -0.03197454288601875,
+      0.7993608713150024,
+      14
+    ],
+    [
+      1.640359528209956e-7,
+      0.9992009401321411,
+      0.03996805101633072,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      426.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      426.66668701171875,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P18.webp" alt="Reconstruct the waterfront exhibition district, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;position&quot;: [
+    25,
+    28.799999237060547,
+    3.799999952316284
+  ],
+  &quot;target&quot;: [
+    22,
+    30,
+    3.7
+  ],
+  &quot;lens&quot;: 25,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.37139052152633667,
+      -0.02872151881456375,
+      0.9280323386192322,
+      25
+    ],
+    [
+      0.9284766912460327,
+      0.011488555930554867,
+      -0.37121278047561646,
+      28.799999237060547
+    ],
+    [
+      4.3812871552972865e-8,
+      0.9995214343070984,
+      0.030934002250432968,
+      3.799999952316284
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      533.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      533.3333587646484,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P19.webp" alt="Reconstruct the waterfront exhibition district, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;position&quot;: [
+    10,
+    13,
+    9
+  ],
+  &quot;target&quot;: [
+    12.5,
+    8,
+    8
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.8944272398948669,
+      0.07874979823827744,
+      -0.44022539258003235,
+      10
+    ],
+    [
+      -0.4472135007381439,
+      -0.15749987959861755,
+      0.880450963973999,
+      13
+    ],
+    [
+      -1.058375218576657e-7,
+      0.9843740463256836,
+      0.17609015107154846,
+      9
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P21.webp" alt="Reconstruct the waterfront exhibition district, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;position&quot;: [
+    25,
+    24,
+    4.599999904632568
+  ],
+  &quot;target&quot;: [
+    19,
+    17,
+    3.2
+  ],
+  &quot;lens&quot;: 24,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.7592564821243286,
+      -0.0977034717798233,
+      0.6434155702590942,
+      25
+    ],
+    [
+      0.6507914662361145,
+      -0.11398711800575256,
+      0.7506512999534607,
+      24
+    ],
+    [
+      -1.5493485250317462e-7,
+      0.9886662364006042,
+      0.15013004839420319,
+      4.599999904632568
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      512.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      512.0000038146973,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/public/P22.webp" alt="Reconstruct the waterfront exhibition district, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;position&quot;: [
+    12,
+    18,
+    4.5
+  ],
+  &quot;target&quot;: [
+    19,
+    17,
+    3.2
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.14142142236232758,
+      0.1790000945329666,
+      -0.9736318588256836,
+      12
+    ],
+    [
+      -0.9899494647979736,
+      -0.025571472942829132,
+      0.13909032940864563,
+      18
+    ],
+    [
+      -1.945873151498745e-8,
+      0.9835166931152344,
+      0.1808173954486847,
+      4.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 1000,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-001.webp" alt="Reconstruct the waterfront exhibition district, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-002.webp" alt="Reconstruct the waterfront exhibition district, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-003.webp" alt="Reconstruct the waterfront exhibition district, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-004.webp" alt="Reconstruct the waterfront exhibition district, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-005.webp" alt="Reconstruct the waterfront exhibition district, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-006.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/waterfront-exhibition/images/drawings/sheet-006.webp" alt="Reconstruct the waterfront exhibition district, drawing sheet-006" loading="lazy"></a><figcaption>sheet-006 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (low)</th><td>23.08</td></tr><tr><th>GPT-6-Astra (high)</th><td>23.02</td></tr><tr><th>Qwen4-Max-Preview</th><td>15.07</td></tr><tr><th>Kimi-K3.1-Pro</th><td>13.56</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>11.84</td></tr><tr><th>Opus-5.5</th><td>10.41</td></tr><tr><th>GLM-5.3-Flash</th><td>9.11</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

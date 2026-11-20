@@ -1,0 +1,617 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Dodger Stadium Baseball Ground Reconstruction · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Dodger Stadium Baseball Ground Reconstruction · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Buildings</p><h1 class="task-title">Dodger Stadium Baseball Ground Reconstruction</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P01.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 42,
+  &quot;Tcw&quot;: [
+    [
+      -0.8532817959785461,
+      -0.20845386385917664,
+      0.47797179222106934,
+      110
+    ],
+    [
+      0.521449863910675,
+      -0.3411065340042114,
+      0.7821357250213623,
+      145
+    ],
+    [
+      9.405288636799014e-8,
+      0.9166204929351807,
+      0.39975830912590027,
+      100
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Home-plate exterior canopy, light arrays and seating bowl&quot;,
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P02.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 35,
+  &quot;Tcw&quot;: [
+    [
+      -0.8640830516815186,
+      -0.07923059910535812,
+      0.4970744252204895,
+      52
+    ],
+    [
+      0.503349244594574,
+      -0.13601258397102356,
+      0.8533112406730652,
+      38
+    ],
+    [
+      1.644263747380137e-8,
+      0.9875338673591614,
+      0.15740683674812317,
+      34
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Outfield scoreboard and seating bowl&quot;,
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P03.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 38,
+  &quot;Tcw&quot;: [
+    [
+      0.7108778357505798,
+      0.2616627514362335,
+      -0.6528286933898926,
+      -93
+    ],
+    [
+      -0.7033154964447021,
+      0.2644762694835663,
+      -0.659848153591156,
+      -122
+    ],
+    [
+      -3.0973037468129405e-9,
+      0.9282159209251404,
+      0.37204182147979736,
+      65
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Opposite field and infield terraces&quot;,
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P04.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 33,
+  &quot;Tcw&quot;: [
+    [
+      -0.31622788310050964,
+      0.05988014489412308,
+      -0.9467915892601013,
+      20
+    ],
+    [
+      -0.9486832618713379,
+      -0.019960075616836548,
+      0.3155973255634308,
+      -30
+    ],
+    [
+      -1.7216168046729763e-8,
+      0.9980059862136841,
+      0.06311922520399094,
+      30
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Right-side multi-tier seating&quot;,
+  &quot;K&quot;: [
+    [
+      704.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      703.9999923706055,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P05.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 38,
+  &quot;Tcw&quot;: [
+    [
+      -0.6309137344360352,
+      -0.059358540922403336,
+      0.773578941822052,
+      36
+    ],
+    [
+      0.7758529782295227,
+      -0.04826975241303444,
+      0.6290644407272339,
+      -48
+    ],
+    [
+      1.1350842044066667e-7,
+      0.9970690011978149,
+      0.07650754600763321,
+      32
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Scoreboard and outfield structures&quot;,
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P06.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 35,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      -35
+    ],
+    [
+      0,
+      0,
+      1,
+      380
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;Near-overhead field and seating layout&quot;,
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P07.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 18,
+  &quot;Tcw&quot;: [
+    [
+      0.8986412286758423,
+      0.024005012586712837,
+      -0.43802690505981445,
+      -34.0185661315918
+    ],
+    [
+      -0.4386841654777527,
+      0.049174025654792786,
+      -0.8972948789596558,
+      -11.714229583740234
+    ],
+    [
+      -2.6756870497024465e-8,
+      0.998501718044281,
+      0.0547204315662384,
+      0.10000000149011612
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      384,
+      0,
+      384
+    ],
+    [
+      0,
+      384.0000114440918,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;X-minus dugout bench, sunken floor and open-front access&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P08.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 18,
+  &quot;Tcw&quot;: [
+    [
+      0.8986430168151855,
+      -0.024004805833101273,
+      0.4380233585834503,
+      34.03886795043945
+    ],
+    [
+      0.43868061900138855,
+      0.04917412996292114,
+      -0.8972966074943542,
+      -11.748200416564941
+    ],
+    [
+      1.3720100611180897e-8,
+      0.998501718044281,
+      0.0547204315662384,
+      0.10000000149011612
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      384,
+      0,
+      384
+    ],
+    [
+      0,
+      384.0000114440918,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;caption&quot;: &quot;X-plus dugout bench, sunken floor and open-front access&quot;,
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P09.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;caption&quot;: &quot;Wide X-minus exterior overview: complete stadium bowl, canopy, field and light supports&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 55,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.5319492220878601,
+      0.36497774720191956,
+      -0.7640818953514099,
+      -390
+    ],
+    [
+      -0.8467762470245361,
+      -0.22928094863891602,
+      0.48000019788742065,
+      220
+    ],
+    [
+      -2.757490946692087e-8,
+      0.9023421406745911,
+      0.4310203194618225,
+      240
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1173.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      1173.3333892822266,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P10.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;caption&quot;: &quot;Wide opposite/rear outfield overview: complete bowl, terraces, field and context&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 55,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.8320502638816833,
+      -0.23411425948143005,
+      0.5028746128082275,
+      280
+    ],
+    [
+      0.5547002553939819,
+      0.3511712849140167,
+      -0.7543118596076965,
+      -440
+    ],
+    [
+      2.56464396386491e-8,
+      0.9065700173377991,
+      0.4220553934574127,
+      250
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1173.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      1173.3333892822266,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/public/P11.webp" alt="Dodger Stadium Baseball Ground Reconstruction, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;caption&quot;: &quot;X-minus seating detail: tier edges, aisles, seats and canopy relationship&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;lens&quot;: 33,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.09663292020559311,
+      0.04803459718823433,
+      0.9941603541374207,
+      0
+    ],
+    [
+      0.9953200221061707,
+      -0.004663613624870777,
+      -0.0965203270316124,
+      -40
+    ],
+    [
+      6.477423397655002e-8,
+      0.9988347887992859,
+      -0.04826045781373978,
+      22
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      704.0000152587891,
+      0,
+      384
+    ],
+    [
+      0,
+      703.9999923706055,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1619.7900390625,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-001.webp" alt="Dodger Stadium Baseball Ground Reconstruction, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-002.webp" alt="Dodger Stadium Baseball Ground Reconstruction, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-003.webp" alt="Dodger Stadium Baseball Ground Reconstruction, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-004.webp" alt="Dodger Stadium Baseball Ground Reconstruction, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-005.webp" alt="Dodger Stadium Baseball Ground Reconstruction, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-006.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-006.webp" alt="Dodger Stadium Baseball Ground Reconstruction, drawing sheet-006" loading="lazy"></a><figcaption>sheet-006 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-007.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-007.webp" alt="Dodger Stadium Baseball Ground Reconstruction, drawing sheet-007" loading="lazy"></a><figcaption>sheet-007 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-008.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/dodger-baseball-stadium/images/drawings/sheet-008.webp" alt="Dodger Stadium Baseball Ground Reconstruction, drawing sheet-008" loading="lazy"></a><figcaption>sheet-008 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>19.15</td></tr><tr><th>GPT-6-Astra (low)</th><td>17.58</td></tr><tr><th>Kimi-K3.1-Pro</th><td>16.20</td></tr><tr><th>Qwen4-Max-Preview</th><td>13.67</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>13.11</td></tr><tr><th>Opus-5.5</th><td>12.16</td></tr><tr><th>GLM-5.3-Flash</th><td>8.62</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

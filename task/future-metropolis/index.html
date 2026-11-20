@@ -1,0 +1,1699 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Futuristic High-rise City · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Futuristic High-rise City · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Cities</p><h1 class="task-title">Futuristic High-rise City</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P01.webp" alt="Futuristic High-rise City, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;caption&quot;: &quot;Tower district, low podiums and continuous base - oblique 1&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -500.3143310546875,
+    -309.6505432128906,
+    652.56005859375
+  ],
+  &quot;target&quot;: [
+    5.437561633253566,
+    196.10136056416752,
+    137.5864290126416
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;margin&quot;: 1,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.41316595673561096,
+      -0.5738414525985718,
+      -500.3143310546875
+    ],
+    [
+      -0.7071068286895752,
+      0.41316577792167664,
+      -0.573841392993927,
+      -309.6505432128906
+    ],
+    [
+      -9.391742139541748e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      652.56005859375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P02.webp" alt="Futuristic High-rise City, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;caption&quot;: &quot;Tower district, low podiums and continuous base - oblique 2&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    511.189453125,
+    -309.6505432128906,
+    652.56005859375
+  ],
+  &quot;target&quot;: [
+    5.437561633253566,
+    196.10136056416752,
+    137.5864290126416
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;margin&quot;: 1,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      -0.41316595673561096,
+      0.5738414525985718,
+      511.189453125
+    ],
+    [
+      0.7071068286895752,
+      0.41316577792167664,
+      -0.573841392993927,
+      -309.6505432128906
+    ],
+    [
+      9.391742139541748e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      652.56005859375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P03.webp" alt="Futuristic High-rise City, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;caption&quot;: &quot;Tower district, low podiums and continuous base - oblique 3&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    511.189453125,
+    701.853271484375,
+    652.56005859375
+  ],
+  &quot;target&quot;: [
+    5.437561633253566,
+    196.10136056416752,
+    137.5864290126416
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;margin&quot;: 1,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071069478988647,
+      -0.4131655991077423,
+      0.573841392993927,
+      511.189453125
+    ],
+    [
+      0.7071065902709961,
+      -0.41316577792167664,
+      0.5738416910171509,
+      701.853271484375
+    ],
+    [
+      -2.028540713183702e-8,
+      0.8115344643592834,
+      0.5843045115470886,
+      652.56005859375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P04.webp" alt="Futuristic High-rise City, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;caption&quot;: &quot;Tower district, low podiums and continuous base - oblique 4&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -500.3143310546875,
+    701.853271484375,
+    652.56005859375
+  ],
+  &quot;target&quot;: [
+    5.437561633253566,
+    196.10136056416752,
+    137.5864290126416
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;margin&quot;: 1,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071069478988647,
+      0.4131655991077423,
+      -0.573841392993927,
+      -500.3143310546875
+    ],
+    [
+      -0.7071065902709961,
+      -0.41316577792167664,
+      0.5738416910171509,
+      701.853271484375
+    ],
+    [
+      2.028540713183702e-8,
+      0.8115344643592834,
+      0.5843045115470886,
+      652.56005859375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P05.webp" alt="Futuristic High-rise City, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;caption&quot;: &quot;Vertical overhead of the complete modeled city&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    5.437561511993408,
+    196.1013641357422,
+    800
+  ],
+  &quot;target&quot;: [
+    5.437561633253566,
+    196.10136056416752,
+    0
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 740,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      5.437561511993408
+    ],
+    [
+      0,
+      1,
+      0,
+      196.1013641357422
+    ],
+    [
+      0,
+      0,
+      1,
+      800
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    739.9999820813541,
+    554.9999865610156
+  ],
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;reference_plane_origin&quot;: [
+    5.437561511993408,
+    196.1013641357422,
+    0
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P06.webp" alt="Futuristic High-rise City, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;caption&quot;: &quot;Lower-Y streets and tower podiums - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -435.4772644042969,
+    -355.4772644042969,
+    596.0999755859375
+  ],
+  &quot;target&quot;: [
+    10,
+    90,
+    142.5
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.4131658375263214,
+      -0.5738415122032166,
+      -435.4772644042969
+    ],
+    [
+      -0.7071068286895752,
+      0.41316574811935425,
+      -0.5738414525985718,
+      -355.4772644042969
+    ],
+    [
+      -3.589704533624172e-8,
+      0.8115344047546387,
+      0.584304690361023,
+      596.0999755859375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P07.webp" alt="Futuristic High-rise City, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;caption&quot;: &quot;Lower-Y streets and tower podiums - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    455.4772644042969,
+    535.477294921875,
+    596.0999755859375
+  ],
+  &quot;target&quot;: [
+    10,
+    90,
+    142.5
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      -0.4131658971309662,
+      0.573841392993927,
+      455.4772644042969
+    ],
+    [
+      0.7071067094802856,
+      -0.4131658971309662,
+      0.573841392993927,
+      535.477294921875
+    ],
+    [
+      -2.607178251068376e-9,
+      0.8115342855453491,
+      0.5843048095703125,
+      596.0999755859375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P08.webp" alt="Futuristic High-rise City, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;caption&quot;: &quot;Upper-Y streets and tower podiums - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -435.4772644042969,
+    -112.9772720336914,
+    583.5999755859375
+  ],
+  &quot;target&quot;: [
+    10,
+    332.5,
+    130
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.4131658375263214,
+      -0.5738415122032166,
+      -435.4772644042969
+    ],
+    [
+      -0.7071068286895752,
+      0.41316574811935425,
+      -0.5738414525985718,
+      -112.9772720336914
+    ],
+    [
+      -3.589704533624172e-8,
+      0.8115344047546387,
+      0.584304690361023,
+      583.5999755859375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P09.webp" alt="Futuristic High-rise City, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;caption&quot;: &quot;Upper-Y streets and tower podiums - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    455.4772644042969,
+    777.977294921875,
+    583.5999755859375
+  ],
+  &quot;target&quot;: [
+    10,
+    332.5,
+    130
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      -0.4131658971309662,
+      0.573841392993927,
+      455.4772644042969
+    ],
+    [
+      0.7071067094802856,
+      -0.4131658971309662,
+      0.573841392993927,
+      777.977294921875
+    ],
+    [
+      -2.607178251068376e-9,
+      0.8115342855453491,
+      0.5843048095703125,
+      583.5999755859375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P10.webp" alt="Futuristic High-rise City, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;caption&quot;: &quot;Tall western stepped tower - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -378.1778259277344,
+    -241.3723602294922,
+    451.82415771484375
+  ],
+  &quot;target&quot;: [
+    -74.68918946933553,
+    62.11628416353997,
+    142.80175469856084
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.41316595673561096,
+      -0.5738414525985718,
+      -378.1778259277344
+    ],
+    [
+      -0.7071068286895752,
+      0.41316577792167664,
+      -0.573841392993927,
+      -241.3723602294922
+    ],
+    [
+      -9.391742139541748e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      451.82415771484375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P11.webp" alt="Futuristic High-rise City, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;caption&quot;: &quot;Tall western stepped tower - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    228.79946899414062,
+    365.6049499511719,
+    451.82415771484375
+  ],
+  &quot;target&quot;: [
+    -74.68918946933553,
+    62.11628416353997,
+    142.80175469856084
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071069478988647,
+      -0.41316571831703186,
+      0.5738413333892822,
+      228.79946899414062
+    ],
+    [
+      0.7071065902709961,
+      -0.4131659269332886,
+      0.5738415718078613,
+      365.6049499511719
+    ],
+    [
+      1.2404838045654287e-8,
+      0.8115343451499939,
+      0.584304690361023,
+      451.82415771484375
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P12.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P12.webp" alt="Futuristic High-rise City, reference P12" loading="lazy" width="800" height="600"></a><figcaption>P12</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P12&quot;,
+  &quot;caption&quot;: &quot;Central stepped tower - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -226.70826721191406,
+    -193.1182861328125,
+    382.52783203125
+  ],
+  &quot;target&quot;: [
+    30.26149820044121,
+    63.851476718418766,
+    120.87254328986823
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.41316595673561096,
+      -0.5738414525985718,
+      -226.70826721191406
+    ],
+    [
+      -0.7071068286895752,
+      0.41316577792167664,
+      -0.573841392993927,
+      -193.1182861328125
+    ],
+    [
+      -9.391742139541748e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      382.52783203125
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P12.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P13.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P13.webp" alt="Futuristic High-rise City, reference P13" loading="lazy" width="800" height="600"></a><figcaption>P13</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P13&quot;,
+  &quot;caption&quot;: &quot;Central stepped tower - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    287.23126220703125,
+    320.82122802734375,
+    382.52783203125
+  ],
+  &quot;target&quot;: [
+    30.26149820044121,
+    63.851476718418766,
+    120.87254328986823
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071069478988647,
+      -0.4131655991077423,
+      0.573841392993927,
+      287.23126220703125
+    ],
+    [
+      0.7071065902709961,
+      -0.41316577792167664,
+      0.5738416910171509,
+      320.82122802734375
+    ],
+    [
+      -2.028540713183702e-8,
+      0.8115344643592834,
+      0.5843045115470886,
+      382.52783203125
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P13.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P14.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P14.webp" alt="Futuristic High-rise City, reference P14" loading="lazy" width="800" height="600"></a><figcaption>P14</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P14&quot;,
+  &quot;caption&quot;: &quot;Eastern slab tower - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -86.16889953613281,
+    -104.79041290283203,
+    382.1473083496094
+  ],
+  &quot;target&quot;: [
+    170.69978894716368,
+    152.07828042191068,
+    120.59494529933012
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071066498756409,
+      0.41316595673561096,
+      -0.5738415122032166,
+      -86.16889953613281
+    ],
+    [
+      -0.7071069478988647,
+      0.41316574811935425,
+      -0.5738413333892822,
+      -104.79041290283203
+    ],
+    [
+      -4.550531329527985e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      382.1473083496094
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P14.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P15.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P15.webp" alt="Futuristic High-rise City, reference P15" loading="lazy" width="800" height="600"></a><figcaption>P15</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P15&quot;,
+  &quot;caption&quot;: &quot;Eastern slab tower - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    427.5684814453125,
+    408.94696044921875,
+    382.1473083496094
+  ],
+  &quot;target&quot;: [
+    170.69978894716368,
+    152.07828042191068,
+    120.59494529933012
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      -0.413165807723999,
+      0.5738414525985718,
+      427.5684814453125
+    ],
+    [
+      0.7071067094802856,
+      -0.4131658971309662,
+      0.573841392993927,
+      408.94696044921875
+    ],
+    [
+      7.511491162404127e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      382.1473083496094
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P15.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P16.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P16.webp" alt="Futuristic High-rise City, reference P16" loading="lazy" width="800" height="600"></a><figcaption>P16</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P16&quot;,
+  &quot;caption&quot;: &quot;Upper-Y rounded tower - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -278.6212463378906,
+    91.48184204101562,
+    376.1892395019531
+  ],
+  &quot;target&quot;: [
+    -25.906607005487885,
+    344.19648227314514,
+    118.86666470400256
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.4131658971309662,
+      -0.573841392993927,
+      -278.6212463378906
+    ],
+    [
+      -0.7071068286895752,
+      0.4131658375263214,
+      -0.5738413333892822,
+      91.48184204101562
+    ],
+    [
+      4.705583478425979e-9,
+      0.8115343451499939,
+      0.584304690361023,
+      376.1892395019531
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P16.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P17.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P17.webp" alt="Futuristic High-rise City, reference P17" loading="lazy" width="800" height="600"></a><figcaption>P17</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P17&quot;,
+  &quot;caption&quot;: &quot;Upper-Y rounded tower - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    226.8080291748047,
+    596.9111328125,
+    376.1892395019531
+  ],
+  &quot;target&quot;: [
+    -25.906607005487885,
+    344.19648227314514,
+    118.86666470400256
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071069478988647,
+      -0.41316577792167664,
+      0.5738412737846375,
+      226.8080291748047
+    ],
+    [
+      0.7071065902709961,
+      -0.4131658673286438,
+      0.5738416314125061,
+      596.9111328125
+    ],
+    [
+      -1.1072402372747092e-7,
+      0.8115343451499939,
+      0.584304690361023,
+      376.1892395019531
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P17.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P18.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P18.webp" alt="Futuristic High-rise City, reference P18" loading="lazy" width="800" height="600"></a><figcaption>P18</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P18&quot;,
+  &quot;caption&quot;: &quot;Upper-Y eastern twin-mass building - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -59.76175308227539,
+    145.9009246826172,
+    305.9551696777344
+  ],
+  &quot;target&quot;: [
+    145.88263039484252,
+    351.54531172882776,
+    96.56111180175125
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.4131658375263214,
+      -0.5738415122032166,
+      -59.76175308227539
+    ],
+    [
+      -0.7071068286895752,
+      0.41316574811935425,
+      -0.5738414525985718,
+      145.9009246826172
+    ],
+    [
+      -3.589704533624172e-8,
+      0.8115344047546387,
+      0.584304690361023,
+      305.9551696777344
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P18.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P19.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P19.webp" alt="Futuristic High-rise City, reference P19" loading="lazy" width="800" height="600"></a><figcaption>P19</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P19&quot;,
+  &quot;caption&quot;: &quot;Upper-Y eastern twin-mass building - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    351.5270080566406,
+    557.189697265625,
+    305.9551696777344
+  ],
+  &quot;target&quot;: [
+    145.88263039484252,
+    351.54531172882776,
+    96.56111180175125
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      -0.4131658375263214,
+      0.5738414525985718,
+      351.5270080566406
+    ],
+    [
+      0.7071067094802856,
+      -0.41316574811935425,
+      0.5738415122032166,
+      557.189697265625
+    ],
+    [
+      -6.351110215518929e-8,
+      0.8115344047546387,
+      0.584304690361023,
+      305.9551696777344
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P19.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P20.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P20.webp" alt="Futuristic High-rise City, reference P20" loading="lazy" width="800" height="600"></a><figcaption>P20</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P20&quot;,
+  &quot;caption&quot;: &quot;Middle-Y broad building - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -88.66951751708984,
+    76.93466186523438,
+    284.1844787597656
+  ],
+  &quot;target&quot;: [
+    102.6416891411238,
+    268.2458667098207,
+    89.38496185858408
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067094802856,
+      0.4131658375263214,
+      -0.5738415122032166,
+      -88.66951751708984
+    ],
+    [
+      -0.7071068286895752,
+      0.41316574811935425,
+      -0.5738414525985718,
+      76.93466186523438
+    ],
+    [
+      -3.589704533624172e-8,
+      0.8115344047546387,
+      0.584304690361023,
+      284.1844787597656
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P20.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P21.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P21.webp" alt="Futuristic High-rise City, reference P21" loading="lazy" width="800" height="600"></a><figcaption>P21</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P21&quot;,
+  &quot;caption&quot;: &quot;Middle-Y broad building - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    293.952880859375,
+    459.55706787109375,
+    284.1844787597656
+  ],
+  &quot;target&quot;: [
+    102.6416891411238,
+    268.2458667098207,
+    89.38496185858408
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071069478988647,
+      -0.4131655991077423,
+      0.573841392993927,
+      293.952880859375
+    ],
+    [
+      0.7071065902709961,
+      -0.41316577792167664,
+      0.5738416910171509,
+      459.55706787109375
+    ],
+    [
+      -2.028540713183702e-8,
+      0.8115344643592834,
+      0.5843045115470886,
+      284.1844787597656
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P21.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P22.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P22.webp" alt="Futuristic High-rise City, reference P22" loading="lazy" width="800" height="600"></a><figcaption>P22</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P22&quot;,
+  &quot;caption&quot;: &quot;Lower-Y eastern slender tower - first oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    -15.890393257141113,
+    -200.11474609375,
+    307.2119445800781
+  ],
+  &quot;target&quot;: [
+    190.71429454110205,
+    6.4899377636805,
+    96.84007482044922
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.7071067690849304,
+      0.4131658673286438,
+      -0.573841392993927,
+      -15.890393257141113
+    ],
+    [
+      -0.7071067094802856,
+      0.4131658673286438,
+      -0.5738414525985718,
+      -200.11474609375
+    ],
+    [
+      -2.290848932773315e-8,
+      0.8115343451499939,
+      0.5843047499656677,
+      307.2119445800781
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P22.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/public/P23.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/public/P23.webp" alt="Futuristic High-rise City, reference P23" loading="lazy" width="800" height="600"></a><figcaption>P23</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P23&quot;,
+  &quot;caption&quot;: &quot;Lower-Y eastern slender tower - complementary oblique&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;position&quot;: [
+    397.3189697265625,
+    213.09461975097656,
+    307.2119445800781
+  ],
+  &quot;target&quot;: [
+    190.71429454110205,
+    6.4899377636805,
+    96.84007482044922
+  ],
+  &quot;lens&quot;: 42,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.7071067094802856,
+      -0.4131658673286438,
+      0.573841392993927,
+      397.3189697265625
+    ],
+    [
+      0.7071067094802856,
+      -0.4131658971309662,
+      0.573841392993927,
+      213.09461975097656
+    ],
+    [
+      2.1898673097098253e-8,
+      0.8115342855453491,
+      0.5843048095703125,
+      307.2119445800781
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      895.9999694824219,
+      0,
+      384
+    ],
+    [
+      0,
+      896.0000152587891,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P23.webp&quot;,
+  &quot;near&quot;: 0.009999999776482582,
+  &quot;far&quot;: 5000,
+  &quot;sensor_fit&quot;: &quot;HORIZONTAL&quot;,
+  &quot;sensor_width_mm&quot;: 36,
+  &quot;pixel_aspect&quot;: [
+    1,
+    1
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 5000
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/D01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/D01.webp" alt="Futuristic High-rise City, drawing D01" loading="lazy"></a><figcaption>D01 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/D02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/D02.webp" alt="Futuristic High-rise City, drawing D02" loading="lazy"></a><figcaption>D02 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/D03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/D03.webp" alt="Futuristic High-rise City, drawing D03" loading="lazy"></a><figcaption>D03 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/D04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/D04.webp" alt="Futuristic High-rise City, drawing D04" loading="lazy"></a><figcaption>D04 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/D05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/D05.webp" alt="Futuristic High-rise City, drawing D05" loading="lazy"></a><figcaption>D05 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/D06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/D06.webp" alt="Futuristic High-rise City, drawing D06" loading="lazy"></a><figcaption>D06 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/D07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/D07.webp" alt="Futuristic High-rise City, drawing D07" loading="lazy"></a><figcaption>D07 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/D08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/D08.webp" alt="Futuristic High-rise City, drawing D08" loading="lazy"></a><figcaption>D08 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/D09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/D09.webp" alt="Futuristic High-rise City, drawing D09" loading="lazy"></a><figcaption>D09 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/future-metropolis/images/drawings/S00.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/future-metropolis/images/drawings/S00.webp" alt="Futuristic High-rise City, drawing S00" loading="lazy"></a><figcaption>S00 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>46.50</td></tr><tr><th>GPT-6-Astra (low)</th><td>45.13</td></tr><tr><th>Opus-5.5</th><td>33.61</td></tr><tr><th>Kimi-K3.1-Pro</th><td>31.50</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>25.06</td></tr><tr><th>Qwen4-Max-Preview</th><td>21.80</td></tr><tr><th>GLM-5.3-Flash</th><td>16.12</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

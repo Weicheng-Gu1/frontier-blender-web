@@ -1,0 +1,724 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Chinese Garden Park Reconstruction · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Chinese Garden Park Reconstruction · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Blocks</p><h1 class="task-title">Chinese Garden Park Reconstruction</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P01.webp" alt="Chinese Garden Park Reconstruction, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;position&quot;: [
+    2,
+    -9,
+    5
+  ],
+  &quot;target&quot;: [
+    16,
+    -3.7,
+    3
+  ],
+  &quot;lens&quot;: 35,
+  &quot;subject&quot;: &quot;B01&quot;,
+  &quot;caption&quot;: &quot;B01 entry facade and side context&quot;,
+  &quot;category&quot;: &quot;building_detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;coverage&quot;: &quot;focused_facade_complete&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.3540499210357666,
+      0.12384923547506332,
+      -0.9269896745681763,
+      2
+    ],
+    [
+      -0.9352263808250427,
+      0.04688568040728569,
+      -0.35093173384666443,
+      -9
+    ],
+    [
+      -8.22994010718503e-8,
+      0.9911927580833435,
+      0.13242694735527039,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;,
+  &quot;extent&quot;: null
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P02.webp" alt="Chinese Garden Park Reconstruction, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;position&quot;: [
+    4,
+    3,
+    5
+  ],
+  &quot;target&quot;: [
+    16,
+    -3.7,
+    3.2
+  ],
+  &quot;lens&quot;: 30,
+  &quot;subject&quot;: &quot;B01&quot;,
+  &quot;caption&quot;: &quot;B01 facade and opposite side context&quot;,
+  &quot;category&quot;: &quot;building_detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;coverage&quot;: &quot;focused_facade_complete&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.4874950647354126,
+      0.113383948802948,
+      -0.8657323718070984,
+      4
+    ],
+    [
+      -0.8731254935264587,
+      -0.06330610811710358,
+      0.4833672046661377,
+      3
+    ],
+    [
+      -6.547429620695766e-8,
+      0.9915323853492737,
+      0.12985986471176147,
+      5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;,
+  &quot;extent&quot;: null
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P03.webp" alt="Chinese Garden Park Reconstruction, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;position&quot;: [
+    24,
+    -35,
+    7
+  ],
+  &quot;target&quot;: [
+    12.3,
+    -24.7,
+    4.5
+  ],
+  &quot;lens&quot;: 35,
+  &quot;subject&quot;: &quot;B04&quot;,
+  &quot;caption&quot;: &quot;B04 rear wall and side context&quot;,
+  &quot;category&quot;: &quot;building_detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;coverage&quot;: &quot;focused_facade_complete&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6607723832130432,
+      -0.11886122077703476,
+      0.741115152835846,
+      24
+    ],
+    [
+      0.7505861520767212,
+      0.1046384945511818,
+      -0.6524346470832825,
+      -35
+    ],
+    [
+      3.153061367555665e-9,
+      0.9873816967010498,
+      0.15835782885551453,
+      7
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;,
+  &quot;extent&quot;: null
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P04.webp" alt="Chinese Garden Park Reconstruction, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;position&quot;: [
+    0,
+    -11,
+    6
+  ],
+  &quot;target&quot;: [
+    12.3,
+    -24.7,
+    4.5
+  ],
+  &quot;lens&quot;: 35,
+  &quot;subject&quot;: &quot;B04&quot;,
+  &quot;caption&quot;: &quot;B04 side windows and entry context&quot;,
+  &quot;category&quot;: &quot;building_detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;K&quot;: [
+    [
+      746.6667022705078,
+      0,
+      384
+    ],
+    [
+      0,
+      746.6667022705078,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;coverage&quot;: &quot;focused_facade_complete&quot;,
+  &quot;Tcw&quot;: [
+    [
+      -0.744103729724884,
+      0.05424807220697403,
+      -0.6658577919006348,
+      0
+    ],
+    [
+      -0.6680639982223511,
+      -0.0604226253926754,
+      0.7416464686393738,
+      -11
+    ],
+    [
+      1.3303837143041619e-8,
+      0.9966976642608643,
+      0.08120188117027283,
+      6
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;,
+  &quot;extent&quot;: null
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P05.webp" alt="Chinese Garden Park Reconstruction, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    19,
+    -22,
+    4.5
+  ],
+  &quot;target&quot;: [
+    15.8,
+    -15.7,
+    3.5
+  ],
+  &quot;lens&quot;: 28,
+  &quot;subject&quot;: &quot;B07&quot;,
+  &quot;caption&quot;: &quot;B07 timber door and facade&quot;,
+  &quot;category&quot;: &quot;building_detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;K&quot;: [
+    [
+      597.3333435058594,
+      0,
+      384
+    ],
+    [
+      0,
+      597.3333206176758,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;coverage&quot;: &quot;focused_facade_complete&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.891578733921051,
+      -0.06345739215612411,
+      0.4483974575996399,
+      19
+    ],
+    [
+      0.4528654217720032,
+      0.12493187189102173,
+      -0.8827823996543884,
+      -22
+    ],
+    [
+      -6.494148863112059e-8,
+      0.9901339411735535,
+      0.14012426137924194,
+      4.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;,
+  &quot;extent&quot;: null
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P06.webp" alt="Chinese Garden Park Reconstruction, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    -28,
+    25,
+    10
+  ],
+  &quot;target&quot;: [
+    -1,
+    4,
+    3
+  ],
+  &quot;lens&quot;: 40,
+  &quot;K&quot;: [
+    [
+      853.3333740234375,
+      0,
+      384
+    ],
+    [
+      0,
+      853.3333740234375,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;rear_bridge_context&quot;,
+  &quot;coverage&quot;: &quot;contextual_subject_fits&quot;,
+  &quot;subject&quot;: &quot;stone bridge and opposite terraces&quot;,
+  &quot;caption&quot;: &quot;Bridge and opposite garden context&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;Tcw&quot;: [
+    [
+      -0.6139407157897949,
+      0.15825840830802917,
+      -0.7733246088027954,
+      -28
+    ],
+    [
+      -0.7893521189689636,
+      -0.12309002131223679,
+      0.6014748811721802,
+      25
+    ],
+    [
+      -9.31459567254933e-8,
+      0.9796954393386841,
+      0.20049157738685608,
+      10
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P07.webp" alt="Chinese Garden Park Reconstruction, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    -3.7103,
+    -36.7426,
+    5.6001
+  ],
+  &quot;target&quot;: [
+    1.5,
+    0,
+    4
+  ],
+  &quot;lens&quot;: 38,
+  &quot;K&quot;: [
+    [
+      810.6666870117188,
+      0,
+      384
+    ],
+    [
+      0,
+      810.6665954589844,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;frontage_context&quot;,
+  &quot;coverage&quot;: &quot;contextual_subject_fits&quot;,
+  &quot;subject&quot;: &quot;pavilion and main tower in water frontage&quot;,
+  &quot;caption&quot;: &quot;Front water, pavilion and terrace context&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;Tcw&quot;: [
+    [
+      0.990094780921936,
+      0.006048130802810192,
+      -0.14027045667171478,
+      -3.7102999687194824
+    ],
+    [
+      -0.14040079712867737,
+      0.0426509827375412,
+      -0.9891756772994995,
+      -36.74259948730469
+    ],
+    [
+      9.175970205888007e-9,
+      0.9990716576576233,
+      0.043077681213617325,
+      5.600100040435791
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P08.webp" alt="Chinese Garden Park Reconstruction, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;scale&quot;: 78,
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    77.99999898299576,
+    58.4999971124345
+  ],
+  &quot;category&quot;: &quot;oblique_layout&quot;,
+  &quot;coverage&quot;: &quot;whole_subject_fits&quot;,
+  &quot;subject&quot;: &quot;complete garden architectural assembly&quot;,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;caption&quot;: &quot;Oblique complete garden layout&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;Tcw&quot;: [
+    [
+      0.7071066498756409,
+      -0.31023597717285156,
+      0.6354162096977234,
+      42
+    ],
+    [
+      0.7071067690849304,
+      0.31023579835891724,
+      -0.6354161500930786,
+      -42
+    ],
+    [
+      9.167838754819968e-8,
+      0.8986141681671143,
+      0.4387398064136505,
+      32
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P09.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P09.webp" alt="Chinese Garden Park Reconstruction, reference P09" loading="lazy" width="800" height="600"></a><figcaption>P09</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;id&quot;: &quot;P09&quot;,
+  &quot;position&quot;: [
+    -1.67,
+    0.46,
+    85
+  ],
+  &quot;target&quot;: [
+    -1.67,
+    0.46,
+    0
+  ],
+  &quot;scale&quot;: 62,
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    62.000001847744045,
+    46.5000000433065
+  ],
+  &quot;subject&quot;: &quot;whole garden&quot;,
+  &quot;caption&quot;: &quot;Top-down complete garden&quot;,
+  &quot;category&quot;: &quot;top_down&quot;,
+  &quot;coverage&quot;: &quot;whole_subject_fits&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -1.6699999570846558
+    ],
+    [
+      0,
+      1,
+      0,
+      0.46000000834465027
+    ],
+    [
+      0,
+      0,
+      1,
+      85
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P09.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P10.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P10.webp" alt="Chinese Garden Park Reconstruction, reference P10" loading="lazy" width="800" height="600"></a><figcaption>P10</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P10&quot;,
+  &quot;position&quot;: [
+    -8,
+    12,
+    15
+  ],
+  &quot;target&quot;: [
+    12,
+    8,
+    7
+  ],
+  &quot;lens&quot;: 30,
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;subject&quot;: &quot;main tower&quot;,
+  &quot;caption&quot;: &quot;Main tower and terrace detail&quot;,
+  &quot;category&quot;: &quot;terrace_detail&quot;,
+  &quot;coverage&quot;: &quot;whole_subject_fits&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;Tcw&quot;: [
+    [
+      -0.19611617922782898,
+      0.35805749893188477,
+      -0.9128708839416504,
+      -8
+    ],
+    [
+      -0.9805806875228882,
+      -0.07161146402359009,
+      0.18257424235343933,
+      12
+    ],
+    [
+      5.754604615049175e-8,
+      0.930949330329895,
+      0.3651484251022339,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P10.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/public/P11.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/public/P11.webp" alt="Chinese Garden Park Reconstruction, reference P11" loading="lazy" width="800" height="600"></a><figcaption>P11</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;id&quot;: &quot;P11&quot;,
+  &quot;position&quot;: [
+    -15,
+    -17,
+    13
+  ],
+  &quot;target&quot;: [
+    -2,
+    1,
+    2.5
+  ],
+  &quot;lens&quot;: 30,
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;subject&quot;: &quot;open pavilion&quot;,
+  &quot;caption&quot;: &quot;Open pavilion and water garden detail&quot;,
+  &quot;category&quot;: &quot;pavilion_detail&quot;,
+  &quot;coverage&quot;: &quot;whole_subject_fits&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 116.87000274658203,
+  &quot;Tcw&quot;: [
+    [
+      0.8106791377067566,
+      0.25029975175857544,
+      -0.5292913317680359,
+      -15
+    ],
+    [
+      -0.5854906439781189,
+      0.34656885266304016,
+      -0.7328647375106812,
+      -17
+    ],
+    [
+      2.3466522947046542e-8,
+      0.9040132164955139,
+      0.42750436067581177,
+      13
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;image&quot;: &quot;images/public/P11.webp&quot;
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/bridge.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/bridge.webp" alt="Chinese Garden Park Reconstruction, drawing bridge" loading="lazy"></a><figcaption>bridge · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_01_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_01_elevations.webp" alt="Chinese Garden Park Reconstruction, drawing building_01_elevations" loading="lazy"></a><figcaption>building_01_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_01_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_01_sections.webp" alt="Chinese Garden Park Reconstruction, drawing building_01_sections" loading="lazy"></a><figcaption>building_01_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_02_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_02_elevations.webp" alt="Chinese Garden Park Reconstruction, drawing building_02_elevations" loading="lazy"></a><figcaption>building_02_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_02_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_02_sections.webp" alt="Chinese Garden Park Reconstruction, drawing building_02_sections" loading="lazy"></a><figcaption>building_02_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_03_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_03_elevations.webp" alt="Chinese Garden Park Reconstruction, drawing building_03_elevations" loading="lazy"></a><figcaption>building_03_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_03_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_03_sections.webp" alt="Chinese Garden Park Reconstruction, drawing building_03_sections" loading="lazy"></a><figcaption>building_03_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_04_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_04_elevations.webp" alt="Chinese Garden Park Reconstruction, drawing building_04_elevations" loading="lazy"></a><figcaption>building_04_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_04_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_04_sections.webp" alt="Chinese Garden Park Reconstruction, drawing building_04_sections" loading="lazy"></a><figcaption>building_04_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_05_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_05_elevations.webp" alt="Chinese Garden Park Reconstruction, drawing building_05_elevations" loading="lazy"></a><figcaption>building_05_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_05_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_05_sections.webp" alt="Chinese Garden Park Reconstruction, drawing building_05_sections" loading="lazy"></a><figcaption>building_05_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_05_upper.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_05_upper.webp" alt="Chinese Garden Park Reconstruction, drawing building_05_upper" loading="lazy"></a><figcaption>building_05_upper · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_06_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_06_elevations.webp" alt="Chinese Garden Park Reconstruction, drawing building_06_elevations" loading="lazy"></a><figcaption>building_06_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_06_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_06_sections.webp" alt="Chinese Garden Park Reconstruction, drawing building_06_sections" loading="lazy"></a><figcaption>building_06_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_07_elevations.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_07_elevations.webp" alt="Chinese Garden Park Reconstruction, drawing building_07_elevations" loading="lazy"></a><figcaption>building_07_elevations · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_07_sections.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/building_07_sections.webp" alt="Chinese Garden Park Reconstruction, drawing building_07_sections" loading="lazy"></a><figcaption>building_07_sections · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/pavilion.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/pavilion.webp" alt="Chinese Garden Park Reconstruction, drawing pavilion" loading="lazy"></a><figcaption>pavilion · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/chinese-garden-park/images/drawings/site.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/chinese-garden-park/images/drawings/site.webp" alt="Chinese Garden Park Reconstruction, drawing site" loading="lazy"></a><figcaption>site · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (low)</th><td>21.24</td></tr><tr><th>GPT-6-Astra (high)</th><td>20.18</td></tr><tr><th>Kimi-K3.1-Pro</th><td>16.13</td></tr><tr><th>Opus-5.5</th><td>13.87</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>13.45</td></tr><tr><th>Qwen4-Max-Preview</th><td>13.02</td></tr><tr><th>GLM-5.3-Flash</th><td>10.96</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="International Space Station Reconstruction · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>International Space Station Reconstruction · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Objects</p><h1 class="task-title">International Space Station Reconstruction</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/space-station/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/public/P01.webp" alt="International Space Station Reconstruction, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    250,
+    -235,
+    170
+  ],
+  &quot;target&quot;: [
+    56,
+    -11.4,
+    0.3
+  ],
+  &quot;lens&quot;: 52,
+  &quot;Tcw&quot;: [
+    [
+      0.755332350730896,
+      -0.32592326402664185,
+      0.5685482025146484,
+      250
+    ],
+    [
+      0.6553419828414917,
+      0.3756518065929413,
+      -0.6552957892417908,
+      -235
+    ],
+    [
+      -2.8465692025747558e-8,
+      0.8675596714019775,
+      0.4973330795764923,
+      170
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/space-station/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/public/P02.webp" alt="International Space Station Reconstruction, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -69.59809855270345,
+    97.39741985515735,
+    188.93357141561765
+  ],
+  &quot;target&quot;: [
+    47.933271804541434,
+    -10.339662739050112,
+    -6.952033301123172
+  ],
+  &quot;lens&quot;: 52,
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;Tcw&quot;: [
+    [
+      -0.6757246851921082,
+      0.5717121362686157,
+      -0.4653399884700775,
+      -69.59809875488281
+    ],
+    [
+      -0.7371540665626526,
+      -0.5240696668624878,
+      0.4265615940093994,
+      97.39742279052734
+    ],
+    [
+      -1.1088409479498296e-7,
+      0.6312655806541443,
+      0.7755666375160217,
+      188.93357849121094
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/space-station/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/public/P03.webp" alt="International Space Station Reconstruction, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    190,
+    -120,
+    -95
+  ],
+  &quot;target&quot;: [
+    56,
+    -11.4,
+    0.3
+  ],
+  &quot;lens&quot;: 52,
+  &quot;Tcw&quot;: [
+    [
+      0.6296316385269165,
+      0.37571579217910767,
+      0.6800011992454529,
+      190
+    ],
+    [
+      0.7768937945365906,
+      -0.3044978976249695,
+      -0.5511053204536438,
+      -120
+    ],
+    [
+      -4.533923814165064e-8,
+      0.8752820491790771,
+      -0.4836127758026123,
+      -95
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/space-station/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/public/P04.webp" alt="International Space Station Reconstruction, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    -80,
+    100,
+    -80
+  ],
+  &quot;target&quot;: [
+    56,
+    -11.4,
+    0.3
+  ],
+  &quot;lens&quot;: 52,
+  &quot;Tcw&quot;: [
+    [
+      -0.6336712837219238,
+      -0.3214138150215149,
+      -0.7036716938018799,
+      -80
+    ],
+    [
+      -0.7736024260520935,
+      0.2632756531238556,
+      0.576389729976654,
+      100
+    ],
+    [
+      5.4040492081242064e-9,
+      0.9096038341522217,
+      -0.4154766798019409,
+      -80
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/space-station/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/public/P05.webp" alt="International Space Station Reconstruction, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;position&quot;: [
+    55,
+    -12,
+    250
+  ],
+  &quot;target&quot;: [
+    56,
+    -11.4,
+    0.3
+  ],
+  &quot;lens&quot;: 52,
+  &quot;Tcw&quot;: [
+    [
+      0.5144959688186646,
+      0.8574833869934082,
+      -0.0040163216181099415,
+      55
+    ],
+    [
+      -0.8574928045272827,
+      0.5144904255867004,
+      -0.002396693453192711,
+      -12
+    ],
+    [
+      0.000011234156772843562,
+      0.004677056334912777,
+      0.9999889135360718,
+      250
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      1109.3333129882812,
+      0,
+      384
+    ],
+    [
+      0,
+      1109.3332901000977,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 1000
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/space-station/images/drawings/arrangement.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/drawings/arrangement.webp" alt="International Space Station Reconstruction, drawing arrangement" loading="lazy"></a><figcaption>arrangement · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/space-station/images/drawings/attachments.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/drawings/attachments.webp" alt="International Space Station Reconstruction, drawing attachments" loading="lazy"></a><figcaption>attachments · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/space-station/images/drawings/modules.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/drawings/modules.webp" alt="International Space Station Reconstruction, drawing modules" loading="lazy"></a><figcaption>modules · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/space-station/images/drawings/orthographic.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/drawings/orthographic.webp" alt="International Space Station Reconstruction, drawing orthographic" loading="lazy"></a><figcaption>orthographic · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/space-station/images/drawings/secondary_arrays.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/space-station/images/drawings/secondary_arrays.webp" alt="International Space Station Reconstruction, drawing secondary_arrays" loading="lazy"></a><figcaption>secondary_arrays · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (low)</th><td>70.59</td></tr><tr><th>GPT-6-Astra (high)</th><td>68.60</td></tr><tr><th>Opus-5.5</th><td>56.47</td></tr><tr><th>Kimi-K3.1-Pro</th><td>38.75</td></tr><tr><th>Qwen4-Max-Preview</th><td>24.15</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>23.63</td></tr><tr><th>GLM-5.3-Flash</th><td>17.30</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:title" content="Concrete kitchen and dining room · FrontierBlender"><meta property="og:description" content="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings."><meta property="og:type" content="website"><meta name="theme-color" content="#9376A7"><link rel="icon" href="/frontier-blender-web/favicon.svg"><title>Concrete kitchen and dining room · FrontierBlender</title><script>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="/frontier-blender-web/_astro/Site.CrUevAaN.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a> <nav class="site-nav not-prose" aria-label="Main navigation"> <a class="wordmark" href="/frontier-blender-web/" aria-label="FrontierBlender home"><svg viewBox="0 0 32 32" width="27" height="27" fill="none" aria-hidden="true"><path d="M16 2 29 9v14L16 30 3 23V9Z" stroke="currentColor" stroke-width="1.6"></path><path d="m3 9 13 8 13-8M16 17v13M9 6l14 8v6" stroke="currentColor" stroke-width="1.6"></path></svg>Frontier<span>Blender</span></a> <div class="nav-links"><a href="/frontier-blender-web/">Blog</a><a href="/frontier-blender-web/leaderboard/">Leaderboard</a><a href="/frontier-blender-web/task/" aria-current="page">Task</a><a href="https://github.com/Weicheng-Gu1/frontier-blender-web">Github</a><button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Toggle light and dark theme"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"></path></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg></button></div> </nav> <script type="module">const t=document.querySelector("#theme-toggle");function o(){t?.setAttribute("aria-label",document.documentElement.dataset.theme==="dark"?"Switch to light mode":"Switch to dark mode")}o();t?.addEventListener("click",()=>{const e=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=e;try{localStorage.setItem("frontier-theme",e)}catch{}o()});</script><main id="main-content" class="prose prose-lg max-w-none wide-page"><a class="back-link" href="/frontier-blender-web/task/">All tasks</a><p class="eyebrow">Interiors</p><h1 class="task-title">Concrete kitchen and dining room</h1><p class="page-intro">Reconstruct the original scene from its supplied reference information.</p><nav class="article-toc" aria-label="Task sections"><a href="#views">Multi-view images</a><a href="#drawings">Technical drawings</a><a href="#results">Results</a></nav><section id="views"><h2>Multi-view images</h2><div class="reference-grid not-prose"><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P01.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P01.webp" alt="Concrete kitchen and dining room, reference P01" loading="lazy" width="800" height="600"></a><figcaption>P01</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P01&quot;,
+  &quot;position&quot;: [
+    -4.3,
+    -2.6,
+    1.5
+  ],
+  &quot;target&quot;: [
+    0.3,
+    -2.1,
+    1.2
+  ],
+  &quot;lens&quot;: 20,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.10805906355381012,
+      0.06432069838047028,
+      -0.9920614957809448,
+      -4.300000190734863
+    ],
+    [
+      -0.9941444396972656,
+      0.006991530768573284,
+      -0.1078326478600502,
+      -2.5999999046325684
+    ],
+    [
+      1.5721076351837837e-7,
+      0.9979047775268555,
+      0.06469955295324326,
+      1.5
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      426.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      426.66668701171875,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;interior_overview&quot;,
+  &quot;order&quot;: &quot;far&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;Kitchen and dining overview from the west&quot;,
+  &quot;route_role&quot;: &quot;far&quot;,
+  &quot;description&quot;: &quot;Kitchen and dining overview from the west&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P01.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P02.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P02.webp" alt="Concrete kitchen and dining room, reference P02" loading="lazy" width="800" height="600"></a><figcaption>P02</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P02&quot;,
+  &quot;position&quot;: [
+    2.75,
+    -3.8,
+    1.65
+  ],
+  &quot;target&quot;: [
+    -1,
+    -0.6,
+    1.25
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.6491190195083618,
+      -0.06151973083615303,
+      0.7581950426101685,
+      2.75
+    ],
+    [
+      0.7606868743896484,
+      0.05249684303998947,
+      -0.6469926834106445,
+      -3.799999952316284
+    ],
+    [
+      -3.2101791447303185e-8,
+      0.9967242479324341,
+      0.08087394386529922,
+      1.649999976158142
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;interior_overview&quot;,
+  &quot;order&quot;: &quot;near&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;Cabinet wall, appliances and dining chairs&quot;,
+  &quot;route_role&quot;: &quot;near&quot;,
+  &quot;description&quot;: &quot;Cabinet wall, appliances and dining chairs&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P02.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P03.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P03.webp" alt="Concrete kitchen and dining room, reference P03" loading="lazy" width="800" height="600"></a><figcaption>P03</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P03&quot;,
+  &quot;position&quot;: [
+    -3.6,
+    -0.85,
+    1.6
+  ],
+  &quot;target&quot;: [
+    0.5,
+    -2.9,
+    1.1
+  ],
+  &quot;lens&quot;: 22,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      -0.44721394777297974,
+      0.09698549658060074,
+      -0.889153242111206,
+      -3.5999999046325684
+    ],
+    [
+      -0.8944270014762878,
+      -0.048492737114429474,
+      0.44457706809043884,
+      -0.8500000238418579
+    ],
+    [
+      5.4975895835696065e-8,
+      0.9941036701202393,
+      0.10843309015035629,
+      1.600000023841858
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      469.3333282470703,
+      0,
+      384
+    ],
+    [
+      0,
+      469.3333282470703,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;interior_overview&quot;,
+  &quot;order&quot;: &quot;near&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;Island storage, south windows and console&quot;,
+  &quot;route_role&quot;: &quot;near&quot;,
+  &quot;description&quot;: &quot;Island storage, south windows and console&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P03.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P04.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P04.webp" alt="Concrete kitchen and dining room, reference P04" loading="lazy" width="800" height="600"></a><figcaption>P04</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P04&quot;,
+  &quot;position&quot;: [
+    0.8,
+    -3.85,
+    1.4
+  ],
+  &quot;target&quot;: [
+    0.75,
+    -1.6,
+    0.8
+  ],
+  &quot;lens&quot;: 26,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      0.9997531771659851,
+      -0.005723102949559689,
+      0.021466946229338646,
+      0.800000011920929
+    ],
+    [
+      0.02221674658358097,
+      0.25753945112228394,
+      -0.9660122990608215,
+      -3.8499999046325684
+    ],
+    [
+      2.3575683627541366e-9,
+      0.9662508368492126,
+      0.2576029896736145,
+      1.399999976158142
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      554.6666564941406,
+      0,
+      384
+    ],
+    [
+      0,
+      554.6666450500488,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;category&quot;: &quot;interior_detail&quot;,
+  &quot;order&quot;: &quot;detail&quot;,
+  &quot;coverage&quot;: &quot;subject_fills_frame&quot;,
+  &quot;subject&quot;: &quot;Dining surface, chair backs and globe pendants&quot;,
+  &quot;route_role&quot;: &quot;detail&quot;,
+  &quot;description&quot;: &quot;Dining surface, chair backs and globe pendants&quot;,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P04.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P05.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P05.webp" alt="Concrete kitchen and dining room, reference P05" loading="lazy" width="800" height="600"></a><figcaption>P05</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P05&quot;,
+  &quot;position&quot;: [
+    -3.45,
+    -2.5,
+    1.15
+  ],
+  &quot;target&quot;: [
+    -1.25,
+    -2.1,
+    0.55
+  ],
+  &quot;lens&quot;: 32,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;description&quot;: &quot;Island bottle rack, cabinet front and stone worktop&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.17888568341732025,
+      0.2549802362918854,
+      -0.9502551555633545,
+      -3.450000047683716
+    ],
+    [
+      -0.9838698506355286,
+      0.046360310167074203,
+      -0.17277385294437408,
+      -2.5
+    ],
+    [
+      2.028520071917228e-7,
+      0.9658342599868774,
+      0.2591605484485626,
+      1.149999976158142
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      682.6666717529297,
+      0,
+      384
+    ],
+    [
+      0,
+      682.6666717529297,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;subject&quot;: &quot;Island bottle rack, cabinet front and stone worktop&quot;,
+  &quot;category&quot;: &quot;interior_component_detail&quot;,
+  &quot;route_role&quot;: &quot;detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P05.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P06.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P06.webp" alt="Concrete kitchen and dining room, reference P06" loading="lazy" width="800" height="600"></a><figcaption>P06</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P06&quot;,
+  &quot;position&quot;: [
+    -0.65,
+    -1.3,
+    1.65
+  ],
+  &quot;target&quot;: [
+    -0.5,
+    0,
+    1.3
+  ],
+  &quot;lens&quot;: 20,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;description&quot;: &quot;Sink, tap, veined backsplash and cabinet fronts&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.9934088587760925,
+      0.02961597591638565,
+      -0.11073201149702072,
+      -0.6499999761581421
+    ],
+    [
+      -0.11462409049272537,
+      0.2566716969013214,
+      -0.959677517414093,
+      -1.2999999523162842
+    ],
+    [
+      -1.308688268863989e-8,
+      0.9660447239875793,
+      0.2583746910095215,
+      1.649999976158142
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      426.66668701171875,
+      0,
+      384
+    ],
+    [
+      0,
+      426.66668701171875,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;subject&quot;: &quot;Sink, tap, veined backsplash and cabinet fronts&quot;,
+  &quot;category&quot;: &quot;interior_component_detail&quot;,
+  &quot;route_role&quot;: &quot;detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P06.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P07.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P07.webp" alt="Concrete kitchen and dining room, reference P07" loading="lazy" width="800" height="600"></a><figcaption>P07</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P07&quot;,
+  &quot;position&quot;: [
+    2.55,
+    -3.75,
+    1
+  ],
+  &quot;target&quot;: [
+    0.8,
+    -2.25,
+    0.55
+  ],
+  &quot;lens&quot;: 30,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;description&quot;: &quot;Dining chairs, legs and extended table from the room corner&quot;,
+  &quot;Tcw&quot;: [
+    [
+      0.6507914066314697,
+      -0.14548827707767487,
+      0.7451870441436768,
+      2.549999952316284
+    ],
+    [
+      0.7592566013336182,
+      0.12470418959856033,
+      -0.6387317776679993,
+      -3.75
+    ],
+    [
+      3.6378914103352145e-8,
+      0.9814693331718445,
+      0.19161935150623322,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;K&quot;: [
+    [
+      640.0000305175781,
+      0,
+      384
+    ],
+    [
+      0,
+      640.0000305175781,
+      288
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;extent&quot;: null,
+  &quot;projection&quot;: &quot;PERSP&quot;,
+  &quot;subject&quot;: &quot;Dining chairs, legs and extended table from the room corner&quot;,
+  &quot;category&quot;: &quot;interior_component_detail&quot;,
+  &quot;route_role&quot;: &quot;detail&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100,
+  &quot;image&quot;: &quot;images/public/P07.webp&quot;
+}</pre></details></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P08.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/public/P08.webp" alt="Concrete kitchen and dining room, reference P08" loading="lazy" width="800" height="600"></a><figcaption>P08</figcaption><details><summary>Camera parameters</summary><pre>{
+  &quot;id&quot;: &quot;P08&quot;,
+  &quot;position&quot;: [
+    -0.1,
+    -2.4,
+    2.3
+  ],
+  &quot;projection&quot;: &quot;ORTHO&quot;,
+  &quot;scale&quot;: 5.8,
+  &quot;resolution&quot;: [
+    768,
+    576
+  ],
+  &quot;Tcw&quot;: [
+    [
+      1,
+      0,
+      0,
+      -0.10000000149011612
+    ],
+    [
+      0,
+      1,
+      0,
+      -2.4000000953674316
+    ],
+    [
+      0,
+      0,
+      1,
+      2.299999952316284
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ]
+  ],
+  &quot;description&quot;: &quot;Vertical interior top-down of island, dining surface and chairs&quot;,
+  &quot;category&quot;: &quot;interior_top_down&quot;,
+  &quot;route_role&quot;: &quot;far&quot;,
+  &quot;K&quot;: null,
+  &quot;extent&quot;: [
+    5.800000397563008,
+    4.350000298172256
+  ],
+  &quot;subject&quot;: &quot;Island and dining surface, six chairs, pendant arrangement and surrounding floor&quot;,
+  &quot;image&quot;: &quot;images/public/P08.webp&quot;,
+  &quot;clip_start&quot;: 0.009999999776482582,
+  &quot;clip_end&quot;: 100
+}</pre></details></figure></div></section><section id="drawings"><h2>Technical drawings</h2><div class="drawing-grid not-prose"><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-001.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-001.webp" alt="Concrete kitchen and dining room, drawing sheet-001" loading="lazy"></a><figcaption>sheet-001 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-002.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-002.webp" alt="Concrete kitchen and dining room, drawing sheet-002" loading="lazy"></a><figcaption>sheet-002 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-003.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-003.webp" alt="Concrete kitchen and dining room, drawing sheet-003" loading="lazy"></a><figcaption>sheet-003 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-004.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-004.webp" alt="Concrete kitchen and dining room, drawing sheet-004" loading="lazy"></a><figcaption>sheet-004 · Open to enlarge</figcaption></figure><figure><a href="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-005.webp" target="_blank" rel="noopener"><img src="/frontier-blender-web/task/concrete-kitchen-dining/images/drawings/sheet-005.webp" alt="Concrete kitchen and dining room, drawing sheet-005" loading="lazy"></a><figcaption>sheet-005 · Open to enlarge</figcaption></figure></div></section><section id="results"><h2>Model results</h2><p>Paper snapshot · 2026-11-17. Per-task overall scores out of 100.</p><div class="table-scroll"><table class="task-result-table"><thead><tr><th>Model</th><th>Overall</th></tr></thead><tbody><tr><th>GPT-6-Astra (high)</th><td>56.06</td></tr><tr><th>Opus-5.5</th><td>54.26</td></tr><tr><th>GPT-6-Astra (low)</th><td>52.53</td></tr><tr><th>Qwen4-Max-Preview</th><td>42.47</td></tr><tr><th>DeepSeek-v4.1-Flash-1017</th><td>40.11</td></tr><tr><th>Kimi-K3.1-Pro</th><td>33.54</td></tr><tr><th>GLM-5.3-Flash</th><td>26.00</td></tr></tbody></table></div><a href="/frontier-blender-web/leaderboard/">Full leaderboard and scoring notes</a></section><p class="small-note">Images on this preview are compressed display copies. Original task assets and scoring renders are unchanged. The preview shows visual inputs and the dated result snapshot; full task instructions and production specifications remain in the task package.</p></main><footer class="site-footer"><a href="/frontier-blender-web/">FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>
