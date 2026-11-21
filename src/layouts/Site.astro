@@ -4,8 +4,8 @@ import "../styles/global.css";
 import "../styles/frontier.css";
 import "../styles/research-blog.css";
 import {url} from "../lib/site";
-const {title="FrontierBlender",description="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings.",active="Blog",wide=false}=Astro.props;
+const {title="AgentRecBench",description="Faithful 3D reconstruction from multi-view images, production specifications, and technical drawings.",active="Blog",wide=false}=Astro.props;
 ---
 <!doctype html><html lang="en" data-theme="light"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta name="theme-color" content="#9376A7"/><link rel="icon" href={url("favicon.svg")}/><title>{title}</title>
-<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('frontier-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script>
-</head><body><Navigation active={active}/><main id="main-content" class:list={["prose prose-lg max-w-none",wide?"wide-page":"article-page"]}><slot/></main><footer class="site-footer"><a href={url()}>FrontierBlender</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>
+<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('agentrecbench-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch{}</script>
+</head><body><Navigation active={active}/><main id="main-content" class:list={["prose prose-lg max-w-none",wide?"wide-page":"article-page"]}><slot/></main><footer class="site-footer"><a href={url()}>AgentRecBench</a><span>Built with <a href="https://research-template.roman.technology/">Roman’s research template</a></span></footer></body></html>

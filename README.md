@@ -1,4 +1,4 @@
-# FrontierBlender research website
+# AgentRecBench research website
 
 Based on [Roman Hauksson-Neill’s Academic Project Astro Template](https://github.com/RomanHauksson/academic-project-astro-template).
 
