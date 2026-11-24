@@ -62,18 +62,6 @@
       "sha256": "9db0c029ca6f822d494d3e146be95c8c19f5c9ef32799e9a576855bbafc99652"
     },
     {
-      "slug": "san-marco-precinct",
-      "model": "qwen4-max-preview",
-      "effort": "default",
-      "trial": "san-marco-precinct__kBcjgat",
-      "archive_sha256": "68183dd3b04902c27c51c7bd2738206bfeda38da3d6388e198996c74d94684e7",
-      "submission_sha256": "a7325468767137eb44a8d8c447de497afcda3d0bcee1f53c85fb7ae52d3e4440",
-      "total": 0.09751046404609996,
-      "view": "H02",
-      "image": "san-marco-precinct/qwen4-max-preview--default.png",
-      "sha256": "74feb1f76af24d05c3830a821ac677e7c7d06cb0a98ed840d005067ee47bf372"
-    },
-    {
       "slug": "modern-villa",
       "model": "kimi-k3.1-pro",
       "effort": "default",
@@ -84,18 +72,6 @@
       "view": "H03",
       "image": "modern-villa/kimi-k3.1-pro--default.png",
       "sha256": "dfe01098b920fc1e1a1673c3c4214ad4c598f9c7f4c9ead67f94ecdc8d13c15b"
-    },
-    {
-      "slug": "san-marco-precinct",
-      "model": "kimi-k3.1-pro",
-      "effort": "default",
-      "trial": "san-marco-precinct__5Rqnvcg",
-      "archive_sha256": "e4bea5981f058b58b786a5abf213a87d196ee6d384964348d480cec5b9f95e89",
-      "submission_sha256": "54469280a9296efdac30430a2b749b757b846485c8e39f3278171d6ca7e99c88",
-      "total": 0.1100693870321464,
-      "view": "H02",
-      "image": "san-marco-precinct/kimi-k3.1-pro--default.png",
-      "sha256": "40c9af350795e3e072e1c4ea28060b7ce8e415f297846d88fbc83772156ff020"
     },
     {
       "slug": "modern-villa",
@@ -120,18 +96,6 @@
       "view": "H08",
       "image": "florence-historic-city/glm-5.3-flash--default.png",
       "sha256": "4b85a8d4cbfb30ee3d4386a924c2d05e737cf409854dad00ca834d1eb6e591ab"
-    },
-    {
-      "slug": "san-marco-precinct",
-      "model": "deepseek-flash",
-      "effort": "default",
-      "trial": "san-marco-precinct__uf3iSTG",
-      "archive_sha256": "ad23e4dcc8bcf9e879735bb2ccd4f1680620a798e5c8f256e25cf5ff0c2abb99",
-      "submission_sha256": "9bfa24969a894a4f4aaa95920c63993215e8b1578b38eb9cd994edfa33a48fd1",
-      "total": 0.10437067889964476,
-      "view": "H02",
-      "image": "san-marco-precinct/deepseek-flash--default.png",
-      "sha256": "8f721193f84ff18341dd0ce08f41b32abefeb3ed04828cfacc4732867134502b"
     },
     {
       "slug": "grand-hall",
@@ -218,18 +182,6 @@
       "sha256": "34b18011113c6f90a2e9c5e0aa68bd1e2876e2b4358e57bffddf61361c428b81"
     },
     {
-      "slug": "san-marco-precinct",
-      "model": "glm-5.3-flash",
-      "effort": "default",
-      "trial": "san-marco-precinct__2nixgZB",
-      "archive_sha256": "5de691500a46da1652c4641e3dc6fedbc926269e94c10e13ec7cb24a918652d4",
-      "submission_sha256": "9a291fed06cb1a8dce56b88b8c54ec6def75e6ea74b68f0a19b1767a444e8f53",
-      "total": 0.07501739668713249,
-      "view": "H02",
-      "image": "san-marco-precinct/glm-5.3-flash--default.png",
-      "sha256": "a78df9245028cb5090c33a520be7894af2aa41d7be1201c4c6e36c6a6485335c"
-    },
-    {
       "slug": "handheld-console",
       "model": "deepseek-flash",
       "effort": "default",
@@ -276,42 +228,6 @@
       "view": "H01",
       "image": "grand-hall/kimi-k3.1-pro--default.png",
       "sha256": "2c60f15e9ecfa5f575005d8438040df5fe67b80f5e02403bc4516fc1f1db19c2"
-    },
-    {
-      "slug": "san-marco-precinct",
-      "model": "gpt-6-astra",
-      "effort": "high",
-      "trial": "san-marco-precinct__bTeR2kD",
-      "archive_sha256": "7718803103479997cc90039ccc30a18177dec16e307ed51bbbe1050b04d255d7",
-      "submission_sha256": "8a796446d1bf27329c42f17334059145ca348525708e6b10e1c742e606e7dc8b",
-      "total": 0.15774716400063096,
-      "view": "H02",
-      "image": "san-marco-precinct/gpt-6-astra--high.png",
-      "sha256": "5b80d8767d757427f227f2f510779234928c3f8a9e150d06886bae3e568d7421"
-    },
-    {
-      "slug": "san-marco-precinct",
-      "model": "gpt-6-astra",
-      "effort": "low",
-      "trial": "san-marco-precinct__QQQYdU8",
-      "archive_sha256": "2fe67336bd199318c8149c3f66c90747f79be1c4ad694e3025c5ba63eee6c53e",
-      "submission_sha256": "55ce86961dc08278c7c1550a3a5d4371bfc39ab5d8829ad78008f76c80189079",
-      "total": 0.14580772716764137,
-      "view": "H02",
-      "image": "san-marco-precinct/gpt-6-astra--low.png",
-      "sha256": "c5a7eed5d015c0ea3589e80a34cca73ffd03c2cb8436b306b6dfaa50b23defdf"
-    },
-    {
-      "slug": "san-marco-precinct",
-      "model": "claude-opus-5-5",
-      "effort": "default",
-      "trial": "san-marco-precinct__Dk67won",
-      "archive_sha256": "7fe482b338a55558717ac790089e73bc92d8e4d398de651c6d6e75f989c38e7b",
-      "submission_sha256": "89a8f9c1de00f1abdf7b5446d46ab45c4ec8a40431ea7a25f10f17428bb53df6",
-      "total": 0.10000508563360386,
-      "view": "H02",
-      "image": "san-marco-precinct/claude-opus-5-5--default.png",
-      "sha256": "8100bfc6be399950b806984ca451d21aa0e523c9ea52bf8f64777969d73e79e4"
     },
     {
       "slug": "modern-villa",
@@ -537,18 +453,187 @@
       "kind": "ground_truth"
     },
     {
-      "slug": "san-marco-precinct",
-      "view": "H02",
-      "image": "san-marco-precinct/gt.png",
-      "sha256": "0a20932d137ed968500ee6cc945a4649b7a4350a13e449c646daa99707b64267",
-      "kind": "ground_truth"
-    },
-    {
       "slug": "florence-historic-city",
       "view": "H08",
       "image": "florence-historic-city/gt.png",
       "sha256": "d2fb423952351f609c50d353e6bd108011fb16c64463ad2768cd51c09ad75121",
       "kind": "ground_truth"
+    },
+    {
+      "slug": "handheld-console",
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "trial": "handheld-console__qBoCedt",
+      "archive_sha256": "8c1569641cb539fa3c5dee0f631735eae3d7aa0c32942a5ef08e077c49920fb6",
+      "submission_sha256": "c6b472b967d9a51886104cb5cdb0ca8739045a556b57737ab1af47dcfd8ce137",
+      "total": 0.8914465427024421,
+      "view": "H01",
+      "image": "handheld-console/gpt-6.2-astra--high.png",
+      "ground_truth": "handheld-console/gt--current.png",
+      "sha256": "77598f9f8c34dd8f3e6e6506bf71c61a25b0e75ea885a9ac4a94a6a564a836b1"
+    },
+    {
+      "slug": "vintage-tea-table",
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "trial": "vintage-tea-table__9QTpkgi",
+      "archive_sha256": "e853333623b65e8f4824778e548bc13125ee76941865ea23a512464c2cbece05",
+      "submission_sha256": "fd43447bd00cc32af125fcf0741336b1bba4ae93672a008342ac5b5065ecdeed",
+      "total": 0.9263134882563766,
+      "view": "H01",
+      "image": "vintage-tea-table/gpt-6.2-astra--high.png",
+      "ground_truth": "vintage-tea-table/gt--current.png",
+      "sha256": "eeeb47cb7d3309ebb0d09a54f64d1d4ada10a8f9260a740b8d66ffa6b95f4473"
+    },
+    {
+      "slug": "grand-hall",
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "trial": "grand-hall__8XbYeEx",
+      "archive_sha256": "4c20537451ce75b2514142a24ec79ce1318fec401fe912a302f6249358a07841",
+      "submission_sha256": "8bc0c2ba5e54a695a07dd99bbbbe2bd8fc825466d33761eff105f425923a6394",
+      "total": 0.44566958727155953,
+      "view": "H01",
+      "image": "grand-hall/gpt-6.2-astra--high.png",
+      "ground_truth": "grand-hall/gt--current.png",
+      "sha256": "bb691fd2d975cba276261198478f2903ff4b9042014771a4142d684c103c424a"
+    },
+    {
+      "slug": "modern-villa",
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "trial": "modern-villa__oLdWrMi",
+      "archive_sha256": "b44fcc8c46bf44c4d0a029680c108b455a2236c400d4398c8acbc6f4d73508c9",
+      "submission_sha256": "15686d599592868694f9eabad7f41b113572ddd5fbefa31552860f6a18e7253e",
+      "total": 0.591739052344468,
+      "view": "H01",
+      "image": "modern-villa/gpt-6.2-astra--high.png",
+      "ground_truth": "modern-villa/gt--current.png",
+      "sha256": "32fd04c44b52856164a271fb92cc11d46c71bc5260b2eb96337f3c36aa94eb61"
+    },
+    {
+      "slug": "school-athletics-campus",
+      "role": "ground_truth",
+      "view": "H01",
+      "image": "school-athletics-campus/gt.png",
+      "sha256": "4e85ce06804e4edbfb28330bb2eba016f313b53f9c765df3af9d879d8b1d1b54"
+    },
+    {
+      "slug": "school-athletics-campus",
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "trial": "school-athletics-campus__fSojRUw",
+      "archive_sha256": null,
+      "submission_sha256": "daa920a1c1fc7c7b6ec027aad70791dd1147294f0a06e0163fd1e2d0546b28ec",
+      "total": 0.5681705138937709,
+      "view": "H01",
+      "image": "school-athletics-campus/gpt-6.2-astra--high.png",
+      "ground_truth": "school-athletics-campus/gt.png",
+      "sha256": "2eaf22616d41f30fbb9a3436ca3975bd809e44da4dea7fb9b929b7da1bd93a19"
+    },
+    {
+      "slug": "school-athletics-campus",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "trial": "school-athletics-campus__jN5z7EA",
+      "archive_sha256": "94a21cfe998a01fb3cde4d41f67588131d712d2dde94dead3eb81c2389887ca0",
+      "submission_sha256": "b0deb95d0580a47a865afb8c30892ff90ce2a72421ac3c7f9ca26ce4ff25e855",
+      "total": 0.4829086519335162,
+      "view": "H01",
+      "image": "school-athletics-campus/gpt-6-astra--high.png",
+      "ground_truth": "school-athletics-campus/gt.png",
+      "sha256": "3c27b0760fa6d895169a56e912bc355df93820408b6447d17fa8130a4193ba85"
+    },
+    {
+      "slug": "school-athletics-campus",
+      "model": "gpt-6-astra",
+      "effort": "low",
+      "trial": "school-athletics-campus__agCaW9n",
+      "archive_sha256": "ec82a625c6cf5dea29c9389f0d9e22e6d03d19f148c9c5c8c622bfcf7697ec07",
+      "submission_sha256": "b9c7451d29c35a3df2ffdbd9d7a1e9a698f433caff4ff63a0fbaaa9fa16da271",
+      "total": 0.4612286716192475,
+      "view": "H01",
+      "image": "school-athletics-campus/gpt-6-astra--low.png",
+      "ground_truth": "school-athletics-campus/gt.png",
+      "sha256": "f2db5a7a4da02c6bc04638fde205446e6c06e79bd023149ed198db7af6dfc67c"
+    },
+    {
+      "slug": "school-athletics-campus",
+      "model": "claude-opus-5-5",
+      "effort": "default",
+      "trial": "school-athletics-campus__7AYFUgc",
+      "archive_sha256": "412e0c986975a9051155211c88f5a519944e020a186521eff40f7a8e5da8f288",
+      "submission_sha256": "1a1b780cfeb121dacccc21dacbebdad5080268daa910cd95d33574cc7e29fb46",
+      "total": 0.31569450941615473,
+      "view": "H01",
+      "image": "school-athletics-campus/claude-opus-5-5--default.png",
+      "ground_truth": "school-athletics-campus/gt.png",
+      "sha256": "082dcdcb25d7f39d4dd606080945ec6102eeff3a1aa480b8bfc0e580ec95fb28"
+    },
+    {
+      "slug": "school-athletics-campus",
+      "model": "kimi-k3.1-pro",
+      "effort": "default",
+      "trial": "school-athletics-campus__8nEFpfw",
+      "archive_sha256": "53d85ac51e5a848e91911a38bfc0e21305ebd9947b07d86a7a77cd8c3a307cc5",
+      "submission_sha256": "897f11d72fc0c6baef0395500085c25597f18de6ef58fa6681f4a84b484d9622",
+      "total": 0.3031770552583195,
+      "view": "H01",
+      "image": "school-athletics-campus/kimi-k3.1-pro--default.png",
+      "ground_truth": "school-athletics-campus/gt.png",
+      "sha256": "a060539a7834de96e9dc1153891fd6de4f50ef86ebc3fa8468b6e2cd33bfd0f5"
+    },
+    {
+      "slug": "school-athletics-campus",
+      "model": "qwen4-max-preview",
+      "effort": "default",
+      "trial": "school-athletics-campus__PxosqA2",
+      "archive_sha256": "e5c8b78ba1866db0817c33cc7160fe141c48b77c4f5923b993089e9df0cdedb0",
+      "submission_sha256": "5f1d79bace70d0580425afe4b2fc3c362588832d59cc63f74db30258d2a959dd",
+      "total": 0.3603196246100681,
+      "view": "H01",
+      "image": "school-athletics-campus/qwen4-max-preview--default.png",
+      "ground_truth": "school-athletics-campus/gt.png",
+      "sha256": "a383071f7858c7fe54265402b3578fc795f137ea887534b215f34fd50ae964f3"
+    },
+    {
+      "slug": "school-athletics-campus",
+      "model": "deepseek-flash",
+      "effort": "default",
+      "trial": "school-athletics-campus__Tv7LLZK",
+      "archive_sha256": "f5e1a96ad35ae675ac2c7dc7239c1aeb399f4ab5641e930eb5baddd5e0bb40e2",
+      "submission_sha256": "2c7a152878f7fa2bd100536f37250c07dda20c73ae49bda530148b498e2a1bcc",
+      "total": 0.31488662746564755,
+      "view": "H01",
+      "image": "school-athletics-campus/deepseek-flash--default.png",
+      "ground_truth": "school-athletics-campus/gt.png",
+      "sha256": "f06d4516a5131619ab4c77231badb1dac85248dd99622c0382cfe8ca0c0c0c8c"
+    },
+    {
+      "slug": "school-athletics-campus",
+      "model": "glm-5.3-flash",
+      "effort": "default",
+      "trial": "school-athletics-campus__VMbHosX",
+      "archive_sha256": "dfd2442fc5166bcf15596581dff866828f6afedd724660fec17023183b59b57a",
+      "submission_sha256": "80f0d0539e23c0e8589e1b54057e95d763389b29717f377c0eb3169b4ba7f1bf",
+      "total": 0.18011071961446348,
+      "view": "H01",
+      "image": "school-athletics-campus/glm-5.3-flash--default.png",
+      "ground_truth": "school-athletics-campus/gt.png",
+      "sha256": "ee09f5f520029c009de9296ce2a2a4a4395e67896ec1b10ec69a710e5024f131"
+    },
+    {
+      "slug": "florence-historic-city",
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "trial": "florence-historic-city__LTBZndo",
+      "archive_sha256": "22d99b393e27b66e397540992b6c37112165a01bc224a49f313987c5bfb8cb4b",
+      "submission_sha256": "8fccb753e4840a860025f2f1715043a45f8391f02f2750cc741962c2cb78b545",
+      "total": 0.244706159988868,
+      "view": "H01",
+      "image": "florence-historic-city/gpt-6.2-astra--high.png",
+      "ground_truth": "florence-historic-city/gt--current.png",
+      "sha256": "72df086410901a6ff6b38c13e20dc2a64feb52af9a088b892a26df8100299906"
     }
   ]
 }
