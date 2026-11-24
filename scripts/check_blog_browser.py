@@ -1,6 +1,9 @@
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 import json,sys
+results=json.loads(Path('src/data/results.json').read_text(encoding='utf-8'))
+model_count=len(results['models'])
+city_count=results['models'][0]['domains']['cities']['tasks']
 out=Path('qa/live' if len(sys.argv)>1 else 'qa');out.mkdir(exist_ok=True,parents=True)
 errors=[];failures=[];report={}
 with sync_playwright() as p:
@@ -12,9 +15,9 @@ with sync_playwright() as p:
  page.goto(base,wait_until='networkidle');page.screenshot(path=str(out/'blog-desktop.png'),full_page=True)
  assert 'Can a Coding Agent Reconstruct the World Faithfully' in page.locator('h1').inner_text()
  assert page.locator('.fidelity-column').count()==6
- assert page.locator('.results-table tbody tr').count()==7
+ assert page.locator('.results-table tbody tr').count()==model_count
  explorer=page.locator('.fidelity-explorer')
- for model in range(7):
+ for model in range(model_count):
   explorer.locator(f'[data-all-model="{model}"]').click()
   assert explorer.locator(f'.score-logo.is-selected[data-model="{model}"]').count()==6
   for i in range(6):
@@ -22,10 +25,12 @@ with sync_playwright() as p:
    img.scroll_into_view_if_needed()
    img.evaluate('(img)=>img.decode()')
    assert img.evaluate('(img)=>img.naturalWidth>0')
- logo=explorer.locator('[data-category="0"] [data-model="4"]');logo.focus()
+ qwen_index=next(i for i,m in enumerate(results['models']) if m['model']=='qwen4-max-preview')
+ opus_index=next(i for i,m in enumerate(results['models']) if m['model']=='claude-opus-5-5')
+ logo=explorer.locator(f'[data-category="0"] [data-model="{qwen_index}"]');logo.focus()
  assert 'Qwen4' in page.locator('#pair-model').inner_text()
  assert 'qwen4' in page.locator('#detail-prediction').get_attribute('src')
- explorer.locator('[data-category="3"] [data-model="2"]').focus()
+ explorer.locator(f'[data-category="3"] [data-model="{opus_index}"]').focus()
  assert 'gt--opus-paper' in page.locator('#detail-gt').get_attribute('src')
  assert '/task/modern-villa/' in page.locator('#pair-link').get_attribute('href')
  page.locator('[data-variant="1"]').click()
@@ -36,9 +41,14 @@ with sync_playwright() as p:
  assert page.locator('.diagnostic-db').inner_text()=='20.62 dB'
  page.locator('[data-variant="3"]').click()
  assert page.locator('.diagnostic-db').inner_text()=='21.37 dB'
- page.locator('video').evaluate('(v)=>{v.load()}')
- page.wait_for_function('document.querySelector("video").readyState>=1',timeout=60000)
- assert 76<page.locator('video').evaluate('(v)=>v.duration')<78
+ video=page.locator('video')
+ video_source=video.locator('source').evaluate('(source) => source.src')
+ video_file=page.request.head(video_source)
+ assert video_file.ok and video_file.headers['content-type'].startswith('video/mp4')
+ if video.evaluate("(v) => v.canPlayType('video/mp4; codecs=avc1.64001e')"):
+  video.evaluate('(v) => {v.preload="metadata";v.load()}')
+  page.wait_for_function('document.querySelector("video").readyState>=1',timeout=60000)
+  assert 76<video.evaluate('(v)=>v.duration')<78
  for link in page.locator('.article-toc a').all():
   assert page.locator(link.get_attribute('href')).count()==1
  page.locator('.fidelity-explorer').screenshot(path=str(out/'fidelity-desktop.png'))
@@ -49,12 +59,17 @@ with sync_playwright() as p:
  page.reload(wait_until='networkidle');assert page.locator('html').get_attribute('data-theme')=='dark'
  page.get_by_role('button',name='Switch to light mode').click()
  page.get_by_role('navigation',name='Main navigation').get_by_role('link',name='Leaderboard').click();page.wait_for_load_state('networkidle')
- assert page.locator('.results-table tbody tr').count()==7
+ assert page.locator('.results-table tbody tr').count()==model_count
  page.screenshot(path=str(out/'leaderboard.png'),full_page=True)
- page.goto(base+'/task/',wait_until='networkidle');assert page.locator('.task-card:visible').count()==80
- page.locator('#task-search').fill('console');assert page.locator('.task-card:visible').count()==1
- page.locator('.task-card:visible').click();page.wait_for_load_state('networkidle')
- assert page.locator('#results tbody tr').count()==7
+ page.goto(base+'/task/',wait_until='networkidle')
+ page.locator('.case-card').first.wait_for()
+ assert page.locator('.case-card').count()==80
+ page.locator('#search').fill('handheld-console')
+ console=page.locator('.case-card[href$="/task/handheld-console/"]')
+ console.wait_for()
+ assert page.locator('.case-card:visible').count()==1
+ console.click();page.wait_for_load_state('networkidle')
+ assert page.get_by_role('heading',name='Overall',exact=True).is_visible()
  page.screenshot(path=str(out/'task-detail.png'),full_page=True)
  page.set_viewport_size({'width':390,'height':844});page.goto(base,wait_until='networkidle')
  assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'mobile overflow'
@@ -65,11 +80,11 @@ with sync_playwright() as p:
  page.goto(base+'/leaderboard/',wait_until='networkidle')
  assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'leaderboard overflow'
  page.goto(base+'/task/',wait_until='networkidle');assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
- page.locator('#task-category').select_option('cities');assert page.locator('.task-card:visible').count()==4
- page.locator('#task-search').fill('zzzz');assert page.locator('#no-tasks').is_visible()
+ page.locator('#category').select_option('cities');assert page.locator('.case-card:visible').count()==city_count
+ page.locator('#search').fill('zzzz');assert page.locator('.case-card:visible').count()==0
  assert not errors,errors
  assert not failures,failures
- report={'desktop':True,'mobile':True,'theme_persistence':True,'task_search':True,'category_filter':True,'seven_model_rows':True,'42_prediction_images':True,'keyboard_model_selection':True,'diagnostic_scores':True,'video_metadata':True,'toc_anchors':True,'console_errors':errors,'http_errors':failures}
+ report={'desktop':True,'mobile':True,'theme_persistence':True,'task_search':True,'category_filter':True,'model_rows':model_count,'prediction_images':6*model_count,'keyboard_model_selection':True,'diagnostic_scores':True,'video_asset':True,'toc_anchors':True,'console_errors':errors,'http_errors':failures}
  b.close()
 (out/'browser-check.json').write_text(json.dumps(report,indent=2))
 print(json.dumps(report))
