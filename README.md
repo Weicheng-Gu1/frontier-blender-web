@@ -13,7 +13,7 @@ Node 24+, `npm ci`, then `npm run dev`. `npm run build` checks and builds static
 
 `src/data/results.json` records the November 17 paper snapshot and source archive revision. Only the approved configurations are included; this is not a live monitor. No scoring is performed by this website. `public/data/results.json` is its downloadable counterpart.
 
-`public/tasks.json` and `public/task/` contain website input metadata and compressed reference/drawing copies only. Never copy `.blend`, oracle files, restoration workspaces, authentication files or raw trajectories into this repository. The original scoring renders are unchanged.
+`public/atlas/current-catalog.json` and `public/task/<slug>/case.json.gz` record the published task atlas and task details. The task pages include the original instructions, camera calibration, and per-model evaluation scores. The WebP images are compressed display copies. Never copy `.blend`, oracle files, restoration workspaces, authentication files or raw trajectories into this repository. The original scoring renders are unchanged.
 
 ## GitHub Pages
 

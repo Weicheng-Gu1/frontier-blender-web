@@ -1,10 +1,6 @@
 ---
-import Site from "../../layouts/Site.astro";
-import tasks from "../../../public/tasks.json";
-import {url,categories,labels} from "../../lib/site";
+import html from "../../task-atlas/index.html?raw";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
-<Site title="Task atlas · AgentRecBench" active="Task" wide><p class="eyebrow">The reconstruction collection</p><h1>From objects to cities.</h1><p class="page-intro">80 tasks. Six categories. A shared goal: faithfully reconstruct the original.</p><div class="task-filters not-prose"><label class="sr-only" for="task-search">Search tasks</label><input id="task-search" type="search" placeholder="Search tasks…"/><label class="sr-only" for="task-category">Category</label><select id="task-category"><option value="">All categories</option>{categories.map(c=><option value={c}>{labels[c]}</option>)}</select><span id="task-count" aria-live="polite">80 tasks</span></div><div id="task-groups">{categories.map(c=><section class="task-group" data-category={c}><h2>{labels[c]} <span>{tasks.filter(t=>t.category===c).length}</span></h2><div class="atlas-grid not-prose">{tasks.filter(t=>t.category===c).map(t=><a class="task-card" href={url(`task/${t.slug}/`)} data-search={`${t.title} ${t.slug} ${labels[c]}`.toLowerCase()}><img src={url(t.cover)} alt={t.title} loading="lazy" width="480" height="360"/><div><h3>{t.title}</h3><p>{t.publicImages} views · {t.drawings} drawing sheets</p></div></a>)}</div></section>)}</div><p id="no-tasks" hidden>No tasks match this search.</p></Site>
-<script>
-const search=document.querySelector<HTMLInputElement>("#task-search")!;const category=document.querySelector<HTMLSelectElement>("#task-category")!;
-function filter(){let total=0;document.querySelectorAll<HTMLElement>(".task-group").forEach(group=>{let count=0;group.querySelectorAll<HTMLElement>(".task-card").forEach(card=>{const visible=(!category.value||group.dataset.category===category.value)&&(card.dataset.search||"").includes(search.value.trim().toLowerCase());card.hidden=!visible;if(visible)count++});group.hidden=count===0;total+=count});document.querySelector("#task-count")!.textContent=`${total} tasks`;document.querySelector<HTMLElement>("#no-tasks")!.hidden=total>0};search.addEventListener("input",filter);category.addEventListener("change",filter);
-</script>
+<Fragment set:html={html.replaceAll("__TASK_SITE_BASE__", base)} />
