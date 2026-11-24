@@ -27,9 +27,9 @@ Multimodal coding agents bring a new possibility to this problem. They can read 
 
 <div id="results" className="section-anchor"></div>
 <Wide><div className="blog-wide leaderboard-feature"><div className="explorer-heading"><div><span className="eyebrow">The results</span><h3>One benchmark. Six reconstruction scales.</h3></div><p>80 tasks per configuration · scores on a 0–100 scale</p></div><ResultsTable/></div></Wide>
-<p className="figure-caption">Paper result release · November 17, 2026. Seven complete configurations, six models. Overall is the mean task score, not a success rate. Tokens include cached input; costs use recorded CLI charges or the release's published API-rate calculations. <a href={siteUrl('leaderboard/')}>Leaderboard and scoring notes</a>.</p>
+<p className="figure-caption">Results updated November 25, 2026. Eight complete configurations, seven models. Overall is the mean task score, not a success rate. Tokens include cached input; costs use recorded CLI charges or the release's published API-rate calculations. <a href={siteUrl('leaderboard/')}>Leaderboard and scoring notes</a>.</p>
 
-The strongest configuration, GPT-6-Astra (high), reaches **48.48 overall**. The gap between recognizable reconstruction and reference fidelity is still substantial. The following comparisons show where that gap appears, and why a single attractive image can conceal it.
+The strongest configuration, GPT-6.2-Astra (high), reaches **59.15 overall**. The gap between recognizable reconstruction and reference fidelity is still substantial. The following comparisons show where that gap appears, and why a single attractive image can conceal it.
 
 <nav className="article-toc" aria-label="On this page"><a href="#spatial-intelligence-in-action">Spatial intelligence</a><a href="#expert-annotation-makes-detail-measurable">The benchmark</a><a href="#when-the-scene-grows-the-details-slip">Across scales</a><a href="#a-scene-you-can-walk-through">Walkthrough</a><a href="#the-room-is-there-its-components-are-not-yet-faithful">What goes wrong</a></nav>
 
@@ -48,7 +48,7 @@ In this framework, a Blender reconstruction exercises all four. The agent must i
 
 ## Expert annotation makes detail measurable
 
-The benchmark spans **15 objects, 12 object arrangements, 23 interiors, 12 buildings, 14 blocks, and 4 cities**. Every task combines three forms of evidence:
+The benchmark spans **16 objects, 11 object arrangements, 23 interiors, 13 buildings, 12 blocks, and 5 cities**. Every task combines three forms of evidence:
 
 <div className="input-triptych">
 <div><span>Appearance and viewpoints</span><h3>Multi-view images</h3><p>Images and camera parameters tie visual observations to a shared 3D coordinate system.</p></div>
@@ -68,15 +68,15 @@ Evaluation combines appearance with spatial agreement. PSNR, SSIM, and LPIPS mea
 
 <Wide><div className="blog-wide"><FidelityExplorer/></div></Wide>
 
-Across the seven configurations, category-average scores are **61.1 for objects, 57.5 for arrangements, 29.6 for interiors, 26.0 for buildings, 17.8 for blocks, and 23.6 for cities**. The sharpest drop appears between object arrangements and interiors: agents must now coordinate an enclosing space, repeated structures, furniture, and local details.
+Across the eight configurations, category-average scores are **64.0 for objects, 60.2 for arrangements, 32.2 for interiors, 28.1 for buildings, 22.2 for blocks, and 21.2 for cities**. The sharpest drop appears between object arrangements and interiors: agents must now coordinate an enclosing space, repeated structures, furniture, and local details.
 
-The images let you inspect how that transition looks for each model. Category averages summarize different task sets; the four-city category's rebound is a useful reminder that this is not a controlled experiment in scene size alone.
+The images let you inspect how that transition looks for each model. Category averages summarize different task sets; the averages also reflect which tasks belong to each category.
 
 ## A scene you can walk through
 
 Reconstruction produces more than a single view. An editable scene can be inspected from inside, exposing relationships that a facade render may conceal. This supplied modern-villa walkthrough shows that possibility in a GPT-6.2-Astra (high) reconstruction.
 
-<Wide><figure className="blog-wide walkthrough"><video controls playsInline preload="none" poster={siteUrl('video/villa-35.webp')} width="768" height="432" aria-label="77-second walkthrough of a supplied modern-villa reconstruction by GPT-6.2-Astra high"><source src={siteUrl('video/modern-villa-astra62-high.mp4')} type="video/mp4"/>Your browser does not support embedded video. <a href={siteUrl('video/modern-villa-astra62-high.mp4')}>Download the walkthrough</a>.</video><figcaption>A qualitative reconstruction demo · 77 seconds, no narration. This GPT-6.2-Astra example is separate from the seven configurations in the leaderboard above.</figcaption></figure></Wide>
+<Wide><figure className="blog-wide walkthrough"><video controls playsInline preload="none" poster={siteUrl('video/villa-35.webp')} width="768" height="432" aria-label="77-second walkthrough of a supplied modern-villa reconstruction by GPT-6.2-Astra high"><source src={siteUrl('video/modern-villa-astra62-high.mp4')} type="video/mp4"/>Your browser does not support embedded video. <a href={siteUrl('video/modern-villa-astra62-high.mp4')}>Download the walkthrough</a>.</video><figcaption>A qualitative reconstruction demo · 77 seconds, no narration. This reconstruction is one of the 80 tasks in the GPT-6.2-Astra (high) leaderboard row.</figcaption></figure></Wide>
 
 ## The room is there. Its components are not yet faithful.
 
@@ -117,4 +117,4 @@ Progress here means more than a better-looking render. It means agents that can 
 
 <div className="closing-links"><a href={siteUrl('task/')}>Explore the tasks</a><a href={siteUrl('leaderboard/')}>Inspect the leaderboard</a><a href={github}>Website source</a></div>
 
-<div className="source-note"><p>Results and diagnostic analyses follow the November 17 paper snapshot. This page uses the approved PSNR normalization, <code>100 / (1 + exp(−0.25 × (dB − 30)))</code>. The reconstruction images and diagnostic images retain their source pixels.</p><p>Further reading: <a href="https://arxiv.org/html/2512.20617v1">Xiao et al., SpatialTree: How Spatial Abilities Branch Out in MLLMs, 2025</a>. Its four-level framework informs the spatial-intelligence discussion above.</p></div>
+<div className="source-note"><p>Category results follow the current dataset manifest and include GPT-6.2-Astra (high). The diagnostic analyses use the November 17 paper snapshot. This page uses the approved PSNR normalization, <code>100 / (1 + exp(−0.25 × (dB − 30)))</code>. The reconstruction images and diagnostic images retain their source pixels.</p><p>Further reading: <a href="https://arxiv.org/html/2512.20617v1">Xiao et al., SpatialTree: How Spatial Abilities Branch Out in MLLMs, 2025</a>. Its four-level framework informs the spatial-intelligence discussion above.</p></div>

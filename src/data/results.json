@@ -1,8 +1,70 @@
 {
-  "date": "2026-11-17",
+  "date": "2026-11-25",
   "archive_commit": "b1dec75ba4022ea94a3be62af03aecde3f9d6efc",
   "score_normalization": "psnr-sigmoid-c30-slope025-v2-20261117",
   "models": [
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "tasks": 80,
+      "expected_tasks": 80,
+      "complete": true,
+      "missing_tasks": [],
+      "harness_versions": [
+        "codex-0.169.1"
+      ],
+      "recorded_models": [
+        "gpt-6.2-astra"
+      ],
+      "model_routes": [
+        "recorded_provider"
+      ],
+      "mean_total": 0.5915277837547757,
+      "means": {
+        "PSNR": 0.08001660852386892,
+        "SSIM": 0.6477401963572602,
+        "LPIPS": 0.839906453693337,
+        "Depth": 0.5852147156699556,
+        "SurfaceDistance": 0.54671345810856
+      },
+      "usage": {
+        "tasks": 80,
+        "token_tasks": 80,
+        "cost_tasks": 80,
+        "total_tokens": 2875823003,
+        "recorded_cost_usd": 2072.4274128,
+        "mean_tokens": 35947787.5375,
+        "mean_cost_usd": 25.905342660000006,
+        "token_basis": "prompt plus completion; includes cached input; no double-counted reasoning",
+        "cost_basis": "per-trial cost recorded in the trajectory"
+      },
+      "domains": {
+        "objects": {
+          "tasks": 16,
+          "mean_total": 0.8303347895737831
+        },
+        "object-arrangements": {
+          "tasks": 11,
+          "mean_total": 0.8356960038021298
+        },
+        "interiors": {
+          "tasks": 23,
+          "mean_total": 0.5089674788677258
+        },
+        "buildings": {
+          "tasks": 13,
+          "mean_total": 0.48656767266960343
+        },
+        "blocks": {
+          "tasks": 12,
+          "mean_total": 0.4184190829462925
+        },
+        "cities": {
+          "tasks": 5,
+          "mean_total": 0.35830985427200945
+        }
+      }
+    },
     {
       "model": "gpt-6-astra",
       "effort": "high",
@@ -39,29 +101,29 @@
         "cost_basis": "reported CLI cost or published API-rate calculation; per-record source identifies the method"
       },
       "domains": {
-        "blocks": {
-          "tasks": 14,
-          "mean_total": 0.25265787620422414
+        "objects": {
+          "tasks": 16,
+          "mean_total": 0.7682970522358776
         },
-        "buildings": {
-          "tasks": 12,
-          "mean_total": 0.35826186214111205
+        "object-arrangements": {
+          "tasks": 11,
+          "mean_total": 0.7413596362984672
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.3961235631613058
         },
-        "cities": {
-          "tasks": 4,
-          "mean_total": 0.34811945266032424
+        "buildings": {
+          "tasks": 13,
+          "mean_total": 0.34622699082060815
         },
-        "object-arrangements": {
+        "blocks": {
           "tasks": 12,
-          "mean_total": 0.7457630654998745
+          "mean_total": 0.2800316645314377
         },
-        "objects": {
-          "tasks": 15,
-          "mean_total": 0.7665701366039125
+        "cities": {
+          "tasks": 5,
+          "mean_total": 0.2734999136297244
         }
       }
     },
@@ -101,29 +163,29 @@
         "cost_basis": "reported CLI cost or published API-rate calculation; per-record source identifies the method"
       },
       "domains": {
-        "blocks": {
-          "tasks": 14,
-          "mean_total": 0.2441867598700575
+        "objects": {
+          "tasks": 16,
+          "mean_total": 0.7425576747379298
         },
-        "buildings": {
-          "tasks": 12,
-          "mean_total": 0.3484393006679199
-        },
-        "cities": {
-          "tasks": 4,
-          "mean_total": 0.31387828856938343
+        "object-arrangements": {
+          "tasks": 11,
+          "mean_total": 0.7059309588268987
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.3759021591157477
         },
-        "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.7087329573280071
+        "buildings": {
+          "tasks": 13,
+          "mean_total": 0.3379761143504058
         },
-        "objects": {
-          "tasks": 15,
-          "mean_total": 0.7427578569977784
+        "blocks": {
+          "tasks": 12,
+          "mean_total": 0.2684686739109619
+        },
+        "cities": {
+          "tasks": 5,
+          "mean_total": 0.24801716539731194
         }
       }
     },
@@ -164,28 +226,28 @@
       },
       "domains": {
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.6181009284619694
+          "tasks": 16,
+          "mean_total": 0.6183406180504164
         },
-        "blocks": {
-          "tasks": 14,
-          "mean_total": 0.1581761887583128
-        },
-        "buildings": {
-          "tasks": 12,
-          "mean_total": 0.2579697628939578
-        },
-        "cities": {
-          "tasks": 4,
-          "mean_total": 0.24050103470831755
+        "object-arrangements": {
+          "tasks": 11,
+          "mean_total": 0.5968081866622404
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.30211069370755156
         },
-        "object-arrangements": {
+        "buildings": {
+          "tasks": 13,
+          "mean_total": 0.2487948114790608
+        },
+        "blocks": {
           "tasks": 12,
-          "mean_total": 0.5989021679301472
+          "mean_total": 0.1714500489677103
+        },
+        "cities": {
+          "tasks": 5,
+          "mean_total": 0.1960749598673658
         }
       }
     },
@@ -227,29 +289,29 @@
         "cost_basis": "reported CLI cost or published API-rate calculation; per-record source identifies the method"
       },
       "domains": {
-        "buildings": {
-          "tasks": 12,
-          "mean_total": 0.25146687014275415
-        },
-        "blocks": {
-          "tasks": 14,
-          "mean_total": 0.16976862120512998
-        },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.5890215183661642
+          "tasks": 16,
+          "mean_total": 0.5891825966955846
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.5276780631552804
+          "tasks": 11,
+          "mean_total": 0.5218670896569523
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.2792878308065055
         },
+        "buildings": {
+          "tasks": 13,
+          "mean_total": 0.2445331512500669
+        },
+        "blocks": {
+          "tasks": 12,
+          "mean_total": 0.184692881085846
+        },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.22784766555754482
+          "tasks": 5,
+          "mean_total": 0.18210165230680547
         }
       }
     },
@@ -289,29 +351,29 @@
         "cost_basis": "reported CLI cost or published API-rate calculation; per-record source identifies the method"
       },
       "domains": {
-        "buildings": {
-          "tasks": 12,
-          "mean_total": 0.22378043958362914
+        "objects": {
+          "tasks": 16,
+          "mean_total": 0.603792965693863
         },
-        "blocks": {
-          "tasks": 14,
-          "mean_total": 0.16369386079321163
+        "object-arrangements": {
+          "tasks": 11,
+          "mean_total": 0.5335937785397779
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.28032356432018324
         },
-        "cities": {
-          "tasks": 4,
-          "mean_total": 0.20262966490192366
+        "buildings": {
+          "tasks": 13,
+          "mean_total": 0.2165832404916299
         },
-        "object-arrangements": {
+        "blocks": {
           "tasks": 12,
-          "mean_total": 0.5476754381037399
+          "mean_total": 0.18152422646071445
         },
-        "objects": {
-          "tasks": 15,
-          "mean_total": 0.5972075838529657
+        "cities": {
+          "tasks": 5,
+          "mean_total": 0.15874502835928894
         }
       }
     },
@@ -351,29 +413,29 @@
         "cost_basis": "reported CLI cost or published API-rate calculation; per-record source identifies the method"
       },
       "domains": {
-        "blocks": {
-          "tasks": 14,
-          "mean_total": 0.15261188075084098
+        "objects": {
+          "tasks": 16,
+          "mean_total": 0.6138259090489302
         },
-        "buildings": {
-          "tasks": 12,
-          "mean_total": 0.22185185434774357
-        },
-        "cities": {
-          "tasks": 4,
-          "mean_total": 0.18685218513095608
+        "object-arrangements": {
+          "tasks": 11,
+          "mean_total": 0.5372721152404852
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.2637819537862464
         },
-        "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.5478430883361035
+        "buildings": {
+          "tasks": 13,
+          "mean_total": 0.21513261764352906
         },
-        "objects": {
-          "tasks": 15,
-          "mean_total": 0.610472716826332
+        "blocks": {
+          "tasks": 12,
+          "mean_total": 0.1614686764052419
+        },
+        "cities": {
+          "tasks": 5,
+          "mean_total": 0.162369835395948
         }
       }
     },
@@ -414,29 +476,29 @@
         "cost_basis": "reported CLI cost or published API-rate calculation; per-record source identifies the method"
       },
       "domains": {
-        "buildings": {
-          "tasks": 12,
-          "mean_total": 0.1554264712269075
+        "objects": {
+          "tasks": 16,
+          "mean_total": 0.3558728802935551
         },
-        "blocks": {
-          "tasks": 14,
-          "mean_total": 0.10655798446492858
-        },
-        "cities": {
-          "tasks": 4,
-          "mean_total": 0.13458050228728016
+        "object-arrangements": {
+          "tasks": 11,
+          "mean_total": 0.34538090320005765
         },
         "interiors": {
           "tasks": 23,
-          "mean_total": 0.17290446849489524
+          "mean_total": 0.17290446849489527
         },
-        "object-arrangements": {
+        "buildings": {
+          "tasks": 13,
+          "mean_total": 0.15189992104370503
+        },
+        "blocks": {
           "tasks": 12,
-          "mean_total": 0.35010587308973307
+          "mean_total": 0.10977419645904778
         },
-        "objects": {
-          "tasks": 15,
-          "mean_total": 0.3527923695213813
+        "cities": {
+          "tasks": 5,
+          "mean_total": 0.12065242306085443
         }
       }
     }
@@ -3801,6 +3863,490 @@
       "effort": "default",
       "slug": "jewelry-organizer",
       "total": 0.7991851304276074
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "antique-birdcage",
+      "total": 0.9560285116940381
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "barcelona-pavilion",
+      "total": 0.6549994519490343
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "beijing-daxing-airport",
+      "total": 0.3164358438805246
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "binocular-microscope",
+      "total": 0.32146864744973763
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "birdcage-table",
+      "total": 0.8495630373790098
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "burger-meal",
+      "total": 0.7995820411658907
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "camping-dining-set",
+      "total": 0.915959397988427
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "campus-teaching-building",
+      "total": 0.3979233070930448
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "carousel-ride",
+      "total": 0.7004763448876057
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "central-city-park",
+      "total": 0.3328347725912237
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "chinese-garden-park",
+      "total": 0.3366595574989107
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "chinese-medicine-cabinet",
+      "total": 0.8773808036515212
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "city-transit-bus",
+      "total": 0.7113533909178457
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "classical-tiled-kitchen",
+      "total": 0.4519014194135742
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "clothing-display",
+      "total": 0.6061536202751592
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "concrete-kitchen-dining",
+      "total": 0.6247369361685334
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "dodger-baseball-stadium",
+      "total": 0.27214321643324013
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "double-dragon-screen",
+      "total": 0.945294969303279
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "dragon-stone-sculpture",
+      "total": 0.5519567122957488
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "elevated-hall-courtyard",
+      "total": 0.7449098770646663
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "florence-historic-city",
+      "total": 0.244706159988868
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "furnished-kitchen",
+      "total": 0.5569609700954441
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "furnished-room",
+      "total": 0.47302358306970177
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "future-metropolis",
+      "total": 0.5981981246939458
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "gaming-room",
+      "total": 0.6463599106546603
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "golden-dragon-lantern",
+      "total": 0.9390072402155031
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "gothic-church",
+      "total": 0.22210386153983375
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "grand-hall",
+      "total": 0.44566958727155953
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "hanamura-scene",
+      "total": 0.21392185629144114
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "handheld-console",
+      "total": 0.8914465427024421
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "high-back-armchair",
+      "total": 0.9319977836134321
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "horse-drawn-carriage",
+      "total": 0.8938320501334813
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "industrial-robot",
+      "total": 0.89667967480924
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "italian-canal-street",
+      "total": 0.3707231345593155
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "japanese-night-alley",
+      "total": 0.46789864703921225
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "jewelry-organizer",
+      "total": 0.8945996084791125
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "knight-throne-hall",
+      "total": 0.42279643882313506
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "kyoto-shopping-street",
+      "total": 0.3471315176905814
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "maple-drive",
+      "total": 0.5301878884896118
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "midcentury-living",
+      "total": 0.6511075619298357
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "modern-kitchen-bedroom",
+      "total": 0.5594605383449737
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "modern-villa",
+      "total": 0.591739052344468
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "modular-house-neighborhood",
+      "total": 0.38852407317936255
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "mountain-view-villa",
+      "total": 0.31909961389442293
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "office-block-garden",
+      "total": 0.38802959209157273
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "omega-apartment",
+      "total": 0.3918511696254522
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "open-dining-kitchen",
+      "total": 0.428048656518203
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "open-frame-printer",
+      "total": 0.8393681304111797
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "open-laptop",
+      "total": 0.9722383706020833
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "opera-house-auditorium",
+      "total": 0.29159523133547505
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "painting-studio",
+      "total": 0.8723611164516247
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "palace-lantern",
+      "total": 0.9316588738822305
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "paladin-chapel",
+      "total": 0.5380731412957072
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "pet-product-arrangement",
+      "total": 0.85643453315522
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "petal-library-complex",
+      "total": 0.4353490598898332
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "porcelain-jar",
+      "total": 0.9163114848454105
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "pump-bottle-display",
+      "total": 0.8437544071341992
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "retro-bar",
+      "total": 0.42939525372461596
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "retro-train-bay",
+      "total": 0.4440467679337044
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "san-marco-precinct",
+      "total": 0.2359282975697536
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "school-athletics-campus",
+      "total": 0.5681705138937709
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "school-classroom",
+      "total": 0.7169437771812
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "shopping-center-atrium",
+      "total": 0.6032769684886521
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "shopping-center-district",
+      "total": 0.3327104594639103
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "song-study",
+      "total": 0.7098898106252209
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "south-side-eridu",
+      "total": 0.3164967616943789
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "space-station",
+      "total": 0.8130616547425029
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "student-dormitory",
+      "total": 0.639102454931545
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "thames-riverside-city",
+      "total": 0.4987948328160388
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "uh60-helicopter",
+      "total": 0.8237302385616571
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "unfurnished-mansion",
+      "total": 0.5015390334377758
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "victorian-library",
+      "total": 0.5665594061916391
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "victorian-office",
+      "total": 0.5297228273496658
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "victorian-office-room",
+      "total": 0.5763769123568862
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "vintage-tea-table",
+      "total": 0.9263134882563766
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "walled-courtyard",
+      "total": 0.6350943367117339
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "waterfront-exhibition",
+      "total": 0.2553241793101948
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "waterside-study",
+      "total": 0.390525797577126
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "xinjiang-street-block",
+      "total": 0.7945912035634229
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "slug": "yongding-hakka-tulou",
+      "total": 0.4446166778074897
     }
-  ]
+  ],
+  "category_source": {
+    "path": "tasks/dataset.toml",
+    "sha256": "5fdaad2445fab8f0fb492ebd8c8b670175322cfb4bdccf17478d6116110011da"
+  }
 }
