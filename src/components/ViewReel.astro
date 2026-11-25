@@ -1,0 +1,66 @@
+---
+interface Props { name:string; views:{id:string;src:string}[]; }
+const {name,views}=Astro.props;
+---
+<div class="view-reel" data-name={name}>
+  <div class="reel-stage">
+    <img class="villa-image" src={views[0].src} alt={name+' · '+views[0].id} width="768" height="576" loading="lazy"/>
+    <div class="reel-caption"><span>{views[0].id}</span><button type="button" data-pause aria-label={'Pause '+name} title="Pause slideshow">Ⅱ</button></div>
+  </div>
+  <div class="reel-edge"><div class="villa-thumbs">
+    {[0,1].map(copy=><div class="reel-strip" aria-hidden={copy===1?'true':undefined}>
+      {views.map((v,i)=><button type="button" tabindex={copy===1?-1:0} data-index={i} aria-label={name+' · '+v.id} aria-pressed={i===0}><img src={v.src} alt="" width="58" height="42" loading="lazy"/><span>{v.id}</span></button>)}
+    </div>)}
+  </div></div>
+</div>
+<script>
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll<HTMLElement>('.view-reel').forEach(reel => {
+    const stage = reel.querySelector<HTMLImageElement>('.villa-image')!;
+    const caption = reel.querySelector<HTMLElement>('.reel-caption span')!;
+    const toggle = reel.querySelector<HTMLButtonElement>('[data-pause]')!;
+    const rail = reel.querySelector<HTMLElement>('.villa-thumbs')!;
+    const strip = rail.querySelector<HTMLElement>('.reel-strip')!;
+    const frames = [...strip.querySelectorAll('button')];
+    const thumbs = [...rail.querySelectorAll('button')];
+    let selected=0, offset=0, previous=0, frame=0, visible=false, paused=motion.matches;
+    function select(index:number) {
+      selected=index;
+      const source=frames[index].querySelector('img')!;
+      stage.src=source.currentSrc || source.src;
+      stage.alt=frames[index].getAttribute('aria-label')!;
+      caption.textContent=frames[index].innerText.trim();
+      thumbs.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.index)===index)));
+    }
+    function tick(now:number) {
+      if (previous && !reel.matches(':hover') && !rail.matches(':focus-within')) {
+        const period=strip.offsetWidth;
+        if (period) {
+          offset=(offset+Math.min(now-previous,60)*0.017)%period;
+          rail.scrollLeft=offset;
+          const index=Math.floor(offset*frames.length/period);
+          if(index!==selected) select(index);
+        }
+      }
+      previous=now;frame=requestAnimationFrame(tick);
+    }
+    function refresh() {
+      cancelAnimationFrame(frame); previous=0;
+      toggle.textContent=paused?'▶':'Ⅱ';
+      toggle.setAttribute('aria-label',(paused?'Play ':'Pause ')+reel.dataset.name);
+      toggle.title=paused?'Play slideshow':'Pause slideshow';
+      if(visible && !paused && !document.hidden) frame=requestAnimationFrame(tick);
+    }
+    thumbs.forEach(button=>button.addEventListener('click',()=>{
+      const index=Number(button.dataset.index);
+      select(index);offset=index*strip.offsetWidth/frames.length;
+      rail.scrollLeft=offset;paused=true;refresh();
+    }));
+    rail.addEventListener('pointerdown',()=>{paused=true;refresh()},{passive:true});
+    toggle.addEventListener('click',()=>{paused=!paused;refresh()});
+    new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;refresh()}).observe(reel);
+    motion.addEventListener('change',()=>{paused=motion.matches;refresh()});
+    document.addEventListener('visibilitychange',refresh);
+    refresh();
+  });
+</script>

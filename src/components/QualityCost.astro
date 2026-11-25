@@ -1,35 +1,67 @@
 ---
 import results from '../data/results.json';
-import { modelName,score,tokens } from '../lib/site';
-const points = results.models.map(m=>({name:modelName(m), quality:score(m.mean_total), usd:m.usage.mean_cost_usd, tokens:m.usage.mean_tokens, usage:tokens(m.usage.mean_tokens)}));
-const axes = [{key:'usd',name:'Mean cost per task (USD)',max:Math.ceil(Math.max(...points.map(p=>p.usd))/10)*10},{key:'tokens',name:'Mean tokens per task (millions)',max:Math.ceil(Math.max(...points.map(p=>p.tokens))/10000000)*10}];
+import {modelName,score,tokens,url} from '../lib/site';
+const colors=['#7750aa','#397d87','#56989f','#c57656','#8465b5','#3977ac','#748351','#9a6779'];
+const points=results.models.map((m,i)=>({
+  name:modelName(m), quality:Number(score(m.mean_total)), usd:m.usage.mean_cost_usd,
+  tokens:m.usage.mean_tokens/1e6, usage:tokens(m.usage.mean_tokens), color:colors[i%colors.length],
+  logo:url('logos/'+(m.model.startsWith('gpt')?'openai':m.model.startsWith('claude')?'claude':m.model.startsWith('qwen')?'qwen':m.model.split('-')[0])+'.png')
+}));
+const axes=[{key:'usd',title:'Cost',unit:'Mean cost per task (USD)'},{key:'tokens',title:'Tokens',unit:'Mean tokens per task (millions)'}] as const;
+const yMin=Math.floor((Math.min(...points.map(p=>p.quality))-2)/10)*10;
+const yMax=Math.ceil((Math.max(...points.map(p=>p.quality))+2)/10)*10;
+const y=(n:number)=>100*(n-yMin)/(yMax-yMin);
+const yTicks=Array.from({length:(yMax-yMin)/10+1},(_,i)=>yMin+10*i);
+const first=points[0];
 ---
-<figure class="cost-figure not-prose" data-points={JSON.stringify(points)}>
-  <div class="cost-controls"><label>Horizontal axis <select id="cost-axis">{axes.map(a=><option value={a.key}>{a.name}</option>)}</select></label>
-  <label>Configuration <select id="cost-model">{points.map((p,i)=><option value={i}>{p.name}</option>)}</select></label></div>
-  {axes.map((a,j)=><div data-plot={a.key} hidden={j!==0}>
-    <span class="plot-unit">Overall score</span><div class="plot-area">
-      {[0,25,50,75,100].map(y=><div class="plot-gridline" style={'bottom:'+y+'%'}><span>{y}</span></div>)}
-      {points.map((p,i)=><button type="button" class="plot-point" data-point={i} aria-pressed={i===0} aria-label={p.name+', score '+p.quality} title={p.name} style={'left:'+(a.key==='usd'?p.usd:p.tokens/1e6)/a.max*100+'%;bottom:'+p.quality+'%'}></button>)}
-      {[0,1,2,3,4].map(i=><span class="plot-tick" style={'left:'+i*25+'%'}>{a.max*i/4}</span>)}
-    </div><div class="plot-x">{a.name}</div>
-  </div>)}
-  <output class="cost-readout" aria-live="polite">{points[0].name} · {points[0].quality} / 100 · ${points[0].usd.toFixed(2)} · {points[0].usage} tokens</output>
-  <figcaption>Each point represents one configuration averaged over 80 tasks. Token totals include cached input. Costs follow the recorded CLI charges or the release’s API-rate estimates.</figcaption>
+<figure class="cost-lab not-prose" data-points={JSON.stringify(points)}>
+  <header class="cost-top"><div><h3>Reconstruction score and cost</h3><p>Mean per task across 80 reconstructions</p></div>
+    <div class="cost-switch" role="group" aria-label="Horizontal axis">{axes.map((a,i)=><button data-axis={a.key} type="button" aria-pressed={i===0}>{a.title}</button>)}</div>
+  </header>
+  <div class="cost-body"><div class="cost-charts">
+    {axes.map((a,j)=>{
+      const max=Math.ceil(Math.max(...points.map(p=>p[a.key]))/10)*10;
+      const x=(v:number)=>v/max*100;
+      let best=-Infinity;
+      const frontier=[...points].sort((l,r)=>l[a.key]-r[a.key]||r.quality-l.quality).filter(p=>{
+        if(best >= p.quality) return false;
+        best=p.quality;return true;
+      });
+      const path=frontier.map((p,i)=>i===0?'M'+x(p[a.key])+' '+(100-y(p.quality)):'H'+x(p[a.key])+'V'+(100-y(p.quality))).join(' ')+'H100';
+      return <div data-plot={a.key} hidden={j!==0}><div class="chart-unit">Overall score</div>
+        <div class="quality-grid">
+          {yTicks.map(n=><div class="grid-y" style={{bottom:y(n)+'%'}}><span>{n}</span></div>)}
+          {[0,1,2,3,4].map(i=><div class="grid-x" style={{left:i*25+'%'}}><span>{max*i/4}</span></div>)}
+          <svg class="frontier-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d={path}/></svg>
+          {points.map((p,i)=><button class="quality-dot" type="button" data-point={i} aria-pressed={i===0} aria-label={p.name+', score '+p.quality.toFixed(2)} title={p.name} style={{left:x(p[a.key])+'%',bottom:y(p.quality)+'%','--dot':p.color}}><img src={p.logo} alt="" width="15" height="15"/></button>)}
+        </div><p class="chart-x-title">{a.unit}</p>
+      </div>;
+    })}
+    <p class="frontier-key"><i aria-hidden="true"></i>Highest observed score within budget</p>
+  </div>
+  <aside class="cost-detail" aria-live="polite"><p class="cost-selected">{first.name}</p>
+    <div class="cost-big"><strong>{first.quality.toFixed(2)}</strong><small>/ 100</small></div>
+    <dl><div><dt>Mean cost</dt><dd data-value="usd">${first.usd.toFixed(2)}</dd></div><div><dt>Mean tokens</dt><dd data-value="tokens">{first.usage}</dd></div></dl>
+  </aside></div>
+  <div class="cost-models" role="group" aria-label="Select a configuration">{points.map((p,i)=><button type="button" data-choice={i} aria-pressed={i===0} style={{'--dot':p.color}}><i></i>{p.name}</button>)}</div>
+  <figcaption>Token counts include cached input. Costs use recorded CLI charges or the release’s API-rate estimates.</figcaption>
 </figure>
 <script>
-  const figure = document.querySelector<HTMLElement>('.cost-figure')!;
-  const axis = figure.querySelector<HTMLSelectElement>('#cost-axis')!;
-  const model = figure.querySelector<HTMLSelectElement>('#cost-model')!;
-  const points = JSON.parse(figure.dataset.points!) as {name:string;quality:string;usd:number;usage:string}[];
-  const buttons = figure.querySelectorAll<HTMLButtonElement>('[data-point]');
+  const root=document.querySelector<HTMLElement>('.cost-lab')!;
+  const data=JSON.parse(root.dataset.points!) as {name:string;quality:number;usd:number;usage:string}[];
+  const choices=root.querySelectorAll<HTMLButtonElement>('[data-choice],[data-point]');
   function select(i:number) {
-    const p = points[i];
-    model.value = String(i);
-    figure.querySelector('output')!.textContent = p.name+' · '+p.quality+' / 100 · $'+p.usd.toFixed(2)+' · '+p.usage+' tokens';
-    buttons.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.point)===i)));
+    const p=data[i];
+    root.querySelector('.cost-selected')!.textContent=p.name;
+    root.querySelector('.cost-big strong')!.textContent=p.quality.toFixed(2);
+    root.querySelector('[data-value="usd"]')!.textContent='$'+p.usd.toFixed(2);
+    root.querySelector('[data-value="tokens"]')!.textContent=p.usage;
+    choices.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.choice??b.dataset.point)===i)));
   }
-  buttons.forEach(b=>['focus','click','pointerenter'].forEach(event=>b.addEventListener(event,()=>select(Number(b.dataset.point)))));
-  axis.addEventListener('change',()=>figure.querySelectorAll<HTMLElement>('[data-plot]').forEach(p=>p.hidden=p.dataset.plot!==axis.value));
-  model.addEventListener('change',()=>select(Number(model.value)));
+  choices.forEach(b=>['focus','click','pointerenter'].forEach(event=>b.addEventListener(event,()=>select(Number(b.dataset.choice??b.dataset.point)))));
+  const axes=root.querySelectorAll<HTMLButtonElement>('[data-axis]');
+  axes.forEach(b=>b.addEventListener('click',()=>{
+    axes.forEach(a=>a.setAttribute('aria-pressed',String(a===b)));
+    root.querySelectorAll<HTMLElement>('[data-plot]').forEach(p=>p.hidden=p.dataset.plot!==b.dataset.axis);
+  }));
 </script>

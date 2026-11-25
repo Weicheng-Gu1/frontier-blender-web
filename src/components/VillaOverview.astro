@@ -2,10 +2,12 @@
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { url, score } from '../lib/site';
+import ViewReel from './ViewReel.astro';
 interface View {id:string; image:string}
-interface Trial {trial:string; metrics:{means:Record<string,number>;total:number}}
+interface Trial {trial:string; hidden:(View & {prediction:string})[]; metrics:{means:Record<string,number>;total:number}}
 const villa = JSON.parse(gunzipSync(readFileSync('public/task/modern-villa/case.json.gz')).toString()) as { public:View[]; drawings:View[]; results:Trial[] };
-const metrics = villa.results.find(r => r.trial === 'modern-villa__Vd6qvVQ')!.metrics;
+const trial = villa.results.find(r => r.trial === 'modern-villa__Vd6qvVQ')!;
+const metrics = trial.metrics;
 const groups = [{name:'Public reference images',views:villa.public}, {name:'Technical drawings',views:villa.drawings}];
 const image = (view:View) => url('task/modern-villa/'+view.image);
 const fidelity = [{name:'Image fidelity',keys:['PSNR','SSIM','LPIPS']},{name:'Geometry fidelity',keys:['Depth','SurfaceDistance']}];
@@ -14,16 +16,21 @@ const fidelity = [{name:'Image fidelity',keys:['PSNR','SSIM','LPIPS']},{name:'Ge
   <section><h3>Agent input</h3>
     <div class="villa-tabs" role="group" aria-label="Input type">{groups.map((g,i)=><button type="button" data-input={i} aria-pressed={i===0}>{g.name}</button>)}</div>
     {groups.map((g,i)=><div data-gallery={i} hidden={i!==0}>
-      <img class="villa-image" src={image(g.views[0])} alt={g.name+' · '+g.views[0].id} width="768" height="576" loading="lazy"/>
-      <div class="villa-thumbs" role="group" aria-label={g.name}>{g.views.map((v,j)=><button type="button" aria-label={g.name+' · '+v.id} aria-pressed={j===0}><img src={image(v)} width="56" height="42" alt="" loading="lazy"/><span>{v.id}</span></button>)}</div>
+      <ViewReel name={g.name} views={g.views.map(v=>({id:v.id,src:image(v)}))}/>
     </div>)}
   </section>
-  <section><h3>Agent output</h3><p class="villa-label">GPT-6-Astra (high)</p>
-    <model-viewer style={{backgroundImage:'url('+url('reconstruction/modern-villa/gpt-6-astra--high.png')+')'}} src={url('featured-villa/astra-lit.glb')} environment-image={url('featured-villa/villa-dusk.hdr')} skybox-image={url('featured-villa/villa-dusk.hdr')} poster={url('reconstruction/modern-villa/gpt-6-astra--high.png')} reveal="manual" camera-controls touch-action="pan-y" camera-target="1m 2m 1m" camera-orbit="35deg 58deg 80m" min-camera-orbit="auto 2deg 2%" max-camera-orbit="auto 175deg 600%" shadow-intensity="1" shadow-softness="0.55" alt="Interactive Modern Villa reconstruction by GPT-6-Astra high"><button class="villa-load" type="button" slot="poster">Explore in 3D</button></model-viewer>
-    <p class="villa-help">Drag to orbit · Scroll or pinch to zoom</p>
+  <section><h3>Agent output</h3><div class="villa-tabs" role="group" aria-label="Agent output mode">
+      <button type="button" data-mode="views" aria-pressed="true">Held-out views</button>
+      <button type="button" data-mode="model" aria-pressed="false">Explore in 3D</button>
+    </div>
+    <div data-output="views"><ViewReel name="Held-out prediction" views={trial.hidden.map(v=>({id:v.id,src:url('task/modern-villa/'+v.prediction)}))}/></div>
+    <div data-output="model" hidden>
+    <model-viewer style={{backgroundImage:'url('+url('reconstruction/modern-villa/gpt-6-astra--high.png')+')'}} src={url('featured-villa/astra-lit.glb')} environment-image={url('featured-villa/villa-dusk.hdr')} skybox-image={url('featured-villa/villa-dusk.hdr')} poster={url('reconstruction/modern-villa/gpt-6-astra--high.png')} reveal="manual" zoom-sensitivity="0.32" camera-controls touch-action="pan-y" camera-target="1m 2m 1m" camera-orbit="35deg 58deg 80m" min-camera-orbit="auto 2deg 2%" max-camera-orbit="auto 175deg 600%" shadow-intensity="1" shadow-softness="0.55" alt="Interactive Modern Villa reconstruction by GPT-6-Astra high"></model-viewer>
+    <p class="villa-help">Drag to orbit · Scroll or pinch to zoom</p></div>
+    <p class="villa-byline">GPT-6-Astra (high)</p>
   </section>
   <section><h3>Evaluation</h3><div class="villa-total">Overall <strong>{score(metrics.total)} <small>/ 100</small></strong></div>
-    {fidelity.map(group=><div class="villa-metrics"><h4>{group.name}</h4><dl>{group.keys.map(k=><div><dt>{k==='SurfaceDistance'?'Surface distance':k}</dt><dd>{score(metrics.means[k])}</dd></div>)}</dl></div>)}
+    {fidelity.map(group=><div class="villa-metrics"><h4>{group.name}</h4><dl>{group.keys.map(k=><div><dt>{k==='SurfaceDistance'?'Surface distance':k}</dt><dd>{score(metrics.means[k])}</dd><span class="metric-track" aria-hidden="true"><i style={{width:score(metrics.means[k])+'%'}}></i></span></div>)}</dl></div>)}
   </section>
 </div>
 <script>
@@ -34,19 +41,16 @@ const fidelity = [{name:'Image fidelity',keys:['PSNR','SSIM','LPIPS']},{name:'Ge
     tabs.forEach((t,j)=>t.setAttribute('aria-pressed', String(i===j)));
     galleries.forEach((g,j)=>g.hidden=i!==j);
   }));
-  galleries.forEach(gallery => {
-    const display = gallery.querySelector<HTMLImageElement>('.villa-image')!;
-    const thumbs = gallery.querySelectorAll<HTMLButtonElement>('button');
-    thumbs.forEach(button => button.addEventListener('click', () => {
-      display.src = button.querySelector('img')!.src;
-      display.alt = button.getAttribute('aria-label')!;
-      thumbs.forEach(other=>other.setAttribute('aria-pressed',String(other===button)));
-    }));
-  });
   const viewer = cards.querySelector('model-viewer')!;
-  viewer.querySelector('button')!.addEventListener('click', async () => {
-    await import('@google/model-viewer');
-    await customElements.whenDefined('model-viewer');
-    viewer.dismissPoster();
-  });
+  const modes = cards.querySelectorAll<HTMLButtonElement>('[data-mode]');
+  modes.forEach(button=>button.addEventListener('click', async ()=>{
+    const mode=button.dataset.mode;
+    modes.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    cards.querySelectorAll<HTMLElement>('[data-output]').forEach(panel=>panel.hidden=panel.dataset.output!==mode);
+    if(mode==='model'){
+      await import('@google/model-viewer');
+      await customElements.whenDefined('model-viewer');
+      viewer.dismissPoster();
+    }
+  }));
 </script>

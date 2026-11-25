@@ -21,20 +21,20 @@ with sync_playwright() as p:
  page.wait_for_selector('.section-menu a[href="#evaluation"][aria-current="location"]')
  page.get_by_role('button',name='Technical drawings',exact=True).click()
  drawing=page.locator('[data-gallery="1"]')
- drawing.locator('button').nth(1).click()
+ drawing.locator('.reel-strip').first.locator('button').nth(1).click()
  assert 'A-101' in drawing.locator('.villa-image').get_attribute('alt')
  drawing.locator('.villa-image').evaluate('(i)=>i.decode()')
- page.locator('#cost-axis').select_option('tokens')
- page.locator('#cost-model').select_option('3')
- assert 'Opus' in page.locator('.cost-readout').inner_text()
+ page.locator('[data-axis="tokens"]').click()
+ page.locator('[data-choice="3"]').click()
+ assert 'Opus' in page.locator('.cost-selected').inner_text()
  assert page.locator('[data-plot="tokens"]').is_visible()
- assert page.locator('.fidelity-column').count()==6
+ assert page.locator('.fidelity-column').count()==5
  assert page.locator('.results-table tbody tr').count()==model_count
  explorer=page.locator('.fidelity-explorer')
  for model in range(model_count):
   explorer.locator(f'[data-all-model="{model}"]').click()
-  assert explorer.locator(f'.score-logo.is-selected[data-model="{model}"]').count()==6
-  for i in range(6):
+  assert explorer.locator(f'.score-logo.is-selected[data-model="{model}"]').count()==5
+  for i in range(5):
    img=explorer.locator(f'[data-category="{i}"] .case-prediction')
    img.scroll_into_view_if_needed()
    img.evaluate('(img)=>img.decode()')
@@ -44,7 +44,7 @@ with sync_playwright() as p:
  logo=explorer.locator(f'[data-category="0"] [data-model="{qwen_index}"]');logo.focus()
  assert 'Qwen4' in page.locator('#pair-model').inner_text()
  assert 'qwen4' in page.locator('#detail-prediction').get_attribute('src')
- explorer.locator(f'[data-category="3"] [data-model="{opus_index}"]').focus()
+ explorer.locator(f'[data-category="2"] [data-model="{opus_index}"]').focus()
  assert 'gt--opus-paper' in page.locator('#detail-gt').get_attribute('src')
  assert '/task/modern-villa/' in page.locator('#pair-link').get_attribute('href')
  page.locator('[data-variant="1"]').click()
@@ -89,7 +89,7 @@ with sync_playwright() as p:
  assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'mobile overflow'
  page.screenshot(path=str(out/'blog-mobile.png'),full_page=True)
  page.locator('[data-all-model="3"]').click()
- assert page.locator('.score-logo.is-selected[data-model="3"]').count()==6
+ assert page.locator('.score-logo.is-selected[data-model="3"]').count()==5
  page.locator('.research-hero').screenshot(path=str(out/'hero-mobile.png'))
  page.goto(base+'/leaderboard/',wait_until='networkidle')
  assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'leaderboard overflow'
@@ -97,12 +97,14 @@ with sync_playwright() as p:
  page.locator('#category').select_option('cities');assert page.locator('.case-card:visible').count()==city_count
  page.locator('#search').fill('zzzz');assert page.locator('.case-card:visible').count()==0
  page.goto(base,wait_until='networkidle')
- page.locator('.villa-load').click()
+ assert page.locator('[data-output="views"] .villa-image').is_visible()
+ assert 'modern-villa__Vd6qvVQ/camera/' in page.locator('[data-output="views"] .villa-image').get_attribute('src')
+ page.locator('[data-mode="model"]').click()
  page.wait_for_function("document.querySelector('model-viewer').loaded === true",timeout=60000)
  assert page.locator('model-viewer').evaluate('(v)=>v.model.materials.length')>0
  assert not errors,errors
  assert not failures,failures
- report={'desktop':True,'mobile':True,'theme_persistence':True,'task_search':True,'category_filter':True,'model_rows':model_count,'prediction_images':6*model_count,'keyboard_model_selection':True,'diagnostic_scores':True,'video_asset':True,'toc_anchors':True,'scroll_highlight':True,'villa_3d':True,'drawings':True,'cost_chart':True,'console_errors':errors,'http_errors':failures}
+ report={'desktop':True,'mobile':True,'theme_persistence':True,'task_search':True,'category_filter':True,'model_rows':model_count,'prediction_images':5*model_count,'keyboard_model_selection':True,'diagnostic_scores':True,'video_asset':True,'toc_anchors':True,'scroll_highlight':True,'villa_3d':True,'drawings':True,'cost_chart':True,'console_errors':errors,'http_errors':failures}
  b.close()
 (out/'browser-check.json').write_text(json.dumps(report,indent=2))
 print(json.dumps(report))

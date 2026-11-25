@@ -21,16 +21,12 @@ import CategoryFidelity from './components/CategoryFidelity.astro';
 </header>
 
 <div id="results" className="section-anchor"></div>
-<Wide><div className="blog-wide leaderboard-feature"><div className="explorer-heading"><div><span className="eyebrow">Results</span><h3>One benchmark. Six reconstruction scales.</h3></div><p>80 tasks per configuration · scores on a 0–100 scale</p></div><ResultsTable/></div></Wide>
-<p className="figure-caption">Results updated November 25, 2026. Eight complete configurations, seven models. Overall is the mean task score, not a success rate. Tokens include cached input; costs use recorded CLI charges or the release's published API-rate calculations. <a href={siteUrl('leaderboard/')}>Leaderboard and scoring notes</a>.</p>
-
-The strongest configuration, GPT-6.2-Astra (high), reaches **59.15 overall**. The gap between recognizable reconstruction and reference fidelity is still substantial.
-
-<Wide><figure className="blog-wide walkthrough"><video controls playsInline preload="none" poster={siteUrl('video/villa-35.webp')} width="768" height="432" aria-label="77-second walkthrough of a supplied modern-villa reconstruction by GPT-6.2-Astra high"><source src={siteUrl('video/modern-villa-astra62-high.mp4')} type="video/mp4"/>Your browser does not support embedded video. <a href={siteUrl('video/modern-villa-astra62-high.mp4')}>Download the walkthrough</a>.</video><figcaption>Modern Villa · GPT-6.2-Astra (high). A 77-second walkthrough of the submitted scene, from the pool courtyard to the interior.</figcaption></figure></Wide>
+<Wide><div className="blog-wide leaderboard-feature"><ResultsTable/></div></Wide>
+<Wide><figure className="blog-wide walkthrough"><video controls playsInline preload="none" poster={siteUrl('video/villa-35.webp')} width="768" height="432" aria-label="77-second walkthrough of a supplied modern-villa reconstruction by GPT-6.2-Astra high"><source src={siteUrl('video/modern-villa-astra62-high.mp4')} type="video/mp4"/>Your browser does not support embedded video. <a href={siteUrl('video/modern-villa-astra62-high.mp4')}>Download the walkthrough</a>.</video><figcaption>Walk from the pool into the villa that GPT-6.2-Astra (high) built.</figcaption></figure></Wide>
 
 <ArticleNav/>
 
-<h2 className="article-section" id="motivation">Motivation</h2>
+<div className="article-section" id="motivation"><span className="sr-only">Motivation</span></div>
 
 <figure className="feynman-quote"><blockquote>“What I cannot create I do not understand.”</blockquote><figcaption>Richard Feynman · <a href="https://feynman.com/fun/quotes/">from his blackboard</a></figcaption></figure>
 
@@ -44,7 +40,7 @@ Multimodal coding agents bring a new possibility to this problem. They can read 
 
 The four levels in [SpatialTree](https://arxiv.org/html/2512.20617v1) help explain why reconstruction is a useful test of spatial intelligence. An agent interprets images, connects views into a mental map, anticipates how its edits will look, and uses Blender to inspect the result. AgentRecBench measures the resulting geometry and appearance against the expert reference.
 
-<h2 className="article-section" id="overview">Overview</h2>
+<div className="article-section" id="overview"><span className="sr-only">Overview</span></div>
 
 ### Modern Villa and Enclosed Grounds
 
@@ -52,17 +48,17 @@ The agent receives 23 calibrated photographs, 13 technical drawings, and a produ
 
 <Wide><div className="blog-wide"><VillaOverview/></div></Wide>
 
-GPT-6-Astra (high) used the calibrated floor plans to place the two wings and built the shell before furnishing the rooms. Its first renders revealed that a wall beside the stairs was too open and an upper wall obscured the cabinetry. The agent revised both, checked the poolside and interior views again, and saved the scene with named editable components. The interactive model above shows that submission.
+GPT-6-Astra (high) used the calibrated floor plans to place the two wings and built the shell before furnishing the rooms. Its first renders revealed that a wall beside the stairs was too open and an upper wall obscured the cabinetry. The agent revised both, checked the poolside and interior views again, and saved the scene with named editable components. The held-out views and interactive model show the same submission.
 
 <a href={siteUrl('task/modern-villa/')}>Inspect the complete Modern Villa inputs, held-out views, and scored regions</a>.
 
-<h2 className="article-section" id="tasks">Tasks</h2>
+<div className="article-section" id="tasks"><span className="sr-only">Tasks</span></div>
 
-The 80 tasks span six reconstruction scales. Compare each prediction with its expert-built reference under the same camera, or select a configuration to follow it across all six examples.
+The 80 tasks span six reconstruction scales. Compare each prediction with its expert-built reference under the same camera, or select a configuration to follow it across the five examples below.
 
 <Wide><div className="blog-wide"><FidelityExplorer/></div></Wide>
 
-<h2 className="article-section" id="evaluation">Evaluation</h2>
+<div className="article-section" id="evaluation"><span className="sr-only">Evaluation</span></div>
 
 Evaluation compares each submission with an expert-built Blender scene in a shared world coordinate system. Across the benchmark, 695 held-out views test appearance and depth, and 2,163 fixed targets test surface geometry. The overall score combines PSNR (5%), SSIM (10%), LPIPS (17.5%), depth (17.5%), and bidirectional surface distance (50%).
 
@@ -101,13 +97,11 @@ The space-station reconstruction by GPT-6-Astra (low) scores **98.56 in LPIPS** 
 
 On a grazing held-out view, depth MAE reaches **9.41 m** even as the normalized LPIPS score remains **99.45**. This is why evaluation checks both images and geometry, across multiple fixed viewpoints and semantic targets.
 
-<h2 className="article-section" id="quality-cost">Quality &amp; cost</h2>
+<div className="article-section" id="quality-cost"><span className="sr-only">Quality &amp; cost</span></div>
 
-Compare average score with dollars or tokens per task. Select a point or choose a configuration to read its exact values.
+<Wide><div className="blog-wide cost-feature"><QualityCost/></div></Wide>
 
-<QualityCost/>
-
-<h2 className="article-section" id="resources">Conclusion &amp; Resources</h2>
+<div className="article-section" id="resources"><span className="sr-only">Conclusion &amp; Resources</span></div>
 
 Frontier agents can already turn heterogeneous references into recognizable, editable scenes. The harder step is preserving local structure as those scenes become more complex. AgentRecBench makes that distinction measurable: the scene's envelope, its components, its appearance, and its spatial arrangement can each be examined against the same reference.
 
