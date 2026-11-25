@@ -48,7 +48,6 @@ html:has(.section-menu) { scroll-padding-top: 0; }
 
 
 .article-section { position: relative; margin-top: clamp(2.6rem, 5vw, 5rem); }
-.article-page .fidelity-matrix { grid-template-columns: repeat(5,minmax(150px,1fr)); min-width: 840px; }
 .reel-stage { position: relative; border-radius: 9px; overflow: hidden; }
 .reel-caption { position: absolute; bottom: 8px; right: 8px; display:flex; align-items:center; padding-left:9px; gap:5px; border-radius:20px; background:rgb(24 20 34 / .8); color:white; font:600 11px/1 system-ui; letter-spacing:.04em; }
 .reel-caption button { width:28px; height:26px; border:0; background:none; color:inherit; }

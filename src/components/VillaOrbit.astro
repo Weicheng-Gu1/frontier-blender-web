@@ -1,0 +1,127 @@
+---
+import {url} from '../lib/site';
+---
+<div class="orbit-box" data-sheet={url('reconstruction/modern-villa/villa-orbit.webp')}>
+  <div class="orbit-stage">
+    <div class="orbit-host"></div>
+    <div class="orbit-preview" tabindex="0" role="group" aria-label="360 degree villa preview. Drag horizontally or use the left and right arrow keys."></div>
+  </div>
+  <p class="orbit-help"><span role="status">Drag to turn the villa while the 3D model loads.</span>
+    <button type="button" hidden>Retry 3D</button>
+  </p>
+  <template>
+    <model-viewer src={url('featured-villa/astra-lit.glb')} environment-image={url('featured-villa/villa-dusk.hdr')}
+      skybox-image={url('featured-villa/villa-dusk.hdr')} loading="eager" reveal="auto"
+      camera-controls interaction-prompt="none" touch-action="none" zoom-sensitivity="0.32"
+      camera-target="1m 2m 1m" camera-orbit="35deg 58deg 80m"
+      min-camera-orbit="auto 2deg 2%" max-camera-orbit="auto 175deg 600%"
+      shadow-intensity="1" shadow-softness="0.55" alt="GLB web version of the editable Blender scene submitted by GPT-6-Astra high"></model-viewer>
+  </template>
+</div>
+<style>
+  .orbit-stage { position:relative; aspect-ratio:4/3; width:100%; overflow:hidden; border-radius:8px; background:var(--lilac); }
+  .orbit-host,.orbit-preview { position:absolute; inset:0; }
+  .orbit-host { opacity:0; pointer-events:none; }
+  .orbit-stage .orbit-host :global(model-viewer) { display:block; width:100%; height:100%; margin:0; touch-action:none; }
+  .orbit-preview { background-size:600% 400%; background-repeat:no-repeat; touch-action:pan-y; cursor:grab; user-select:none; }
+  .orbit-preview:active { cursor:grabbing; }
+  .orbit-box[data-live] .orbit-host { opacity:1; pointer-events:auto; }
+  .orbit-box[data-live] .orbit-preview { display:none; }
+  .orbit-help { margin:10px 0 0; line-height:1.5; font-size:.8rem; color:var(--muted-ink); }
+  .orbit-help button { margin-left:5px; color:var(--purple); text-decoration:underline; }
+</style>
+<script>
+  import type {ModelViewerElement} from '@google/model-viewer';
+  const box=document.querySelector<HTMLElement>('.orbit-box')!;
+  const host=box.querySelector<HTMLElement>('.orbit-host')!;
+  const preview=box.querySelector<HTMLElement>('.orbit-preview')!;
+  const status=box.querySelector<HTMLElement>('[role=status]')!;
+  const retry=box.querySelector<HTMLButtonElement>('button')!;
+  const template=box.querySelector<HTMLTemplateElement>('template')!;
+  let viewer:ModelViewerElement|undefined;
+  let starting=false, ready=false, angle=0, pointer:number|null=null, lastX=0;
+  let stallTimer=0, attempts=0;
+  function rotate(degrees:number) {
+    angle=(angle+degrees+360)%360;
+    const frame=Math.round(angle/15)%24;
+    preview.style.backgroundPosition=(frame%6)*20+'% '+(Math.floor(frame/6)*100/3)+'%';
+  }
+  function reveal() {
+    if (!ready || pointer!==null || !viewer || box.hasAttribute('data-live')) return;
+    viewer.cameraOrbit=(35+angle)+'deg 58deg 80m';
+    viewer.jumpCameraToGoal();
+    box.setAttribute('data-live','');
+    if(document.activeElement===preview) viewer.focus();
+    status.textContent='Drag to orbit · Scroll or pinch to zoom';
+    retry.hidden=true;
+  }
+  preview.addEventListener('pointerdown',event=>{
+    if(pointer!==null || event.button!==0)return;
+    pointer=event.pointerId;lastX=event.clientX;preview.setPointerCapture(pointer);
+  });
+  preview.addEventListener('pointermove',event=>{
+    if(event.pointerId!==pointer)return;
+    rotate((lastX-event.clientX)*0.65);lastX=event.clientX;
+  });
+  preview.addEventListener('lostpointercapture',()=>{pointer=null;reveal()});
+  preview.addEventListener('keydown',event=>{
+    if(event.key==='ArrowLeft'||event.key==='ArrowRight'){
+      event.preventDefault();rotate(event.key==='ArrowRight'?15:-15);
+    }
+  });
+  function fallback() {
+    window.clearTimeout(stallTimer);ready=false;starting=false;
+    box.removeAttribute('data-live');
+    status.textContent='360° preview · Drag left or right. The interactive 3D model could not load.';
+    retry.hidden=false;
+  }
+  function watchProgress() {
+    window.clearTimeout(stallTimer);
+    stallTimer=window.setTimeout(()=>{
+      status.textContent='360° preview · Drag left or right while the 3D model continues loading.';
+      retry.hidden=false;
+    },45000);
+  }
+  async function open() {
+    if(viewer || starting || !retry.hidden)return;
+    starting=true;
+    preview.style.backgroundImage='url("'+box.dataset.sheet+'")';
+    rotate(0);watchProgress();
+    try {
+      await import('@google/model-viewer');
+      await customElements.whenDefined('model-viewer');
+      const model=template.content.firstElementChild!.cloneNode(true) as ModelViewerElement;
+      // Each retry needs a fresh loader entry after a failed network request.
+      if(attempts>0) {
+        const src=new URL(model.getAttribute('src')!,document.baseURI);
+        src.searchParams.set('retry',String(attempts));
+        model.setAttribute('src',src.href);
+      }
+      attempts++;
+      viewer=model;
+      model.addEventListener('progress',event=>{
+        if(model!==viewer || ready || !(event instanceof CustomEvent))return;
+        watchProgress();
+        const pct=Math.floor(event.detail.totalProgress*100);
+        status.textContent='Drag to turn · Loading 3D'+(pct>0?' ('+pct+'%)':'…');
+      });
+      model.addEventListener('error',()=>{if(model===viewer)fallback()});
+      model.addEventListener('load',async ()=>{
+        if(model!==viewer)return;
+        if(!model.model?.materials.length){fallback();return;}
+        await model.updateComplete;
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          if(model!==viewer)return;
+          window.clearTimeout(stallTimer);ready=true;reveal();
+        }));
+      });
+      host.replaceChildren(model);
+    } catch { fallback(); }
+    finally {starting=false;}
+  }
+  retry.addEventListener('click',()=>{
+    viewer=undefined;host.replaceChildren();ready=false;retry.hidden=true;
+    status.textContent='Drag to turn the villa while the 3D model loads.';open();
+  });
+  box.addEventListener('villa-open-model',open);
+</script>

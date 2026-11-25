@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { url, score } from '../lib/site';
+import VillaOrbit from './VillaOrbit.astro';
 import ViewReel from './ViewReel.astro';
 interface View {id:string; image:string}
 interface Trial {trial:string; hidden:(View & {prediction:string})[]; metrics:{means:Record<string,number>;total:number}}
@@ -21,12 +22,10 @@ const fidelity = [{name:'Image fidelity',keys:['PSNR','SSIM','LPIPS']},{name:'Ge
   </section>
   <section><h3>Agent output</h3><div class="villa-tabs" role="group" aria-label="Agent output mode">
       <button type="button" data-mode="views" aria-pressed="true">Held-out views</button>
-      <button type="button" data-mode="model" aria-pressed="false">Explore in 3D</button>
+      <button type="button" data-mode="model" aria-pressed="false" title="Web GLB exported from the submitted Blender scene">Explore in 3D (web GLB)</button>
     </div>
     <div data-output="views"><ViewReel name="Held-out prediction" views={trial.hidden.map(v=>({id:v.id,src:url('task/modern-villa/'+v.prediction)}))}/></div>
-    <div data-output="model" hidden>
-    <model-viewer style={{backgroundImage:'url('+url('reconstruction/modern-villa/gpt-6-astra--high.png')+')'}} src={url('featured-villa/astra-lit.glb')} environment-image={url('featured-villa/villa-dusk.hdr')} skybox-image={url('featured-villa/villa-dusk.hdr')} poster={url('reconstruction/modern-villa/gpt-6-astra--high.png')} reveal="manual" zoom-sensitivity="0.32" camera-controls touch-action="pan-y" camera-target="1m 2m 1m" camera-orbit="35deg 58deg 80m" min-camera-orbit="auto 2deg 2%" max-camera-orbit="auto 175deg 600%" shadow-intensity="1" shadow-softness="0.55" alt="Interactive Modern Villa reconstruction by GPT-6-Astra high"></model-viewer>
-    <p class="villa-help">Drag to orbit · Scroll or pinch to zoom</p></div>
+    <div data-output="model" hidden><VillaOrbit/></div>
     <p class="villa-byline">GPT-6-Astra (high)</p>
   </section>
   <section><h3>Evaluation</h3><div class="villa-total">Overall <strong>{score(metrics.total)} <small>/ 100</small></strong></div>
@@ -41,16 +40,12 @@ const fidelity = [{name:'Image fidelity',keys:['PSNR','SSIM','LPIPS']},{name:'Ge
     tabs.forEach((t,j)=>t.setAttribute('aria-pressed', String(i===j)));
     galleries.forEach((g,j)=>g.hidden=i!==j);
   }));
-  const viewer = cards.querySelector('model-viewer')!;
+  const orbit = cards.querySelector('.orbit-box')!;
   const modes = cards.querySelectorAll<HTMLButtonElement>('[data-mode]');
-  modes.forEach(button=>button.addEventListener('click', async ()=>{
+  modes.forEach(button=>button.addEventListener('click', ()=>{
     const mode=button.dataset.mode;
     modes.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
     cards.querySelectorAll<HTMLElement>('[data-output]').forEach(panel=>panel.hidden=panel.dataset.output!==mode);
-    if(mode==='model'){
-      await import('@google/model-viewer');
-      await customElements.whenDefined('model-viewer');
-      viewer.dismissPoster();
-    }
+    if(mode==='model') orbit.dispatchEvent(new Event('villa-open-model'));
   }));
 </script>

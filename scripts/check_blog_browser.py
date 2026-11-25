@@ -28,13 +28,14 @@ with sync_playwright() as p:
  page.locator('[data-choice="3"]').click()
  assert 'Opus' in page.locator('.cost-selected').inner_text()
  assert page.locator('[data-plot="tokens"]').is_visible()
- assert page.locator('.fidelity-column').count()==5
+ assert page.locator('.fidelity-column').count()==6
+ assert 'Grand hall' in page.locator('.fidelity-column').nth(2).inner_text()
  assert page.locator('.results-table tbody tr').count()==model_count
  explorer=page.locator('.fidelity-explorer')
  for model in range(model_count):
   explorer.locator(f'[data-all-model="{model}"]').click()
-  assert explorer.locator(f'.score-logo.is-selected[data-model="{model}"]').count()==5
-  for i in range(5):
+  assert explorer.locator(f'.score-logo.is-selected[data-model="{model}"]').count()==6
+  for i in range(6):
    img=explorer.locator(f'[data-category="{i}"] .case-prediction')
    img.scroll_into_view_if_needed()
    img.evaluate('(img)=>img.decode()')
@@ -44,7 +45,7 @@ with sync_playwright() as p:
  logo=explorer.locator(f'[data-category="0"] [data-model="{qwen_index}"]');logo.focus()
  assert 'Qwen4' in page.locator('#pair-model').inner_text()
  assert 'qwen4' in page.locator('#detail-prediction').get_attribute('src')
- explorer.locator(f'[data-category="2"] [data-model="{opus_index}"]').focus()
+ explorer.locator(f'[data-category="3"] [data-model="{opus_index}"]').focus()
  assert 'gt--opus-paper' in page.locator('#detail-gt').get_attribute('src')
  assert '/task/modern-villa/' in page.locator('#pair-link').get_attribute('href')
  page.locator('[data-variant="1"]').click()
@@ -89,7 +90,7 @@ with sync_playwright() as p:
  assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'mobile overflow'
  page.screenshot(path=str(out/'blog-mobile.png'),full_page=True)
  page.locator('[data-all-model="3"]').click()
- assert page.locator('.score-logo.is-selected[data-model="3"]').count()==5
+ assert page.locator('.score-logo.is-selected[data-model="3"]').count()==6
  page.locator('.research-hero').screenshot(path=str(out/'hero-mobile.png'))
  page.goto(base+'/leaderboard/',wait_until='networkidle')
  assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), 'leaderboard overflow'
@@ -100,11 +101,35 @@ with sync_playwright() as p:
  assert page.locator('[data-output="views"] .villa-image').is_visible()
  assert 'modern-villa__Vd6qvVQ/camera/' in page.locator('[data-output="views"] .villa-image').get_attribute('src')
  page.locator('[data-mode="model"]').click()
- page.wait_for_function("document.querySelector('model-viewer').loaded === true",timeout=60000)
- assert page.locator('model-viewer').evaluate('(v)=>v.model.materials.length')>0
+ page.wait_for_selector('.orbit-box[data-live]',timeout=90000)
+ viewer=page.locator('.orbit-host model-viewer')
+ assert viewer.evaluate('(v)=>v.model.materials.length')>0
+ rect=viewer.bounding_box()
+ x,y=rect['x']+rect['width']/2,rect['y']+rect['height']/2
+ before=viewer.evaluate('(v)=>v.getCameraOrbit().theta')
+ page.mouse.move(x,y);page.mouse.down();page.mouse.move(x+75,y+8,steps=8);page.mouse.up()
+ page.wait_for_function("a=>Math.abs(document.querySelector('model-viewer').getCameraOrbit().theta-a)>.1",arg=before)
+ page.locator('[data-mode="views"]').click()
+ page.locator('[data-mode="model"]').click()
+ assert viewer.is_visible()
+ fallback=b.new_page(viewport={'width':1100,'height':850})
+ fallback.route('**/astra-lit.glb',lambda route:route.abort())
+ fallback.goto(base,wait_until='domcontentloaded')
+ fallback.locator('[data-mode="model"]').click()
+ fallback.get_by_role('button',name='Retry 3D').wait_for()
+ preview=fallback.locator('.orbit-preview')
+ preview.scroll_into_view_if_needed()
+ box=preview.bounding_box()
+ x,y=box['x']+box['width']/2,box['y']+box['height']/2
+ fallback.mouse.move(x,y);fallback.mouse.down();fallback.mouse.move(x+72,y,steps=6);fallback.mouse.up()
+ assert preview.evaluate('(e)=>e.style.backgroundPosition') not in ('','0% 0%')
+ fallback.unroute('**/astra-lit.glb')
+ fallback.get_by_role('button',name='Retry 3D').click()
+ fallback.locator('.orbit-box[data-live]').wait_for(timeout=90000)
+ fallback.close()
  assert not errors,errors
  assert not failures,failures
- report={'desktop':True,'mobile':True,'theme_persistence':True,'task_search':True,'category_filter':True,'model_rows':model_count,'prediction_images':5*model_count,'keyboard_model_selection':True,'diagnostic_scores':True,'video_asset':True,'toc_anchors':True,'scroll_highlight':True,'villa_3d':True,'drawings':True,'cost_chart':True,'console_errors':errors,'http_errors':failures}
+ report={'desktop':True,'mobile':True,'theme_persistence':True,'task_search':True,'category_filter':True,'model_rows':model_count,'prediction_images':6*model_count,'keyboard_model_selection':True,'diagnostic_scores':True,'video_asset':True,'toc_anchors':True,'scroll_highlight':True,'villa_3d':True,'drag_and_retry':True,'drawings':True,'cost_chart':True,'console_errors':errors,'http_errors':failures}
  b.close()
 (out/'browser-check.json').write_text(json.dumps(report,indent=2))
 print(json.dumps(report))
