@@ -7,17 +7,34 @@ import FidelityExplorer from './components/FidelityExplorer.astro';
 import DiagnosticExplorer from './components/DiagnosticExplorer.astro';
 import ComponentAnalysis from './components/ComponentAnalysis.astro';
 import {url as siteUrl,github} from './lib/site';
+import ArticleNav from './components/ArticleNav.astro';
+import VillaOverview from './components/VillaOverview.astro';
+import QualityCost from './components/QualityCost.astro';
+import CategoryFidelity from './components/CategoryFidelity.astro';
 
 <header className="research-hero full-bleed">
 <div className="article-kicker">Introducing AgentRecBench</div>
-<h1>Can a Coding Agent Reconstruct the World Faithfully, from Single Objects, to the Room, the Building and even Whole City?</h1>
-<p className="research-subtitle">AgentRecBench: Benchmarking the Spatial Intelligence of 3D Reconstruction of the Frontier Agents through Blender.</p>
-<div className="hero-links"><a href="#results">Explore the results</a><a href={siteUrl('task/')}>Browse 80 tasks</a><a href={github}>GitHub</a></div>
+<h1>Can AI Agents Faithfully Reconstruct the World in 3D?</h1>
+<p className="hero-scale">From individual objects to entire cities.</p>
+<p className="research-subtitle">AgentRecBench: Evaluating Agents’ Spatial Intelligence through 3D Reconstruction in Blender</p>
+<div className="hero-links"><a href={siteUrl('leaderboard/')}>Explore the results</a><a href={siteUrl('task/')}>Browse 80 tasks</a><a href={github}>GitHub</a></div>
 </header>
+
+<div id="results" className="section-anchor"></div>
+<Wide><div className="blog-wide leaderboard-feature"><div className="explorer-heading"><div><span className="eyebrow">Results</span><h3>One benchmark. Six reconstruction scales.</h3></div><p>80 tasks per configuration · scores on a 0–100 scale</p></div><ResultsTable/></div></Wide>
+<p className="figure-caption">Results updated November 25, 2026. Eight complete configurations, seven models. Overall is the mean task score, not a success rate. Tokens include cached input; costs use recorded CLI charges or the release's published API-rate calculations. <a href={siteUrl('leaderboard/')}>Leaderboard and scoring notes</a>.</p>
+
+The strongest configuration, GPT-6.2-Astra (high), reaches **59.15 overall**. The gap between recognizable reconstruction and reference fidelity is still substantial.
+
+<Wide><figure className="blog-wide walkthrough"><video controls playsInline preload="none" poster={siteUrl('video/villa-35.webp')} width="768" height="432" aria-label="77-second walkthrough of a supplied modern-villa reconstruction by GPT-6.2-Astra high"><source src={siteUrl('video/modern-villa-astra62-high.mp4')} type="video/mp4"/>Your browser does not support embedded video. <a href={siteUrl('video/modern-villa-astra62-high.mp4')}>Download the walkthrough</a>.</video><figcaption>Modern Villa · GPT-6.2-Astra (high). A 77-second walkthrough of the submitted scene, from the pool courtyard to the interior.</figcaption></figure></Wide>
+
+<ArticleNav/>
+
+<h2 className="article-section" id="motivation">Motivation</h2>
 
 <figure className="feynman-quote"><blockquote>“What I cannot create I do not understand.”</blockquote><figcaption>Richard Feynman · <a href="https://feynman.com/fun/quotes/">from his blackboard</a></figcaption></figure>
 
-## From seeing a scene to rebuilding it
+### From seeing a scene to rebuilding it
 
 What would it take to reconstruct a building from photographs, a floor plan, and a short brief? A model would have to connect what it sees to what the drawings imply: the depth of a room, the alignment of a staircase, the relationship between a facade and the spaces behind it. Then it would have to make those relationships real in three dimensions.
 
@@ -25,60 +42,37 @@ Multimodal coding agents bring a new possibility to this problem. They can read 
 
 **AgentRecBench asks how far today's frontier agents can go.** Each task supplies multi-view images with camera parameters, a production specification, and technical drawings. The agent must reconstruct the reference faithfully in Blender. Across 80 tasks, we test whether a plausible overall impression survives closer inspection of geometry, appearance, and individual components.
 
-<div id="results" className="section-anchor"></div>
-<Wide><div className="blog-wide leaderboard-feature"><div className="explorer-heading"><div><span className="eyebrow">The results</span><h3>One benchmark. Six reconstruction scales.</h3></div><p>80 tasks per configuration · scores on a 0–100 scale</p></div><ResultsTable/></div></Wide>
-<p className="figure-caption">Results updated November 25, 2026. Eight complete configurations, seven models. Overall is the mean task score, not a success rate. Tokens include cached input; costs use recorded CLI charges or the release's published API-rate calculations. <a href={siteUrl('leaderboard/')}>Leaderboard and scoring notes</a>.</p>
+The four levels in [SpatialTree](https://arxiv.org/html/2512.20617v1) help explain why reconstruction is a useful test of spatial intelligence. An agent interprets images, connects views into a mental map, anticipates how its edits will look, and uses Blender to inspect the result. AgentRecBench measures the resulting geometry and appearance against the expert reference.
 
-The strongest configuration, GPT-6.2-Astra (high), reaches **59.15 overall**. The gap between recognizable reconstruction and reference fidelity is still substantial. The following comparisons show where that gap appears, and why a single attractive image can conceal it.
+<h2 className="article-section" id="overview">Overview</h2>
 
-<nav className="article-toc" aria-label="On this page"><a href="#spatial-intelligence-in-action">Spatial intelligence</a><a href="#expert-annotation-makes-detail-measurable">The benchmark</a><a href="#when-the-scene-grows-the-details-slip">Across scales</a><a href="#a-scene-you-can-walk-through">Walkthrough</a><a href="#the-room-is-there-its-components-are-not-yet-faithful">What goes wrong</a></nav>
+### Modern Villa and Enclosed Grounds
 
-## Spatial intelligence in action
+The agent receives 23 calibrated photographs, 13 technical drawings, and a production specification for a two-storey villa. Its deliverable is a single editable Blender scene containing the house, pool court, detached pavilion, and furnishings.
 
-Reconstruction brings several spatial abilities into one executable task. A useful reference is <a href="https://arxiv.org/html/2512.20617v1">SpatialTree (Xiao et al., 2025, §3)</a>, which organizes spatial abilities into four levels:
+<Wide><div className="blog-wide"><VillaOverview/></div></Wide>
 
-<div className="spatial-levels">
-<div><span>Perception</span><p>Identify geometry, orientation, location, and relations in the observations.</p></div>
-<div><span>Mental mapping</span><p>Connect viewpoints and semantic cues into a coherent representation of space.</p></div>
-<div><span>Mental simulation</span><p>Reason about spatial consequences and plan a sequence of operations.</p></div>
-<div><span>Agentic competence</span><p>Act through tools, use feedback, and sustain a long sequence of spatial decisions.</p></div>
-</div>
+GPT-6-Astra (high) used the calibrated floor plans to place the two wings and built the shell before furnishing the rooms. Its first renders revealed that a wall beside the stairs was too open and an upper wall obscured the cabinetry. The agent revised both, checked the poolside and interior views again, and saved the scene with named editable components. The interactive model above shows that submission.
 
-In this framework, a Blender reconstruction exercises all four. The agent must infer a scene, implement it, render it, and use the discrepancies to decide what to fix next. The resulting artifact makes its decisions inspectable: a door is in a particular wall; a controller has a particular thickness; a street connects particular blocks. An error can originate in perception, inference, planning, or execution, and the reconstructed scene gives us a concrete place to investigate.
+<a href={siteUrl('task/modern-villa/')}>Inspect the complete Modern Villa inputs, held-out views, and scored regions</a>.
 
-## Expert annotation makes detail measurable
+<h2 className="article-section" id="tasks">Tasks</h2>
 
-The benchmark spans **16 objects, 11 object arrangements, 23 interiors, 13 buildings, 12 blocks, and 5 cities**. Every task combines three forms of evidence:
-
-<div className="input-triptych">
-<div><span>Appearance and viewpoints</span><h3>Multi-view images</h3><p>Images and camera parameters tie visual observations to a shared 3D coordinate system.</p></div>
-<div><span>The reconstruction brief</span><h3>Production specification</h3><p>A client-style description identifies the essential structures and details that must survive delivery.</p></div>
-<div><span>Spatial constraints</span><h3>Technical drawings</h3><p>Plans, elevations, and dimensioned views clarify structure that appearance alone may leave ambiguous.</p></div>
-</div>
-
-The collection includes **994 input images and 616 drawing sheets**. Tasks provide between 3 and 50 images, depending on the scene. Agents choose their own modeling process within **21,600 seconds** and submit an editable Blender scene.
-
-Expert annotation connects the full scene to its semantic parts. It defines **2,155 semantic regions and 8 whole-scene targets**, so evaluation can ask whether a room's contents are reconstructed as well as its enclosing shell. These regions are fixed in the ground-truth world coordinate system. A component moved to the wrong place cannot be rescued by aligning it after submission.
-
-<div className="evaluation-flow"><div><strong>Reference evidence</strong><span>Images · specification · drawings</span></div><div><strong>Agent reconstruction</strong><span>Code · Blender · inspection</span></div><div><strong>Fixed-reference evaluation</strong><span>695 held-out views · 2,163 surface targets</span></div></div>
-
-Evaluation combines appearance with spatial agreement. PSNR, SSIM, and LPIPS measure complementary aspects of rendered appearance; depth tests surfaces along the camera rays; bidirectional point-to-surface Chamfer distance tests geometric fidelity. The combined score weights these metrics at **5%, 10%, 17.5%, 17.5%, and 50%**, respectively. Shared cameras and fixed semantic regions keep the comparison anchored to the reference.
-
-## When the scene grows, the details slip
+The 80 tasks span six reconstruction scales. Compare each prediction with its expert-built reference under the same camera, or select a configuration to follow it across all six examples.
 
 <Wide><div className="blog-wide"><FidelityExplorer/></div></Wide>
 
-Across the eight configurations, category-average scores are **64.0 for objects, 60.2 for arrangements, 32.2 for interiors, 28.1 for buildings, 22.2 for blocks, and 21.2 for cities**. The sharpest drop appears between object arrangements and interiors: agents must now coordinate an enclosing space, repeated structures, furniture, and local details.
+<h2 className="article-section" id="evaluation">Evaluation</h2>
 
-The images let you inspect how that transition looks for each model. Category averages summarize different task sets; the averages also reflect which tasks belong to each category.
+Evaluation compares each submission with an expert-built Blender scene in a shared world coordinate system. Across the benchmark, 695 held-out views test appearance and depth, and 2,163 fixed targets test surface geometry. The overall score combines PSNR (5%), SSIM (10%), LPIPS (17.5%), depth (17.5%), and bidirectional surface distance (50%).
 
-## A scene you can walk through
+### Reconstruction Fidelity Degrades with Scene Complexity
 
-Reconstruction produces more than a single view. An editable scene can be inspected from inside, exposing relationships that a facade render may conceal. This supplied modern-villa walkthrough shows that possibility in a GPT-6.2-Astra (high) reconstruction.
+<CategoryFidelity/>
 
-<Wide><figure className="blog-wide walkthrough"><video controls playsInline preload="none" poster={siteUrl('video/villa-35.webp')} width="768" height="432" aria-label="77-second walkthrough of a supplied modern-villa reconstruction by GPT-6.2-Astra high"><source src={siteUrl('video/modern-villa-astra62-high.mp4')} type="video/mp4"/>Your browser does not support embedded video. <a href={siteUrl('video/modern-villa-astra62-high.mp4')}>Download the walkthrough</a>.</video><figcaption>A qualitative reconstruction demo · 77 seconds, no narration. This reconstruction is one of the 80 tasks in the GPT-6.2-Astra (high) leaderboard row.</figcaption></figure></Wide>
+The largest step down comes between object arrangements and interiors. The mean falls from 60.2 to 32.2 as tasks begin to require an enclosing space and its contents. These are averages over different task sets, with each configuration weighted equally.
 
-## The room is there. Its components are not yet faithful.
+### Global Structure Does Not Guarantee Local Fidelity
 
 A room can look structurally plausible while its furniture and fixtures remain inaccurate. We compare room-level and component-level surface scores on **27 matched tasks, covering 551 components**.
 
@@ -86,19 +80,17 @@ A room can look structurally plausible while its furniture and fixtures remain i
 
 For GPT-6-Astra (high), the mean room-level score is **44.65**, while the component-level score is **14.12**. Across configurations, room-level fidelity exceeds component-level fidelity on 23–26 of the 27 tasks. Capturing the larger envelope does not guarantee that the smaller structures have the right geometry or position.
 
-For Astra (high), the mean task-level fraction of components scoring below 1 is **24.7%**; the fraction with no reconstructed surface is **7.3%**. These measure different failures. A very low score can reflect a misplaced or poorly shaped component even when some geometry exists.
+For GPT-6-Astra (high), the mean task-level fraction of components scoring below 1 is **24.7%**; the fraction with no reconstructed surface is **7.3%**. These measure different failures. A very low score can reflect a misplaced or poorly shaped component even when some geometry exists.
 
-## Materials, lighting, and the geometry between pixels
+<Wide><figure className="blog-wide paper-cases"><a href={siteUrl('diagnostics/paper-failure-cases.webp')}><img loading="lazy" width="1600" height="1331" src={siteUrl('diagnostics/paper-failure-cases.webp')} alt="Four comparisons from the paper: missing solar-panel faces, a dark dining room, merged bridge shops, and arches reconstructed as straight beams."/></a><figcaption>Four failures from the paper. Each column shows the input, the expert reference, and the prediction. In the bridge example, the reconstruction captures the roofline but merges the separate shops below it.</figcaption></figure></Wide>
+
+### Visual Plausibility Can Conceal Geometric Errors
 
 The handheld console is immediately recognizable in Kimi's reconstruction. Yet its front-view PSNR is **17.27 dB**. To understand the discrepancy, we replace selected properties with their ground-truth counterparts while keeping the camera and evaluation mask fixed.
 
 <Wide><div className="blog-wide diagnostic-wide"><DiagnosticExplorer/></div></Wide>
 
 Replacing materials and lighting raises front-view PSNR to **24.06 dB**, reducing foreground pixel MSE by **79.1% without changing geometry**. Appearance explains much of this view's error, but it does not resolve the side view: after the same appearance intervention, side-view PSNR is only **12.79 dB**. Replacing the button structures raises it to **20.62 dB**; replacing the controller geometry as well raises it to **21.37 dB**.
-
-The causal distinction matters. Color and illumination dominate one view, while local structure dominates another. Recognizing a familiar object is easier than reproducing the surfaces that generate each pixel.
-
-## A strong appearance score can hide a depth error
 
 The space-station reconstruction by GPT-6-Astra (low) scores **98.56 in LPIPS** and **83.18 in surface fidelity**, but only **16.33 in depth**. A broad view can preserve the station's identity while a grazing view exposes displaced panels and incorrect occlusion.
 
@@ -109,12 +101,14 @@ The space-station reconstruction by GPT-6-Astra (low) scores **98.56 in LPIPS** 
 
 On a grazing held-out view, depth MAE reaches **9.41 m** even as the normalized LPIPS score remains **99.45**. This is why evaluation checks both images and geometry, across multiple fixed viewpoints and semantic targets.
 
-## Toward faithful reconstruction
+<h2 className="article-section" id="quality-cost">Quality &amp; cost</h2>
+
+Compare average score with dollars or tokens per task. Select a point or choose a configuration to read its exact values.
+
+<QualityCost/>
+
+<h2 className="article-section" id="resources">Conclusion &amp; Resources</h2>
 
 Frontier agents can already turn heterogeneous references into recognizable, editable scenes. The harder step is preserving local structure as those scenes become more complex. AgentRecBench makes that distinction measurable: the scene's envelope, its components, its appearance, and its spatial arrangement can each be examined against the same reference.
 
-Progress here means more than a better-looking render. It means agents that can use drawings, images, and specifications together, identify what their reconstruction still gets wrong, and refine the scene until its details agree.
-
 <div className="closing-links"><a href={siteUrl('task/')}>Explore the tasks</a><a href={siteUrl('leaderboard/')}>Inspect the leaderboard</a><a href={github}>Website source</a></div>
-
-<div className="source-note"><p>Category results follow the current dataset manifest and include GPT-6.2-Astra (high). The diagnostic analyses use the November 17 paper snapshot. This page uses the approved PSNR normalization, <code>100 / (1 + exp(−0.25 × (dB − 30)))</code>. The reconstruction images and diagnostic images retain their source pixels.</p><p>Further reading: <a href="https://arxiv.org/html/2512.20617v1">Xiao et al., SpatialTree: How Spatial Abilities Branch Out in MLLMs, 2025</a>. Its four-level framework informs the spatial-intelligence discussion above.</p></div>

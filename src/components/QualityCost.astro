@@ -1,0 +1,35 @@
+---
+import results from '../data/results.json';
+import { modelName,score,tokens } from '../lib/site';
+const points = results.models.map(m=>({name:modelName(m), quality:score(m.mean_total), usd:m.usage.mean_cost_usd, tokens:m.usage.mean_tokens, usage:tokens(m.usage.mean_tokens)}));
+const axes = [{key:'usd',name:'Mean cost per task (USD)',max:Math.ceil(Math.max(...points.map(p=>p.usd))/10)*10},{key:'tokens',name:'Mean tokens per task (millions)',max:Math.ceil(Math.max(...points.map(p=>p.tokens))/10000000)*10}];
+---
+<figure class="cost-figure not-prose" data-points={JSON.stringify(points)}>
+  <div class="cost-controls"><label>Horizontal axis <select id="cost-axis">{axes.map(a=><option value={a.key}>{a.name}</option>)}</select></label>
+  <label>Configuration <select id="cost-model">{points.map((p,i)=><option value={i}>{p.name}</option>)}</select></label></div>
+  {axes.map((a,j)=><div data-plot={a.key} hidden={j!==0}>
+    <span class="plot-unit">Overall score</span><div class="plot-area">
+      {[0,25,50,75,100].map(y=><div class="plot-gridline" style={'bottom:'+y+'%'}><span>{y}</span></div>)}
+      {points.map((p,i)=><button type="button" class="plot-point" data-point={i} aria-pressed={i===0} aria-label={p.name+', score '+p.quality} title={p.name} style={'left:'+(a.key==='usd'?p.usd:p.tokens/1e6)/a.max*100+'%;bottom:'+p.quality+'%'}></button>)}
+      {[0,1,2,3,4].map(i=><span class="plot-tick" style={'left:'+i*25+'%'}>{a.max*i/4}</span>)}
+    </div><div class="plot-x">{a.name}</div>
+  </div>)}
+  <output class="cost-readout" aria-live="polite">{points[0].name} · {points[0].quality} / 100 · ${points[0].usd.toFixed(2)} · {points[0].usage} tokens</output>
+  <figcaption>Each point represents one configuration averaged over 80 tasks. Token totals include cached input. Costs follow the recorded CLI charges or the release’s API-rate estimates.</figcaption>
+</figure>
+<script>
+  const figure = document.querySelector<HTMLElement>('.cost-figure')!;
+  const axis = figure.querySelector<HTMLSelectElement>('#cost-axis')!;
+  const model = figure.querySelector<HTMLSelectElement>('#cost-model')!;
+  const points = JSON.parse(figure.dataset.points!) as {name:string;quality:string;usd:number;usage:string}[];
+  const buttons = figure.querySelectorAll<HTMLButtonElement>('[data-point]');
+  function select(i:number) {
+    const p = points[i];
+    model.value = String(i);
+    figure.querySelector('output')!.textContent = p.name+' · '+p.quality+' / 100 · $'+p.usd.toFixed(2)+' · '+p.usage+' tokens';
+    buttons.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.point)===i)));
+  }
+  buttons.forEach(b=>['focus','click','pointerenter'].forEach(event=>b.addEventListener(event,()=>select(Number(b.dataset.point)))));
+  axis.addEventListener('change',()=>figure.querySelectorAll<HTMLElement>('[data-plot]').forEach(p=>p.hidden=p.dataset.plot!==axis.value));
+  model.addEventListener('change',()=>select(Number(model.value)));
+</script>

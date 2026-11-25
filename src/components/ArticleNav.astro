@@ -1,0 +1,37 @@
+---
+const sections = [
+  ["motivation", "Motivation"], ["overview", "Overview"], ["tasks", "Tasks"],
+  ["evaluation", "Evaluation"], ["quality-cost", "Quality & cost"], ["resources", "Conclusion & Resources"],
+];
+---
+<nav class="article-toc section-menu" aria-label="On this page">
+  {sections.map(([id, label]) => <a href={'#' + id}>{label}</a>)}
+</nav>
+<script>
+  const nav = document.querySelector<HTMLElement>('.section-menu')!;
+  const header = document.querySelector<HTMLElement>('.site-nav')!;
+  const links = Array.from(nav.querySelectorAll('a'));
+  const headings = links.map(link => document.getElementById(link.hash.slice(1))!);
+  function update() {
+    const limit = header.offsetHeight + nav.offsetHeight + 20;
+    let index = -1;
+    headings.forEach((heading, i) => { if (heading.getBoundingClientRect().top <= limit) index = i; });
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) index = headings.length - 1;
+    links.forEach((link, i) => {
+      if (i === index) {
+        if (!link.hasAttribute('aria-current')) {
+          link.setAttribute('aria-current', 'location');
+          nav.scrollLeft += link.getBoundingClientRect().left - nav.getBoundingClientRect().left - (nav.clientWidth - link.offsetWidth) / 2;
+        }
+      } else link.removeAttribute('aria-current');
+    });
+  }
+  new ResizeObserver(() => {
+    document.documentElement.style.setProperty('--main-nav-height', header.offsetHeight + 'px');
+    document.documentElement.style.setProperty('--article-nav-height', nav.offsetHeight + 'px');
+    update();
+  }).observe(header);
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+</script>
