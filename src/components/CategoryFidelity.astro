@@ -6,4 +6,12 @@ const bars = atlas.groups.map(({id:key,label,labelLines}) => {
   return {name:label,lines:labelLines.join('\n'),count:domains[0].tasks,mean:domains.reduce((s,d)=>s+d.mean_total*100,0)/domains.length};
 });
 ---
-<figure class="category-means not-prose">{bars.map(b=><div><span class="category-lines">{b.lines} <small>({b.count})</small></span><div class="mean-track"><i style={'width:'+b.mean+'%'}></i></div><strong>{b.mean.toFixed(1)}</strong></div>)}<figcaption>Mean reconstruction score out of 100 across {results.models.length} configurations. Parentheses give the number of tasks in each current category.</figcaption></figure>
+<figure class="category-means not-prose">
+  <div class="category-scroll" role="region" aria-label="Reconstruction score by category" tabindex="0">
+    <table aria-label="Mean reconstruction score by category" aria-describedby="category-means-caption">
+      <thead><tr>{bars.map(b=><th scope="col"><span class="category-lines">{b.lines}</span><small>({b.count})</small></th>)}</tr></thead>
+      <tbody><tr>{bars.map(b=><td><span class="category-track" aria-hidden="true"><i style={{height:b.mean+'%'}}></i></span><strong>{b.mean.toFixed(1)}</strong></td>)}</tr></tbody>
+    </table>
+  </div>
+  <figcaption id="category-means-caption">Mean reconstruction score out of 100 across {results.models.length} configurations. Parentheses give the number of tasks in each current category.</figcaption>
+</figure>

@@ -35,7 +35,6 @@ html:has(.section-menu) { scroll-padding-top: 0; }
 .villa-metrics h4 { margin: 12px 0 5px; font-size: .92rem; color: var(--ink); font-weight: 650; }
 .villa-metrics dl { margin: 0; font-size: .84rem; } .villa-metrics dd { margin: 0; font-variant-numeric: tabular-nums; }
 .category-means { background: var(--lilac); border: 1px solid var(--edge); border-radius: 12px; padding: clamp(16px,3vw,28px); }
-.category-means > div { display: grid; grid-template-columns: minmax(90px, 1.5fr) 3fr 40px; align-items: center; gap: 10px; margin: 9px 0; font-size: .9rem; line-height: 1.4; }
 .category-means small, .category-means figcaption { color: var(--muted-ink); }
 .mean-track { height: 9px; border-radius: 5px; background: var(--surface); overflow: hidden; } .mean-track i { display: block; height: 100%; background: var(--purple); }
 .category-means figcaption { margin-top: 18px; font-size: .8rem; line-height: 1.55; }
@@ -112,4 +111,12 @@ html:has(.section-menu) { scroll-padding-top: 0; }
  .cost-models button { padding:4px 7px; font-size:.7rem; }
 }
 
-.category-means > div {grid-template-columns:minmax(8.3rem,1.5fr) minmax(0,3fr) 3ch;}
+
+.category-means .category-scroll { overflow-x:auto; }
+.category-means table { width:100%; min-width:40rem; table-layout:fixed; border-collapse:collapse; margin:0; }
+.category-means :is(th,td) { text-align:center; vertical-align:middle; padding:.4rem .25rem; }
+.category-means th { line-height:1.25; font-size:.83rem; color:var(--ink); }
+.category-means th small { display:block; margin-top:.2rem; font-weight:400; }
+.category-means .category-track { display:flex; align-items:flex-end; justify-content:center; height:5.5rem; border-bottom:1px solid var(--edge); }
+.category-means .category-track i { display:block; width:45%; max-width:2.8rem; background:var(--purple); border-radius:3px 3px 0 0; }
+.category-means td strong { display:block; margin-top:.4rem; white-space:nowrap; font-variant-numeric:tabular-nums; }

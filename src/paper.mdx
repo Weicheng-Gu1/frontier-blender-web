@@ -65,7 +65,9 @@ Evaluation compares each submission with an expert-built Blender scene in a shar
 
 <CategoryFidelity/>
 
-The mean score falls from **59.0** for Multi-Object Arrangements to **31.3** for Interiors. In the vintage tea-table task, the agent has to place a small group of objects relative to one another. In the grand hall, it must also align the room around them. At street scale, getting a roofline right can still leave individual shopfronts merged, as the bridge example below shows. Across the five tasks in City-Scale Environments, the mean is **20.4**.
+Across all 11 configurations, reconstruction fidelity drops steadily at every step up in scene scale and structural density—falling from **63.0** on **Objects** and **59.0** on **Multi-Object Arrangements**, down to **31.3** on **Interiors**, **27.3** on **Buildings**, **21.1** on **Urban & Campus Blocks**, and **20.4** on **City-Scale Environments**.
+
+The sharpest break occurs between **Multi-Object Arrangements (59.0)** and **Interiors (31.3)**. Arranging a few standalone pieces on a tea table is still within reach; enclosing those objects inside walls, ceilings, staircases, and multi-room layouts nearly cuts accuracy in half. Beyond interiors, every added layer of architectural coupling—connecting rooms into full buildings, blocks, and city districts—compounds geometric and occlusion errors, driving fidelity down toward a **20.4** floor.
 
 ### Global Structure Does Not Guarantee Local Fidelity
 
