@@ -20,6 +20,16 @@
     "paired_tasks": 27
   },
   {
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "overall": 42.8201411135035,
+    "component": 13.611783397107168,
+    "below1_pct": 42.10526315789473,
+    "no_surface_pct": 15.970961887477314,
+    "overall_higher_tasks": 25,
+    "paired_tasks": 27
+  },
+  {
     "model": "gpt-6-astra",
     "effort": "low",
     "overall": 41.46904176976783,
@@ -86,6 +96,16 @@
     "component": 5.337186260315551,
     "below1_pct": 66.60617059891108,
     "no_surface_pct": 28.31215970961887,
+    "overall_higher_tasks": 25,
+    "paired_tasks": 27
+  },
+  {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "overall": 15.530415438892918,
+    "component": 5.311715505234657,
+    "below1_pct": 69.32849364791288,
+    "no_surface_pct": 26.860254083484573,
     "overall_higher_tasks": 25,
     "paired_tasks": 27
   },

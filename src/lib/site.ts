@@ -5,6 +5,8 @@ export const github = "https://github.com/Weicheng-Gu1/frontier-blender-web";
 export const categories = atlas.groups.map(group=>group.id);
 export const labels: Record<string,string> = Object.fromEntries(atlas.groups.map(group=>[group.id,group.label]));
 const displayNames: Record<string,string> = {
+  "gpt-5.6-sol/xhigh": "GPT-5.6-Sol (xhigh)",
+  "gpt-6.1-sol/high": "GPT-6.1-Sol (high)",
   "gpt-6.2-astra/high": "GPT-6.2-Astra (high)",
   "gpt-6-astra/high": "GPT-6-Astra (high)",
   "gpt-6-astra/low": "GPT-6-Astra (low)",
