@@ -16,7 +16,7 @@ const displayNames: Record<string,string> = {
   "qwen3.8-max/default": "Qwen3.8-Max (high)",
   "qwen4-max-preview/default": "Qwen4-Max-Preview (high)",
   "kimi-k3.1-pro/default": "Kimi-K3.1-Pro (high)",
-  "glm-5.3-flash/default": "GLM-5.3-Flash"
+  "glm-5.3-flash/default": "GLM-5.3-Flash(high)"
 };
 export const modelName = (m: {model:string,effort:string}) => displayNames[m.model+"/"+m.effort] || m.model;
 export const score = (n:number) => (100*n).toFixed(2);
