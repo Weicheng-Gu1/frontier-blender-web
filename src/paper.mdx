@@ -30,7 +30,7 @@ import CategoryFidelity from './components/CategoryFidelity.astro';
 
 <figure className="feynman-quote"><blockquote>“What I cannot create I do not understand.”</blockquote><figcaption>Richard Feynman · <a href="https://feynman.com/fun/quotes/">from his blackboard</a></figcaption></figure>
 
-### From seeing a scene to rebuilding it
+### From Seeing a World to Building One
 
 What would it take to reconstruct a building from photographs, a floor plan, and a short brief? A model would have to connect what it sees to what the drawings imply: the depth of a room, the alignment of a staircase, the relationship between a facade and the spaces behind it. Then it would have to make those relationships real in three dimensions.
 
@@ -41,13 +41,13 @@ Multimodal coding agents bring a new possibility to this problem. They can read 
 
 <div className="article-section" id="overview"><span className="sr-only">Overview</span></div>
 
-### Modern Villa and Enclosed Grounds
+### Modern Villa
 
 The agent receives 23 calibrated photographs, 13 technical drawings, and a production specification for a two-storey villa. Its deliverable is a single editable Blender scene containing the house, pool court, detached pavilion, and furnishings.
 
 <Wide><div className="blog-wide"><VillaOverview/></div></Wide>
 
-GPT-6-Astra (high) used the calibrated floor plans to place the two wings and built the shell before furnishing the rooms. Its first renders revealed that a wall beside the stairs was too open and an upper wall obscured the cabinetry. The agent revised both, checked the poolside and interior views again, and saved the scene with named editable components. Select GPT-6-Astra (high) above to inspect that submission.
+GPT-6.2-Astra (high) used the plans and elevated views to place the angled upper wing, pool and detached pavilion. Comparing renders from opposite sides of the fireplace helped it distinguish diagonal stone inlays from hanging rings. Before submitting the scene, it checked all 23 supplied cameras and eight additional viewpoints of its own.
 
 <a href={siteUrl('task/modern-villa/')}>Inspect the complete Modern Villa inputs, held-out views, and scored regions</a>.
 
@@ -65,7 +65,7 @@ Evaluation compares each submission with an expert-built Blender scene in a shar
 
 <CategoryFidelity/>
 
-The largest step down comes from Multiple Objects to Room & Halls. The mean falls from 57.5 to 30.3 as tasks begin to require an enclosing space and its contents. These are averages over different task sets, with each configuration weighted equally.
+The mean score falls from **59.0** for Multiple Objects to **31.3** for Room & Halls. In the vintage tea-table task, the agent has to place a small group of objects relative to one another. In the grand hall, it must also align the room around them. At street scale, getting a roofline right can still leave individual shopfronts merged, as the bridge example below shows. Across the five City tasks, the mean is **20.4**.
 
 ### Global Structure Does Not Guarantee Local Fidelity
 
@@ -75,7 +75,7 @@ A room can look structurally plausible while its furniture and fixtures remain i
 
 For GPT-6-Astra (high), the mean room-level score is **44.65**, while the component-level score is **14.12**. Across configurations, room-level fidelity exceeds component-level fidelity on 22–26 of the 27 tasks. Capturing the larger envelope does not guarantee that the smaller structures have the right geometry or position.
 
-For GPT-6-Astra (high), the mean task-level fraction of components scoring below 1 is **24.7%**; the fraction with no reconstructed surface is **7.3%**. These measure different failures. A very low score can reflect a misplaced or poorly shaped component even when some geometry exists.
+For GPT-6-Astra (high), the mean task-level fraction of components scoring below 1 is **37.9%**; the fraction with no reconstructed surface is **14.0%**. These measure different failures. A very low score can reflect a misplaced or poorly shaped component even when some geometry exists.
 
 <Wide><figure className="blog-wide paper-cases"><a href={siteUrl('diagnostics/paper-failure-cases.webp')}><img loading="lazy" width="1600" height="1331" src={siteUrl('diagnostics/paper-failure-cases.webp')} alt="Four comparisons from the paper: missing solar-panel faces, a dark dining room, merged bridge shops, and arches reconstructed as straight beams."/></a><figcaption>Four failures from the paper. Each column shows the input, the expert reference, and the prediction. In the bridge example, the reconstruction captures the roofline but merges the separate shops below it.</figcaption></figure></Wide>
 

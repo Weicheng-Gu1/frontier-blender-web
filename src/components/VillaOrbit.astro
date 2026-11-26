@@ -10,12 +10,12 @@ import {url} from '../lib/site';
     <button type="button" hidden>Retry 3D</button>
   </p>
   <template>
-    <model-viewer src={url('featured-villa/astra-lit.glb')} environment-image={url('featured-villa/villa-dusk.hdr')}
+    <model-viewer src={url('featured-villa/models/modern-villa__oLdWrMi.glb')} environment-image={url('featured-villa/villa-dusk.hdr')}
       skybox-image={url('featured-villa/villa-dusk.hdr')} loading="eager" reveal="auto"
       camera-controls interaction-prompt="none" touch-action="none" zoom-sensitivity="0.32"
-      camera-target="1m 2m 1m" camera-orbit="35deg 58deg 80m"
+      camera-target="auto auto auto" camera-orbit="35deg 58deg 105%"
       min-camera-orbit="auto 2deg 2%" max-camera-orbit="auto 175deg 600%"
-      shadow-intensity="1" shadow-softness="0.55" alt="GLB web version of the editable Blender scene submitted by GPT-6-Astra high"></model-viewer>
+      shadow-intensity="1" shadow-softness="0.55" alt="GLB web version of the editable Blender scene submitted by GPT-6.2-Astra high"></model-viewer>
   </template>
 </div>
 <style>
@@ -42,7 +42,13 @@ import {url} from '../lib/site';
   let starting=false, ready=false, angle=0, pointer:number|null=null, lastX=0;
   let stallTimer=0, attempts=0;
   const hero='modern-villa__Vd6qvVQ';
-  let trial=hero,epoch=0;
+  let trial='modern-villa__oLdWrMi',epoch=0;
+  const initialImage=document.querySelector<HTMLImageElement>('[data-output="views"] .villa-image');
+  if(initialImage){
+    preview.style.backgroundImage='url("'+initialImage.src+'")';
+    preview.style.backgroundSize='cover';preview.style.backgroundPosition='center';preview.tabIndex=-1;
+    preview.setAttribute('aria-label','GPT-6.2-Astra (high) preview');
+  }
   function rotate(degrees:number) {
     if(trial!==hero)return;
     angle=(angle+degrees+360)%360;

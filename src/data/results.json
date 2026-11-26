@@ -636,69 +636,6 @@
       }
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "tasks": 80,
-      "expected_tasks": 80,
-      "complete": true,
-      "missing_tasks": [],
-      "harness_versions": [
-        "codex-0.16.0"
-      ],
-      "recorded_models": [
-        "gpt-5.6-sol"
-      ],
-      "model_routes": [
-        "recorded_provider"
-      ],
-      "mean_total": 0.2581377182172427,
-      "means": {
-        "PSNR": 0.012541758056626506,
-        "SSIM": 0.42385199872450174,
-        "LPIPS": 0.48574146965246234,
-        "Depth": 0.33292388078101615,
-        "SurfaceDistance": 0.14371798823220494
-      },
-      "usage": {
-        "tasks": 80,
-        "token_tasks": 80,
-        "cost_tasks": 80,
-        "total_tokens": 571608031,
-        "recorded_cost_usd": 321.4453776,
-        "mean_tokens": 7145100.3875,
-        "mean_cost_usd": 4.01806722,
-        "token_basis": "prompt plus completion",
-        "cost_basis": "recorded trial usage"
-      },
-      "domains": {
-        "blocks": {
-          "tasks": 12,
-          "mean_total": 0.14609134628262832
-        },
-        "buildings": {
-          "tasks": 13,
-          "mean_total": 0.1957701771494757
-        },
-        "cities": {
-          "tasks": 5,
-          "mean_total": 0.15741559842897151
-        },
-        "interiors": {
-          "tasks": 23,
-          "mean_total": 0.1929605434469427
-        },
-        "object-arrangements": {
-          "tasks": 11,
-          "mean_total": 0.4124662960207682
-        },
-        "objects": {
-          "tasks": 16,
-          "mean_total": 0.4119130782119814
-        }
-      }
-    },
-    {
       "model": "glm-5.3-flash",
       "effort": "default",
       "tasks": 80,
@@ -6365,25 +6302,11 @@
       "total": 0.10473776878872505
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "antique-birdcage",
-      "total": 0.46282062383552447
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "antique-birdcage",
       "total": 0.8790787940969864
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "barcelona-pavilion",
-      "total": 0.29210463815310395
     },
     {
       "model": "gpt-6.1-sol",
@@ -6393,25 +6316,11 @@
       "total": 0.5779267662992779
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "beijing-daxing-airport",
-      "total": 0.14336384291823526
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "beijing-daxing-airport",
       "total": 0.2411596356470759
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "binocular-microscope",
-      "total": 0.3046329282723862
     },
     {
       "model": "gpt-6.1-sol",
@@ -6421,25 +6330,11 @@
       "total": 0.345027288745239
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "birdcage-table",
-      "total": 0.7376950126359791
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "birdcage-table",
       "total": 0.8468439879678636
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "burger-meal",
-      "total": 0.3432050242327066
     },
     {
       "model": "gpt-6.1-sol",
@@ -6449,25 +6344,11 @@
       "total": 0.6222326098603193
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "camping-dining-set",
-      "total": 0.3985562359027651
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "camping-dining-set",
       "total": 0.8340884364402368
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "campus-teaching-building",
-      "total": 0.13015901870912988
     },
     {
       "model": "gpt-6.1-sol",
@@ -6477,25 +6358,11 @@
       "total": 0.2933797308244718
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "carousel-ride",
-      "total": 0.25539733959361915
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "carousel-ride",
       "total": 0.5812054593310219
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "central-city-park",
-      "total": 0.09722179063105134
     },
     {
       "model": "gpt-6.1-sol",
@@ -6505,25 +6372,11 @@
       "total": 0.22470461190100266
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "chinese-garden-park",
-      "total": 0.13039789907466517
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "chinese-garden-park",
       "total": 0.20916140930594077
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "chinese-medicine-cabinet",
-      "total": 0.3538237843945519
     },
     {
       "model": "gpt-6.1-sol",
@@ -6533,25 +6386,11 @@
       "total": 0.6426122955155973
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "city-transit-bus",
-      "total": 0.2939499392596815
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "city-transit-bus",
       "total": 0.6162221609955257
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "classical-tiled-kitchen",
-      "total": 0.1813395321877262
     },
     {
       "model": "gpt-6.1-sol",
@@ -6561,25 +6400,11 @@
       "total": 0.4319569133564638
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "clothing-display",
-      "total": 0.2700732867984457
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "clothing-display",
       "total": 0.564527300185516
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "concrete-kitchen-dining",
-      "total": 0.3283064605323543
     },
     {
       "model": "gpt-6.1-sol",
@@ -6589,25 +6414,11 @@
       "total": 0.5354854184626011
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "dodger-baseball-stadium",
-      "total": 0.1080839232279157
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "dodger-baseball-stadium",
       "total": 0.1810138254296471
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "double-dragon-screen",
-      "total": 0.39224645515286527
     },
     {
       "model": "gpt-6.1-sol",
@@ -6617,25 +6428,11 @@
       "total": 0.9038822979580405
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "dragon-stone-sculpture",
-      "total": 0.3691018708456568
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "dragon-stone-sculpture",
       "total": 0.4890614836601256
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "elevated-hall-courtyard",
-      "total": 0.3352842095039909
     },
     {
       "model": "gpt-6.1-sol",
@@ -6645,25 +6442,11 @@
       "total": 0.6064063492223225
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "florence-historic-city",
-      "total": 0.09607050002800349
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "florence-historic-city",
       "total": 0.13255350222839984
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "furnished-kitchen",
-      "total": 0.2323905094521356
     },
     {
       "model": "gpt-6.1-sol",
@@ -6673,25 +6456,11 @@
       "total": 0.4455186814214467
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "furnished-room",
-      "total": 0.20286752016684476
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "furnished-room",
       "total": 0.39900403074287366
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "future-metropolis",
-      "total": 0.2465876900206868
     },
     {
       "model": "gpt-6.1-sol",
@@ -6701,25 +6470,11 @@
       "total": 0.4442123695733853
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "gaming-room",
-      "total": 0.22416245862215883
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "gaming-room",
       "total": 0.4800729129002868
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "golden-dragon-lantern",
-      "total": 0.641958611516945
     },
     {
       "model": "gpt-6.1-sol",
@@ -6729,25 +6484,11 @@
       "total": 0.9289327391419955
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "gothic-church",
-      "total": 0.12454113061686457
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "gothic-church",
       "total": 0.17846228080524912
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "grand-hall",
-      "total": 0.08350355275903121
     },
     {
       "model": "gpt-6.1-sol",
@@ -6757,25 +6498,11 @@
       "total": 0.2875402374714945
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "hanamura-scene",
-      "total": 0.10272899562882824
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "hanamura-scene",
       "total": 0.1156069666380101
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "handheld-console",
-      "total": 0.7687175316006528
     },
     {
       "model": "gpt-6.1-sol",
@@ -6785,25 +6512,11 @@
       "total": 0.826639157998397
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "high-back-armchair",
-      "total": 0.4626751635611379
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "high-back-armchair",
       "total": 0.9000072680883056
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "horse-drawn-carriage",
-      "total": 0.581898468771549
     },
     {
       "model": "gpt-6.1-sol",
@@ -6813,25 +6526,11 @@
       "total": 0.786623570723156
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "industrial-robot",
-      "total": 0.395356365754755
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "industrial-robot",
       "total": 0.8142120403522687
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "italian-canal-street",
-      "total": 0.12120470469068388
     },
     {
       "model": "gpt-6.1-sol",
@@ -6841,25 +6540,11 @@
       "total": 0.23473088909482262
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "japanese-night-alley",
-      "total": 0.09961685726689909
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "japanese-night-alley",
       "total": 0.2615414987694664
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "jewelry-organizer",
-      "total": 0.4520772485563263
     },
     {
       "model": "gpt-6.1-sol",
@@ -6869,25 +6554,11 @@
       "total": 0.7643808131484431
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "knight-throne-hall",
-      "total": 0.2772672473125021
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "knight-throne-hall",
       "total": 0.37126449343836665
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "kyoto-shopping-street",
-      "total": 0.1272802210206651
     },
     {
       "model": "gpt-6.1-sol",
@@ -6897,25 +6568,11 @@
       "total": 0.19057370531692952
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "maple-drive",
-      "total": 0.2085871022504908
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "maple-drive",
       "total": 0.33455249098339196
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "midcentury-living",
-      "total": 0.15781286912655795
     },
     {
       "model": "gpt-6.1-sol",
@@ -6925,25 +6582,11 @@
       "total": 0.30605601531103616
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "modern-kitchen-bedroom",
-      "total": 0.1262027818115829
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "modern-kitchen-bedroom",
       "total": 0.3522127117100659
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "modern-villa",
-      "total": 0.17322781171133447
     },
     {
       "model": "gpt-6.1-sol",
@@ -6953,25 +6596,11 @@
       "total": 0.3069588818333984
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "modular-house-neighborhood",
-      "total": 0.10634949548684171
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "modular-house-neighborhood",
       "total": 0.28892622683768066
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "mountain-view-villa",
-      "total": 0.12717975555650723
     },
     {
       "model": "gpt-6.1-sol",
@@ -6981,25 +6610,11 @@
       "total": 0.23790665141090356
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "office-block-garden",
-      "total": 0.1277325769302523
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "office-block-garden",
       "total": 0.24396039179581577
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "omega-apartment",
-      "total": 0.0871411747079066
     },
     {
       "model": "gpt-6.1-sol",
@@ -7009,25 +6624,11 @@
       "total": 0.27184750759134046
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "open-dining-kitchen",
-      "total": 0.14397192270763157
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "open-dining-kitchen",
       "total": 0.3121844158893906
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "open-frame-printer",
-      "total": 0.3264456009629236
     },
     {
       "model": "gpt-6.1-sol",
@@ -7037,25 +6638,11 @@
       "total": 0.6927975526273844
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "open-laptop",
-      "total": 0.2922138063534224
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "open-laptop",
       "total": 0.9230439493875545
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "opera-house-auditorium",
-      "total": 0.11202931090631735
     },
     {
       "model": "gpt-6.1-sol",
@@ -7065,25 +6652,11 @@
       "total": 0.20975426331202654
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "painting-studio",
-      "total": 0.3342293744342869
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "painting-studio",
       "total": 0.6417458005114486
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "palace-lantern",
-      "total": 0.336247047059727
     },
     {
       "model": "gpt-6.1-sol",
@@ -7093,25 +6666,11 @@
       "total": 0.8935514184870299
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "paladin-chapel",
-      "total": 0.1618117936216588
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "paladin-chapel",
       "total": 0.37367276193928295
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "pet-product-arrangement",
-      "total": 0.2714347893608437
     },
     {
       "model": "gpt-6.1-sol",
@@ -7121,25 +6680,11 @@
       "total": 0.720257322536971
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "petal-library-complex",
-      "total": 0.14004369967983954
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "petal-library-complex",
       "total": 0.24853665874937167
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "porcelain-jar",
-      "total": 0.6547711464986024
     },
     {
       "model": "gpt-6.1-sol",
@@ -7149,25 +6694,11 @@
       "total": 0.8904268805635084
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "pump-bottle-display",
-      "total": 0.4601293232043258
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "pump-bottle-display",
       "total": 0.798269838326018
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "retro-bar",
-      "total": 0.22549974429975989
     },
     {
       "model": "gpt-6.1-sol",
@@ -7177,25 +6708,11 @@
       "total": 0.3427101962543555
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "retro-train-bay",
-      "total": 0.20437249314726744
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "retro-train-bay",
       "total": 0.3471874849778371
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "san-marco-precinct",
-      "total": 0.10391614601227464
     },
     {
       "model": "gpt-6.1-sol",
@@ -7205,25 +6722,11 @@
       "total": 0.1396706874343978
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "school-athletics-campus",
-      "total": 0.3262785828252213
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "school-athletics-campus",
       "total": 0.4222971381103619
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "school-classroom",
-      "total": 0.3275910609089634
     },
     {
       "model": "gpt-6.1-sol",
@@ -7233,25 +6736,11 @@
       "total": 0.5271651530084752
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "shopping-center-atrium",
-      "total": 0.27401491356721835
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "shopping-center-atrium",
       "total": 0.5423274347255637
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "shopping-center-district",
-      "total": 0.13506190585846198
     },
     {
       "model": "gpt-6.1-sol",
@@ -7261,25 +6750,11 @@
       "total": 0.23639441546396903
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "song-study",
-      "total": 0.3482264808025088
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "song-study",
       "total": 0.5178422826095767
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "south-side-eridu",
-      "total": 0.09312581899751193
     },
     {
       "model": "gpt-6.1-sol",
@@ -7289,25 +6764,11 @@
       "total": 0.17534590994849755
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "space-station",
-      "total": 0.23845544602898144
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "space-station",
       "total": 0.6451855289650393
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "student-dormitory",
-      "total": 0.1704919149005758
     },
     {
       "model": "gpt-6.1-sol",
@@ -7317,25 +6778,11 @@
       "total": 0.5219908478533539
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "thames-riverside-city",
-      "total": 0.23777466045506435
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "thames-riverside-city",
       "total": 0.38691854243747126
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "uh60-helicopter",
-      "total": 0.19088739148411502
     },
     {
       "model": "gpt-6.1-sol",
@@ -7345,25 +6792,11 @@
       "total": 0.7867496550085739
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "unfurnished-mansion",
-      "total": 0.16389631104037006
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "unfurnished-mansion",
       "total": 0.29212723691637127
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "victorian-library",
-      "total": 0.17306676583207575
     },
     {
       "model": "gpt-6.1-sol",
@@ -7373,25 +6806,11 @@
       "total": 0.44932340355238864
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "victorian-office",
-      "total": 0.2703545366199128
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "victorian-office",
       "total": 0.4079703231974983
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "victorian-office-room",
-      "total": 0.23283579608405555
     },
     {
       "model": "gpt-6.1-sol",
@@ -7401,25 +6820,11 @@
       "total": 0.44014839969942227
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "vintage-tea-table",
-      "total": 0.5387386915473762
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "vintage-tea-table",
       "total": 0.8802271642852304
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "walled-courtyard",
-      "total": 0.35264274409746627
     },
     {
       "model": "gpt-6.1-sol",
@@ -7429,25 +6834,11 @@
       "total": 0.4451413536678985
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "waterfront-exhibition",
-      "total": 0.12221353562138038
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "waterfront-exhibition",
       "total": 0.2291379587200999
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "waterside-study",
-      "total": 0.042305442153289456
     },
     {
       "model": "gpt-6.1-sol",
@@ -7457,25 +6848,11 @@
       "total": 0.30073303753400593
     },
     {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "xinjiang-street-block",
-      "total": 0.172792297824097
-    },
-    {
       "model": "gpt-6.1-sol",
       "effort": "high",
       "displayName": "GPT-6.1-Sol (high)",
       "slug": "xinjiang-street-block",
       "total": 0.3417645920658999
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "effort": "xhigh",
-      "displayName": "GPT-5.6-Sol (xhigh)",
-      "slug": "yongding-hakka-tulou",
-      "total": 0.19024480169139038
     },
     {
       "model": "gpt-6.1-sol",

@@ -25,7 +25,8 @@ with sync_playwright() as p:
  assert 'A-101' in drawing.locator('.villa-image').get_attribute('alt')
  drawing.locator('.villa-image').evaluate('(i)=>i.decode()')
  page.locator('[data-axis="tokens"]').click()
- page.locator('[data-choice="3"]').click()
+ opus_index=next(i for i,m in enumerate(results['models']) if m['model']=='claude-opus-5-5')
+ page.locator(f'[data-choice="{opus_index}"]').click()
  assert 'Opus' in page.locator('.cost-selected').inner_text()
  assert page.locator('[data-plot="tokens"]').is_visible()
  assert page.locator('.fidelity-column').count()==6
@@ -99,7 +100,7 @@ with sync_playwright() as p:
  page.locator('#search').fill('zzzz');assert page.locator('.case-card:visible').count()==0
  page.goto(base,wait_until='networkidle')
  assert page.locator('[data-output="views"] .villa-image').is_visible()
- assert 'modern-villa__Vd6qvVQ/camera/' in page.locator('[data-output="views"] .villa-image').get_attribute('src')
+ assert 'modern-villa__oLdWrMi/camera/' in page.locator('[data-output="views"] .villa-image').get_attribute('src')
  page.locator('[data-mode="model"]').click()
  page.wait_for_selector('.orbit-box[data-live]',timeout=90000)
  viewer=page.locator('.orbit-host model-viewer')
@@ -115,6 +116,7 @@ with sync_playwright() as p:
  fallback=b.new_page(viewport={'width':1100,'height':850})
  fallback.route('**/astra-lit.glb',lambda route:route.abort())
  fallback.goto(base,wait_until='domcontentloaded')
+ fallback.locator('.villa-selector select').select_option(label='GPT-6-Astra (high)')
  fallback.locator('[data-mode="model"]').click()
  fallback.get_by_role('button',name='Retry 3D').wait_for()
  preview=fallback.locator('.orbit-preview')

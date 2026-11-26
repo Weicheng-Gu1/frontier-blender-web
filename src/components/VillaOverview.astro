@@ -27,7 +27,7 @@ const models=villa.results.map(r=>({
     return {prediction:prefix(r.regionVisuals[t.id].prediction),distance:row.raw!=null&&row.gt_scale_m>0?(row.raw/row.gt_scale_m).toFixed(4):'—',score:score(row.normalized)};
   })
 }));
-const initial=models.findIndex(r=>r.trial===hero);
+const initial=models.findIndex(r=>r.trial==='modern-villa__oLdWrMi');
 const model=models[initial];
 const fidelity=[{name:'Image fidelity',keys:['PSNR','SSIM','LPIPS']},{name:'Geometry fidelity',keys:['Depth','SurfaceDistance']}];
 ---

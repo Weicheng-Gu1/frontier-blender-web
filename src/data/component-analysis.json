@@ -100,16 +100,6 @@
     "paired_tasks": 27
   },
   {
-    "model": "gpt-5.6-sol",
-    "effort": "xhigh",
-    "overall": 15.530415438892918,
-    "component": 5.311715505234657,
-    "below1_pct": 69.32849364791288,
-    "no_surface_pct": 26.860254083484573,
-    "overall_higher_tasks": 25,
-    "paired_tasks": 27
-  },
-  {
     "model": "glm-5.3-flash",
     "effort": "default",
     "overall": 12.164862959116286,
