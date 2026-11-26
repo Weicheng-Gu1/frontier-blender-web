@@ -40,28 +40,28 @@
       },
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.38707247382401805
+          "tasks": 12,
+          "mean_total": 0.4184190829462925
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.4990600156004945
+          "tasks": 13,
+          "mean_total": 0.48656767266960343
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.8363675374131356
+          "tasks": 11,
+          "mean_total": 0.8356960038021298
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.5089674788677258
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.8294401484030887
+          "tasks": 16,
+          "mean_total": 0.8303347895737831
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.4325557976695538
+          "tasks": 5,
+          "mean_total": 0.35830985427200945
         }
       },
       "displayName": "GPT-6.2-Astra (high)"
@@ -103,28 +103,28 @@
       },
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.25265787620422414
+          "tasks": 12,
+          "mean_total": 0.2800316645314377
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.35826186214111205
+          "tasks": 13,
+          "mean_total": 0.34622699082060815
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.7457630654998744
+          "tasks": 11,
+          "mean_total": 0.7413596362984672
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.3961235631613058
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.7665701366039125
+          "tasks": 16,
+          "mean_total": 0.7682970522358776
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.34811945266032424
+          "tasks": 5,
+          "mean_total": 0.2734999136297244
         }
       },
       "displayName": "GPT-6-Astra (high)"
@@ -166,28 +166,28 @@
       },
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.24418675987005747
+          "tasks": 12,
+          "mean_total": 0.2684686739109619
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.34843930066791995
+          "tasks": 13,
+          "mean_total": 0.3379761143504058
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.7087329573280071
+          "tasks": 11,
+          "mean_total": 0.7059309588268987
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.3759021591157477
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.7427578569977784
+          "tasks": 16,
+          "mean_total": 0.7425576747379298
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.31387828856938343
+          "tasks": 5,
+          "mean_total": 0.24801716539731194
         }
       },
       "displayName": "GPT-6-Astra (low)"
@@ -229,28 +229,28 @@
       },
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.1581761887583128
+          "tasks": 12,
+          "mean_total": 0.1714500489677103
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.2579697628939578
+          "tasks": 13,
+          "mean_total": 0.2487948114790608
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.5989021679301472
+          "tasks": 11,
+          "mean_total": 0.5968081866622404
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.30211069370755156
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.6181009284619694
+          "tasks": 16,
+          "mean_total": 0.6183406180504164
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.24050103470831755
+          "tasks": 5,
+          "mean_total": 0.1960749598673658
         }
       },
       "displayName": "Claude Opus 5.5 (medium)"
@@ -294,28 +294,28 @@
       },
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.16976862120513
+          "tasks": 12,
+          "mean_total": 0.184692881085846
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.25146687014275415
+          "tasks": 13,
+          "mean_total": 0.2445331512500669
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.5276780631552804
+          "tasks": 11,
+          "mean_total": 0.5218670896569523
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.2792878308065055
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.5890215183661641
+          "tasks": 16,
+          "mean_total": 0.5891825966955846
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.22784766555754482
+          "tasks": 5,
+          "mean_total": 0.18210165230680547
         }
       },
       "displayName": "Kimi-K3.1-Pro (high)"
@@ -357,28 +357,28 @@
       },
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.1636938607932116
+          "tasks": 12,
+          "mean_total": 0.18152422646071445
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.22378043958362914
+          "tasks": 13,
+          "mean_total": 0.2165832404916299
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.5476754381037399
+          "tasks": 11,
+          "mean_total": 0.5335937785397779
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.28032356432018324
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.5972075838529658
+          "tasks": 16,
+          "mean_total": 0.603792965693863
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.20262966490192366
+          "tasks": 5,
+          "mean_total": 0.15874502835928894
         }
       },
       "displayName": "Qwen4-Max-Preview (high)"
@@ -420,28 +420,28 @@
       },
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.15261188075084098
+          "tasks": 12,
+          "mean_total": 0.1614686764052419
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.22185185434774357
+          "tasks": 13,
+          "mean_total": 0.21513261764352906
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.5478430883361035
+          "tasks": 11,
+          "mean_total": 0.5372721152404852
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.2637819537862464
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.610472716826332
+          "tasks": 16,
+          "mean_total": 0.6138259090489302
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.18685218513095608
+          "tasks": 5,
+          "mean_total": 0.162369835395948
         }
       },
       "displayName": "DeepSeek-v4.1-flash-1017 (high)"
@@ -484,28 +484,28 @@
       "displayName": "Qwen3.8-Max (high)",
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.14973151381042607
+          "tasks": 12,
+          "mean_total": 0.1583477027896649
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.22115204933347632
+          "tasks": 13,
+          "mean_total": 0.21487693853032436
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.5181323056602909
+          "tasks": 11,
+          "mean_total": 0.517149656187824
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.26854077896178885
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.6106619262417633
+          "tasks": 16,
+          "mean_total": 0.6055543964677422
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.1795804583924245
+          "tasks": 5,
+          "mean_total": 0.15496299690943668
         }
       }
     },
@@ -547,28 +547,28 @@
       "displayName": "GPT-5.6-Sol (low)",
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.11906978710983845
+          "tasks": 12,
+          "mean_total": 0.12231570010846221
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.19717935301876682
+          "tasks": 13,
+          "mean_total": 0.19170126242725039
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.44011764061023523
+          "tasks": 11,
+          "mean_total": 0.435421096269868
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.21368939754395877
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.43250739546644834
+          "tasks": 16,
+          "mean_total": 0.4362119100219375
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.15766082462089206
+          "tasks": 5,
+          "mean_total": 0.14077354827814142
         }
       }
     },
@@ -610,28 +610,28 @@
       },
       "domains": {
         "blocks": {
-          "tasks": 14,
-          "mean_total": 0.10655798446492858
+          "tasks": 12,
+          "mean_total": 0.10977419645904778
         },
         "buildings": {
-          "tasks": 12,
-          "mean_total": 0.1554264712269075
+          "tasks": 13,
+          "mean_total": 0.15189992104370503
         },
         "object-arrangements": {
-          "tasks": 12,
-          "mean_total": 0.35010587308973307
+          "tasks": 11,
+          "mean_total": 0.34538090320005765
         },
         "interiors": {
           "tasks": 23,
           "mean_total": 0.17290446849489527
         },
         "objects": {
-          "tasks": 15,
-          "mean_total": 0.3527923695213813
+          "tasks": 16,
+          "mean_total": 0.3558728802935551
         },
         "cities": {
-          "tasks": 4,
-          "mean_total": 0.13458050228728016
+          "tasks": 5,
+          "mean_total": 0.12065242306085443
         }
       },
       "displayName": "GLM-5.3-Flash"
@@ -6239,8 +6239,5 @@
       "total": 0.10473776878872505
     }
   ],
-  "category_source": {
-    "path": "tasks/dataset.toml",
-    "sha256": "5fdaad2445fab8f0fb492ebd8c8b670175322cfb4bdccf17478d6116110011da"
-  }
+  "category_source": "Release dataset.toml; membership verified against the task atlas."
 }
