@@ -1,51 +1,85 @@
 ---
-import { readFileSync } from 'node:fs';
-import { gunzipSync } from 'node:zlib';
-import { url, score } from '../lib/site';
+import {readFileSync} from 'node:fs';
+import {gunzipSync} from 'node:zlib';
+import {url,score} from '../lib/site';
 import VillaOrbit from './VillaOrbit.astro';
 import ViewReel from './ViewReel.astro';
+import VillaRegions from './VillaRegions.astro';
 interface View {id:string; image:string}
-interface Trial {trial:string; hidden:(View & {prediction:string})[]; metrics:{means:Record<string,number>;total:number}}
-const villa = JSON.parse(gunzipSync(readFileSync('public/task/modern-villa/case.json.gz')).toString()) as { public:View[]; drawings:View[]; results:Trial[] };
-const trial = villa.results.find(r => r.trial === 'modern-villa__Vd6qvVQ')!;
-const metrics = trial.metrics;
-const groups = [{name:'Public reference images',views:villa.public}, {name:'Technical drawings',views:villa.drawings}];
-const image = (view:View) => url('task/modern-villa/'+view.image);
-const fidelity = [{name:'Image fidelity',keys:['PSNR','SSIM','LPIPS']},{name:'Geometry fidelity',keys:['Depth','SurfaceDistance']}];
+interface Trial {
+  trial:string;displayName:string;hidden:(View & {prediction:string})[];
+  metrics:{means:Record<string,number>;total:number;rows:{metric:string;id:string;raw:number|null;gt_scale_m:number;normalized:number}[]};
+  regionVisuals:Record<string,{gt:string;prediction:string}>;
+}
+const villa=JSON.parse(gunzipSync(readFileSync('public/task/modern-villa/case.json.gz')).toString()) as {
+  public:View[];drawings:View[];targets:{unit_id:string;human_label:string;evaluation_group:string}[];results:Trial[];
+};
+const prefix=(path:string)=>url('task/modern-villa/'+path);
+const groups=[{name:'Public reference images',views:villa.public},{name:'Technical drawings',views:villa.drawings}];
+const hero='modern-villa__Vd6qvVQ';
+const regions=['architecture','objects'].flatMap(group=>villa.targets.filter(t=>t.evaluation_group===group).map(t=>({id:t.unit_id,name:t.human_label,group,gt:prefix(villa.results[0].regionVisuals[t.unit_id].gt)})));
+const models=villa.results.map(r=>({
+  name:r.displayName,trial:r.trial,glb:url(r.trial===hero?'featured-villa/astra-lit.glb':'featured-villa/models/'+r.trial+'.glb'),
+  total:score(r.metrics.total),means:Object.fromEntries(Object.entries(r.metrics.means).map(([k,v])=>[k,score(v)])),
+  frames:r.hidden.map(v=>({id:v.id,src:prefix(v.prediction)})),
+  regions:regions.map(t=>{
+    const row=r.metrics.rows.find(x=>x.metric==='SurfaceDistance' && x.id===t.id)!;
+    return {prediction:prefix(r.regionVisuals[t.id].prediction),distance:row.raw!=null&&row.gt_scale_m>0?(row.raw/row.gt_scale_m).toFixed(4):'—',score:score(row.normalized)};
+  })
+}));
+const initial=models.findIndex(r=>r.trial===hero);
+const model=models[initial];
+const fidelity=[{name:'Image fidelity',keys:['PSNR','SSIM','LPIPS']},{name:'Geometry fidelity',keys:['Depth','SurfaceDistance']}];
 ---
-<div class="villa-case not-prose">
-  <section><h3>Agent input</h3>
-    <div class="villa-tabs" role="group" aria-label="Input type">{groups.map((g,i)=><button type="button" data-input={i} aria-pressed={i===0}>{g.name}</button>)}</div>
-    {groups.map((g,i)=><div data-gallery={i} hidden={i!==0}>
-      <ViewReel name={g.name} views={g.views.map(v=>({id:v.id,src:image(v)}))}/>
-    </div>)}
-  </section>
-  <section><h3>Agent output</h3><div class="villa-tabs" role="group" aria-label="Agent output mode">
+<div class="villa-overview not-prose" data-models={JSON.stringify(models)}>
+  <label class="villa-selector">Model <select aria-label="Overview model">{models.map((r,i)=><option value={i} selected={i===initial}>{r.name}</option>)}</select></label>
+  <div class="villa-case">
+    <section><h3>Agent input</h3><div class="villa-tabs" role="group" aria-label="Input type">{groups.map((g,i)=><button type="button" data-input={i} aria-pressed={i===0}>{g.name}</button>)}</div>
+      {groups.map((g,i)=><div data-gallery={i} hidden={i!==0}><ViewReel name={g.name} views={g.views.map(v=>({id:v.id,src:prefix(v.image)}))}/></div>)}
+    </section>
+    <section><h3>Agent output</h3><div class="villa-tabs" role="group" aria-label="Agent output mode">
       <button type="button" data-mode="views" aria-pressed="true">Held-out views</button>
-      <button type="button" data-mode="model" aria-pressed="false" title="Web GLB exported from the submitted Blender scene">Explore in 3D (web GLB)</button>
-    </div>
-    <div data-output="views"><ViewReel name="Held-out prediction" views={trial.hidden.map(v=>({id:v.id,src:url('task/modern-villa/'+v.prediction)}))}/></div>
-    <div data-output="model" hidden><VillaOrbit/></div>
-    <p class="villa-byline">GPT-6-Astra (high)</p>
-  </section>
-  <section><h3>Evaluation</h3><div class="villa-total">Overall <strong>{score(metrics.total)} <small>/ 100</small></strong></div>
-    {fidelity.map(group=><div class="villa-metrics"><h4>{group.name}</h4><dl>{group.keys.map(k=><div><dt>{k==='SurfaceDistance'?'Surface distance':k}</dt><dd>{score(metrics.means[k])}</dd><span class="metric-track" aria-hidden="true"><i style={{width:score(metrics.means[k])+'%'}}></i></span></div>)}</dl></div>)}
-  </section>
+      <button type="button" data-mode="model" aria-pressed="false" title="Web GLB exported from the submitted Blender scene">Explore in 3D (web GLB)</button></div>
+      <div data-output="views"><ViewReel name="Held-out prediction" views={model.frames}/></div>
+      <div data-output="model" hidden><VillaOrbit/></div>
+      <p class="villa-byline">{model.name}</p>
+    </section>
+    <section><h3>Evaluation</h3><div class="villa-total">Overall <strong><span data-total>{model.total}</span> <small>/ 100</small></strong></div>
+      {fidelity.map(group=><div class="villa-metrics"><h4>{group.name}</h4><dl>{group.keys.map(k=><div data-metric={k}><dt>{k==='SurfaceDistance'?'Surface distance':k}</dt><dd>{model.means[k]}</dd><span class="metric-track" aria-hidden="true"><i style={{width:model.means[k]+'%'}}></i></span></div>)}</dl></div>)}
+    </section>
+    <VillaRegions regions={regions} model={model}/>
+  </div>
 </div>
+<style>
+.villa-selector{display:flex;align-items:center;justify-content:flex-end;gap:.6rem;margin:0 0 .75rem;font-size:.85rem;font-weight:600}
+.villa-selector select{color:var(--ink);background:var(--surface);border:1px solid var(--edge);border-radius:.5rem;padding:.35rem .65rem;font:inherit;max-width:85%}
+</style>
 <script>
-  const cards = document.querySelector('.villa-case')!;
-  const tabs = cards.querySelectorAll<HTMLButtonElement>('[data-input]');
-  const galleries = cards.querySelectorAll<HTMLElement>('[data-gallery]');
-  tabs.forEach((tab, i) => tab.addEventListener('click', () => {
-    tabs.forEach((t,j)=>t.setAttribute('aria-pressed', String(i===j)));
-    galleries.forEach((g,j)=>g.hidden=i!==j);
-  }));
-  const orbit = cards.querySelector('.orbit-box')!;
-  const modes = cards.querySelectorAll<HTMLButtonElement>('[data-mode]');
-  modes.forEach(button=>button.addEventListener('click', ()=>{
-    const mode=button.dataset.mode;
-    modes.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
-    cards.querySelectorAll<HTMLElement>('[data-output]').forEach(panel=>panel.hidden=panel.dataset.output!==mode);
-    if(mode==='model') orbit.dispatchEvent(new Event('villa-open-model'));
-  }));
+const root=document.querySelector<HTMLElement>('.villa-overview')!;
+const models=JSON.parse(root.dataset.models!) as {name:string;trial:string;glb:string;frames:{src:string;id:string}[];total:string;means:Record<string,string>;regions:{prediction:string;score:string;distance:string}[]}[];
+const select=root.querySelector('select')!;
+const orbit=root.querySelector<HTMLElement>('.orbit-box')!;
+const tabs=root.querySelectorAll<HTMLButtonElement>('[data-input]');
+tabs.forEach((btn,i)=>btn.addEventListener('click',()=>{
+  tabs.forEach((t,j)=>t.setAttribute('aria-pressed',String(i===j)));
+  root.querySelectorAll<HTMLElement>('[data-gallery]').forEach((g,j)=>g.hidden=i!==j);
+}));
+const modes=root.querySelectorAll<HTMLButtonElement>('[data-mode]');
+modes.forEach(btn=>btn.addEventListener('click',()=>{
+  modes.forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
+  root.querySelectorAll<HTMLElement>('[data-output]').forEach(g=>g.hidden=g.dataset.output!==btn.dataset.mode);
+  if(btn.dataset.mode==='model') orbit.dispatchEvent(new Event('villa-open-model'));
+}));
+select.addEventListener('change',()=>{
+  const m=models[Number(select.value)];
+  root.querySelector('.villa-byline')!.textContent=m.name;
+  root.querySelector('[data-total]')!.textContent=m.total;
+  root.querySelectorAll<HTMLElement>('[data-metric]').forEach(el=>{
+    const val=m.means[el.dataset.metric!];el.querySelector('dd')!.textContent=val;el.querySelector('i')!.style.width=val+'%';
+  });
+  root.querySelector('[data-output="views"] .view-reel')!.dispatchEvent(new CustomEvent('villa-set-frames',{detail:m.frames}));
+  root.querySelector('.villa-regions')!.dispatchEvent(new CustomEvent('villa-set-regions',{detail:m}));
+  orbit.dispatchEvent(new CustomEvent('villa-set-model',{detail:m}));
+  if(!root.querySelector<HTMLElement>('[data-output="model"]')!.hidden) orbit.dispatchEvent(new Event('villa-open-model'));
+});
 </script>

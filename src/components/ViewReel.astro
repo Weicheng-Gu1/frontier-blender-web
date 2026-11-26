@@ -27,11 +27,21 @@ const {name,views}=Astro.props;
     function select(index:number) {
       selected=index;
       const source=frames[index].querySelector('img')!;
-      stage.src=source.currentSrc || source.src;
+      stage.src=source.src;
       stage.alt=frames[index].getAttribute('aria-label')!;
       caption.textContent=frames[index].innerText.trim();
       thumbs.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.index)===index)));
     }
+    reel.addEventListener('villa-set-frames',event=>{
+      const views=(event as CustomEvent<{id:string;src:string}[]>).detail;
+      thumbs.forEach(button=>{
+        const v=views[Number(button.dataset.index)];
+        button.querySelector('img')!.src=v.src;
+        button.querySelector('span')!.textContent=v.id;
+        button.setAttribute('aria-label',reel.dataset.name+' · '+v.id);
+      });
+      select(selected);
+    });
     function tick(now:number) {
       if (previous && !reel.matches(':hover') && !rail.matches(':focus-within')) {
         const period=strip.offsetWidth;

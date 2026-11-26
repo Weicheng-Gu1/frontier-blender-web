@@ -3,14 +3,16 @@ import html from "../../task-atlas/detail.html?raw";
 import catalog from "../../../public/atlas/current-catalog.json";
 
 export function getStaticPaths() {
+  const taxonomy=new Map(catalog.groups.flatMap(group=>group.children.flatMap(field=>
+    field.tasks.map(slug=>[slug,group.label+" / "+field.label] as const))));
   return catalog.cases.map(({ slug, title }) => ({
     params: { slug },
-    props: { title },
+    props: { title, taxonomy:taxonomy.get(slug)! },
   }));
 }
 
-const { title } = Astro.props;
+const { title, taxonomy } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const escapedTitle = title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 ---
-<Fragment set:html={html.replaceAll("__TASK_SITE_BASE__", base).replace("__TASK_PAGE_TITLE__", `${escapedTitle} · AgentRecBench`)} />
+<Fragment set:html={html.replaceAll("__TASK_SITE_BASE__", base).replace("__TASK_TAXONOMY__",taxonomy.replaceAll("&","&amp;").replaceAll('"',"&quot;")).replace("__TASK_PAGE_TITLE__", `${escapedTitle} · AgentRecBench`)} />

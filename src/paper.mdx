@@ -38,7 +38,6 @@ Multimodal coding agents bring a new possibility to this problem. They can read 
 
 **AgentRecBench asks how far today's frontier agents can go.** Each task supplies multi-view images with camera parameters, a production specification, and technical drawings. The agent must reconstruct the reference faithfully in Blender. Across 80 tasks, we test whether a plausible overall impression survives closer inspection of geometry, appearance, and individual components.
 
-The four levels in [SpatialTree](https://arxiv.org/html/2512.20617v1) help explain why reconstruction is a useful test of spatial intelligence. An agent interprets images, connects views into a mental map, anticipates how its edits will look, and uses Blender to inspect the result. AgentRecBench measures the resulting geometry and appearance against the expert reference.
 
 <div className="article-section" id="overview"><span className="sr-only">Overview</span></div>
 
@@ -48,7 +47,7 @@ The agent receives 23 calibrated photographs, 13 technical drawings, and a produ
 
 <Wide><div className="blog-wide"><VillaOverview/></div></Wide>
 
-GPT-6-Astra (high) used the calibrated floor plans to place the two wings and built the shell before furnishing the rooms. Its first renders revealed that a wall beside the stairs was too open and an upper wall obscured the cabinetry. The agent revised both, checked the poolside and interior views again, and saved the scene with named editable components. The held-out views and interactive model show the same submission.
+GPT-6-Astra (high) used the calibrated floor plans to place the two wings and built the shell before furnishing the rooms. Its first renders revealed that a wall beside the stairs was too open and an upper wall obscured the cabinetry. The agent revised both, checked the poolside and interior views again, and saved the scene with named editable components. Select GPT-6-Astra (high) above to inspect that submission.
 
 <a href={siteUrl('task/modern-villa/')}>Inspect the complete Modern Villa inputs, held-out views, and scored regions</a>.
 
@@ -66,7 +65,7 @@ Evaluation compares each submission with an expert-built Blender scene in a shar
 
 <CategoryFidelity/>
 
-The largest step down comes between object arrangements and interiors. The mean falls from 58.2 to 30.6 as tasks begin to require an enclosing space and its contents. These are averages over different task sets, with each configuration weighted equally.
+The largest step down comes from Multiple Objects to Room & Halls. The mean falls from 57.7 to 30.6 as tasks begin to require an enclosing space and its contents. These are averages over different task sets, with each configuration weighted equally.
 
 ### Global Structure Does Not Guarantee Local Fidelity
 

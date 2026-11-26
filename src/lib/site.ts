@@ -1,8 +1,9 @@
+import atlas from '../../public/atlas/current-catalog.json';
 export const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 export const url = (path: string = "") => `${base}/${path.replace(/^\//, "")}`;
 export const github = "https://github.com/Weicheng-Gu1/frontier-blender-web";
-export const categories = ["objects", "object-arrangements", "interiors", "buildings", "blocks", "cities"];
-export const labels: Record<string,string> = {objects:"Objects", "object-arrangements":"Object arrangements",interiors:"Interiors",buildings:"Buildings",blocks:"Blocks",cities:"Cities"};
+export const categories = atlas.groups.map(group=>group.id);
+export const labels: Record<string,string> = Object.fromEntries(atlas.groups.map(group=>[group.id,group.label]));
 const displayNames: Record<string,string> = {
   "gpt-6.2-astra/high": "GPT-6.2-Astra (high)",
   "gpt-6-astra/high": "GPT-6-Astra (high)",

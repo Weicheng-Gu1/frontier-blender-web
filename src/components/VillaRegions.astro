@@ -1,0 +1,61 @@
+---
+interface Region {id:string;name:string;group:string;gt:string}
+interface Model {name:string;regions:{prediction:string;score:string;distance:string}[]}
+interface Props {regions:Region[];model:Model}
+const {regions,model}=Astro.props;
+---
+<section class="villa-regions" data-regions={JSON.stringify(regions)} data-initial={JSON.stringify({name:model.name,regions:model.regions})}>
+  <header><h3>Test Regions</h3><button type="button" data-region-play aria-label="Pause Test Regions">Pause</button></header>
+  <div class="region-title"><strong data-region-name>{regions[0].name}</strong><span data-region-position>1 / {regions.length}</span></div>
+  <div class="region-pair"><figure><figcaption>Ground truth</figcaption><img data-region-gt src={regions[0].gt} width="640" height="480" loading="lazy" alt={regions[0].name+' · Ground truth'}/></figure>
+  <figure><figcaption data-region-model>{model.name}</figcaption><img data-region-pred src={model.regions[0].prediction} width="640" height="480" loading="lazy" alt={regions[0].name+' · '+model.name}/></figure></div>
+  <p class="region-metrics">Surface distance / L <b data-region-distance>{model.regions[0].distance}</b><span>Region score <b data-region-score>{model.regions[0].score}</b> / 100</span></p>
+  {['architecture','objects'].map(group=><div class="region-track"><h4>{group==='architecture'?'Architectural Regions':'Object Regions'}</h4><div class="region-rail" role="group" aria-label={group==='architecture'?'Architectural Regions':'Object Regions'}>
+    {regions.map((r,i)=>r.group===group && <button type="button" data-region={i} aria-pressed={i===0} title={r.name}><img src={r.gt} loading="lazy" alt="" width="74" height="48"/><span>{r.name}</span></button>)}</div></div>)}
+</section>
+<style>
+.villa-regions{grid-column:1/-1}
+.villa-regions header,.region-title{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.villa-regions header h3{margin:0}.villa-regions header button{font:inherit;font-size:.8rem;padding:3px 12px;border-radius:5px;border:1px solid var(--edge);background:var(--surface)}
+.region-title{margin-top:.9rem;color:var(--ink)}.region-title span,.region-metrics{font-size:.8rem;color:var(--muted-ink);font-variant-numeric:tabular-nums}
+.region-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.region-pair figure{min-width:0;margin:0}.region-pair img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:var(--surface);border-radius:6px;margin:0}
+.region-pair figcaption,.region-track h4{font-size:.8rem;font-weight:600;color:var(--ink);margin:.45rem 0}
+.region-metrics{display:flex;align-items:baseline;gap:.35rem;margin:.45rem 0}.region-metrics span{margin-left:.9rem}
+.region-rail{display:flex;gap:6px;overflow-x:auto;padding:2px 0 5px;overscroll-behavior-x:contain}
+.region-rail button{flex:0 0 84px;min-width:0;display:flex;flex-direction:column;border:1px solid var(--edge);border-radius:6px;padding:3px;background:var(--surface);color:var(--ink)}
+.region-rail img{width:100%;aspect-ratio:4/3;object-fit:cover;margin:0;border-radius:3px}
+.region-rail span{width:100%;font-size:10px;line-height:1.3;text-align:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:3px}
+</style>
+<script>
+type Model={name:string;regions:{prediction:string;score:string;distance:string}[]};
+const el=document.querySelector<HTMLElement>('.villa-regions')!;
+const regions=JSON.parse(el.dataset.regions!) as {name:string;gt:string;group:string}[];
+let model:Model=JSON.parse(el.dataset.initial!);
+const buttons=[...el.querySelectorAll<HTMLButtonElement>('[data-region]')];
+const toggle=el.querySelector<HTMLButtonElement>('[data-region-play]')!;
+const motion=matchMedia('(prefers-reduced-motion: reduce)');
+let current=0,paused=motion.matches,visible=false,timer=0;
+function show(index:number,scroll:boolean){
+  current=index;const r=regions[index],v=model.regions[index];
+  el.querySelector('[data-region-name]')!.textContent=r.name;
+  el.querySelector('[data-region-position]')!.textContent=(index+1)+' / '+regions.length;
+  el.querySelector('[data-region-model]')!.textContent=model.name;
+  el.querySelector('[data-region-distance]')!.textContent=v.distance;el.querySelector('[data-region-score]')!.textContent=v.score;
+  const gt=el.querySelector<HTMLImageElement>('[data-region-gt]')!,pred=el.querySelector<HTMLImageElement>('[data-region-pred]')!;
+  gt.src=r.gt;gt.alt=r.name+' · Ground truth';pred.src=v.prediction;pred.alt=r.name+' · '+model.name;
+  buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
+  if(scroll){
+    const button=buttons[index],rail=button.parentElement!;
+    rail.scrollTo({left:rail.scrollLeft+button.getBoundingClientRect().left-rail.getBoundingClientRect().left-(rail.clientWidth-button.clientWidth)/2,behavior:motion.matches?'instant':'smooth'});
+  }
+}
+function refresh(){
+  clearTimeout(timer);toggle.textContent=paused?'Play':'Pause';toggle.setAttribute('aria-label',(paused?'Play':'Pause')+' Test Regions');
+  if(!paused&&visible&&!document.hidden)timer=window.setTimeout(()=>{show((current+1)%regions.length,true);refresh()},3000);
+}
+buttons.forEach((b,i)=>b.addEventListener('click',()=>{paused=true;show(i,true);refresh()}));
+toggle.addEventListener('click',()=>{paused=!paused;refresh()});
+el.addEventListener('villa-set-regions',e=>{model=(e as CustomEvent<Model>).detail;show(current,false);refresh()});
+new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;refresh()}).observe(el);
+document.addEventListener('visibilitychange',refresh);motion.addEventListener('change',()=>{paused=motion.matches;refresh()});refresh();
+</script>
