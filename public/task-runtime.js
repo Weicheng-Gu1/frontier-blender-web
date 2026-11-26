@@ -73,7 +73,7 @@ async function detail(slug){
  const stream=resp.body.pipeThrough(new DecompressionStream('gzip'));
  const d=await new Response(stream).json();documentImages=new Map([...d.drawings,...d.public].flatMap(v=>[[v.image.split('/').pop().replace(/(\.(?:png|jpe?g))\.webp$/i,'$1'),base+v.image],[v.id+'.png',base+v.image]]));document.title=d.title+' · AgentRecBench';
  const res=d.result,metrics=res?.metrics,rows=metrics?.rows||[];
- const overall=res?'<div class="caption"><span>'+esc(res.model)+' · '+esc(res.effort)+'</span><span>'+esc(res.trial)+'</span></div><div class="score">'+score(metrics.total)+' <small class="small">/ 100</small></div><div class="metric-grid">'+Object.entries(metrics.means||{}).map(([k,v])=>'<div><span class="small">'+esc(k)+'</span><b>'+score(v)+'</b></div>').join('')+'</div>':'<div class="empty">No result in this evaluation run</div>';
+ const overall=res?'<div class="caption"><span>'+esc(res.displayName)+'</span><span>'+esc(res.trial)+'</span></div><div class="score">'+score(metrics.total)+' <small class="small">/ 100</small></div><div class="metric-grid">'+Object.entries(metrics.means||{}).map(([k,v])=>'<div><span class="small">'+esc(k)+'</span><b>'+score(v)+'</b></div>').join('')+'</div>':'<div class="empty">No result in this evaluation run</div>';
  const structure=!['objects','object-arrangements'].includes(d.domain);
  $('#app').innerHTML='<a class="muted" href="'+siteBase+'/task/">← All tasks</a><p class="eyebrow">'+esc(d.domain.replaceAll('-',' '))+' / '+esc(d.category.replaceAll('-',' '))+'</p><h1>'+esc(d.title)+'</h1>'+section('01','Task Input')+
  '<section class="panel design-document"><details id="design-document"><summary>'+esc(d.guideName)+'</summary><div class="doc doc-outline">'+designOutline(d.guide)+'</div></details></section>'+
@@ -89,7 +89,7 @@ async function detail(slug){
   const host=$(id);let current=0;
   const available=m=>id==='#camera-models'?(m.hidden||[]).some(v=>v.prediction):id==='#region-models'?Object.values(m.regionVisuals||{}).some(v=>v.prediction):true;
   const best=models.findIndex(available);if(best>=0)current=best;
-  function select(i){current=i;host.innerHTML='<div class="model-picker" role="group" aria-label="Select model">'+models.map((m,j)=>'<button type="button" data-model="'+j+'" class="'+(j===current?'active':'')+'" aria-pressed="'+(j===current)+'">'+esc(m.model)+(m.effort?'<span>'+esc(m.effort)+'</span>':'')+'</button>').join('')+'</div>';host.querySelectorAll('[data-model]').forEach(b=>b.onclick=()=>select(Number(b.dataset.model)));draw(models[current])}
+  function select(i){current=i;host.innerHTML='<div class="model-picker" role="group" aria-label="Select model">'+models.map((m,j)=>'<button type="button" data-model="'+j+'" class="'+(j===current?'active':'')+'" aria-pressed="'+(j===current)+'">'+esc(m.displayName)+'</button>').join('')+'</div>';host.querySelectorAll('[data-model]').forEach(b=>b.onclick=()=>select(Number(b.dataset.model)));draw(models[current])}
   if(models.length)select(current);else{host.innerHTML='';draw(null)}
  }
  modelPicker('#overall-models',m=>{if(!m)return;$('#overall-results').innerHTML='<div class="score">'+score(m.metrics.total)+' <small class="small">/ 100</small></div><div class="metric-grid">'+Object.entries(m.metrics.means||{}).map(([k,v])=>'<div><span class="small">'+esc(k)+'</span><b>'+score(v)+'</b></div>').join('')+'</div>'});
@@ -97,7 +97,7 @@ async function detail(slug){
   const rows=model?.metrics?.rows||[],views=model?.hidden||[];
   carousel($('#camera-views'),d.hidden,v=>{
    const candidate=views.find(x=>x.id===v.id),prediction=candidate?.prediction;
-   return '<div class="test-comparison"><figure><figcaption>Ground truth</figcaption>'+image(base+v.image,v.id+' GT')+'</figure><figure><figcaption>'+esc(model?.model||'Model output')+'</figcaption>'+image(prediction?base+prediction:null,v.id+' prediction')+'</figure>'+scoreColumn(rows.filter(r=>r.id===v.id&&r.metric!=='SurfaceDistance'))+'</div>';
+   return '<div class="test-comparison"><figure><figcaption>Ground truth</figcaption>'+image(base+v.image,v.id+' GT')+'</figure><figure><figcaption>'+esc(model?.displayName||'Model output')+'</figcaption>'+image(prediction?base+prediction:null,v.id+' prediction')+'</figure>'+scoreColumn(rows.filter(r=>r.id===v.id&&r.metric!=='SurfaceDistance'))+'</div>';
   });
  });
  modelPicker('#region-models',model=>{
@@ -113,7 +113,7 @@ async function detail(slug){
   rg.innerHTML='<div class="region-viewer"></div><div class="region-navigation">'+order.map(k=>'<div class="region-navigation-row"><h4>'+(k==='architecture'?'Architectural Regions':'Object Regions')+'</h4><div class="thumbs" role="group" aria-label="'+(k==='architecture'?'Architectural Regions':'Object Regions')+'">'+groups[k].map(r=>'<button data-region-id="'+esc(r.id)+'" title="'+esc(r.name)+'" aria-label="'+esc(r.name)+'">'+(r.gt?'<img src="'+esc(base+r.gt)+'" loading="lazy" alt="">':'')+'<span>'+esc(r.name)+'</span></button>').join('')+'</div></div>').join('')+'</div>';
   function select(i){
    current=i;const r=items[i],scale=r.gt_scale_m;rg.dataset.selectedRegion=r.id;const titlePrefix=order.length===2?(r.target?.evaluation_group==='architecture'?'Architecture: ':'Object: '):'';
-   rg.querySelector('.region-viewer').innerHTML='<div class="region-title">'+esc(titlePrefix+r.name)+'</div>'+(model?'<div class="test-comparison"><figure><figcaption>Ground truth</figcaption>'+image(r.gt?base+r.gt:null,r.name+' GT')+'</figure><figure><figcaption>'+esc(model.model)+'</figcaption>'+image(r.prediction?base+r.prediction:null,r.name+' prediction')+'</figure>'+scoreColumn([{metric:'Surface distance / L',raw:typeof r.raw==='number'&&scale?r.raw/scale:null,normalized:r.normalized}])+'</div>':'<div class="gt-only-comparison"><figure><figcaption>Ground truth</figcaption>'+image(r.gt?base+r.gt:null,r.name+' GT')+'</figure></div>');
+   rg.querySelector('.region-viewer').innerHTML='<div class="region-title">'+esc(titlePrefix+r.name)+'</div>'+(model?'<div class="test-comparison"><figure><figcaption>Ground truth</figcaption>'+image(r.gt?base+r.gt:null,r.name+' GT')+'</figure><figure><figcaption>'+esc(model.displayName)+'</figcaption>'+image(r.prediction?base+r.prediction:null,r.name+' prediction')+'</figure>'+scoreColumn([{metric:'Surface distance / L',raw:typeof r.raw==='number'&&scale?r.raw/scale:null,normalized:r.normalized}])+'</div>':'<div class="gt-only-comparison"><figure><figcaption>Ground truth</figcaption>'+image(r.gt?base+r.gt:null,r.name+' GT')+'</figure></div>');
    rg.querySelectorAll('[data-region-id]').forEach(b=>{const active=b.dataset.regionId===r.id;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});
   }
   rg.querySelectorAll('[data-region-id]').forEach(b=>b.onclick=()=>select(items.findIndex(r=>r.id===b.dataset.regionId)));select(current);

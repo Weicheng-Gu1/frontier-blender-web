@@ -35,7 +35,7 @@ const means=cases.map(c=>c.predictions.reduce((s,p)=>s+p.categoryScore,0)/models
    </div>)}
   </div>
  </div>
- <p class="explorer-note">Vertical position is the model’s category-average score (0–100); horizontal spacing separates logos. Purple marks show the mean across eight configurations. Example images illustrate one task per category.</p>
+ <p class="explorer-note">Vertical position is the model’s category-average score (0–100); horizontal spacing separates logos. Purple marks show the mean across ten configurations. Example images illustrate one task per category.</p>
  <div class="detail-heading"><h4 id="pair-title">{cases[0].title}</h4><span id="pair-model">{models[defaults[0]].name}</span><a id="pair-link" href={url(`task/${slugs[0]}/`)}>Task details</a></div>
  <div class="comparison-pair"><figure><img id="detail-gt" src={cases[0].predictions[defaults[0]].gt} alt={`Ground truth: ${titles[0]}`} width="768" height="576" loading="lazy"/><figcaption>Ground truth</figcaption></figure><figure><img id="detail-prediction" src={cases[0].predictions[defaults[0]].image} alt={`${models[defaults[0]].name}: ${titles[0]}`} width="768" height="576" loading="lazy"/><figcaption id="detail-caption">Prediction · task score {cases[0].predictions[defaults[0]].taskScore} · view H01</figcaption></figure></div>
  <p class="explorer-note"><a href={url('reconstruction/provenance.json')}>Image provenance</a> · The Opus villa pair uses the paper’s fixed-camera diagnostic capture; its displayed task score remains the official aggregate.</p>
