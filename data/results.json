@@ -760,7 +760,7 @@
           "mean_total": 0.12065242306085443
         }
       },
-      "displayName": "GLM-5.3-Flash"
+      "displayName": "GLM-5.3-Flash(high)"
     }
   ],
   "selected": [
@@ -830,7 +830,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "open-frame-printer",
       "total": 0.2733732404767497
     },
@@ -893,7 +893,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "antique-birdcage",
       "total": 0.31570604778799505
     },
@@ -970,7 +970,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "palace-lantern",
       "total": 0.2869293188587756
     },
@@ -1033,7 +1033,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "golden-dragon-lantern",
       "total": 0.5324765299009825
     },
@@ -1110,7 +1110,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "dragon-stone-sculpture",
       "total": 0.3642295176794333
     },
@@ -1180,7 +1180,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "porcelain-jar",
       "total": 0.45372478026520424
     },
@@ -1243,7 +1243,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "open-laptop",
       "total": 0.684593372310617
     },
@@ -1320,7 +1320,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "handheld-console",
       "total": 0.2460145468349415
     },
@@ -1390,7 +1390,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "high-back-armchair",
       "total": 0.3851639216078212
     },
@@ -1446,7 +1446,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "double-dragon-screen",
       "total": 0.4640455653431623
     },
@@ -1530,7 +1530,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "binocular-microscope",
       "total": 0.2270948849691038
     },
@@ -1586,7 +1586,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "city-transit-bus",
       "total": 0.3441514099063221
     },
@@ -1670,7 +1670,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "uh60-helicopter",
       "total": 0.34238402978088134
     },
@@ -1740,7 +1740,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "space-station",
       "total": 0.17303450797234843
     },
@@ -1810,7 +1810,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "industrial-robot",
       "total": 0.1989638691263817
     },
@@ -1880,7 +1880,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "clothing-display",
       "total": 0.19376283215113346
     },
@@ -1950,7 +1950,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "pet-product-arrangement",
       "total": 0.26152912613771967
     },
@@ -2013,7 +2013,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "jewelry-organizer",
       "total": 0.6205280934311785
     },
@@ -2090,7 +2090,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "pump-bottle-display",
       "total": 0.40208054187616216
     },
@@ -2160,7 +2160,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "burger-meal",
       "total": 0.2866581229000853
     },
@@ -2230,7 +2230,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "camping-dining-set",
       "total": 0.3276930339944627
     },
@@ -2300,7 +2300,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "birdcage-table",
       "total": 0.45493964624468547
     },
@@ -2370,7 +2370,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "vintage-tea-table",
       "total": 0.47192292788969487
     },
@@ -2440,7 +2440,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "chinese-medicine-cabinet",
       "total": 0.2713973748060441
     },
@@ -2510,7 +2510,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "carousel-ride",
       "total": 0.20138923669345166
     },
@@ -2580,7 +2580,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "horse-drawn-carriage",
       "total": 0.4036793321530133
     },
@@ -2650,7 +2650,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "painting-studio",
       "total": 0.3056902087991653
     },
@@ -2713,7 +2713,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "school-classroom",
       "total": 0.331883458883133
     },
@@ -2790,7 +2790,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "victorian-library",
       "total": 0.11248154279809681
     },
@@ -2860,7 +2860,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "opera-house-auditorium",
       "total": 0.10613725359608074
     },
@@ -2930,7 +2930,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "victorian-office",
       "total": 0.23897184883653216
     },
@@ -3000,7 +3000,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "song-study",
       "total": 0.27724470229813886
     },
@@ -3070,7 +3070,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "waterside-study",
       "total": 0.03481361088396794
     },
@@ -3133,7 +3133,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "victorian-office-room",
       "total": 0.29581406129772847
     },
@@ -3210,7 +3210,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "retro-bar",
       "total": 0.14906479616750046
     },
@@ -3280,7 +3280,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "classical-tiled-kitchen",
       "total": 0.06742170689721473
     },
@@ -3350,7 +3350,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "furnished-kitchen",
       "total": 0.20224597339406358
     },
@@ -3420,7 +3420,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "open-dining-kitchen",
       "total": 0.12993400078491596
     },
@@ -3490,7 +3490,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "concrete-kitchen-dining",
       "total": 0.2599646069183718
     },
@@ -3560,7 +3560,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "midcentury-living",
       "total": 0.194976832894146
     },
@@ -3630,7 +3630,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "furnished-room",
       "total": 0.15829352714866718
     },
@@ -3700,7 +3700,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "student-dormitory",
       "total": 0.24172442090165241
     },
@@ -3770,7 +3770,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "omega-apartment",
       "total": 0.0563979259444208
     },
@@ -3840,7 +3840,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "gaming-room",
       "total": 0.2308305261861838
     },
@@ -3910,7 +3910,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "modern-kitchen-bedroom",
       "total": 0.19257259791458922
     },
@@ -3980,7 +3980,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "grand-hall",
       "total": 0.08197638634153107
     },
@@ -4050,7 +4050,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "paladin-chapel",
       "total": 0.11431788225748281
     },
@@ -4120,7 +4120,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "knight-throne-hall",
       "total": 0.2736519364958264
     },
@@ -4190,7 +4190,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "gothic-church",
       "total": 0.09238781208856595
     },
@@ -4260,7 +4260,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "retro-train-bay",
       "total": 0.1336953644537808
     },
@@ -4330,7 +4330,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "campus-teaching-building",
       "total": 0.08726681141217611
     },
@@ -4400,7 +4400,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "petal-library-complex",
       "total": 0.09671409175610494
     },
@@ -4470,7 +4470,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "office-block-garden",
       "total": 0.10587364688664554
     },
@@ -4526,7 +4526,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "modern-villa",
       "total": 0.14938862146311474
     },
@@ -4610,7 +4610,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "walled-courtyard",
       "total": 0.26968584712985644
     },
@@ -4680,7 +4680,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "unfurnished-mansion",
       "total": 0.15853983949896802
     },
@@ -4750,7 +4750,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "yongding-hakka-tulou",
       "total": 0.1649809116574697
     },
@@ -4820,7 +4820,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "mountain-view-villa",
       "total": 0.10103266693861195
     },
@@ -4890,7 +4890,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "dodger-baseball-stadium",
       "total": 0.0862182260324858
     },
@@ -4960,7 +4960,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "barcelona-pavilion",
       "total": 0.1545382519419944
     },
@@ -5030,7 +5030,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "elevated-hall-courtyard",
       "total": 0.2495693108191096
     },
@@ -5086,7 +5086,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "shopping-center-atrium",
       "total": 0.2413094291863528
     },
@@ -5170,7 +5170,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "maple-drive",
       "total": 0.0978721755453639
     },
@@ -5233,7 +5233,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "xinjiang-street-block",
       "total": 0.12137325784992252
     },
@@ -5296,7 +5296,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "japanese-night-alley",
       "total": 0.12195382286000692
     },
@@ -5380,7 +5380,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "kyoto-shopping-street",
       "total": 0.10245229986586299
     },
@@ -5450,7 +5450,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "shopping-center-district",
       "total": 0.09724036068975062
     },
@@ -5520,7 +5520,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "waterfront-exhibition",
       "total": 0.09113093822528093
     },
@@ -5583,7 +5583,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "central-city-park",
       "total": 0.08604067680877953
     },
@@ -5660,7 +5660,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "chinese-garden-park",
       "total": 0.10958131884527529
     },
@@ -5730,7 +5730,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "beijing-daxing-airport",
       "total": 0.139735978773854
     },
@@ -5800,7 +5800,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "san-marco-precinct",
       "total": 0.07501739668713249
     },
@@ -5870,7 +5870,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "south-side-eridu",
       "total": 0.06513059567158222
     },
@@ -5919,7 +5919,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "hanamura-scene",
       "total": 0.09466047825674404
     },
@@ -6003,7 +6003,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "italian-canal-street",
       "total": 0.10951176281498118
     },
@@ -6073,7 +6073,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "school-athletics-campus",
       "total": 0.18011071961446348
     },
@@ -6150,7 +6150,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "thames-riverside-city",
       "total": 0.20704637428364017
     },
@@ -6220,7 +6220,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "florence-historic-city",
       "total": 0.06537841785279398
     },
@@ -6290,7 +6290,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "future-metropolis",
       "total": 0.16115944822396144
     },
@@ -6360,7 +6360,7 @@
     {
       "model": "glm-5.3-flash",
       "effort": "default",
-      "displayName": "GLM-5.3-Flash",
+      "displayName": "GLM-5.3-Flash(high)",
       "slug": "modular-house-neighborhood",
       "total": 0.10473776878872505
     },
