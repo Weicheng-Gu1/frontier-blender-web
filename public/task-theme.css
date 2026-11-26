@@ -356,3 +356,9 @@ select:focus-visible {
     box-shadow: none;
   }
 }
+
+main table :is(th,td) { vertical-align:middle; }
+.category-jumps .category-lines, .category-heading .category-lines, #app .task-taxonomy { white-space:pre-line; }
+.category-jumps .category-lines, .category-heading .category-lines {line-height:1.25;}
+
+#app .task-taxonomy { text-transform:none; }

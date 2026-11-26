@@ -2,7 +2,7 @@
 import Site from "../layouts/Site.astro";
 import ResultsTable from "../components/ResultsTable.astro";
 import results from "../data/results.json";
-import {categories, labels, modelName, tokens, url} from "../lib/site";
+import {categories, labels, categoryLines, modelName, tokens, url} from "../lib/site";
 import "../styles/leaderboard.css";
 
 const rows=results.models.map(m=>({
@@ -28,7 +28,7 @@ const first=rows[0];
 <div class="lb not-prose" data-rows={JSON.stringify(rows)}>
 <header class="lb-intro"><div><h1>Leaderboard</h1><p>Compare reconstruction quality across 80 Blender tasks and the cost of producing each scene.</p></div><a href={url("data/results.json")} download>Download results <span aria-hidden="true">↓</span></a></header>
 <div class="lb-panels">
-<section class="lb-card"><header><h2>Reconstruction score</h2><label><span class="sr-only">Rank models by category</span><select data-scope><option value="overall">Overall</option>{categories.map(k=><option value={k}>{labels[k]}</option>)}</select></label></header>
+<section class="lb-card"><header><h2>Reconstruction score</h2><label class="lb-scope"><span data-scope-label aria-hidden="true">Overall</span><span class="sr-only">Rank models by category</span><select data-scope><option value="overall">Overall</option>{categories.map(k=><option value={k} data-lines={categoryLines[k]}>{labels[k]}</option>)}</select></label></header>
 <p>Mean score out of 100</p>
 <div class="lb-bars" style={"--count:"+rows.length}>{rows.map((r,i)=><button type="button" class="lb-row" data-row={i} style={"--rank:"+i+";--value:"+r.scores.overall+"%"} aria-pressed={i===0}>
 <span class="lb-rank">{i+1}</span><span class="lb-model">{r.name}</span><span class="lb-track"><i></i></span><b>{r.scores.overall.toFixed(2)}</b></button>)}</div>
@@ -67,7 +67,9 @@ function select(i:number){
  for(const event of ["focus","click","pointerenter"])b.addEventListener(event,()=>select(i));
 });
 board.querySelector<HTMLSelectElement>("[data-scope]")!.addEventListener("change",e=>{
- const key=(e.currentTarget as HTMLSelectElement).value;
+ const select=e.currentTarget as HTMLSelectElement;
+ const key=select.value;
+ board.querySelector("[data-scope-label]")!.textContent=select.selectedOptions[0].dataset.lines ?? "Overall";
  const ordered=rows.map((r,i)=>({i,value:r.scores[key]})).sort((a,b)=>b.value-a.value);
  ordered.forEach(({i,value},rank)=>{
   const b=bars[i];

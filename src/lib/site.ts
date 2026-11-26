@@ -4,6 +4,7 @@ export const url = (path: string = "") => `${base}/${path.replace(/^\//, "")}`;
 export const github = "https://github.com/Weicheng-Gu1/frontier-blender-web";
 export const categories = atlas.groups.map(group=>group.id);
 export const labels: Record<string,string> = Object.fromEntries(atlas.groups.map(group=>[group.id,group.label]));
+export const categoryLines: Record<string,string> = Object.fromEntries(atlas.groups.map(g=>[g.id,g.labelLines.join('\n')]));
 const displayNames: Record<string,string> = {
   "gpt-6.1-sol/high": "GPT-6.1-Sol (high)",
   "gpt-6.2-astra/high": "GPT-6.2-Astra (high)",

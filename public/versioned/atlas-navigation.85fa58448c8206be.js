@@ -25,7 +25,7 @@ function render(){
  $('#collections').innerHTML=GROUPS.map(g=>{
   const rows=filtered.filter(c=>c.category===g.id);if(!rows.length)return '';
   const key=g.id;
-  return `<details class="task-category" id="category-${esc(g.id)}" data-key="${esc(key)}" style="--category-color:${esc(g.color)}" ${q||!closed.has(key)?'open':''}><summary class="category-summary"><span class="fold-chevron" aria-hidden="true"></span><span class="category-heading"><strong>${esc(g.label)}</strong><small>${esc(g.zh)}</small></span><span class="category-total">${rows.length}<small>tasks</small></span></summary><div class="category-content">${g.children.map(f=>{
+  return `<details class="task-category" id="category-${esc(g.id)}" data-key="${esc(key)}" style="--category-color:${esc(g.color)}" ${q||!closed.has(key)?'open':''}><summary class="category-summary"><span class="fold-chevron" aria-hidden="true"></span><span class="category-heading"><strong class="category-lines">${esc(g.labelLines.join("\n"))}</strong><small>${esc(g.zh)}</small></span><span class="category-total">${rows.length}<small>tasks</small></span></summary><div class="category-content">${g.children.map(f=>{
    const tasks=rows.filter(c=>f.tasks.includes(c.task));if(!tasks.length)return '';
    const subkey=g.id+'/'+f.id;
    return `<details class="task-subgroup" data-key="${esc(subkey)}" ${q||!closed.has(subkey)?'open':''}><summary class="subgroup-summary"><span class="fold-chevron" aria-hidden="true"></span><span><strong>${esc(f.label)}</strong><small>${esc(f.zh)}</small></span><span class="subgroup-count">${tasks.length} tasks</span></summary><div class="cards">${tasks.map(card).join('')}</div></details>`;
@@ -41,7 +41,7 @@ function render(){
   if(cases.some(c=>!fields.has(c.task)))throw Error('Scene group assignments need updating');
   $('#total').textContent=cases.length;$('#updated').textContent=data.updated?'Updated '+data.updated:'Current published collection';
   $('#category').innerHTML='<option value="">All categories</option>'+GROUPS.map(g=>`<option value="${esc(g.id)}">${esc(g.label)} (${cases.filter(c=>c.category===g.id).length})</option>`).join('');
-  $('#category-jumps').innerHTML=GROUPS.map(g=>`<a href="#category-${esc(g.id)}" data-category="${esc(g.id)}" style="--category-color:${esc(g.color)}"><span>${esc(g.label)}</span><b>${cases.filter(c=>c.category===g.id).length}</b></a>`).join('');
+  $('#category-jumps').innerHTML=GROUPS.map(g=>`<a href="#category-${esc(g.id)}" data-category="${esc(g.id)}" style="--category-color:${esc(g.color)}"><span class="category-lines">${esc(g.labelLines.join("\n"))}</span><b>${cases.filter(c=>c.category===g.id).length}</b></a>`).join('');
   const p=new URLSearchParams(location.search);$('#category').value=p.get('category')||'';$('#search').value=p.get('q')||'';
   $('#search').oninput=render;$('#category').oninput=render;
   $('#reset-filters').onclick=()=>{$('#category').value='';$('#search').value='';closed.clear();render()};

@@ -13,3 +13,8 @@
 @media(max-width:850px){.lb-panels{grid-template-columns:1fr}.lb-model{font-size:.84rem}.lb-plot{height:15rem}}
 @media(max-width:520px){.lb-intro{display:block}.lb-intro a{display:inline-block;margin-top:.75rem}.lb-card header{flex-wrap:wrap}.lb-bars{--step:2.15rem}.lb-model{font-size:.74rem}.lb-row{gap:.3rem}.lb-plotwrap{margin-left:1.45rem}}
 @media(prefers-reduced-motion:reduce){.lb *{transition:none!important;animation:none!important}}
+.lb-scope {position:relative;display:inline-flex;align-items:center;gap:.65rem;min-height:2.1rem;padding:.3rem .55rem;border:1px solid var(--rule);border-radius:7px;font-size:.75rem;line-height:1.2;}
+.lb-scope [data-scope-label] {white-space:pre;}
+.lb-scope::after {content:"";width:.4rem;height:.4rem;border:solid currentColor;border-width:0 1px 1px 0;transform:translateY(-.1rem) rotate(45deg);}
+.lb-card .lb-scope select {position:absolute;inset:0;width:100%;max-width:none;height:100%;opacity:0;cursor:pointer;}
+.lb-scope:focus-within {outline:2px solid var(--accent);outline-offset:2px;}

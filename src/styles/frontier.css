@@ -6,3 +6,7 @@ html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;background:var
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scene-tile img{transition:none}}
 
 .article-page header h1{margin:0!important}.article-page header .hero-deck{max-width:760px;margin:4px 0 0!important;font-size:clamp(1.8rem,4.3vw,3.1rem)}.article-page header .hero-summary{margin:0 auto 8px!important}.model-cell{display:flex;align-items:center;gap:10px}.model-cell img{width:24px;height:24px;object-fit:contain;margin:0;border-radius:4px;background:white;padding:2px}.results-table th,.results-table td{padding-inline:10px}
+
+/* Keep numeric cells centered beside multiline model names and grouped column headers. */
+main table :is(th,td) { vertical-align: middle; }
+.category-lines { white-space: pre; line-height: 1.25; }

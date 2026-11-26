@@ -111,3 +111,5 @@ html:has(.section-menu) { scroll-padding-top: 0; }
  .quality-grid { margin-inline:26px 12px; height:190px; }
  .cost-models button { padding:4px 7px; font-size:.7rem; }
 }
+
+.category-means > div {grid-template-columns:minmax(8.3rem,1.5fr) minmax(0,3fr) 3ch;}

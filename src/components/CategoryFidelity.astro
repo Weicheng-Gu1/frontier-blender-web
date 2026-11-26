@@ -1,9 +1,9 @@
 ---
 import results from '../data/results.json';
 import atlas from '../../public/atlas/current-catalog.json';
-const bars = atlas.groups.map(({id:key,label}) => {
+const bars = atlas.groups.map(({id:key,label,labelLines}) => {
   const domains = results.models.map(m => (m.domains as Record<string,{tasks:number;mean_total:number}>)[key]);
-  return {name:label,count:domains[0].tasks,mean:domains.reduce((s,d)=>s+d.mean_total*100,0)/domains.length};
+  return {name:label,lines:labelLines.join('\n'),count:domains[0].tasks,mean:domains.reduce((s,d)=>s+d.mean_total*100,0)/domains.length};
 });
 ---
-<figure class="category-means not-prose">{bars.map(b=><div><span>{b.name} <small>({b.count})</small></span><div class="mean-track"><i style={'width:'+b.mean+'%'}></i></div><strong>{b.mean.toFixed(1)}</strong></div>)}<figcaption>Mean reconstruction score out of 100 across {results.models.length} configurations. Parentheses give the number of tasks in each current category.</figcaption></figure>
+<figure class="category-means not-prose">{bars.map(b=><div><span class="category-lines">{b.lines} <small>({b.count})</small></span><div class="mean-track"><i style={'width:'+b.mean+'%'}></i></div><strong>{b.mean.toFixed(1)}</strong></div>)}<figcaption>Mean reconstruction score out of 100 across {results.models.length} configurations. Parentheses give the number of tasks in each current category.</figcaption></figure>

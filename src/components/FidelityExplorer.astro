@@ -1,7 +1,7 @@
 ---
 import results from '../data/results.json';
 import provenance from '../../public/reconstruction/provenance.json';
-import {categories,labels,modelName,url} from '../lib/site';
+import {categories,labels,categoryLines,modelName,url} from '../lib/site';
 const slugs=['handheld-console','vintage-tea-table','grand-hall','modern-villa','school-athletics-campus','florence-historic-city'];
 const titles=['Handheld console','Vintage tea table','Grand hall','Modern villa','School athletics campus','Florence historic city'];
 const defaultModels=[['qwen4-max-preview','default'],['deepseek-flash','default'],['qwen4-max-preview','default'],['claude-opus-5-5','default'],['gpt-6.2-astra','high'],['kimi-k3.1-pro','default']];
@@ -20,7 +20,7 @@ const means=cases.map(c=>c.predictions.reduce((s,p)=>s+p.categoryScore,0)/models
  <div class="fidelity-scroll" tabindex="0" role="region" aria-label="Six-category comparison; scroll horizontally on small screens">
   <div class="fidelity-matrix">
    {cases.map((c,i)=><div class="fidelity-column" data-category={i}>
-    <button class="case-title" type="button" data-inspect={i}>{c.label}<span>{c.title}</span></button>
+    <button class="case-title" type="button" data-inspect={i}><span class="scale-heading">{categoryLines[c.category]}</span><span>{c.title}</span></button>
     <div class="image-label">Prediction</div>
     <img class="case-prediction" src={c.predictions[c.selected].image} alt={`${models[c.selected].name}: ${c.title}`} width="768" height="576" loading="lazy"/>
     <p class="selected-model">{models[c.selected].name}</p>
