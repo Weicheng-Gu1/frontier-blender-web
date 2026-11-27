@@ -15,16 +15,18 @@ const villa=JSON.parse(gunzipSync(readFileSync('public/task/modern-villa/case.js
   gtRegionVisuals:Record<string,{gt:string}>;public:View[];drawings:View[];targets:{unit_id:string;human_label:string;evaluation_group:string}[];results:Trial[];
 };
 const prefix=(path:string)=>url('task/modern-villa/'+path);
+const bathroomId='room-overall-upper-bath';
+const bathroomView=(trial:string)=>url('featured-villa/upper-bathroom/'+trial+'.webp');
 const groups=[{name:'Public reference images',views:villa.public},{name:'Technical drawings',views:villa.drawings}];
 const hero='modern-villa__Vd6qvVQ';
-const regions=['architecture','objects'].flatMap(group=>villa.targets.filter(t=>t.evaluation_group===group).map(t=>({id:t.unit_id,name:t.human_label,group,gt:prefix(villa.gtRegionVisuals[t.unit_id].gt)})));
+const regions=['architecture','objects'].flatMap(group=>villa.targets.filter(t=>t.evaluation_group===group).map(t=>({id:t.unit_id,name:t.human_label,group,gt:t.unit_id===bathroomId?bathroomView('GT'):prefix(villa.gtRegionVisuals[t.unit_id].gt)})));
 const models=villa.results.map(r=>({
   name:r.displayName,trial:r.trial,glb:url(r.trial===hero?'featured-villa/astra-lit.glb':'featured-villa/models/'+r.trial+'.glb'),
   total:score(r.metrics.total),means:Object.fromEntries(Object.entries(r.metrics.means).map(([k,v])=>[k,score(v)])),
   frames:r.hidden.map(v=>({id:v.id,src:prefix(v.prediction)})),
   regions:regions.map(t=>{
     const row=r.metrics.rows.find(x=>x.metric==='SurfaceDistance' && x.id===t.id)!;
-    return {prediction:prefix(r.regionVisuals[t.id].prediction),distance:row.raw!=null&&row.gt_scale_m>0?(row.raw/row.gt_scale_m).toFixed(4):'—',score:score(row.normalized)};
+    return {prediction:t.id===bathroomId?bathroomView(r.trial):prefix(r.regionVisuals[t.id].prediction),distance:row.raw!=null&&row.gt_scale_m>0?(row.raw/row.gt_scale_m).toFixed(4):'—',score:score(row.normalized)};
   })
 }));
 const initial=models.findIndex(r=>r.trial==='modern-villa__oLdWrMi');

@@ -47,7 +47,7 @@ with sync_playwright() as p:
  assert 'Qwen4' in page.locator('#pair-model').inner_text()
  assert 'qwen4' in page.locator('#detail-prediction').get_attribute('src')
  explorer.locator(f'[data-category="3"] [data-model="{opus_index}"]').focus()
- assert 'gt--opus-paper' in page.locator('#detail-gt').get_attribute('src')
+ assert '/modern-villa/images/hidden/H01' in page.locator('#detail-gt').get_attribute('src')
  assert '/task/modern-villa/' in page.locator('#pair-link').get_attribute('href')
  page.locator('[data-variant="1"]').click()
  assert page.locator('.diagnostic-db').inner_text()=='24.06 dB'

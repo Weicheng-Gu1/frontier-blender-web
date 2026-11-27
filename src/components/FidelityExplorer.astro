@@ -4,41 +4,65 @@ import provenance from '../../public/reconstruction/provenance.json';
 import {categories,labels,categoryLines,modelName,url} from '../lib/site';
 const slugs=['handheld-console','vintage-tea-table','grand-hall','modern-villa','school-athletics-campus','florence-historic-city'];
 const titles=['Handheld console','Vintage tea table','Grand hall','Modern villa','School athletics campus','Florence historic city'];
-const defaultModels=[['qwen4-max-preview','default'],['deepseek-flash','default'],['qwen4-max-preview','default'],['claude-opus-5-5','default'],['gpt-6.2-astra','high'],['kimi-k3.1-pro','default']];
+const defaultModels=[['qwen4-max-preview','default'],['deepseek-flash','default'],['qwen4-max-preview','default'],['gpt-6.2-astra','high'],['gpt-6.2-astra','high'],['kimi-k3.1-pro','default']];
 const defaults=defaultModels.map(([model,effort])=>results.models.findIndex(m=>m.model===model && m.effort===effort));
 const logo=(m:string)=>m.startsWith('gpt')?'openai':m.startsWith('claude')?'claude':['qwen','kimi','deepseek','glm'].find(x=>m.startsWith(x));
-const models=results.models.map(m=>({name:modelName(m),logo:url(`logos/${logo(m.model)}.png`)}));
-const cases=categories.map((category,i)=>({category,label:labels[category],title:titles[i],slug:slugs[i],selected:defaults[i],gt:url(`reconstruction/${slugs[i]}/gt.png`),predictions:results.models.map(m=>{
+const colors=['#42269d','#855ecc','#265a8d','#a392cc','#b44d32','#276775','#325faf','#267776','#63549f','#507e51','#446c8a'];
+const models=results.models.map((m,j)=>({name:modelName(m),color:colors[j],logo:url(`logos/${logo(m.model)}.png`)}));
+const cases=categories.map((category,i)=>({category,label:labels[category],title:titles[i],slug:slugs[i],selected:defaults[i],predictions:results.models.map(m=>{
  const a=provenance.assets.find(a=>a.slug===slugs[i] && 'model' in a && a.model===m.model && a.effort===m.effort)!;
- return {image:url(`reconstruction/${a.image}`),gt:url(`reconstruction/${'ground_truth' in a?a.ground_truth:slugs[i]+'/gt.png'}`),taskScore:'total' in a?(100*a.total!).toFixed(2):'',categoryScore:100*(m.domains as Record<string,{mean_total:number}>)[category].mean_total,view:a.view};
+ if(!a || !a.ground_truth) throw new Error('Missing camera-matched prediction for '+slugs[i]);
+ return {image:url(`reconstruction/${a.image}`),gt:url('reconstruction/'+a.ground_truth),taskScore:'total' in a?(100*a.total!).toFixed(2):'',categoryScore:100*(m.domains as Record<string,{mean_total:number}>)[category].mean_total,view:a.view};
 })}));
 const means=cases.map(c=>c.predictions.reduce((s,p)=>s+p.categoryScore,0)/models.length);
+// Spread nearby scores horizontally while preserving their exact score on the shared y-axis.
+const slots=cases.map(c=>{
+ const anchors=[12,24,36,48,60,72,84,92];
+ const placed:{x:number;y:number}[]=[];
+ return c.predictions.map(p=>{
+  const distance=(x:number)=>Math.min(...placed.map(q=>Math.hypot((x-q.x)*1.55,(p.categoryScore-q.y)*2.8)));
+  const x=placed.length?[...anchors].sort((a,b)=>distance(b)-distance(a))[0]:36;
+  placed.push({x,y:p.categoryScore});return x;
+ });
+});
+function meanSegment(i:number){
+ const y=(k:number)=>100-means[k];
+ const points=['50,'+y(i)];
+ if(i>0)points.unshift('0,'+(y(i-1)+y(i))/2);
+ if(i+1<means.length)points.push('100,'+(y(i)+y(i+1))/2);
+ return points.join(' ');
+}
 ---
 <section class="fidelity-explorer not-prose" data-cases={JSON.stringify(cases)} data-models={JSON.stringify(models)} aria-label="Interactive reconstruction comparison">
  <div class="explorer-heading"><div><span class="eyebrow">Reference fidelity across scales</span><h3>Recognizable is a beginning. Faithful is the test.</h3></div><p>Hover or focus a logo to change a prediction. Select a model below to compare it across all six categories.</p></div>
- <div class="model-legend" role="group" aria-label="Select model for all categories">{models.map((m,i)=><button type="button" data-all-model={i} aria-pressed="false"><img src={m.logo} width="20" height="20" alt=""/>{m.name}</button>)}</div>
+ <div class="model-legend" role="group" aria-label="Select model for all categories">{models.map((m,i)=><button type="button" data-all-model={i} style={"--series:"+m.color} aria-pressed="false"><img src={m.logo} width="20" height="20" alt=""/>{m.name}</button>)}<span class="scale-mean-key"><i></i>Mean</span></div>
  <div class="fidelity-scroll" tabindex="0" role="region" aria-label="Six-category comparison; scroll horizontally on small screens">
-  <div class="fidelity-matrix">
+  <div class="fidelity-matrix scale-matrix">
    {cases.map((c,i)=><div class="fidelity-column" data-category={i}>
-    <button class="case-title" type="button" data-inspect={i}><span class="scale-heading">{categoryLines[c.category]}</span><span>{c.title}</span></button>
-    <div class="image-label">Prediction</div>
-    <img class="case-prediction" src={c.predictions[c.selected].image} alt={`${models[c.selected].name}: ${c.title}`} width="768" height="576" loading="lazy"/>
-    <p class="selected-model">{models[c.selected].name}</p>
-    <div class="score-column" aria-label={`${c.label} category scores`}>
-     {[0,25,50,75,100].map(t=><div class="score-guide" style={`bottom:${t}%`}><span>{i===0?t:''}</span></div>)}
-     <div class="mean-tick" style={`bottom:${means[i]}%`} title={`Mean across configurations: ${means[i].toFixed(1)}`}><span>{means[i].toFixed(1)}</span></div>
-     {models.map((m,j)=><button type="button" class:list={['score-logo',{'is-selected':j===c.selected}]} style={`bottom:${c.predictions[j].categoryScore}%;left:${29+(j%3)*21}%`} data-model={j} aria-pressed={j===c.selected?'true':'false'} aria-label={`${m.name}, ${c.label}: ${c.predictions[j].categoryScore.toFixed(2)}`} title={`${m.name}: ${c.predictions[j].categoryScore.toFixed(2)}`}><img src={m.logo} alt="" width="22" height="22"/></button>)}
+    <div class="scale-preview"><div class="image-label">Prediction</div>
+      <img class="case-prediction" src={c.predictions[c.selected].image} alt={models[c.selected].name+' · '+c.title} width="768" height="576" loading="lazy"/>
+      <p class="selected-model">{models[c.selected].name}</p>
     </div>
+    <div class="score-column" aria-label={c.label+' category scores'}>
+     {[0,20,40,60,80,100].map(t=><div class="score-guide" style={'bottom:'+t+'%'}>{i===0&&<span>{t}</span>}</div>)}
+     <svg class="scale-mean" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <path class="scale-callout" d={'M96 0 V'+(100-c.predictions[c.selected].categoryScore)+' H'+slots[i][c.selected]} />
+      <polyline points={meanSegment(i)} />
+     </svg>
+     <span class="scale-mean-value" style={'bottom:'+means[i]+'%'} title={'Mean score '+means[i].toFixed(1)}>{means[i].toFixed(1)}</span>
+     {models.map((m,j)=><button type="button" class:list={['score-logo',{'is-selected':j===c.selected}]} style={'bottom:'+c.predictions[j].categoryScore+'%;left:'+slots[i][j]+'%;--series:'+m.color} data-model={j} data-slot={slots[i][j]} aria-pressed={j===c.selected?'true':'false'} aria-label={m.name+', '+c.label+', '+c.predictions[j].categoryScore.toFixed(2)} title={m.name+' · '+c.predictions[j].categoryScore.toFixed(2)}><img src={m.logo} width="18" height="18" alt=""/></button>)}
+    </div>
+    <button class="case-title" type="button" data-inspect={i}><span class="scale-heading">{categoryLines[c.category]}</span></button>
     <div class="image-label camera-label">Ground truth · {c.predictions[c.selected].view}</div>
-    <img class="case-gt" src={c.predictions[c.selected].gt} alt={`Ground truth: ${c.title}`} width="768" height="576" loading="lazy"/>
-    <button class="inspect-case" type="button" data-inspect={i}>Inspect this pair</button>
+    <img class="case-gt" src={c.predictions[c.selected].gt} alt={'Ground truth · '+c.title} width="768" height="576" loading="lazy"/>
+    <button class="inspect-case" type="button" data-inspect={i}>{c.title}</button>
    </div>)}
   </div>
  </div>
- <p class="explorer-note">Vertical position is the model’s category-average score (0–100); horizontal spacing separates logos. Purple marks show the mean across {models.length} configurations. Example images illustrate one task per category.</p>
+ <p class="explorer-note">Vertical position is the model’s category-average score (0–100); horizontal spacing separates logos. The purple line connects the means across {models.length} configurations. Example images illustrate one task per category.</p>
  <div class="detail-heading"><h4 id="pair-title">{cases[0].title}</h4><span id="pair-model">{models[defaults[0]].name}</span><a id="pair-link" href={url(`task/${slugs[0]}/`)}>Task details</a></div>
- <div class="comparison-pair"><figure><img id="detail-gt" src={cases[0].predictions[defaults[0]].gt} alt={`Ground truth: ${titles[0]}`} width="768" height="576" loading="lazy"/><figcaption>Ground truth</figcaption></figure><figure><img id="detail-prediction" src={cases[0].predictions[defaults[0]].image} alt={`${models[defaults[0]].name}: ${titles[0]}`} width="768" height="576" loading="lazy"/><figcaption id="detail-caption">Prediction · task score {cases[0].predictions[defaults[0]].taskScore} · view H01</figcaption></figure></div>
- <p class="explorer-note"><a href={url('reconstruction/provenance.json')}>Image provenance</a> · The Opus villa pair uses the paper’s fixed-camera diagnostic capture; its displayed task score remains the official aggregate.</p>
+ <div class="comparison-pair"><figure><img id="detail-gt" src={cases[0].predictions[defaults[0]].gt} alt={`Ground truth: ${titles[0]}`} width="768" height="576" loading="lazy"/><figcaption>Ground truth</figcaption></figure><figure><img id="detail-prediction" src={cases[0].predictions[defaults[0]].image} alt={`${models[defaults[0]].name}: ${titles[0]}`} width="768" height="576" loading="lazy"/><figcaption id="detail-caption">Prediction · task score {cases[0].predictions[defaults[0]].taskScore} · view {cases[0].predictions[defaults[0]].view}</figcaption></figure></div>
+ <p class="explorer-note"><a href={url('reconstruction/provenance.json')}>Image provenance</a> · Each example uses one fixed camera for the reference and all 11 predictions.</p>
 </section>
 <script>
 document.querySelectorAll<HTMLElement>('.fidelity-explorer').forEach(root=>{
@@ -55,6 +79,8 @@ document.querySelectorAll<HTMLElement>('.fidelity-explorer').forEach(root=>{
   const c=cases[i];c.selected=j;const p=c.predictions[j];const col=root.querySelector<HTMLElement>(`[data-category="${i}"]`)!;
   col.querySelector<HTMLImageElement>('.case-prediction')!.src=p.image;col.querySelector<HTMLImageElement>('.case-prediction')!.alt=`${models[j].name}: ${c.title}`;
   col.querySelector<HTMLImageElement>('.case-gt')!.src=p.gt;col.querySelector('.camera-label')!.textContent=`Ground truth · ${p.view}`;col.querySelector('.selected-model')!.textContent=models[j].name;
+  const selectedDot=col.querySelector<HTMLButtonElement>(`[data-model="${j}"]`)!;
+  col.querySelector('.scale-callout')!.setAttribute('d','M96 0 V'+(100-p.categoryScore)+' H'+selectedDot.dataset.slot);
   col.querySelectorAll<HTMLButtonElement>('[data-model]').forEach(b=>{const selected=Number(b.dataset.model)===j;b.classList.toggle('is-selected',selected);b.setAttribute('aria-pressed',String(selected));});
   root.querySelectorAll<HTMLButtonElement>('[data-all-model]').forEach(b=>b.setAttribute('aria-pressed',String(cases.every((x:{selected:number})=>x.selected===Number(b.dataset.allModel)))));
   if(i===inspected)detail();

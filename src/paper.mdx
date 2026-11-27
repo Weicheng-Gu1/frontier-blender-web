@@ -32,22 +32,21 @@ import CategoryFidelity from './components/CategoryFidelity.astro';
 
 ### From Seeing a World to Building One
 
-What would it take to reconstruct a building from photographs, a floor plan, and a short brief? A model would have to connect what it sees to what the drawings imply: the depth of a room, the alignment of a staircase, the relationship between a facade and the spaces behind it. Then it would have to make those relationships real in three dimensions.
+What would it take to reconstruct a 3D scene from multi-view images with camera parameters, technical drawings, and a production specification? An agent has to connect what appears in the views to what the drawings constrain—room depth, staircase alignment, hidden partitions, and how a facade relates to the spaces behind it. Then it must turn those relationships into a complete, editable Blender scene anchored in a shared world coordinate system.
 
-Multimodal coding agents bring a new possibility to this problem. They can read images and technical drawings, draw on prior knowledge, write Blender programs, and inspect their own renders. Instead of relying on dense photographic coverage alone, they can combine complementary evidence to construct an editable scene. The ambition is reconstruction that benefits from both geometric observation and semantic understanding, even at the scale of buildings and cities.
+Coding with Blender is no longer new on its own—agents already generate shapes and edit scenes. What makes spatial reconstruction a decisive test of intelligence is synthesizing heterogeneous visual and dimensional evidence, writing Blender code, rendering its own work, spotting structural flaws—such as a wall beside stairs that is too open or a partition blocking cabinetry—and revising the scene itself. Instead of relying on dense visual capture alone, the agent reconciles plans, elevations, sections, and views to build geometry that holds together.
 
-**AgentRecBench asks how far today's frontier agents can go.** Each task supplies multi-view images with camera parameters, a production specification, and technical drawings. The agent must reconstruct the reference faithfully in Blender. Across 80 tasks, we test whether a plausible overall impression survives closer inspection of geometry, appearance, and individual components.
-
+AgentRecBench asks how far today's frontier agents can go. Each task supplies multi-view images with camera poses and intrinsics, production specifications, and technical drawings, requiring the agent to reconstruct the reference faithfully in Blender. Across 80 tasks, we test whether a plausible first impression survives rigorous checks on geometry, appearance, and individual components in shared world coordinates.
 
 <div className="article-section" id="overview"><span className="sr-only">Overview</span></div>
 
 ### Modern Villa
 
-The agent receives 23 calibrated photographs, 13 technical drawings, and a production specification for a two-storey villa. Its deliverable is a single editable Blender scene containing the house, pool court, detached pavilion, and furnishings.
+The agent receives 23 multi-view images with camera parameters, 13 technical drawings, and a production specification for a two-storey villa. Its deliverable is a single editable Blender scene containing the house, pool court, detached pavilion, and furnishings.
 
 <Wide><div className="blog-wide"><VillaOverview/></div></Wide>
 
-GPT-6.2-Astra (high) used the plans and elevated views to place the angled upper wing, pool and detached pavilion. Comparing renders from opposite sides of the fireplace helped it distinguish diagonal stone inlays from hanging rings. Before submitting the scene, it checked all 23 supplied cameras and eight additional viewpoints of its own.
+**GPT-6.2-Astra (high)** first reconciled the technical drawings and multi-view images to lay out the upper wing, pool, and detached pavilion, then ran multi-view render checks to catch structural and detail discrepancies—such as wall placement near the stairs and cabinetry, and inlays around the fireplace—before refining the code and saving a complete, editable Blender scene with named components.
 
 <a href={siteUrl('task/modern-villa/')}>Inspect the complete Modern Villa inputs, held-out views, and scored regions</a>.
 
