@@ -76,11 +76,11 @@ A room can look structurally plausible while its furniture and fixtures remain i
 
 <ComponentAnalysis/>
 
-For **GPT-6.2-Astra (high)**, the room-level surface score averages **61.28/100**, compared with **24.72/100** for individual components. The room scores higher in **22 of the 27 tasks**. Averaging the component fractions separately within each task, **24.9%** of targets score below 1/100 and **11.8%** contain no predicted surface at all. A stool with the wrong profile and a bin placed outside its reference box can both receive very low scores.
+For **GPT-6.2-Astra (high)**, the room-level surface score averages **61.28/100**, compared with **24.72/100** for individual components. The room scores higher in **22 of the 27 tasks**. Averaging the component fractions separately within each task, **24.9%** of targets score below 1/100 and **11.8%** contain no predicted surface at all. The library coat rack scores 10.99/100 with the wrong hook shape and arrangement. The kitchen bin, placed outside its reference box, scores zero.
 
 #### Four error modes in GPT-6.2-Astra (high)
 
-Each pair below compares the submitted scene with its expert reference from the same camera. The green boxes mark scored regions. The Florence pair shows the same crop of camera H13, rendered with each scene’s own materials and lighting. The two view-level metrics describe the full evaluation view.
+Each pair below compares the submitted scene with its expert reference from the same camera. Wireframe boxes mark the scored 3D regions. In the opera house and Florence examples, green rectangles highlight the details discussed below. The Florence pair shows the same crop of camera H13, rendered with each scene’s own materials and lighting. The two view-level metrics describe the full evaluation view.
 
 <Wide><div className="blog-wide"><FailureExamples/></div></Wide>
 

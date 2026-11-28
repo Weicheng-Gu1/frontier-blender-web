@@ -7,8 +7,8 @@ const cases=evidence.diagnostics.astra62_local_fidelity;
  {cases.map(c=><article>
   <header><h4>{c.mode}</h4><a href={url('task/'+c.slug+'/')}>{c.title}</a></header>
   <div class="failure-pair">
-   {[[c.detailGT ?? c.gt,'Expert reference'],[c.detailPrediction ?? c.prediction,'GPT-6.2-Astra (high)']].map(([src,label])=><figure>
-    <figcaption>{label}</figcaption><a href={url(src)}><img src={url(src)} alt={label+' · '+c.focus+(c.detailGT?' · H13 material-rendered detail':'')} width="520" height="390" loading="lazy"/></a>
+   {[[c.markedGT ?? c.gt,'Expert reference'],[c.markedPrediction ?? c.prediction,'GPT-6.2-Astra (high)']].map(([src,label])=><figure>
+    <figcaption>{label}</figcaption><a href={url(src)}><img src={url(src)} alt={label+' · '+c.focus+(c.highlight?' · green rectangle marks '+c.focus:'')} width="520" height="390" loading="lazy"/></a>
    </figure>)}
   </div>
   <p>{c.description}</p>
