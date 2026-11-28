@@ -559,14 +559,14 @@
       "sha256": "c0bc54c0456f119ebe73760cd621d1209d2b89a05294a1bb58063f351e11becc"
     },
     {
-      "file": "diagnostics/astra62-local-fidelity/florence-prediction.webp",
-      "bytes": 59752,
-      "sha256": "470b9a8bb0cb2577b721ab30e59ef79b2de52f41744731e08f500c5e71e68502"
+      "file": "diagnostics/astra62-local-fidelity/florence-reference-material.webp",
+      "bytes": 89330,
+      "sha256": "27da93a0f994b24d0b1548dafba56d353b891a681052aab6e3a06a475961b659"
     },
     {
-      "file": "diagnostics/astra62-local-fidelity/florence-reference.webp",
-      "bytes": 66290,
-      "sha256": "e3aca366e60d54e7ef17ec0833f77c78c9e13f083e516bf611d06de0047e3cb0"
+      "file": "diagnostics/astra62-local-fidelity/florence-prediction-material.webp",
+      "bytes": 91526,
+      "sha256": "84b1a5244fa845725f12460d5c349b836c4126886a02e86e70cc72cf961e9636"
     }
   ],
   "diagnostics": {
@@ -589,7 +589,7 @@
       {
         "slug": "furnished-room",
         "title": "Furnished room",
-        "mode": "Missing object",
+        "mode": "Object omission or misplacement",
         "trial": "furnished-room__w8odyVQ",
         "model": "gpt-6.2-astra",
         "effort": "high",
@@ -599,7 +599,7 @@
         "input": "task/furnished-room/images/public/P01-08e5f0a64518.png.webp",
         "targetOrView": "roomobj-8b3effbabf360736",
         "focus": "Kitchen waste bin",
-        "description": "A lidded bin stands beside the kitchen island in the reference. Astra locates the island, but the green box beside it contains no predicted surface. The verifier assigns this target a zero.",
+        "description": "Astra modeled the kitchen bin, including its lid, but placed its center 0.36 m from the reference bin’s center. The green box marks the reference position. It contains no predicted surface, so this region scores zero.",
         "metric": "SurfaceDistance",
         "normalized": 0.0,
         "raw": null,
@@ -609,7 +609,39 @@
         "value": "0.00 / 100",
         "gt_sha256": "c49c951fd0e4fdaf76779fdb2fad15e409fe0a96f8c66d695d0dfc11a0555c2f",
         "prediction_sha256": "560bc4542256b9ff768c6c0e6518a864f957e742d0b95ac8b513e4e85e405078",
-        "input_sha256": "06ef830a62e188276800189bca1d1bd8e06437e9844fec7d428cd7d82e05d004"
+        "input_sha256": "06ef830a62e188276800189bca1d1bd8e06437e9844fec7d428cd7d82e05d004",
+        "placementCheck": {
+          "objects": [
+            "Island bin • body",
+            "Island bin • lid"
+          ],
+          "bounds": [
+            [
+              -3.2309999465942383,
+              0.08950001001358032,
+              0.005000010132789612
+            ],
+            [
+              -2.986999988555908,
+              0.3005000054836273,
+              0.3725000023841858
+            ]
+          ],
+          "gt_bounds": [
+            [
+              -3.1464796700258244,
+              0.4290434794253024,
+              0.0011077542992649625
+            ],
+            [
+              -2.8851411856299363,
+              0.6511624671537233,
+              0.3904807632326324
+            ]
+          ],
+          "center_distance_m": 0.357533171379681,
+          "frame": 1343
+        }
       },
       {
         "slug": "opera-house-auditorium",
@@ -674,7 +706,7 @@
         "input": "task/florence-historic-city/images/public/P16.png.webp",
         "targetOrView": "H13",
         "focus": "San Lorenzo roof complex, H13",
-        "description": "Astra preserves the dome and its many-sided base. Below the dome, the expert model has projecting pilasters and recessed wall panels. In the same solid-shaded view, much of the predicted lower façade is a continuous flat face.",
+        "description": "The dome, its ribs, and the tiled roofs are recognizable in both views. Look just below the dome on the right. The reference façade steps inward between projecting pilasters. Astra renders much of that section as a single pale wall.",
         "metric": "Depth",
         "normalized": 0.10232989081496882,
         "raw": 3.4330121121714106,
@@ -682,9 +714,10 @@
         "prediction": "task/florence-historic-city/images/models/gpt-6.2-astra/florence-historic-city__LTBZndo/camera/H13.png.webp",
         "metricLabel": "H13 depth MAE",
         "value": "3.43 m",
-        "solidGT": "diagnostics/astra62-local-fidelity/florence-reference.webp",
-        "solidPrediction": "diagnostics/astra62-local-fidelity/florence-prediction.webp",
-        "solidSettings": {
+        "gt_sha256": "d4cbc1debb16843b0541c2ff595066afbb621b05098374542ad1110a2121383d",
+        "prediction_sha256": "09f363ef011f6276346802eddb734e971923ebf4655d43847b17f509a4920900",
+        "input_sha256": "e79a35bc97a4d62ac7e6c39ee37f7ae4d10cb14ec8ed615d213ed43b1a486b85",
+        "detailSettings": {
           "frame": 0,
           "camera": "H13",
           "resolution": [
@@ -697,15 +730,18 @@
             665,
             500
           ],
-          "engine": "Blender 4.5.14 Workbench",
-          "color_type": "SINGLE",
-          "oracle_sha256": "f138a2e3d05db60e4eac3522ab45c683a4856d87ba19dac08a849aef70c7ec9a"
+          "engine": "Blender 4.5.14 LTS Cycles",
+          "oracle_sha256": "f138a2e3d05db60e4eac3522ab45c683a4856d87ba19dac08a849aef70c7ec9a",
+          "samples": 32,
+          "materials": "Native scene materials",
+          "capture_script_sha256": "edc2c8eb4e21d17ff093b45747af52f9793bae6081fbbfbb3bbabb2ca6334ceb",
+          "reference_render_sha256": "08e205b59bd8d92ea903edf0cfea50586756b482c3640cf9a427f636b893d8eb",
+          "prediction_render_sha256": "d9d8c8241325f52ab1d96ce7bb917a7665be2808b0c34fb68560c9966e17bf9a"
         },
-        "gt_sha256": "d4cbc1debb16843b0541c2ff595066afbb621b05098374542ad1110a2121383d",
-        "prediction_sha256": "09f363ef011f6276346802eddb734e971923ebf4655d43847b17f509a4920900",
-        "input_sha256": "e79a35bc97a4d62ac7e6c39ee37f7ae4d10cb14ec8ed615d213ed43b1a486b85",
-        "solidGT_sha256": "e3aca366e60d54e7ef17ec0833f77c78c9e13f083e516bf611d06de0047e3cb0",
-        "solidPrediction_sha256": "470b9a8bb0cb2577b721ab30e59ef79b2de52f41744731e08f500c5e71e68502"
+        "detailGT": "diagnostics/astra62-local-fidelity/florence-reference-material.webp",
+        "detailGT_sha256": "27da93a0f994b24d0b1548dafba56d353b891a681052aab6e3a06a475961b659",
+        "detailPrediction": "diagnostics/astra62-local-fidelity/florence-prediction-material.webp",
+        "detailPrediction_sha256": "84b1a5244fa845725f12460d5c349b836c4126886a02e86e70cc72cf961e9636"
       }
     ]
   },
