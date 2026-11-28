@@ -127,7 +127,15 @@ html:has(.section-menu) { scroll-padding-top: 0; }
 
 @media(min-width:881px){.villa-case.reconstruction-desk{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(210px,.66fr)}}
 .reconstruction-desk>section:not(.villa-regions){background:var(--surface);border-radius:14px;}
-.reconstruction-desk>section:nth-child(3){background:linear-gradient(155deg,var(--lilac),var(--surface) 72%);}
+.reconstruction-desk>section.case-evaluation {
+  display:grid;
+  grid-template-rows:auto auto minmax(min-content,3fr) minmax(min-content,2fr);
+  background:linear-gradient(155deg,var(--lilac),var(--surface) 72%);
+}
+.case-evaluation .villa-metrics {display:flex;flex-direction:column;padding-top:clamp(16px,2vw,28px);}
+.case-evaluation .villa-metrics h4 {margin:0;}
+.case-evaluation .villa-metrics dl {flex:1;display:grid;grid-auto-rows:1fr;}
+.case-evaluation .villa-metrics dl>div {align-content:center;row-gap:8px;margin:0;padding-block:10px;}
 .reconstruction-desk .villa-total{display:grid;justify-content:start;gap:3px;color:var(--muted-ink);font-size:.78rem;}
 .reconstruction-desk .villa-total strong{color:var(--ink);font-size:clamp(1.8rem,3vw,3rem);letter-spacing:-.055em;font-variant-numeric:tabular-nums;}
 .reconstruction-desk .villa-tabs{display:inline-flex;background:var(--lilac);padding:3px;border-radius:9px;border:1px solid var(--edge);gap:2px}

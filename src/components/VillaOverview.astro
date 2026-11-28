@@ -47,7 +47,7 @@ const fidelity=[{name:'Image fidelity',keys:['PSNR','SSIM','LPIPS']},{name:'Geom
       <div data-output="model" hidden><VillaOrbit/></div>
       <p class="villa-byline">{model.name}</p>
     </section>
-    <section><h3>Evaluation</h3><div class="villa-total">Overall <strong><span data-total>{model.total}</span> <small>/ 100</small></strong></div>
+    <section class="case-evaluation"><h3>Evaluation</h3><div class="villa-total">Overall <strong><span data-total>{model.total}</span> <small>/ 100</small></strong></div>
       {fidelity.map(group=><div class="villa-metrics"><h4>{group.name}</h4><dl>{group.keys.map(k=><div data-metric={k}><dt>{k==='SurfaceDistance'?'Surface distance':k}</dt><dd>{model.means[k]}</dd><span class="metric-track" aria-hidden="true"><i style={{width:model.means[k]+'%'}}></i></span></div>)}</dl></div>)}
     </section>
     <VillaRegions regions={regions} model={model}/>
