@@ -567,6 +567,26 @@
       "file": "diagnostics/astra62-local-fidelity/florence-prediction-material.webp",
       "bytes": 91526,
       "sha256": "84b1a5244fa845725f12460d5c349b836c4126886a02e86e70cc72cf961e9636"
+    },
+    {
+      "file": "diagnostics/astra62-local-fidelity/opera-backdrop-reference-marked.webp",
+      "bytes": 52456,
+      "sha256": "9f9373bc10e3e6ff28893e96441f097f9191f8d861d998ab127c253b68446c3a"
+    },
+    {
+      "file": "diagnostics/astra62-local-fidelity/opera-backdrop-prediction-marked.webp",
+      "bytes": 25304,
+      "sha256": "87783957c6dee66b2b4745bc9fd3239e1fe38a145339fae6ecee9abe69fd8a8b"
+    },
+    {
+      "file": "diagnostics/astra62-local-fidelity/florence-facade-reference-marked.webp",
+      "bytes": 91708,
+      "sha256": "d2421a45f3031668fd0436191d4772c18c885bc967d849d685fe24d1120aa435"
+    },
+    {
+      "file": "diagnostics/astra62-local-fidelity/florence-facade-prediction-marked.webp",
+      "bytes": 93778,
+      "sha256": "4cef556190d612dcf438badfe4a09bcd17c2fd92f37ccd882de64464a22386b0"
     }
   ],
   "diagnostics": {
@@ -656,7 +676,7 @@
         "input": "task/opera-house-auditorium/images/public/P01.png.webp",
         "targetOrView": "H01",
         "focus": "Stage, H01",
-        "description": "The stage opening and balcony fronts are recognizable in both renders. In the reference, the backdrop has distinct vertical panels. In the prediction, a bright patch washes out the center of the stage and obscures those divisions.",
+        "description": "The green rectangles frame the stage backdrop. The reference shows dark vertical divisions between illuminated panels. In Astra’s render, a bright central patch washes out those divisions, even though the arch and balcony fronts remain recognizable.",
         "metric": "PSNR",
         "normalized": 0.01016140207416348,
         "raw": 11.684218138462263,
@@ -666,32 +686,48 @@
         "value": "11.68 dB",
         "gt_sha256": "881114c2001ea1557d8300977c58144fa9f89adcaf4756d51270636fe10d0c0d",
         "prediction_sha256": "eb9233d32b555ee0ca6a365b6ab3127d8a4885ee9685ecaa84f69878ae8403e9",
-        "input_sha256": "07cf70697c94e3c0a454a4165eae6f6b1737bb71f806f39c7f23efd7e96156bd"
+        "input_sha256": "07cf70697c94e3c0a454a4165eae6f6b1737bb71f806f39c7f23efd7e96156bd",
+        "highlight": {
+          "rectangleXYXY": [
+            191,
+            95,
+            320,
+            252
+          ],
+          "coordinateSpace": [
+            520,
+            390
+          ]
+        },
+        "markedGT": "diagnostics/astra62-local-fidelity/opera-backdrop-reference-marked.webp",
+        "markedGT_sha256": "9f9373bc10e3e6ff28893e96441f097f9191f8d861d998ab127c253b68446c3a",
+        "markedPrediction": "diagnostics/astra62-local-fidelity/opera-backdrop-prediction-marked.webp",
+        "markedPrediction_sha256": "87783957c6dee66b2b4745bc9fd3239e1fe38a145339fae6ecee9abe69fd8a8b"
       },
       {
-        "slug": "walled-courtyard",
-        "title": "Walled courtyard",
+        "slug": "victorian-library",
+        "title": "Victorian library",
         "mode": "Local shape mismatch",
-        "trial": "walled-courtyard__4hfe9EP",
+        "trial": "victorian-library__YPpABGZ",
         "model": "gpt-6.2-astra",
         "effort": "high",
-        "submission_sha256": "6ea784a5b4ac021443df3c54dafdf0253bd34e90e8c3ec2800ed38d410c874d4",
-        "archive_sha256": "c78b9577b139b60dbdba3db5d85e6ce63e6e0ce52e0da3bd42625dfcca2d8613",
-        "publicView": "P10",
-        "input": "task/walled-courtyard/images/public/P10.png.webp",
-        "targetOrView": "furnishing-18351ac41e05e7ec",
-        "focus": "Stone Stool 1",
-        "description": "Both models contain a square stone stool. The reference seat has a raised rim and a stepped band beneath it. Astra gives it a flat cap with a sharper overhang. The seat also sits lower within the same target box.",
+        "submission_sha256": "6ccc039c9726441f7827a1ecaf3d220a63a3896a8854ed77ee9779494dc70924",
+        "archive_sha256": null,
+        "publicView": "P03",
+        "input": "task/victorian-library/images/public/P03.png.webp",
+        "targetOrView": "roomobj-64561bc47eacfe05",
+        "focus": "Coat Rack 01",
+        "description": "Both coat racks stand in the same target box. Follow the center post: the reference has short pegs at several heights, including a set halfway down. Astra clusters two tiers of upward-curving hooks near the top and leaves the middle of the post bare.",
         "metric": "SurfaceDistance",
-        "normalized": 0.005552197971446508,
-        "raw": 0.0007874369090616278,
-        "gt": "task/walled-courtyard/images/regions/GT-archive-0009.png.webp",
-        "prediction": "task/walled-courtyard/images/models/gpt-6.2-astra/walled-courtyard__4hfe9EP/regions/0009.png.webp",
+        "normalized": 0.10988423370860971,
+        "raw": 0.030997412527044382,
+        "gt": "task/victorian-library/images/regions/GT-archive-0018.png.webp",
+        "prediction": "task/victorian-library/images/models/gpt-6.2-astra/victorian-library__YPpABGZ/regions/0018.png.webp",
         "metricLabel": "Region surface score",
-        "value": "0.56 / 100",
-        "gt_sha256": "e7e460f41de43b6cb5a1ae4eb71434a0070ca309a8d847b471a6b4590446a186",
-        "prediction_sha256": "b4434657d9e8ca5fee3d7dd63f114cb9ea644dab65dc02efceb3923254122b13",
-        "input_sha256": "07ecfd28e384b46eb2209269f5cbcf1815aed0d1dcdadc81f64d34ef629d5ecb"
+        "value": "10.99 / 100",
+        "gt_sha256": "11bbc02058d43379e240cc74786dbb28c020477184ce5ea6bdfdf581a51ce544",
+        "prediction_sha256": "3c18e2e00b811a13d4a89515fada32cf7d2816774a78411734e162961fdca171",
+        "input_sha256": "4f4052e54e15a1b3f225a52b113c742d073662e7da925b1fcadddb2c1f5d1250"
       },
       {
         "slug": "florence-historic-city",
@@ -706,7 +742,7 @@
         "input": "task/florence-historic-city/images/public/P16.png.webp",
         "targetOrView": "H13",
         "focus": "San Lorenzo roof complex, H13",
-        "description": "The dome, its ribs, and the tiled roofs are recognizable in both views. Look just below the dome on the right. The reference façade steps inward between projecting pilasters. Astra renders much of that section as a single pale wall.",
+        "description": "The green rectangles mark the façade below and to the right of the main dome. The reference has projecting pilasters with recessed bays between them. Astra keeps the dome and roofline but merges much of the wall beneath them into one broad, pale surface.",
         "metric": "Depth",
         "normalized": 0.10232989081496882,
         "raw": 3.4330121121714106,
@@ -741,7 +777,23 @@
         "detailGT": "diagnostics/astra62-local-fidelity/florence-reference-material.webp",
         "detailGT_sha256": "27da93a0f994b24d0b1548dafba56d353b891a681052aab6e3a06a475961b659",
         "detailPrediction": "diagnostics/astra62-local-fidelity/florence-prediction-material.webp",
-        "detailPrediction_sha256": "84b1a5244fa845725f12460d5c349b836c4126886a02e86e70cc72cf961e9636"
+        "detailPrediction_sha256": "84b1a5244fa845725f12460d5c349b836c4126886a02e86e70cc72cf961e9636",
+        "highlight": {
+          "rectangleXYXY": [
+            288,
+            221,
+            394,
+            333
+          ],
+          "coordinateSpace": [
+            520,
+            390
+          ]
+        },
+        "markedGT": "diagnostics/astra62-local-fidelity/florence-facade-reference-marked.webp",
+        "markedGT_sha256": "d2421a45f3031668fd0436191d4772c18c885bc967d849d685fe24d1120aa435",
+        "markedPrediction": "diagnostics/astra62-local-fidelity/florence-facade-prediction-marked.webp",
+        "markedPrediction_sha256": "4cef556190d612dcf438badfe4a09bcd17c2fd92f37ccd882de64464a22386b0"
       }
     ]
   },
