@@ -7,14 +7,14 @@ const cases=evidence.diagnostics.astra62_local_fidelity;
  {cases.map(c=><article>
   <header><h4>{c.mode}</h4><a href={url('task/'+c.slug+'/')}>{c.title}</a></header>
   <div class="failure-pair">
-   {[[c.solidGT ?? c.gt,'Expert reference'],[c.solidPrediction ?? c.prediction,'GPT-6.2-Astra (high)']].map(([src,label])=><figure>
-    <figcaption>{label}</figcaption><a href={url(src)}><img src={url(src)} alt={label+' · '+c.focus+(c.solidGT?' · solid-shaded detail':'')} width="520" height="390" loading="lazy"/></a>
+   {[[c.detailGT ?? c.gt,'Expert reference'],[c.detailPrediction ?? c.prediction,'GPT-6.2-Astra (high)']].map(([src,label])=><figure>
+    <figcaption>{label}</figcaption><a href={url(src)}><img src={url(src)} alt={label+' · '+c.focus+(c.detailGT?' · H13 material-rendered detail':'')} width="520" height="390" loading="lazy"/></a>
    </figure>)}
   </div>
   <p>{c.description}</p>
   <div class="measurement"><span>{c.metricLabel}</span><strong>{c.value}</strong></div>
   <footer><a href={url(c.input)}><img src={url(c.input)} alt="" width="52" height="39" loading="lazy"/>Public input · {c.publicView}</a><span>{c.focus}</span></footer>
-  {c.solidGT && <details><summary>View the original H13 renders</summary><div class="failure-pair">
+  {c.detailGT && <details><summary>View full H13 images</summary><div class="failure-pair">
    {[[c.gt,'Expert reference'],[c.prediction,'GPT-6.2-Astra (high)']].map(([src,label])=><figure><figcaption>{label}</figcaption><a href={url(src)}><img src={url(src)} alt={label+' · Florence H13, full RGB view'} width="520" height="390" loading="lazy"/></a></figure>)}
   </div></details>}
  </article>)}
