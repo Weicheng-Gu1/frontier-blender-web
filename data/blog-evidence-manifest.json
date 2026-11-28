@@ -337,11 +337,244 @@
       "file": "video/villa-65.webp",
       "bytes": 4240,
       "sha256": "e72c334fa28a4c798e9bd68fa1cfaf7e91f5b329b60b495fae64a06771238c8e"
+    },
+    {
+      "file": "diagnostics/console-ablation/area-half-H01.webp",
+      "bytes": 9796,
+      "sha256": "57f568d78e49eb5ff5189a35bd6fc09b400cea035e66e34e61d8b75966defdb7"
+    },
+    {
+      "file": "diagnostics/console-ablation/area-half-H02.webp",
+      "bytes": 8380,
+      "sha256": "34d7e62a4d0124d0661b0611beb7499e193a227b77719607d84e0f38d78a278b"
+    },
+    {
+      "file": "diagnostics/console-ablation/area-half-H03.webp",
+      "bytes": 6470,
+      "sha256": "f64d462401aaf9c3d3c7b44a5aa0cbc3e06d387aceca794cf1eaf7108fb5b56a"
+    },
+    {
+      "file": "diagnostics/console-ablation/area-half-H04.webp",
+      "bytes": 7628,
+      "sha256": "70c1b9da3334d4ed76e9a1c3a4c758bae0d9316f44bcb58d8bfa677f78d7cb26"
+    },
+    {
+      "file": "diagnostics/console-ablation/baseline-H01.webp",
+      "bytes": 10200,
+      "sha256": "2d6a2cd3caac04dbffc7cbf366ab736135aee650792fbaaeb59190ca3230e26d"
+    },
+    {
+      "file": "diagnostics/console-ablation/baseline-H02.webp",
+      "bytes": 8412,
+      "sha256": "4fb4250fe936da91ddcf2f581d3c8d25580566bf370dd879fafa84a5574e066a"
+    },
+    {
+      "file": "diagnostics/console-ablation/baseline-H03.webp",
+      "bytes": 6660,
+      "sha256": "b97a74eb155bae52f72ee22b515ff46991924a97606eabc1c4eedc97088e4043"
+    },
+    {
+      "file": "diagnostics/console-ablation/baseline-H04.webp",
+      "bytes": 7910,
+      "sha256": "5745ec2d60b2f4ce8344793ff690d73c57bf3d05d4f0acb0358c6e7fdb5b4097"
+    },
+    {
+      "file": "diagnostics/console-ablation/glass-polish-H01.webp",
+      "bytes": 10204,
+      "sha256": "cc3c96c6578d0d81a4dcba24404fd13306a0db16c7e5716c752c3e77db488da1"
+    },
+    {
+      "file": "diagnostics/console-ablation/glass-polish-H02.webp",
+      "bytes": 8412,
+      "sha256": "4fb4250fe936da91ddcf2f581d3c8d25580566bf370dd879fafa84a5574e066a"
+    },
+    {
+      "file": "diagnostics/console-ablation/glass-polish-H03.webp",
+      "bytes": 6726,
+      "sha256": "a9316aeb56e371e1f022ed2f5a45aa9b2845ce7397ee4062096012b43c908574"
+    },
+    {
+      "file": "diagnostics/console-ablation/glass-polish-H04.webp",
+      "bytes": 7870,
+      "sha256": "6b3b7a43fe97e7f87f1150eae8dcaab89b8c84f48433eb7222ee0314716c48d3"
+    },
+    {
+      "file": "diagnostics/console-ablation/gt-H01.webp",
+      "bytes": 8340,
+      "sha256": "8e1b95bc0f63cb0859de29e2366a2b8a8789d882c293da9064faff3fa20a18ff"
+    },
+    {
+      "file": "diagnostics/console-ablation/gt-H02.webp",
+      "bytes": 8442,
+      "sha256": "e0dc02ae395bd63fc6192ac36f284196a233b001858115f8465edf3852c302e1"
+    },
+    {
+      "file": "diagnostics/console-ablation/gt-H03.webp",
+      "bytes": 6744,
+      "sha256": "e601ed7e60b02a884fd3d7f86a617e6a0f1f7a3d53901117b4cfbea308830317"
+    },
+    {
+      "file": "diagnostics/console-ablation/gt-H04.webp",
+      "bytes": 6716,
+      "sha256": "923ffc82c3b7270f172f18ffeaac32db5086d568c8d7a6794548464347c66a75"
+    },
+    {
+      "file": "diagnostics/console-ablation/housing-rough-H01.webp",
+      "bytes": 10120,
+      "sha256": "8cb69168e6ef87a488b72ad971f5e6820a32d5cafeaddd1d9caf89afcb00f40f"
+    },
+    {
+      "file": "diagnostics/console-ablation/housing-rough-H02.webp",
+      "bytes": 8478,
+      "sha256": "faaaefa51e2eec6e175c5ea231c0473b460dc8fc9b88ac4ccff943267026f926"
+    },
+    {
+      "file": "diagnostics/console-ablation/housing-rough-H03.webp",
+      "bytes": 6710,
+      "sha256": "1df0095d052d4989e144e369554685b401547952dcc9d9b7893411cc62bd8113"
+    },
+    {
+      "file": "diagnostics/console-ablation/housing-rough-H04.webp",
+      "bytes": 7778,
+      "sha256": "4ae70a20996838259c8ad78a90971d9497c343a71ff6f6a5a7dbdf1f300939d3"
+    },
+    {
+      "file": "diagnostics/console-ablation/point-H01.webp",
+      "bytes": 9712,
+      "sha256": "216b32a9d03729250eda3e25a0539bb437fceb575c59fc09b7420108982b9315"
+    },
+    {
+      "file": "diagnostics/console-ablation/point-H02.webp",
+      "bytes": 8436,
+      "sha256": "f37cc5afd2573352d76024f58e45eb3e66d1f0c545c3aae10561031512550818"
+    },
+    {
+      "file": "diagnostics/console-ablation/point-H03.webp",
+      "bytes": 6388,
+      "sha256": "b6a111a51bd73f475c4ec16cdfac44eb16c6165e405500717564b5f6f55bdd11"
+    },
+    {
+      "file": "diagnostics/console-ablation/point-H04.webp",
+      "bytes": 7510,
+      "sha256": "9029e12c007bd78b36668d35a2acb4207329b1ceab4f1a69c2592027a39f1b13"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-gloss-H01.webp",
+      "bytes": 10270,
+      "sha256": "46009c3f12d68f19113e41a64074c3e6273c92e26bf1dadd4c29c62c3d3c2a8e"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-gloss-H02.webp",
+      "bytes": 8546,
+      "sha256": "d801c510dc743e1f8846dcc977efd013094580ebdfa03dc49b66963a0dcc1178"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-gloss-H03.webp",
+      "bytes": 6878,
+      "sha256": "49418426e08d94d58b75940d67f718d541e0f9108b2c9f74e5c1cca7fabe95e7"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-gloss-H04.webp",
+      "bytes": 8156,
+      "sha256": "34ef278c7651fa731ace616acb20eab461fb0b1bed356ef167e12b992f298187"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-matte-H01.webp",
+      "bytes": 10076,
+      "sha256": "5bc34f6884c5c037e48a650363c736eb36e8c6efabb35ff01e42e1b019a9a5a2"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-matte-H02.webp",
+      "bytes": 8370,
+      "sha256": "fa166ec2992d3f58fe7c799b6fd45572b28256a474d9a1276c6b1bf4e6c0f25e"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-matte-H03.webp",
+      "bytes": 6446,
+      "sha256": "51c014fda71c4fc84b315eb0369e9a9567b812620c5ed240b23eee140f9b2842"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-matte-H04.webp",
+      "bytes": 7844,
+      "sha256": "24de1eb33da1bbd86f56b66204296ee0bb7237b8adde7bdc2e3db22164b38700"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-metal-H01.webp",
+      "bytes": 9264,
+      "sha256": "4db0625b40f564c33a9ed0d5d100d1c9f00b9a62b50d201509e4a837eb443b67"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-metal-H02.webp",
+      "bytes": 7956,
+      "sha256": "0074b03a6de0ddac374d8891528a543bae00fac9cfa2c934038af63938ee7d1e"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-metal-H03.webp",
+      "bytes": 6602,
+      "sha256": "fec5ad74f911f6ac9a78b426bcb9771e010dae466f3463088faf187ac4674402"
+    },
+    {
+      "file": "diagnostics/console-ablation/shell-metal-H04.webp",
+      "bytes": 7786,
+      "sha256": "c31d9ed13d6d86fb150160a7322fddc5794eb1ddf36ff0d49eb3eea8955f7f77"
+    },
+    {
+      "file": "diagnostics/console-ablation/spot-H01.webp",
+      "bytes": 9744,
+      "sha256": "88902762c067e94d080706bc6962de7902f8367af2037f063dbf2ec0d0ea4093"
+    },
+    {
+      "file": "diagnostics/console-ablation/spot-H02.webp",
+      "bytes": 8440,
+      "sha256": "6d98b4abb05284c354b5b47cf6bc26e5eeca0a9a915f961bfdda3498283e5d65"
+    },
+    {
+      "file": "diagnostics/console-ablation/spot-H03.webp",
+      "bytes": 6454,
+      "sha256": "5981b4499606eb372b6fb106fd09950271a8686a5dcb65c78290c30fac1bc361"
+    },
+    {
+      "file": "diagnostics/console-ablation/spot-H04.webp",
+      "bytes": 7498,
+      "sha256": "641223787a62cfea529f96e6b840b0c577a6ba8341b009b5ddc666345b509bca"
+    },
+    {
+      "file": "diagnostics/console-ablation/sun-H01.webp",
+      "bytes": 10104,
+      "sha256": "c9653cb0bd5c7e95c0a69849a682db64118c286eea0570ece896262f324036db"
+    },
+    {
+      "file": "diagnostics/console-ablation/sun-H02.webp",
+      "bytes": 8500,
+      "sha256": "12d8abae9ad24befd919c47e605292dd458536c687339097649c17e594add02c"
+    },
+    {
+      "file": "diagnostics/console-ablation/sun-H03.webp",
+      "bytes": 6652,
+      "sha256": "6ebb9e184ec4334780db8adcd141b048b9192f9c84a819f6e89f97b59bfadf88"
+    },
+    {
+      "file": "diagnostics/console-ablation/sun-H04.webp",
+      "bytes": 7802,
+      "sha256": "c0bc54c0456f119ebe73760cd621d1209d2b89a05294a1bb58063f351e11becc"
     }
   ],
   "diagnostics": {
     "official_scores_changed": false,
-    "GT_assisted": true
+    "GT_assisted": true,
+    "console_appearance_study": {
+      "trial": "handheld-console__MBrhXYQ",
+      "submission_sha256": "77dcfe5f6b3bf74619db11434e21d7ce160381d4307e3db14df5af9557e46ade",
+      "views": [
+        "H01",
+        "H02",
+        "H03",
+        "H04"
+      ],
+      "settings": 10,
+      "GT_assisted": false,
+      "official_scores_changed": false
+    }
   },
   "video": {
     "model_label": "GPT-6.2-Astra (high)",
