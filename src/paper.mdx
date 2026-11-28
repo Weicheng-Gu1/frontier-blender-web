@@ -7,6 +7,7 @@ import FidelityExplorer from './components/FidelityExplorer.astro';
 import DiagnosticExplorer from './components/DiagnosticExplorer.astro';
 import AppearanceStudy from './components/AppearanceStudy.astro';
 import ComponentAnalysis from './components/ComponentAnalysis.astro';
+import FailureExamples from './components/FailureExamples.astro';
 import {url as siteUrl,github} from './lib/site';
 import ArticleNav from './components/ArticleNav.astro';
 import VillaOverview from './components/VillaOverview.astro';
@@ -75,11 +76,13 @@ A room can look structurally plausible while its furniture and fixtures remain i
 
 <ComponentAnalysis/>
 
-For GPT-6-Astra (high), the mean room-level score is **44.65**, while the component-level score is **14.12**. Across configurations, room-level fidelity exceeds component-level fidelity on 22–26 of the 27 tasks. Capturing the larger envelope does not guarantee that the smaller structures have the right geometry or position.
+For **GPT-6.2-Astra (high)**, the room-level surface score averages **61.28/100**, compared with **24.72/100** for individual components. The room scores higher in **22 of the 27 tasks**. Averaging the component fractions separately within each task, **24.9%** of targets score below 1/100 and **11.8%** contain no predicted surface at all. The distinction matters: a stool with the wrong profile and an empty space beside a kitchen island can both receive very low scores.
 
-For GPT-6-Astra (high), the mean task-level fraction of components scoring below 1 is **37.9%**; the fraction with no reconstructed surface is **14.0%**. These measure different failures. A very low score can reflect a misplaced or poorly shaped component even when some geometry exists.
+#### Four error modes in GPT-6.2-Astra (high)
 
-<Wide><figure className="blog-wide paper-cases"><a href={siteUrl('diagnostics/paper-failure-cases.webp')}><img loading="lazy" width="1600" height="1331" src={siteUrl('diagnostics/paper-failure-cases.webp')} alt="Four comparisons from the paper: missing solar-panel faces, a dark dining room, merged bridge shops, and arches reconstructed as straight beams."/></a><figcaption>Four failures from the paper. Each column shows the input, the expert reference, and the prediction. In the bridge example, the reconstruction captures the roofline but merges the separate shops below it.</figcaption></figure></Wide>
+Each pair below compares the submitted scene with its expert reference from the same camera. The green boxes mark scored regions. For Florence, a solid-shaded detail reveals façade geometry that is harder to distinguish in the RGB render. The two view-level metrics describe the full evaluation view.
+
+<Wide><div className="blog-wide"><FailureExamples/></div></Wide>
 
 ### Visual Plausibility Can Conceal Geometric Errors
 

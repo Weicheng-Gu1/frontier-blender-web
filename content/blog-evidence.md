@@ -8,6 +8,8 @@ The leaderboard and task figures use the ten published configurations in `src/da
 
 ## Analysis
 
+- The four error-mode cards use the GPT-6.2-Astra (high) submissions for furnished-room, opera-house-auditorium, walled-courtyard and florence-historic-city. Trial IDs, submission and image hashes, exact target IDs and camera IDs are recorded under `diagnostics.astra62_local_fidelity` in the evidence manifest. The additional Florence pair uses identical solid shading and a common crop of H13. Its displayed depth MAE comes from the original full-view verifier record.
+
 - `src/data/console-ablation.json` records a separate fixed-geometry sensitivity study of Kimi’s handheld-console submission at H01–H04. Each setting is scored from lossless verifier renders. WebP copies are for display. The reference masks, camera transforms, 768 × 576 resolution, 32 Cycles samples, frame 9 and seed 42 follow the task capture. Surface distance is taken from the fixed submission, and every variant’s depth array was checked against the baseline.
 
 - `src/data/component-analysis.json`: the supplementary material's paired summaries for 27 tasks and 551 components. Room/component values use equal task weighting.

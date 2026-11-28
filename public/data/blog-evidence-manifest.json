@@ -557,6 +557,16 @@
       "file": "diagnostics/console-ablation/sun-H04.webp",
       "bytes": 7802,
       "sha256": "c0bc54c0456f119ebe73760cd621d1209d2b89a05294a1bb58063f351e11becc"
+    },
+    {
+      "file": "diagnostics/astra62-local-fidelity/florence-prediction.webp",
+      "bytes": 59752,
+      "sha256": "470b9a8bb0cb2577b721ab30e59ef79b2de52f41744731e08f500c5e71e68502"
+    },
+    {
+      "file": "diagnostics/astra62-local-fidelity/florence-reference.webp",
+      "bytes": 66290,
+      "sha256": "e3aca366e60d54e7ef17ec0833f77c78c9e13f083e516bf611d06de0047e3cb0"
     }
   ],
   "diagnostics": {
@@ -574,7 +584,130 @@
       "settings": 10,
       "GT_assisted": false,
       "official_scores_changed": false
-    }
+    },
+    "astra62_local_fidelity": [
+      {
+        "slug": "furnished-room",
+        "title": "Furnished room",
+        "mode": "Missing object",
+        "trial": "furnished-room__w8odyVQ",
+        "model": "gpt-6.2-astra",
+        "effort": "high",
+        "submission_sha256": "be4767b0884e2f9b93dd14c636c406adc156e84ac8e949b5b8fb6b7cf557c3a2",
+        "archive_sha256": "f87c85ecb9311dfdd6e3f76052172974494414d19fc967cddacad21eaadb1195",
+        "publicView": "P01",
+        "input": "task/furnished-room/images/public/P01-08e5f0a64518.png.webp",
+        "targetOrView": "roomobj-8b3effbabf360736",
+        "focus": "Kitchen waste bin",
+        "description": "A lidded bin stands beside the kitchen island in the reference. Astra locates the island, but the green box beside it contains no predicted surface. The verifier assigns this target a zero.",
+        "metric": "SurfaceDistance",
+        "normalized": 0.0,
+        "raw": null,
+        "gt": "task/furnished-room/images/regions/GT-archive-0011.png.webp",
+        "prediction": "task/furnished-room/images/models/gpt-6.2-astra/furnished-room__w8odyVQ/regions/0011.png.webp",
+        "metricLabel": "Region surface score",
+        "value": "0.00 / 100",
+        "gt_sha256": "c49c951fd0e4fdaf76779fdb2fad15e409fe0a96f8c66d695d0dfc11a0555c2f",
+        "prediction_sha256": "560bc4542256b9ff768c6c0e6518a864f957e742d0b95ac8b513e4e85e405078",
+        "input_sha256": "06ef830a62e188276800189bca1d1bd8e06437e9844fec7d428cd7d82e05d004"
+      },
+      {
+        "slug": "opera-house-auditorium",
+        "title": "Opera house auditorium",
+        "mode": "Appearance mismatch",
+        "trial": "opera-house-auditorium__YVjtEFr",
+        "model": "gpt-6.2-astra",
+        "effort": "high",
+        "submission_sha256": "33e483238c71cb82169c90d4d59cc3563c01cdc6c3bbdbb56c6acf04d39e9e2a",
+        "archive_sha256": "a2a9ea9fbddd0b86db2b66489850ecf87c5d348f680d2e38d3b1784b3fc2d8a7",
+        "publicView": "P01",
+        "input": "task/opera-house-auditorium/images/public/P01.png.webp",
+        "targetOrView": "H01",
+        "focus": "Stage, H01",
+        "description": "The stage opening and balcony fronts are recognizable in both renders. In the reference, the backdrop has distinct vertical panels. In the prediction, a bright patch washes out the center of the stage and obscures those divisions.",
+        "metric": "PSNR",
+        "normalized": 0.01016140207416348,
+        "raw": 11.684218138462263,
+        "gt": "task/opera-house-auditorium/images/hidden/H01.png.webp",
+        "prediction": "task/opera-house-auditorium/images/models/gpt-6.2-astra/opera-house-auditorium__YVjtEFr/camera/H01.png.webp",
+        "metricLabel": "H01 foreground PSNR",
+        "value": "11.68 dB",
+        "gt_sha256": "881114c2001ea1557d8300977c58144fa9f89adcaf4756d51270636fe10d0c0d",
+        "prediction_sha256": "eb9233d32b555ee0ca6a365b6ab3127d8a4885ee9685ecaa84f69878ae8403e9",
+        "input_sha256": "07cf70697c94e3c0a454a4165eae6f6b1737bb71f806f39c7f23efd7e96156bd"
+      },
+      {
+        "slug": "walled-courtyard",
+        "title": "Walled courtyard",
+        "mode": "Local shape mismatch",
+        "trial": "walled-courtyard__4hfe9EP",
+        "model": "gpt-6.2-astra",
+        "effort": "high",
+        "submission_sha256": "6ea784a5b4ac021443df3c54dafdf0253bd34e90e8c3ec2800ed38d410c874d4",
+        "archive_sha256": "c78b9577b139b60dbdba3db5d85e6ce63e6e0ce52e0da3bd42625dfcca2d8613",
+        "publicView": "P10",
+        "input": "task/walled-courtyard/images/public/P10.png.webp",
+        "targetOrView": "furnishing-18351ac41e05e7ec",
+        "focus": "Stone Stool 1",
+        "description": "Both models contain a square stone stool. The reference seat has a raised rim and a stepped band beneath it. Astra gives it a flat cap with a sharper overhang. The seat also sits lower within the same target box.",
+        "metric": "SurfaceDistance",
+        "normalized": 0.005552197971446508,
+        "raw": 0.0007874369090616278,
+        "gt": "task/walled-courtyard/images/regions/GT-archive-0009.png.webp",
+        "prediction": "task/walled-courtyard/images/models/gpt-6.2-astra/walled-courtyard__4hfe9EP/regions/0009.png.webp",
+        "metricLabel": "Region surface score",
+        "value": "0.56 / 100",
+        "gt_sha256": "e7e460f41de43b6cb5a1ae4eb71434a0070ca309a8d847b471a6b4590446a186",
+        "prediction_sha256": "b4434657d9e8ca5fee3d7dd63f114cb9ea644dab65dc02efceb3923254122b13",
+        "input_sha256": "07ecfd28e384b46eb2209269f5cbcf1815aed0d1dcdadc81f64d34ef629d5ecb"
+      },
+      {
+        "slug": "florence-historic-city",
+        "title": "Florence historic city",
+        "mode": "Structural simplification",
+        "trial": "florence-historic-city__LTBZndo",
+        "model": "gpt-6.2-astra",
+        "effort": "high",
+        "submission_sha256": "8fccb753e4840a860025f2f1715043a45f8391f02f2750cc741962c2cb78b545",
+        "archive_sha256": "22d99b393e27b66e397540992b6c37112165a01bc224a49f313987c5bfb8cb4b",
+        "publicView": "P16",
+        "input": "task/florence-historic-city/images/public/P16.png.webp",
+        "targetOrView": "H13",
+        "focus": "San Lorenzo roof complex, H13",
+        "description": "Astra preserves the dome and its many-sided base. Below the dome, the expert model has projecting pilasters and recessed wall panels. In the same solid-shaded view, much of the predicted lower façade is a continuous flat face.",
+        "metric": "Depth",
+        "normalized": 0.10232989081496882,
+        "raw": 3.4330121121714106,
+        "gt": "task/florence-historic-city/images/hidden/H13.png.webp",
+        "prediction": "task/florence-historic-city/images/models/gpt-6.2-astra/florence-historic-city__LTBZndo/camera/H13.png.webp",
+        "metricLabel": "H13 depth MAE",
+        "value": "3.43 m",
+        "solidGT": "diagnostics/astra62-local-fidelity/florence-reference.webp",
+        "solidPrediction": "diagnostics/astra62-local-fidelity/florence-prediction.webp",
+        "solidSettings": {
+          "frame": 0,
+          "camera": "H13",
+          "resolution": [
+            768,
+            576
+          ],
+          "cropXYXY": [
+            145,
+            110,
+            665,
+            500
+          ],
+          "engine": "Blender 4.5.14 Workbench",
+          "color_type": "SINGLE",
+          "oracle_sha256": "f138a2e3d05db60e4eac3522ab45c683a4856d87ba19dac08a849aef70c7ec9a"
+        },
+        "gt_sha256": "d4cbc1debb16843b0541c2ff595066afbb621b05098374542ad1110a2121383d",
+        "prediction_sha256": "09f363ef011f6276346802eddb734e971923ebf4655d43847b17f509a4920900",
+        "input_sha256": "e79a35bc97a4d62ac7e6c39ee37f7ae4d10cb14ec8ed615d213ed43b1a486b85",
+        "solidGT_sha256": "e3aca366e60d54e7ef17ec0833f77c78c9e13f083e516bf611d06de0047e3cb0",
+        "solidPrediction_sha256": "470b9a8bb0cb2577b721ab30e59ef79b2de52f41744731e08f500c5e71e68502"
+      }
+    ]
   },
   "video": {
     "model_label": "GPT-6.2-Astra (high)",
