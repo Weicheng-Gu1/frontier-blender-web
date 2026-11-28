@@ -7,7 +7,7 @@ for t in tasks:assert (p/'task'/t['slug']/'index.html').is_file(),t['slug']
 assert (p/'leaderboard/index.html').is_file()
 size=sum(x.stat().st_size for x in p.rglob('*') if x.is_file());assert size<1_000_000_000,size
 result=json.loads(Path('src/data/results.json').read_text(encoding='utf-8'))
-assert len(result['models'])==11 and all(m['tasks']==80 for m in result['models'])
+assert len(result['models'])==10 and all(m['tasks']==80 for m in result['models'])
 assert result['score_normalization']=='psnr-sigmoid-c30-slope025-v2-20261117'
 prefix='/frontier-blender-web/'
 missing=[]
@@ -34,9 +34,13 @@ for group in atlas['groups']:
    membership[slug]=(group['id'],field['id'])
 assert {t['slug']:t['category'] for t in tasks}=={t:v[0] for t,v in membership.items()}
 assert {t['slug']:t['category'] for t in atlas['cases']}=={t:v[0] for t,v in membership.items()}
+expected_models={(m['model'],m['effort']) for m in result['models']}
+assert len(atlas['scores']['models'])==len(expected_models)
 for slug,(domain,field) in membership.items():
  case=json.loads(gzip.decompress((p/'task'/slug/'case.json.gz').read_bytes()))
  assert (case['domain'],case['category'])==(domain,field),slug
+ assert {(r['model'],r['effort']) for r in case['results']}==expected_models,slug
+ assert set(atlas['scores']['tasks'][slug])==set(atlas['scores']['models']),slug
 for model in result['models']:
  per_task={r['slug']:r['total'] for r in result['selected'] if (r['model'],r['effort'])==(model['model'],model['effort'])}
  assert per_task.keys()==membership.keys()

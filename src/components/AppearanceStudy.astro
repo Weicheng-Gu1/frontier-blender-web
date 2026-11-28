@@ -1,0 +1,56 @@
+---
+import measurements from '../data/console-ablation.json';
+import {url} from '../lib/site';
+const settings=[
+ ['baseline','Original submission','Area key, 1,000 W'],
+ ['shell-gloss','Controller shells','Roughness → 0.08'],
+ ['shell-matte','Controller shells','Roughness → 0.85'],
+ ['shell-metal','Controller shells','Metallic → 0.80'],
+ ['glass-polish','Display glass','Roughness → 0.10'],
+ ['housing-rough','Tablet housing','Roughness → 0.85'],
+ ['area-half','Area key','500 W'],
+ ['point','Point key','1,000 W · radius 0.15 m'],
+ ['spot','Spot key','1,000 W · cone 65°'],
+ ['sun','Sun key','3 W/m² · angle 4°']
+] as const;
+const columns=[['psnr','PSNR (dB) ↑',2],['ssim','SSIM ↑',3],['lpips','LPIPS ↓',4],['depth','Depth ↑',2],['surface','Surface ↑',2]] as const;
+const frames=['H01','H02','H03','H04'];
+const imageRoot=url('diagnostics/console-ablation/');
+---
+<section class="appearance-study not-prose" data-root={imageRoot} data-values={JSON.stringify(measurements)} aria-label="Material and lighting sensitivity">
+<header><h4>Material and light sensitivity</h4><label>Camera <select aria-label="Diagnostic camera">{frames.map(v=><option>{v}</option>)}<option value="Mean">Four-view mean</option></select></label></header>
+<div class="comparison-pair"><figure><img data-reference loading="lazy" src={imageRoot+'gt-H01.webp'} width="768" height="576" alt="Expert console, H01"/><figcaption>Ground truth</figcaption></figure><figure><img data-render loading="lazy" src={imageRoot+'baseline-H01.webp'} width="768" height="576" alt="Original submission, H01"/><figcaption data-caption>Original submission · H01</figcaption></figure></div>
+<div class="study-table" tabindex="0" role="region" aria-label="Measured metrics for each setting"><table><thead><tr><th scope="col">Setting</th>{columns.map(([,label])=><th scope="col">{label}</th>)}</tr></thead><tbody>
+{settings.map(([id,name,param],i)=><tr data-row={id}><th scope="row"><button type="button" aria-pressed={i===0} data-setting={id}><b>{name}</b><small>{param}</small></button></th>
+{columns.map(([k,,digits])=><td data-metric={k} data-digits={digits}>{measurements[id].H01[k].toFixed(digits)}</td>)}</tr>)}
+</tbody></table></div>
+<p class="explorer-note">Select a setting to inspect its render. The mean averages each metric over four cameras. PSNR uses valid foreground pixels. SSIM and raw LPIPS use full RGB images. Depth and surface scores use the benchmark’s 0–100 scale.</p>
+</section>
+<style>
+.appearance-study{border:1px solid var(--edge);background:var(--surface);border-radius:14px;padding:clamp(15px,3vw,30px);margin-block:1.2rem}
+.appearance-study header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}.appearance-study header h4{font-size:1.25rem;margin:0;color:var(--ink)}
+.appearance-study label{font-size:.8rem;color:var(--muted-ink)}.appearance-study select{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--edge);border-radius:6px;padding:6px;margin-left:4px}
+.appearance-study .comparison-pair{margin-block:1rem}.study-table{overflow:auto}.study-table table{border-collapse:collapse;width:100%;font-size:.82rem;font-variant-numeric:tabular-nums}.study-table th,.study-table td{padding:7px 6px;border-bottom:1px solid var(--edge);text-align:right;white-space:nowrap;vertical-align:middle}.study-table th:first-child{text-align:left}.study-table thead{color:var(--muted-ink)}.study-table button{display:block;width:100%;padding:2px 5px;text-align:left;color:var(--ink);font:inherit;cursor:pointer;border:0;background:transparent}.study-table button small{display:block;color:var(--muted-ink);font-weight:400}.study-table tr:has(button[aria-pressed=true]){background:var(--lilac)}.study-table button:focus-visible{outline:2px solid var(--purple)}
+</style>
+<script>
+document.querySelectorAll<HTMLElement>('.appearance-study').forEach(root=>{
+ const values=JSON.parse(root.dataset.values!), prefix=root.dataset.root!;
+ const select=root.querySelector('select')!,caption=root.querySelector('[data-caption]')!;
+ const rows=[...root.querySelectorAll<HTMLTableRowElement>('tr[data-row]')];
+ let setting='baseline',camera='H01';
+ function update(){
+  const view=select.value;
+  if(view!=='Mean') camera=view;
+  for(const row of rows){
+   const id=row.dataset.row!,button=row.querySelector('button')!;
+   button.setAttribute('aria-pressed',String(id===setting));
+   row.querySelectorAll<HTMLElement>('[data-metric]').forEach(td=>td.textContent=values[id][view][td.dataset.metric!].toFixed(Number(td.dataset.digits)));
+   if(id===setting)caption.textContent=[button.querySelector('b')!.textContent,button.querySelector('small')!.textContent,camera].join(' · ');
+  }
+  const gt=root.querySelector<HTMLImageElement>('[data-reference]')!,pred=root.querySelector<HTMLImageElement>('[data-render]')!;
+  gt.src=prefix+'gt-'+camera+'.webp';gt.alt='Expert console, '+camera;pred.src=prefix+setting+'-'+camera+'.webp';pred.alt=caption.textContent!;
+ }
+ select.addEventListener('change',update);
+ rows.forEach(r=>r.querySelector('button')!.addEventListener('click',()=>{setting=r.dataset.row!;update()}));
+});
+</script>

@@ -1,15 +1,17 @@
 ---
-interface Props { name:string; views:{id:string;src:string}[]; }
+interface Props { name:string; views:{id:string;src:string;gt?:string}[]; }
 const {name,views}=Astro.props;
 ---
 <div class="view-reel" data-name={name}>
+  {views[0].gt && <h4 class="paired-label">Prediction</h4>}
   <div class="reel-stage">
     <img class="villa-image" src={views[0].src} alt={name+' · '+views[0].id} width="768" height="576" loading="lazy"/>
     <div class="reel-caption"><span>{views[0].id}</span><button type="button" data-pause aria-label={'Pause '+name} title="Pause slideshow">Ⅱ</button></div>
   </div>
+  {views[0].gt && <div class="expert-frame"><h4 class="paired-label">Ground truth</h4><img class="villa-image" data-expert-image src={views[0].gt} alt={'Ground truth · '+views[0].id} width="768" height="576" loading="lazy"/></div>}
   <div class="reel-edge"><div class="villa-thumbs">
     {[0,1].map(copy=><div class="reel-strip" aria-hidden={copy===1?'true':undefined}>
-      {views.map((v,i)=><button type="button" tabindex={copy===1?-1:0} data-index={i} aria-label={name+' · '+v.id} aria-pressed={i===0}><img src={v.src} alt="" width="58" height="42" loading="lazy"/><span>{v.id}</span></button>)}
+      {views.map((v,i)=><button type="button" tabindex={copy===1?-1:0} data-index={i} data-gt={v.gt} aria-label={name+' · '+v.id} aria-pressed={i===0}><img src={v.src} alt="" width="58" height="42" loading="lazy"/><span>{v.id}</span></button>)}
     </div>)}
   </div></div>
 </div>
@@ -17,6 +19,7 @@ const {name,views}=Astro.props;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll<HTMLElement>('.view-reel').forEach(reel => {
     const stage = reel.querySelector<HTMLImageElement>('.villa-image')!;
+    const expert = reel.querySelector<HTMLImageElement>('[data-expert-image]');
     const caption = reel.querySelector<HTMLElement>('.reel-caption span')!;
     const toggle = reel.querySelector<HTMLButtonElement>('[data-pause]')!;
     const rail = reel.querySelector<HTMLElement>('.villa-thumbs')!;
@@ -28,14 +31,16 @@ const {name,views}=Astro.props;
       selected=index;
       const source=frames[index].querySelector('img')!;
       stage.src=source.src;
+      if(expert && frames[index].dataset.gt){expert.src=frames[index].dataset.gt!;expert.alt='Ground truth · '+frames[index].innerText.trim();}
       stage.alt=frames[index].getAttribute('aria-label')!;
       caption.textContent=frames[index].innerText.trim();
       thumbs.forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.index)===index)));
     }
     reel.addEventListener('villa-set-frames',event=>{
-      const views=(event as CustomEvent<{id:string;src:string}[]>).detail;
+      const views=(event as CustomEvent<{id:string;src:string;gt?:string}[]>).detail;
       thumbs.forEach(button=>{
         const v=views[Number(button.dataset.index)];
+        if(v.gt)button.dataset.gt=v.gt;
         button.querySelector('img')!.src=v.src;
         button.querySelector('span')!.textContent=v.id;
         button.setAttribute('aria-label',reel.dataset.name+' · '+v.id);

@@ -39,6 +39,7 @@ function meanSegment(i:number){
  <div class="fidelity-scroll" tabindex="0" role="region" aria-label="Six-category comparison; scroll horizontally on small screens">
   <div class="fidelity-matrix scale-matrix">
    {cases.map((c,i)=><div class="fidelity-column" data-category={i}>
+    <svg class="case-connector" aria-hidden="true"><path/></svg>
     <div class="scale-preview"><div class="image-label">Prediction</div>
       <img class="case-prediction" src={c.predictions[c.selected].image} alt={models[c.selected].name+' · '+c.title} width="768" height="576" loading="lazy"/>
       <p class="selected-model">{models[c.selected].name}</p>
@@ -46,7 +47,6 @@ function meanSegment(i:number){
     <div class="score-column" aria-label={c.label+' category scores'}>
      {[0,20,40,60,80,100].map(t=><div class="score-guide" style={'bottom:'+t+'%'}>{i===0&&<span>{t}</span>}</div>)}
      <svg class="scale-mean" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      <path class="scale-callout" d={'M96 0 V'+(100-c.predictions[c.selected].categoryScore)+' H'+slots[i][c.selected]} />
       <polyline points={meanSegment(i)} />
      </svg>
      <span class="scale-mean-value" style={'bottom:'+means[i]+'%'} title={'Mean score '+means[i].toFixed(1)}>{means[i].toFixed(1)}</span>
@@ -62,7 +62,7 @@ function meanSegment(i:number){
  <p class="explorer-note">Vertical position is the model’s category-average score (0–100); horizontal spacing separates logos. The purple line connects the means across {models.length} configurations. Example images illustrate one task per category.</p>
  <div class="detail-heading"><h4 id="pair-title">{cases[0].title}</h4><span id="pair-model">{models[defaults[0]].name}</span><a id="pair-link" href={url(`task/${slugs[0]}/`)}>Task details</a></div>
  <div class="comparison-pair"><figure><img id="detail-gt" src={cases[0].predictions[defaults[0]].gt} alt={`Ground truth: ${titles[0]}`} width="768" height="576" loading="lazy"/><figcaption>Ground truth</figcaption></figure><figure><img id="detail-prediction" src={cases[0].predictions[defaults[0]].image} alt={`${models[defaults[0]].name}: ${titles[0]}`} width="768" height="576" loading="lazy"/><figcaption id="detail-caption">Prediction · task score {cases[0].predictions[defaults[0]].taskScore} · view {cases[0].predictions[defaults[0]].view}</figcaption></figure></div>
- <p class="explorer-note"><a href={url('reconstruction/provenance.json')}>Image provenance</a> · Each example uses one fixed camera for the reference and all 11 predictions.</p>
+ <p class="explorer-note"><a href={url('reconstruction/provenance.json')}>Image provenance</a> · Each example uses one fixed camera for the reference and all {models.length} predictions.</p>
 </section>
 <script>
 document.querySelectorAll<HTMLElement>('.fidelity-explorer').forEach(root=>{
@@ -75,13 +75,24 @@ document.querySelectorAll<HTMLElement>('.fidelity-explorer').forEach(root=>{
   for(const [id,src,alt] of [['detail-gt',p.gt,`Ground truth: ${c.title}`],['detail-prediction',p.image,`${m.name}: ${c.title}`]]){const img=root.querySelector<HTMLImageElement>(`#${id}`)!;img.src=src;img.alt=alt;}
   root.querySelector('#detail-caption')!.textContent=`Prediction · task score ${p.taskScore} · view ${p.view}`;
  };
+ const columns=[...root.querySelectorAll<HTMLElement>('.fidelity-column')];
+ function connect(col:HTMLElement) {
+  const panel=col.querySelector<HTMLElement>('.scale-preview')!, dot=col.querySelector<HTMLElement>('.score-logo.is-selected')!;
+  const box=col.getBoundingClientRect(),card=panel.getBoundingClientRect(),point=dot.getBoundingClientRect();
+  const startX=card.right-box.left-15, startY=card.bottom-box.top;
+  const rail=card.right-box.left+2, y=point.top-box.top+point.height/2, mid=point.left-box.left+point.width/2;
+  const x=mid+(rail>=mid?1:-1)*(dot.offsetWidth/2+2);
+  col.querySelector('.case-connector path')!.setAttribute('d',`M ${startX} ${startY} Q ${rail} ${startY} ${rail} ${startY+10} V ${y-5} Q ${rail} ${y} ${rail-5} ${y} H ${x}`);
+ }
+ const observer=new ResizeObserver(()=>columns.forEach(connect));
+ columns.forEach(col=>{observer.observe(col);observer.observe(col.querySelector('.scale-preview')!);connect(col)});
+ document.fonts.ready.then(()=>columns.forEach(connect));
  const select=(i:number,j:number)=>{
   const c=cases[i];c.selected=j;const p=c.predictions[j];const col=root.querySelector<HTMLElement>(`[data-category="${i}"]`)!;
   col.querySelector<HTMLImageElement>('.case-prediction')!.src=p.image;col.querySelector<HTMLImageElement>('.case-prediction')!.alt=`${models[j].name}: ${c.title}`;
   col.querySelector<HTMLImageElement>('.case-gt')!.src=p.gt;col.querySelector('.camera-label')!.textContent=`Ground truth · ${p.view}`;col.querySelector('.selected-model')!.textContent=models[j].name;
-  const selectedDot=col.querySelector<HTMLButtonElement>(`[data-model="${j}"]`)!;
-  col.querySelector('.scale-callout')!.setAttribute('d','M96 0 V'+(100-p.categoryScore)+' H'+selectedDot.dataset.slot);
   col.querySelectorAll<HTMLButtonElement>('[data-model]').forEach(b=>{const selected=Number(b.dataset.model)===j;b.classList.toggle('is-selected',selected);b.setAttribute('aria-pressed',String(selected));});
+  connect(col);
   root.querySelectorAll<HTMLButtonElement>('[data-all-model]').forEach(b=>b.setAttribute('aria-pressed',String(cases.every((x:{selected:number})=>x.selected===Number(b.dataset.allModel)))));
   if(i===inspected)detail();
  };

@@ -10,7 +10,6 @@ const displayNames: Record<string,string> = {
   "gpt-6.2-astra/high": "GPT-6.2-Astra (high)",
   "gpt-6-astra/high": "GPT-6-Astra (high)",
   "gpt-6-astra/low": "GPT-6-Astra (low)",
-  "gpt-5.6-sol/high": "GPT-5.6-Sol (low)",
   "claude-opus-5-5/default": "Claude Opus 5.5 (medium)",
   "deepseek-flash/default": "DeepSeek-v4.1-flash-1017 (high)",
   "qwen3.8-max/default": "Qwen3.8-Max (high)",

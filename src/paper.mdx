@@ -5,6 +5,7 @@ import Wide from './components/Wide.astro';
 import ResultsTable from './components/ResultsTable.astro';
 import FidelityExplorer from './components/FidelityExplorer.astro';
 import DiagnosticExplorer from './components/DiagnosticExplorer.astro';
+import AppearanceStudy from './components/AppearanceStudy.astro';
 import ComponentAnalysis from './components/ComponentAnalysis.astro';
 import {url as siteUrl,github} from './lib/site';
 import ArticleNav from './components/ArticleNav.astro';
@@ -64,9 +65,9 @@ Evaluation compares each submission with an expert-built Blender scene in a shar
 
 <CategoryFidelity/>
 
-Across all 11 configurations, reconstruction fidelity drops steadily at every step up in scene scale and structural density—falling from **63.0** on **Objects** and **59.0** on **Multi-Object Arrangements**, down to **31.3** on **Interiors**, **27.3** on **Buildings**, **21.1** on **Urban & Campus Blocks**, and **20.4** on **City-Scale Environments**.
+Across all 10 configurations, reconstruction fidelity drops steadily at every step up in scene scale and structural density—falling from **65.0** on **Objects** and **60.5** on **Multi-Object Arrangements**, down to **32.3** on **Interiors**, **28.1** on **Buildings**, **22.0** on **Urban & Campus Blocks**, and **21.0** on **City-Scale Environments**.
 
-The sharpest break occurs between **Multi-Object Arrangements (59.0)** and **Interiors (31.3)**. Arranging a few standalone pieces on a tea table is still within reach; enclosing those objects inside walls, ceilings, staircases, and multi-room layouts nearly cuts accuracy in half. Beyond interiors, every added layer of architectural coupling—connecting rooms into full buildings, blocks, and city districts—compounds geometric and occlusion errors, driving fidelity down toward a **20.4** floor.
+The sharpest break occurs between **Multi-Object Arrangements (60.5)** and **Interiors (32.3)**. Arranging a few standalone pieces on a tea table is still within reach; enclosing those objects inside walls, ceilings, staircases, and multi-room layouts nearly cuts accuracy in half. Beyond interiors, every added layer of architectural coupling—connecting rooms into full buildings, blocks, and city districts—compounds geometric and occlusion errors, driving fidelity down toward a **21.0** floor.
 
 ### Global Structure Does Not Guarantee Local Fidelity
 
@@ -87,6 +88,20 @@ The handheld console is immediately recognizable in Kimi's reconstruction. Yet i
 <Wide><div className="blog-wide diagnostic-wide"><DiagnosticExplorer/></div></Wide>
 
 Replacing materials and lighting raises front-view PSNR to **24.06 dB**, reducing foreground pixel MSE by **79.1% without changing geometry**. Appearance explains much of this view's error, but it does not resolve the side view: after the same appearance intervention, side-view PSNR is only **12.79 dB**. Replacing the button structures raises it to **20.62 dB**; replacing the controller geometry as well raises it to **21.37 dB**.
+
+#### How much can the image change without moving a vertex?
+
+We rendered the same Kimi console under ten settings at all four hidden cameras. For each material edit we changed one Principled BSDF input and kept the lights fixed. The colored controller shells start at roughness 0.34 (blue) and 0.35 (red). Lowering roughness to 0.08 concentrates the specular highlight. Raising it to 0.85 spreads the reflected light over a wider range of directions. A separate edit raises metallic from 0 to 0.80, changing the balance between diffuse and tinted specular reflection. We also polished the display glass (0.72 → 0.10) and roughened the graphite housing (0.50 → 0.85). [Blender’s material parameter definitions](https://docs.blender.org/manual/en/4.5/render/shader_nodes/shader/principled.html).
+
+For the lighting edits we restored every original material and changed only the key light. The original rig uses a 1,000 W area key, a 500 W fill and a 1,000 W rim. We halved the area key’s power, then tested point, spot and sun keys separately with the fill, rim and world fixed. The point and spot use a 0.15 m radius, and the spot has a 65° cone. The sun uses an irradiance of 3 W/m² and an angular diameter of 4°. The sun and local lights have different physical units, so these comparisons describe the specified rigs at their stated settings.
+
+<Wide><div className="blog-wide diagnostic-wide"><AppearanceStudy/></div></Wide>
+
+**Material.** Polishing the display raised four-view mean PSNR from **15.54 to 16.29 dB**. Giving the controller shells a metallic finish lowered it to **14.72 dB**. Across those same two settings, raw LPIPS moved only from **0.1709 to 0.1768** (lower is better). Changing shell roughness alone had a smaller effect: the glossy and matte finishes scored **15.51** and **15.47 dB**. Which material changes matters as much as the size of the parameter change.
+
+**Lighting.** On the front view, the original area key scored **17.27 dB**. Halving its power raised PSNR to **18.38 dB**; the point and spot keys each reached **18.54 dB**, and the sun key reached **17.81 dB**. The point key reduced front-view foreground MSE by roughly a quarter, yet raw LPIPS shifted only from **0.0714 to 0.0629**. The same change *lowered* underside-view PSNR from **11.78 to 11.40 dB**. Relighting can improve one photograph while making another less faithful.
+
+**Geometry.** All forty depth maps were pixel-identical to their respective camera baselines. Mean depth therefore stayed at **83.91/100**, and the fixed mesh retained its measured surface score of **86.23/100**. Across the ten settings, four-view normalized LPIPS varied by just **0.31 points**. These results distinguish three questions: whether reflected light lands at the right pixels, whether the object still looks perceptually similar, and whether its surfaces occupy the right places. The earlier button replacement shows the converse: a geometric correction can explain a large view-specific error that relighting leaves behind.
 
 The space-station reconstruction by GPT-6-Astra (low) scores **98.56 in LPIPS** and **83.18 in surface fidelity**, but only **16.33 in depth**. A broad view can preserve the station's identity while a grazing view exposes displaced panels and incorrect occlusion.
 

@@ -19,7 +19,12 @@ with sync_playwright() as p:
  assert page.locator('.article-toc a').count()==6
  page.locator('#evaluation').evaluate("(h)=>h.scrollIntoView({behavior:'instant'})")
  page.wait_for_selector('.section-menu a[href="#evaluation"][aria-current="location"]')
- page.get_by_role('button',name='Technical drawings',exact=True).click()
+ assert all(page.locator(f'[data-gallery="{i}"]').is_visible() for i in (0,1))
+ output=page.locator('[data-output="views"]')
+ output.locator('.reel-strip').first.locator('button').nth(1).click()
+ for image in output.locator('.villa-image').all():
+  image.evaluate('(img)=>img.decode()')
+  assert image.get_attribute('src').endswith('/H02.png.webp')
  drawing=page.locator('[data-gallery="1"]')
  drawing.locator('.reel-strip').first.locator('button').nth(1).click()
  assert 'A-101' in drawing.locator('.villa-image').get_attribute('alt')
@@ -99,8 +104,8 @@ with sync_playwright() as p:
  page.locator('#category').select_option('cities');assert page.locator('.case-card:visible').count()==city_count
  page.locator('#search').fill('zzzz');assert page.locator('.case-card:visible').count()==0
  page.goto(base,wait_until='networkidle')
- assert page.locator('[data-output="views"] .villa-image').is_visible()
- assert 'modern-villa__oLdWrMi/camera/' in page.locator('[data-output="views"] .villa-image').get_attribute('src')
+ assert page.locator('[data-output="views"] .reel-stage .villa-image').is_visible()
+ assert 'modern-villa__oLdWrMi/camera/' in page.locator('[data-output="views"] .reel-stage .villa-image').get_attribute('src')
  page.locator('[data-mode="model"]').click()
  page.wait_for_selector('.orbit-box[data-live]',timeout=90000)
  viewer=page.locator('.orbit-host model-viewer')

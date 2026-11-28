@@ -1,17 +1,17 @@
 # AgentRecBench blog evidence
 
-The blog uses the approved November 17, 2026 paper snapshot. It does not rescore or run any benchmark. Model/category averages and the leaderboard come from `src/data/results.json`, also available under `public/data/results.json`.
+The leaderboard and task figures use the ten published configurations in `src/data/results.json` and `public/data/results.json`. The console lighting and material experiments are separate diagnostics on one frozen submission.
 
 ## Interactive reconstruction figure
 
-`public/reconstruction/provenance.json` maps the 42 predictions to model configuration, selected trial, submission/archive hashes, held-out camera, image hash, and official task score. Six tasks represent the six categories. Logo height represents a **category mean**, while the enlarged comparison caption reports the **individual task score**. Horizontal logo offsets have no metric meaning. The default predictions match the paper figure.
-
-Images were recovered from the verified dev6 web backup snapshot. The Opus modern-villa pair comes from the paper's frozen fixed-camera capture (H03, frame 33, 32 samples, seed 42), with a separate matching GT image. The other six models use their recovered official images and the corresponding reference. Switching to Opus also switches the GT to preserve that pairing. No original submission or official score is changed.
+`public/reconstruction/provenance.json` identifies 60 predictions by trial, submission and archive hashes, image hash, camera and official task score. The six cases use a single GT camera per task across all ten configurations. Modern Villa uses exterior H01. A logo’s vertical position gives its category mean; the detailed caption reports the example task score.
 
 ## Analysis
 
+- `src/data/console-ablation.json` records a separate fixed-geometry sensitivity study of Kimi’s handheld-console submission at H01–H04. Each setting is scored from lossless verifier renders. WebP copies are for display. The reference masks, camera transforms, 768 × 576 resolution, 32 Cycles samples, frame 9 and seed 42 follow the task capture. Surface distance is taken from the fixed submission, and every variant’s depth array was checked against the baseline.
+
 - `src/data/component-analysis.json`: the supplementary material's paired summaries for 27 tasks and 551 components. Room/component values use equal task weighting.
-- `src/data/diagnostic.json` and `public/diagnostics/provenance.json`: the console diagnostic's original per-view dB values and image hashes. All interventions are GT-assisted, use the fixed GT foreground mask, and do not alter official results.
+- `src/data/diagnostic.json` and `public/diagnostics/provenance.json`: the console diagnostic's original per-view dB values and image hashes. The four legacy stages include GT-assisted interventions, use the fixed GT foreground mask, and do not alter official results.
 - Space-station H03/H06 images: frozen supplementary evidence for Astra low, trial `space-station__GtX4Q2f`. H06 depth MAE is 9.4078 m; normalized LPIPS is 99.45.
 - The supplied modern-villa walkthrough is labeled GPT-6.2-Astra high in its filename. It is a qualitative demo; exact trial linkage has not been verified and it is not a leaderboard entry.
 
