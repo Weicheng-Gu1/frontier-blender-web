@@ -116,7 +116,8 @@ html:has(.section-menu) { scroll-padding-top: 0; }
 
 .category-means > div > strong { white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
 
-.reconstruction-desk{gap:clamp(12px,1.5vw,24px);align-items:start}
+.reconstruction-desk{gap:clamp(12px,1.5vw,24px);align-items:stretch}
+@media(max-width:880px){.reconstruction-desk{grid-template-rows:repeat(3,1fr) auto}}
 .reconstruction-desk>section{min-width:0}
 .reconstruction-desk .input-set h4,.reconstruction-desk .paired-label{display:flex;align-items:center;gap:8px;margin:12px 0 6px;font-size:.8rem;font-weight:650;color:var(--ink)}
 .input-set h4 small{font-weight:500;color:var(--muted-ink);font-variant-numeric:tabular-nums}
